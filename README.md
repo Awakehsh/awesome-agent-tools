@@ -155,6 +155,11 @@ See **[AWESOME.md](./AWESOME.md)** for a comprehensive, categorized list of:
 - 🛠️ **Tools & Utilities** (installers, frameworks, resources)
 - 📚 **Learning Resources** (docs, tutorials, guides)
 
+**Highlighted Recommendations**:
+- **[ralph-loop](https://github.com/anthropics/claude-plugins-official)** - Overnight automated development with iterative loops
+- **[context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit)** - Advanced context engineering with 8-21% quality improvement
+- **[openskills](https://github.com/numman-ali/openskills)** - Universal skills loader for multi-platform support
+
 ---
 
 ## 💡 Why These Tools Matter

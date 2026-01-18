@@ -140,6 +140,11 @@ Cursor通过MCP服务器或直接GitHub导入支持skills。
 - 🛠️ **工具与实用程序** (安装器、框架、资源)
 - 📚 **学习资源** (文档、教程、指南)
 
+**精选推荐**:
+- **[ralph-loop](https://github.com/anthropics/claude-plugins-official)** - 使用迭代循环进行自动化开发
+- **[context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit)** - 高级上下文工程，提升8-21%质量
+- **[openskills](https://github.com/numman-ali/openskills)** - 通用skills加载器，支持多平台
+
 ---
 
 ## 💡 为什么这些工具很重要

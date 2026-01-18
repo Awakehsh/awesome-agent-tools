@@ -37,6 +37,21 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Description: Skills starter template for Cursor AI editor
   - Features: MCP server integration, auto-import, quick start
 
+- **[context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit)** by NeoLabHQ
+  - Description: Hand-crafted collection of advanced context engineering techniques for improving agent quality
+  - Install: `claude plugin marketplace add NeoLabHQ/context-engineering-kit`
+  - Features: Reflexion (reflection loops), scientifically proven techniques, 8-21% quality improvement, token-efficient
+  - Plugins: reflexion, memorize, critique with multi-agent debate
+
+### Workflow & Automation Skills
+
+- **[ralph-loop](https://github.com/anthropics/claude-plugins-official)** by Anthropic Official
+  - Description: Iterative AI development methodology using automatic retry loops for overnight development
+  - Install: `claude plugin install ralph-loop@claude-plugins-official`
+  - Features: Automatic retry logic, completion detection, safety guardrails, ideal for well-defined tasks
+  - Use Cases: Greenfield development, automated testing workflows, tasks with clear success criteria
+  - Note: Real-world impact - $50k contract completed for ~$297 in API costs
+
 ### Universal Installers
 
 - **[ai-agent-skills](https://github.com/skillcreatorai/Ai-Agent-Skills)** by skillcreatorai
