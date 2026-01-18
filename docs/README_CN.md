@@ -81,7 +81,7 @@ claude plugin
 
 #### 安装单个Skill
 ```bash
-claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/example-skill
+claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli
 ```
 
 ### Codex 用户
@@ -90,7 +90,7 @@ Codex原生支持SKILL.md格式的skills。
 
 ```bash
 # 使用skill-installer安装skill
-$skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/example-skill
+$skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli
 
 # 或克隆到你的skills目录
 cd ~/.codex/skills

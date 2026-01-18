@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-示例脚本 - 展示如何在skill中使用Python脚本
+Example script - demonstrates how to use a Python script in a skill.
 
-这个脚本演示了：
-1. 如何编写可被Claude调用的脚本
-2. 基本的错误处理
-3. 清晰的输入输出
+This script demonstrates:
+1. How to write a script an agent can invoke
+2. Basic error handling
+3. Clear input/output
 """
 
 import sys
@@ -14,26 +14,26 @@ import json
 
 def process_example(input_data):
     """
-    处理输入数据的示例函数
+    Example function that processes input data.
 
     Args:
-        input_data: 输入数据（字符串或JSON）
+        input_data: Input data (string or JSON)
 
     Returns:
-        处理后的结果
+        Processed result
     """
     try:
-        # 尝试解析为JSON
+        # Try parsing input as JSON
         if isinstance(input_data, str):
             data = json.loads(input_data)
         else:
             data = input_data
 
-        # 这里添加你的处理逻辑
+        # Add your processing logic here
         result = {
             "status": "success",
             "processed": data,
-            "message": "处理完成"
+            "message": "Processing complete"
         }
 
         return result
@@ -41,21 +41,21 @@ def process_example(input_data):
     except json.JSONDecodeError as e:
         return {
             "status": "error",
-            "message": f"JSON解析失败: {str(e)}"
+            "message": f"Failed to parse JSON: {str(e)}"
         }
     except Exception as e:
         return {
             "status": "error",
-            "message": f"处理失败: {str(e)}"
+            "message": f"Processing failed: {str(e)}"
         }
 
 
 def main():
-    """主函数"""
+    """Main entrypoint."""
     if len(sys.argv) < 2:
         print(json.dumps({
             "status": "error",
-            "message": "用法: python example.py <input_data>"
+            "message": "Usage: python example.py <input_data>"
         }))
         sys.exit(1)
 

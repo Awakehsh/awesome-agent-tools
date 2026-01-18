@@ -81,7 +81,8 @@ claude plugin
 
 #### Install Individual Skill
 ```bash
-claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/example-skill
+# Example: Install codex-cli skill
+claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli
 ```
 
 ### For Codex Users
@@ -90,7 +91,7 @@ Codex natively supports SKILL.md format skills.
 
 ```bash
 # Install a skill using skill-installer
-$skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/example-skill
+$skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli
 
 # Or clone to your skills directory
 cd ~/.codex/skills

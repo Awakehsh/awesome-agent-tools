@@ -223,7 +223,7 @@ Need assistance? Here's how to get help:
 - **Questions**: Open a [Discussion](https://github.com/Awakehsh/awesome-agent-tools/discussions)
 - **Bugs**: Create an [Issue](https://github.com/Awakehsh/awesome-agent-tools/issues)
 - **Documentation**: Check [README.md](./README.md) and [CLAUDE.md](./CLAUDE.md)
-- **Examples**: Look at existing skills in `skills/example-skill/`
+- **Examples**: Look at example skill documentation in `docs/example-skill/`
 
 ## Code of Conduct
 
