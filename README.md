@@ -131,6 +131,136 @@ Most AI coding tools support SKILL.md format. Check your tool's documentation fo
 
 ---
 
+## 🎨 Claude Code Built-in Capabilities
+
+Before exploring external skills, know that **Claude Code itself is a powerful skill creator and workflow automation platform**. These built-in features are often overlooked but are essential for maximizing productivity.
+
+### Create Skills with `/skills` Command
+
+Claude Code includes an official **skill-creator** meta-skill that helps you build custom skills directly in the CLI.
+
+**Quick Start**:
+```bash
+# In Claude Code CLI, simply describe what you want:
+/skills
+
+# Claude will guide you through creating a new skill
+# Example: "Create a skill that generates API documentation from code comments"
+```
+
+**How It Works**:
+1. Describe your desired skill functionality
+2. Claude generates the SKILL.md file with proper frontmatter
+3. Test the skill immediately in your current session
+4. Skills auto-trigger based on context (no manual invocation needed)
+
+**Learn More**: [Official Skills Documentation](https://code.claude.com/docs/en/skills) | [Anthropic Skills Repository](https://github.com/anthropics/skills)
+
+---
+
+### Agents & Workflow Automation
+
+Claude Code's creator, Boris Cherny, revealed the team's internal workflows at Anthropic—these patterns demonstrate how professionals use Claude Code at scale.
+
+#### 📝 CLAUDE.md - Project Memory
+
+**What It Is**: A living document that teaches Claude project-specific patterns and prevents repeated mistakes.
+
+**How Anthropic Uses It**:
+- When Claude makes a mistake → add it to CLAUDE.md
+- Next time Claude automatically avoids the same error
+- Builds institutional knowledge over time
+
+**Example CLAUDE.md**:
+```markdown
+# Project Rules
+
+## Never Do
+- Don't use `var` keyword (use `const` or `let`)
+- Don't commit directly to main branch
+
+## Patterns
+- API calls must include retry logic
+- All user inputs require validation
+```
+
+#### ⚡ Slash Commands - Custom Workflows
+
+**What It Is**: Stored workflows in `.claude/commands/` that launch specialized sub-agents.
+
+**Common Workflows** (from Anthropic's team):
+- `/commit` - Smart commit message generation
+- `/pr` - Create pull requests with context
+- `/simplify` - Refactor complex code
+- `/verify` - Run tests and validate changes
+
+**Create Your Own**:
+```bash
+# Store in .claude/commands/deploy.md
+---
+name: deploy
+---
+Deploy the application:
+1. Run all tests
+2. Build production bundle
+3. Update changelog
+4. Deploy to staging
+5. Run smoke tests
+6. Deploy to production if tests pass
+```
+
+#### 🔄 Parallel Agents - Compound Productivity
+
+**Boris Cherny's Setup**:
+- Runs **5 Claude instances in parallel** (terminal tabs 1-5)
+- System notifications alert when input needed
+- Each agent handles different tasks simultaneously
+- Productivity compounds over time
+
+**Example Parallel Workflow**:
+```
+Tab 1: Writing new feature code
+Tab 2: Reviewing existing PR
+Tab 3: Debugging production issue
+Tab 4: Generating documentation
+Tab 5: Running automated tests
+```
+
+#### 🎯 Specialized Sub-Agents
+
+**Plan Mode**: Read-only codebase analysis
+```bash
+# Perfect for exploring unfamiliar code
+"Help me understand the authentication flow" → Claude enters plan mode
+```
+
+**Verification Loop**: Automated testing
+```
+gather context → take action → verify work → repeat
+```
+
+**Real Example from Anthropic**:
+> Claude tests every single change landed to claude.ai/code using the Claude Chrome extension, opening a browser, testing the UI, and iterating until the code works and the UX feels good.
+
+---
+
+### Why This Matters
+
+**You Don't Need External Tools for Basic Tasks**:
+- ✅ Skill creation → Use `/skills`
+- ✅ Custom workflows → Use slash commands
+- ✅ Project memory → Use CLAUDE.md
+- ✅ Parallel work → Multiple terminal tabs
+
+**When to Use External Skills**:
+- ✅ Specialized functionality (PDF processing, API integrations)
+- ✅ Pre-built community solutions
+- ✅ Complex multi-step workflows
+
+**Learn from the Pros**: [Inside Claude Code Creator's Workflow](https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are) | [Multi-Agent Orchestration](https://github.com/wshobson/agents)
+
+---
+
 ## 📦 What's Included
 
 ### Original Skills
