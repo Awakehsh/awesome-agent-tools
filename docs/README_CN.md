@@ -49,12 +49,21 @@ claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skill
 
 ### Codex
 
-```bash
-# 使用 skill-installer
+```text
+# 在 Codex CLI 对话里运行（这不是 shell 命令）
 $skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn
 
-# 或克隆到 skills 目录
-cd ~/.codex/skills && git clone https://github.com/Awakehsh/awesome-agent-tools
+# 安装后重启 Codex 才会生效
+```
+
+```bash
+# 备选：在终端里安装（需要 Python 3）
+python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --url \
+  https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn
+
+# 手动方式：克隆仓库，然后复制（或软链）skill 目录
+git clone https://github.com/Awakehsh/awesome-agent-tools ~/awesome-agent-tools
+cp -r ~/awesome-agent-tools/skills/learn ~/.codex/skills/
 ```
 
 ### Cursor / Windsurf / Antigravity
@@ -166,6 +175,16 @@ Claude Code 有强大的内置功能：
 
 了解更多：[官方文档](https://code.claude.com/docs/en/skills) | [创建者的工作流](https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are)
 
+---
+
+## Codex 小贴士
+
+Codex 的 skill 是按文件夹加载的：`~/.codex/skills/<skill-name>/SKILL.md`。
+
+| 提示 | 说明 |
+|------|------|
+| **`$skill-installer ...`** | 在 Codex CLI 对话里运行（不是终端 shell），然后重启 Codex |
+| **创建新 skill** | 在 `~/.codex/skills/<skill-name>/` 建文件夹并添加 `SKILL.md`|
 ---
 
 ## 资源

@@ -49,12 +49,21 @@ claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skill
 
 ### Codex
 
-```bash
-# Using skill-installer
+```text
+# In Codex CLI chat (this is not a shell command)
 $skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn
 
-# Or clone to skills directory
-cd ~/.codex/skills && git clone https://github.com/Awakehsh/awesome-agent-tools
+# Restart Codex to pick up new skills
+```
+
+```bash
+# Alternative: install from your terminal (requires Python 3)
+python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --url \
+  https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn
+
+# Manual: clone repo, then copy (or symlink) the skill folder
+git clone https://github.com/Awakehsh/awesome-agent-tools ~/awesome-agent-tools
+cp -r ~/awesome-agent-tools/skills/learn ~/.codex/skills/
 ```
 
 ### Cursor / Windsurf / Antigravity
@@ -166,6 +175,16 @@ Claude Code has powerful built-in features you might not know:
 
 Learn more: [Official Docs](https://code.claude.com/docs/en/skills) | [Creator's Workflow](https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are)
 
+---
+
+## Codex Tips
+
+Codex skill loading is folder-based. A skill lives at `~/.codex/skills/<skill-name>/SKILL.md`.
+
+| Tip | Description |
+|-----|-------------|
+| **`$skill-installer ...`** | Run this in the Codex CLI chat (not your shell), then restart Codex |
+| **Create a new skill** | Make a folder in `~/.codex/skills/<skill-name>/` and add `SKILL.md` (YAML frontmatter + Markdown) |
 ---
 
 ## Resources

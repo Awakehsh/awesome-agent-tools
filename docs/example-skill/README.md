@@ -10,8 +10,17 @@ claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skill
 ```
 
 ### Codex
-```bash
+```text
+# In Codex CLI chat (this is not a shell command)
 $skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/example-skill
+
+# Restart Codex to pick up new skills
+```
+
+```bash
+# Alternative: install from your terminal (requires Python 3)
+python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --url \
+  https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/example-skill
 ```
 
 ### Manual Install
