@@ -6,6 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](../CONTRIBUTING.md)
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 [English](../README.md) | [中文](./README_CN.md)
 
