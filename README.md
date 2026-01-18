@@ -70,18 +70,32 @@ While named "agent tools", this collection includes resources for:
 
 Claude Code provides the best experience with native SKILL.md support and MCP integration.
 
-#### Install as Marketplace
-```bash
-# Add this marketplace to Claude Code
-claude plugin marketplace add Awakehsh/awesome-agent-tools
+#### Install as Marketplace (Recommended)
 
-# Browse and install skills through the UI
-claude plugin
+Add the marketplace to browse and install all skills through the Claude Code UI:
+
+```bash
+/plugin
 ```
 
+When prompted, enter:
+```
+Awakehsh/awesome-agent-tools
+```
+
+This will automatically load the marketplace configuration and allow you to browse available skills.
+
 #### Install Individual Skill
+
+If you prefer to install a specific skill directly:
+
 ```bash
 # Example: Install codex-cli skill
+claude skill add https://github.com/Awakehsh/awesome-agent-tools
+```
+
+Then navigate to the `skills/codex-cli` directory when prompted, or use the full GitHub URL:
+```bash
 claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli
 ```
 
