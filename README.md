@@ -137,6 +137,7 @@ Most AI coding tools support SKILL.md format. Check your tool's documentation fo
 | Skill | Description | Use Cases |
 |-------|-------------|-----------|
 | **[codex-cli](./skills/codex-cli/)** | Call OpenAI Codex CLI from Claude Code or other non-Codex LLMs for plan review and code analysis | • Plan review before coding<br/>• Code review<br/>• Complex technical discussions<br/>• Multi-round iteration |
+| **[learn](./skills/learn/)** | Universal learning system that extracts insights from conversations and updates project memory files (CLAUDE.md, AGENTS.md, .cursorrules, etc.) with LLM-friendly documentation | • Capture learnings from debugging sessions<br/>• Auto-route knowledge to appropriate docs<br/>• Cross-platform memory file sync<br/>• Lifecycle management with freshness decay |
 
 ### Original MCP Servers
 

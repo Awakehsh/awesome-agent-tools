@@ -121,7 +121,8 @@ Cursor通过MCP服务器或直接GitHub导入支持skills。
 
 | Skill | 说明 | 使用场景 |
 |-------|------|---------|
-| **[codex-cli](./codex-cli/)** | 让 Claude Code 等非 Codex LLM 调用 OpenAI Codex CLI 进行计划审查和代码分析 | • 编码前审查计划<br/>• 代码审查<br/>• 复杂技术讨论<br/>• 多轮迭代改进 |
+| **[codex-cli](../skills/codex-cli/)** | 让 Claude Code 等非 Codex LLM 调用 OpenAI Codex CLI 进行计划审查和代码分析 | • 编码前审查计划<br/>• 代码审查<br/>• 复杂技术讨论<br/>• 多轮迭代改进 |
+| **[learn](../skills/learn/)** | 通用学习系统，从对话中提取见解并更新项目内存文件（CLAUDE.md、AGENTS.md、.cursorrules等）为LLM友好的文档 | • 从调试会话中捕获学习<br/>• 自动将知识路由到合适的文档<br/>• 跨平台内存文件同步<br/>• 基于新鲜度衰减的生命周期管理 |
 
 ### 原创MCP服务器
 
