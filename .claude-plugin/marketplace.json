@@ -10,6 +10,7 @@
       "name": "codex-cli",
       "description": "Call OpenAI Codex CLI from Claude Code or other non-Codex LLMs for plan review and code analysis",
       "source": {
+        "source": "url",
         "url": "https://github.com/Awakehsh/awesome-agent-tools.git"
       },
       "category": "development"
