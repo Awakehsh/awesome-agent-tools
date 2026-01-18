@@ -305,6 +305,8 @@ Thanks to:
 
 Made with ❤️ by the community
 
+[English](./README.md) · [中文文档](./docs/README_CN.md)
+
 [Report Bug](https://github.com/Awakehsh/awesome-agent-tools/issues) · [Request Feature](https://github.com/Awakehsh/awesome-agent-tools/issues) · [Contribute](./CONTRIBUTING.md)
 
 </div>
