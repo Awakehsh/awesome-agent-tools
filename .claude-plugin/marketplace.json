@@ -1,15 +1,15 @@
 {
-  "name": "awesome-coding-agents",
-  "displayName": "Awesome Coding Agents",
+  "name": "awesome-agent-tools",
+  "displayName": "Awesome Agent Tools",
   "version": "0.1.0",
-  "description": "精选的AI编程助手Skills、MCP服务器和工具集合。支持Claude Code、Cursor、Codex等多个工具。",
+  "description": "A curated collection of powerful Skills, MCP servers, and tools for AI agents. Supports Claude Code (recommended), Codex, Cursor, and more.",
   "author": {
     "name": "hu",
     "url": "https://github.com/your-username"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/awesome-coding-agents"
+    "url": "https://github.com/your-username/awesome-agent-tools"
   },
   "skills": {
     "path": "skills"

@@ -1,68 +1,310 @@
-# Awesome Coding Agents 🤖
+# Awesome Agent Tools 🤖✨
 
-精选的AI编程助手Skills、MCP服务器和工具集合。支持Claude Code、Cursor、Codex等多个AI编程工具。
+> A curated collection of powerful Skills, MCP servers, and tools for AI agents
 
-## 🚀 快速开始
+**Supports**: [Claude Code](#for-claude-code-users) (⭐ **Recommended**), [Codex](#for-codex-users), [Cursor](#for-cursor-users), and other AI development tools
 
-### 作为Marketplace安装（推荐）
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
-```bash
-# 添加此marketplace
-claude plugin marketplace add your-username/awesome-coding-agents
-
-# 然后可以浏览和安装skills
-claude plugin
-```
-
-### 单独安装某个skill
-
-```bash
-# Claude Code
-claude skill add https://github.com/your-username/awesome-coding-agents/tree/main/skills/skill-name
-
-# Codex
-$skill-installer https://github.com/your-username/awesome-coding-agents/tree/main/skills/skill-name
-
-# Cursor
-# 通过MCP或直接从GitHub URL导入
-```
-
-### 安装MCP服务器
-
-在 `~/.claude/claude_desktop_config.json` 中配置（参考各服务器的README）。
-
-## 📦 包含的Skills
-
-> 暂无自己开发的skills，即将添加...
-
-## 🔧 MCP服务器
-
-> 暂无自己开发的MCP服务器，即将添加...
-
-## ⭐ 推荐的第三方Skills和工具
-
-查看 [AWESOME.md](./AWESOME.md) 获取精选推荐列表。这里收集了社区最优秀的Skills、MCP服务器和AI编程工具。
-
-## 🤝 贡献
-
-欢迎贡献！你可以：
-- 添加你自己的skill到 `skills/` 目录
-- 推荐优秀的第三方工具（在 `AWESOME.md` 中添加链接）
-- 改进文档和示例
-
-请参阅 [CONTRIBUTING.md](./CONTRIBUTING.md) 了解详情。
-
-## 📚 学习资源
-
-- [Claude Code 文档](https://code.claude.com/docs)
-- [MCP 规范](https://modelcontextprotocol.io)
-- [Codex 开发者文档](https://developers.openai.com/codex)
-- [Cursor 最佳实践](https://cursor.com/blog/agent-best-practices)
-
-## 📄 许可证
-
-MIT License - 查看 [LICENSE](./LICENSE) 文件
+[English](./README.md) | [中文](./docs/README_CN.md)
 
 ---
 
-**注意**：推荐的第三方内容保持其原始许可证。本仓库仅提供链接和索引。
+## 📖 What is This?
+
+**Awesome Agent Tools** is a curated collection of high-quality Skills, MCP (Model Context Protocol) servers, and powerful tools that dramatically extend the capabilities of AI agents far beyond basic chat interfaces.
+
+### What You'll Find Here
+
+- **Original Skills**: Custom-built Skills for specific tasks and workflows
+- **Original MCP Servers**: Purpose-built servers for advanced integrations
+- **Curated Recommendations**: Carefully selected third-party tools from the community
+- **Cross-Platform Support**: Works with multiple AI platforms out of the box
+
+### Why This Repository Exists
+
+AI coding agents are powerful, but they become **truly transformative** when equipped with the right tools. This repository exists to:
+
+1. **Centralize Quality Tools**: Aggregate the best Skills and servers in one place
+2. **Share Knowledge**: Make powerful tools accessible to everyone
+3. **Reduce Fragmentation**: Unite tools that work across different AI platforms
+4. **Enable Innovation**: Provide building blocks for more advanced AI workflows
+
+### Who Should Use This
+
+- **Developers** building AI-powered applications and workflows
+- **Researchers** leveraging AI for data analysis and exploration
+- **Content Creators** using AI tools for writing and documentation
+- **Teams** looking to enhance their AI assistant capabilities
+- **Anyone** wanting to extend their AI agent's abilities
+
+### Scope: Beyond Just Coding
+
+While named "agent tools", this collection includes resources for:
+
+- ✅ **Software Development**: Code generation, refactoring, testing, debugging
+- ✅ **Content Creation**: Documentation, translation, writing assistance
+- ✅ **Research & Analysis**: Data processing, summarization, information gathering
+- ✅ **Workflow Automation**: CI/CD, deployment, monitoring, task automation
+- ✅ **Design & Creative**: Asset generation, prototyping, workflow optimization
+- ✅ **And Much More**: The possibilities are endless!
+
+---
+
+## ✨ Features
+
+- 🎯 **Curated Collection**: Only high-quality, well-tested tools and Skills
+- 🔧 **Cross-Platform**: Works with Claude Code, Codex, Cursor, and more
+- 📦 **Easy Installation**: Simple one-command setup for most tools
+- 🌍 **Community-Driven**: Open source and welcoming contributions
+- 🚀 **MCP-Powered**: Leverages the Model Context Protocol standard
+- 📚 **Well-Documented**: Clear instructions and examples for everything
+- 🔄 **Actively Maintained**: Regular updates and community support
+
+---
+
+## 🚀 Quick Start
+
+### For Claude Code Users (⭐ Recommended)
+
+Claude Code provides the best experience with native SKILL.md support and MCP integration.
+
+#### Install as Marketplace
+```bash
+# Add this marketplace to Claude Code
+claude plugin marketplace add your-username/awesome-agent-tools
+
+# Browse and install skills through the UI
+claude plugin
+```
+
+#### Install Individual Skill
+```bash
+claude skill add https://github.com/your-username/awesome-agent-tools/tree/main/skills/example-skill
+```
+
+### For Codex Users
+
+Codex natively supports SKILL.md format skills.
+
+```bash
+# Install a skill using skill-installer
+$skill-installer https://github.com/your-username/awesome-agent-tools/tree/main/skills/example-skill
+
+# Or clone to your skills directory
+cd ~/.codex/skills
+git clone https://github.com/your-username/awesome-agent-tools
+```
+
+### For Cursor Users
+
+Cursor supports skills through MCP servers or direct GitHub imports.
+
+```bash
+# Method 1: Import from GitHub URL (in Cursor settings)
+# Method 2: Configure MCP server in Cursor settings
+# Method 3: Use the skills via MCP integration
+```
+
+See [Cross-Platform Guide](./docs/CROSS_PLATFORM.md) for detailed setup instructions.
+
+### For Other Tools
+
+Most AI coding tools support SKILL.md format. Check your tool's documentation for skill installation methods.
+
+---
+
+## 📦 What's Included
+
+### Original Skills
+
+Currently building original skills. Coming soon:
+- Custom workflow automation skills
+- Specialized development tools
+- And more...
+
+### Original MCP Servers
+
+Currently developing MCP servers. Coming soon:
+- Custom integrations
+- Specialized tooling
+- And more...
+
+### Curated Recommendations
+
+See **[AWESOME.md](./AWESOME.md)** for a comprehensive, categorized list of:
+- 🎯 **Official Skills** (Anthropic, OpenAI)
+- 🌟 **Community Skills** (from trusted developers)
+- 🔧 **MCP Servers** (official and community-built)
+- 🛠️ **Tools & Utilities** (installers, frameworks, resources)
+- 📚 **Learning Resources** (docs, tutorials, guides)
+
+---
+
+## 💡 Why These Tools Matter
+
+### Extending AI Capabilities
+
+Out-of-the-box AI agents are limited to:
+- Text generation
+- Basic code understanding
+- Conversational responses
+
+With Skills and MCP servers, AI agents can:
+- ✅ Execute complex workflows
+- ✅ Access external APIs and services
+- ✅ Manipulate files and databases
+- ✅ Integrate with your development environment
+- ✅ Automate repetitive tasks
+- ✅ Build sophisticated applications
+
+### The Power of Model Context Protocol (MCP)
+
+MCP is an open standard that:
+- Provides a **universal interface** for AI tools
+- Enables **cross-platform compatibility**
+- Reduces **integration complexity**
+- Creates a **thriving ecosystem** of interoperable tools
+
+---
+
+## 🎯 Use Cases
+
+### Software Development
+- **Code Generation**: Generate boilerplate, implement features
+- **Refactoring**: Modernize codebases, improve architecture
+- **Testing**: Write tests, analyze coverage, debug issues
+- **Documentation**: Auto-generate docs, write tutorials
+- **Code Review**: Analyze code quality, suggest improvements
+
+### Content & Documentation
+- **Technical Writing**: Create documentation, guides, tutorials
+- **Translation**: Translate content across languages
+- **Content Creation**: Blog posts, articles, social media
+- **Editing & Proofreading**: Improve clarity, fix grammar
+
+### Research & Analysis
+- **Data Processing**: Clean, transform, analyze datasets
+- **Information Gathering**: Research topics, summarize findings
+- **Literature Review**: Analyze papers, extract insights
+- **Report Generation**: Create comprehensive reports
+
+### Workflow Automation
+- **CI/CD**: Automate build, test, deployment pipelines
+- **Task Automation**: Scheduled jobs, batch processing
+- **Monitoring**: Track metrics, alert on issues
+- **Integration**: Connect different tools and services
+
+---
+
+## 🛠️ Platform Comparison
+
+| Feature | Claude Code | Codex | Cursor | Others |
+|---------|------------|-------|---------|--------|
+| **SKILL.md Support** | ✅ Native | ✅ Native | ✅ Native | Varies |
+| **MCP Support** | ✅ Full | ✅ Full | ✅ Full | Varies |
+| **Marketplace** | ✅ Yes | ✅ Yes | ✅ Yes | N/A |
+| **Ease of Use** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | Varies |
+| **Community** | Growing | Large | Growing | Varies |
+| **Documentation** | Excellent | Good | Good | Varies |
+| **Our Recommendation** | ⭐ **Best** | Great | Great | - |
+
+**Why we recommend Claude Code**:
+- Most polished skill management experience
+- Excellent marketplace integration
+- Best MCP server support
+- Great documentation
+- Active development and updates
+
+**But the choice is yours!** All tools in this repository work across platforms.
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions from the community! Here's how you can help:
+
+### Ways to Contribute
+
+1. **Add Your Own Skill**: Share your custom-built skills
+2. **Recommend Tools**: Suggest great third-party skills and servers
+3. **Improve Documentation**: Fix typos, add examples, clarify instructions
+4. **Report Issues**: Found a bug? Let us know!
+5. **Share Feedback**: Tell us how we can improve
+
+### Contribution Guidelines
+
+Please read our **[CONTRIBUTING.md](./CONTRIBUTING.md)** for:
+- How to submit skills
+- Code of conduct
+- Quality standards
+- PR process
+
+---
+
+## 📚 Resources
+
+### Official Documentation
+- [Claude Code Skills Guide](https://code.claude.com/docs/en/skills)
+- [Model Context Protocol Spec](https://modelcontextprotocol.io/specification)
+- [Codex Skills Documentation](https://developers.openai.com/codex/skills/)
+- [Cursor Agent Best Practices](https://cursor.com/blog/agent-best-practices)
+
+### Community Resources
+- [Awesome Skills Collection](https://github.com/heilcheng/awesome-agent-skills)
+- [MCP Servers Repository](https://github.com/modelcontextprotocol/servers)
+- [Awesome MCP Servers](https://github.com/wong2/awesome-mcp-servers)
+
+### Tutorials & Guides
+- [Building Your First Skill](./docs/tutorials/first-skill.md) (Coming soon)
+- [Creating MCP Servers](./docs/tutorials/mcp-server.md) (Coming soon)
+- [Cross-Platform Setup](./docs/CROSS_PLATFORM.md) (Coming soon)
+
+---
+
+## 📄 License
+
+This repository is licensed under the **MIT License**. See [LICENSE](./LICENSE) for details.
+
+### Important Notes
+
+- **Our Content**: Original skills and documentation in this repo are MIT licensed
+- **Third-Party Content**: Recommended tools in [AWESOME.md](./AWESOME.md) maintain their original licenses
+- **No Warranty**: Tools are provided "as is" without warranty of any kind
+
+---
+
+## 🌟 Star History
+
+If you find this repository useful, please consider giving it a star! ⭐
+
+---
+
+## 📮 Contact & Support
+
+- **Issues**: [GitHub Issues](https://github.com/your-username/awesome-agent-tools/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/your-username/awesome-agent-tools/discussions)
+- **Contributing**: See [CONTRIBUTING.md](./CONTRIBUTING.md)
+
+---
+
+## 🙏 Acknowledgments
+
+Thanks to:
+- The Anthropic team for Claude Code and the skills framework
+- The MCP community for the open protocol standard
+- All contributors who shared their skills and tools
+- Everyone building amazing things with AI agents!
+
+---
+
+<div align="center">
+
+**[⬆ Back to Top](#awesome-agent-tools-)**
+
+Made with ❤️ by the community
+
+[Report Bug](https://github.com/your-username/awesome-agent-tools/issues) · [Request Feature](https://github.com/your-username/awesome-agent-tools/issues) · [Contribute](./CONTRIBUTING.md)
+
+</div>
