@@ -83,6 +83,7 @@ temp/
 
 # AI Coding Tools
 claude.md
+CLAUDE.md
 AGENTS.md
 .agent
 .agent/
@@ -92,6 +93,3 @@ AGENTS.md
 .cursorrules
 .cursorignore
 *.cursor
-
-# Keep project documentation
-!CLAUDE.md

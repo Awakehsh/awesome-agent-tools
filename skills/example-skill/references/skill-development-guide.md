@@ -1,120 +1,120 @@
-# Skill开发指南
+# Skill Development Guide
 
-本指南介绍如何创建高质量的Claude Code skill。
+This guide explains how to create high-quality Claude Code skills.
 
-## 基础概念
+## Basic Concepts
 
-### 什么是Skill？
+### What is a Skill?
 
-Skill是一个包含指令、工作流程和可选资源的包，帮助Claude更好地完成特定任务。
+A Skill is a package containing instructions, workflows, and optional resources that helps Claude better complete specific tasks.
 
-### Skill的组成
+### Skill Components
 
-1. **SKILL.md** (必需) - 核心定义文件
-2. **scripts/** (可选) - 可执行代码
-3. **references/** (可选) - 参考文档
-4. **assets/** (可选) - 资源文件
+1. **SKILL.md** (Required) - Core definition file
+2. **scripts/** (Optional) - Executable code
+3. **references/** (Optional) - Reference documentation
+4. **assets/** (Optional) - Resource files
 
-## SKILL.md格式
+## SKILL.md Format
 
 ### YAML Frontmatter
 
 ```yaml
 ---
-name: skill-name              # 必需：唯一标识符
-description: |                # 必需：详细描述
-  何时使用此skill的说明。
-  应该清楚地描述触发条件和使用场景。
-license: MIT                  # 可选：许可证
-version: 1.0.0               # 可选：版本号
-author: Your Name            # 可选：作者
+name: skill-name              # Required: unique identifier
+description: |                # Required: detailed description
+  Description of when to use this skill.
+  Should clearly describe trigger conditions and usage scenarios.
+license: MIT                  # Optional: license
+version: 1.0.0               # Optional: version number
+author: Your Name            # Optional: author
 ---
 ```
 
-### Markdown内容
+### Markdown Content
 
 ```markdown
 # Skill Title
 
-## 功能说明
-[详细说明skill做什么]
+## Features
+[Detailed explanation of what the skill does]
 
-## 使用方法
-[如何使用skill]
+## Usage
+[How to use the skill]
 
-## 示例
-[具体示例]
+## Examples
+[Concrete examples]
 
-## 限制
-[局限性说明]
+## Limitations
+[Explanation of limitations]
 ```
 
-## 最佳实践
+## Best Practices
 
-### 1. 清晰的Description
+### 1. Clear Description
 
-描述应该回答：
-- 何时使用此skill？
-- 解决什么问题？
-- 适用什么场景？
+The description should answer:
+- When to use this skill?
+- What problem does it solve?
+- What scenarios is it suitable for?
 
-**好例子**：
+**Good Example**:
 ```yaml
 description: |
-  当需要处理PDF文件（提取文本、转换图片、填写表单）时使用。
-  适用于文档处理、数据提取、表单自动化等场景。
+  Use when processing PDF files (extract text, convert images, fill forms).
+  Suitable for document processing, data extraction, form automation, etc.
 ```
 
-**坏例子**：
+**Bad Example**:
 ```yaml
 description: A PDF tool
 ```
 
-### 2. 模块化设计
+### 2. Modular Design
 
-将复杂逻辑拆分为：
-- **SKILL.md**: 工作流程和指导
-- **scripts/**: 具体实现
-- **references/**: 详细文档
+Split complex logic into:
+- **SKILL.md**: Workflow and guidance
+- **scripts/**: Concrete implementation
+- **references/**: Detailed documentation
 
-### 3. 提供示例
+### 3. Provide Examples
 
-包含至少2-3个实际使用示例，展示：
-- 基本用法
-- 常见场景
-- 边缘情况
+Include at least 2-3 practical usage examples showing:
+- Basic usage
+- Common scenarios
+- Edge cases
 
-### 4. 错误处理
+### 4. Error Handling
 
-在scripts中实现良好的错误处理：
+Implement good error handling in scripts:
 ```python
 try:
-    # 主要逻辑
+    # Main logic
     result = process_data(input)
     return {"status": "success", "data": result}
 except Exception as e:
     return {"status": "error", "message": str(e)}
 ```
 
-### 5. 文档完整性
+### 5. Documentation Completeness
 
-确保包含：
-- [ ] 清晰的功能说明
-- [ ] 使用方法
-- [ ] 实际示例
-- [ ] 限制说明
-- [ ] 安装指南（README.md）
+Ensure it includes:
+- [ ] Clear feature description
+- [ ] Usage instructions
+- [ ] Practical examples
+- [ ] Limitation explanation
+- [ ] Installation guide (README.md)
 
-## 目录结构示例
+## Directory Structure Examples
 
-### 简单Skill
+### Simple Skill
 
 ```
 simple-skill/
 └── SKILL.md
 ```
 
-### 中等Skill
+### Medium Skill
 
 ```
 medium-skill/
@@ -125,7 +125,7 @@ medium-skill/
     └── utils.js
 ```
 
-### 复杂Skill
+### Complex Skill
 
 ```
 complex-skill/
@@ -146,33 +146,33 @@ complex-skill/
         └── input-schema.json
 ```
 
-## 测试Skill
+## Testing Skills
 
-### 本地测试
+### Local Testing
 
 ```bash
-# 1. 复制到skills目录
+# 1. Copy to skills directory
 cp -r your-skill ~/.claude/skills/
 
-# 2. 重启Claude Code
-# Claude会自动加载新skill
+# 2. Restart Claude Code
+# Claude will automatically load the new skill
 
-# 3. 测试触发
-# 尝试使用符合description的请求
+# 3. Test triggering
+# Try using requests that match the description
 ```
 
-### 验证清单
+### Verification Checklist
 
-- [ ] SKILL.md包含完整frontmatter
-- [ ] description清晰描述使用场景
-- [ ] 包含至少一个使用示例
-- [ ] scripts可以独立运行（如果有）
-- [ ] 文档完整且易懂
-- [ ] 没有硬编码的路径或凭证
+- [ ] SKILL.md contains complete frontmatter
+- [ ] Description clearly describes usage scenarios
+- [ ] Contains at least one usage example
+- [ ] Scripts can run independently (if present)
+- [ ] Documentation is complete and easy to understand
+- [ ] No hardcoded paths or credentials
 
-## 发布Skill
+## Publishing Skills
 
-### 1. GitHub发布
+### 1. GitHub Release
 
 ```bash
 git add .
@@ -180,61 +180,61 @@ git commit -m "Add new skill: skill-name"
 git push origin main
 ```
 
-### 2. 添加到Marketplace
+### 2. Add to Marketplace
 
-确保repo包含`.claude-plugin/marketplace.json`
+Ensure repo contains `.claude-plugin/marketplace.json`
 
-### 3. 社区分享
+### 3. Community Sharing
 
-- 提交到awesome lists
-- 在Discord/论坛分享
-- 写博客介绍
+- Submit to awesome lists
+- Share on Discord/forums
+- Write blog posts introducing it
 
-## 常见问题
+## Common Questions
 
-### Q: Skill多大合适？
+### Q: How large should a skill be?
 
-**A**: 保持SKILL.md在5000字以内，详细内容放references/。
+**A**: Keep SKILL.md under 5000 words, place detailed content in references/.
 
-### Q: 何时使用scripts/？
+### Q: When to use scripts/?
 
-**A**: 当有可复用的计算逻辑、需要调用外部API或处理复杂数据时。
+**A**: When there's reusable computational logic, need to call external APIs, or process complex data.
 
-### Q: 如何处理敏感信息？
+### Q: How to handle sensitive information?
 
 **A**:
-- 不要在代码中硬编码
-- 使用环境变量
-- 在文档中说明配置要求
+- Don't hardcode in code
+- Use environment variables
+- Document configuration requirements
 
-### Q: Skill可以调用其他skill吗？
+### Q: Can skills call other skills?
 
-**A**: 可以，但要在文档中说明依赖关系。
+**A**: Yes, but document the dependencies.
 
-## 进阶话题
+## Advanced Topics
 
-### 性能优化
+### Performance Optimization
 
-- 避免在SKILL.md中包含大量数据
-- 使用references/存储大型文档
-- scripts应该快速响应
+- Avoid including large amounts of data in SKILL.md
+- Use references/ to store large documents
+- Scripts should respond quickly
 
-### 安全考虑
+### Security Considerations
 
-- 验证输入
-- 避免执行任意代码
-- 限制文件系统访问
-- 清晰说明权限需求
+- Validate input
+- Avoid executing arbitrary code
+- Limit filesystem access
+- Clearly state permission requirements
 
-### 版本管理
+### Version Management
 
-使用语义化版本：
-- MAJOR: 不兼容的改动
-- MINOR: 向后兼容的功能
-- PATCH: 向后兼容的修复
+Use semantic versioning:
+- MAJOR: Incompatible changes
+- MINOR: Backward-compatible features
+- PATCH: Backward-compatible fixes
 
-## 参考资源
+## Reference Resources
 
-- [Claude Code文档](https://code.claude.com/docs/en/skills)
-- [官方Skills仓库](https://github.com/anthropics/skills)
-- [社区示例](https://github.com/heilcheng/awesome-agent-skills)
+- [Claude Code Documentation](https://code.claude.com/docs/en/skills)
+- [Official Skills Repository](https://github.com/anthropics/skills)
+- [Community Examples](https://github.com/heilcheng/awesome-agent-skills)
