@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "codex-cli",
-      "source": "skills/codex-cli",
+      "source": "https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli",
       "description": "Call OpenAI Codex CLI from Claude Code or other non-Codex LLMs for plan review and code analysis"
     }
   ]
