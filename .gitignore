@@ -80,3 +80,13 @@ htmlcov/
 tmp/
 temp/
 *.tmp
+
+# AI Coding Tools
+claude.md
+agents.md
+.agent
+.agent/
+.cursor/
+.cursorrules
+.cursorignore
+*.cursor

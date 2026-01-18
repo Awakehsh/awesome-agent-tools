@@ -73,7 +73,7 @@ Claude Code provides the best experience with native SKILL.md support and MCP in
 #### Install as Marketplace
 ```bash
 # Add this marketplace to Claude Code
-claude plugin marketplace add your-username/awesome-agent-tools
+claude plugin marketplace add Awakehsh/awesome-agent-tools
 
 # Browse and install skills through the UI
 claude plugin
@@ -81,7 +81,7 @@ claude plugin
 
 #### Install Individual Skill
 ```bash
-claude skill add https://github.com/your-username/awesome-agent-tools/tree/main/skills/example-skill
+claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/example-skill
 ```
 
 ### For Codex Users
@@ -90,11 +90,11 @@ Codex natively supports SKILL.md format skills.
 
 ```bash
 # Install a skill using skill-installer
-$skill-installer https://github.com/your-username/awesome-agent-tools/tree/main/skills/example-skill
+$skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/example-skill
 
 # Or clone to your skills directory
 cd ~/.codex/skills
-git clone https://github.com/your-username/awesome-agent-tools
+git clone https://github.com/Awakehsh/awesome-agent-tools
 ```
 
 ### For Cursor Users
@@ -283,8 +283,8 @@ If you find this repository useful, please consider giving it a star! ⭐
 
 ## 📮 Contact & Support
 
-- **Issues**: [GitHub Issues](https://github.com/your-username/awesome-agent-tools/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-username/awesome-agent-tools/discussions)
+- **Issues**: [GitHub Issues](https://github.com/Awakehsh/awesome-agent-tools/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Awakehsh/awesome-agent-tools/discussions)
 - **Contributing**: See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ---
@@ -305,6 +305,6 @@ Thanks to:
 
 Made with ❤️ by the community
 
-[Report Bug](https://github.com/your-username/awesome-agent-tools/issues) · [Request Feature](https://github.com/your-username/awesome-agent-tools/issues) · [Contribute](./CONTRIBUTING.md)
+[Report Bug](https://github.com/Awakehsh/awesome-agent-tools/issues) · [Request Feature](https://github.com/Awakehsh/awesome-agent-tools/issues) · [Contribute](./CONTRIBUTING.md)
 
 </div>

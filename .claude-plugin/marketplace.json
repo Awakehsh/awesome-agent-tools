@@ -5,11 +5,11 @@
   "description": "A curated collection of powerful Skills, MCP servers, and tools for AI agents. Supports Claude Code (recommended), Codex, Cursor, and more.",
   "author": {
     "name": "hu",
-    "url": "https://github.com/your-username"
+    "url": "https://github.com/Awakehsh"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/awesome-agent-tools"
+    "url": "https://github.com/Awakehsh/awesome-agent-tools"
   },
   "skills": {
     "path": "skills"

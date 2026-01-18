@@ -1,183 +1,263 @@
-# 贡献指南 🤝
+# Contributing Guide 🤝
 
-感谢你对 Awesome Coding Agents 项目的关注！我们欢迎各种形式的贡献。
+Thank you for your interest in **Awesome Agent Tools**! We welcome contributions of all kinds from the community.
 
-## 贡献方式
+## Ways to Contribute
 
-### 1. 添加你的原创Skill
+### 1. Add Your Original Skill
 
-如果你创建了一个实用的skill，欢迎添加到这个仓库！
+Have you created a useful skill? We'd love to include it!
 
-**步骤**：
-1. Fork 此仓库
-2. 在 `skills/` 目录下创建新的子目录（使用kebab-case命名，如：`my-awesome-skill`）
-3. 添加必需的 `SKILL.md` 文件
-4. （可选）添加 `README.md`、`scripts/`、`references/` 等
-5. 提交 Pull Request
+**Steps**:
+1. Fork this repository
+2. Create a new directory under `skills/` (use kebab-case: `my-awesome-skill`)
+3. Add the required `SKILL.md` file
+4. (Optional) Add `README.md`, `scripts/`, `references/`, `assets/`
+5. Submit a Pull Request
 
-**Skill格式要求**：
+**Skill Format Requirements**:
 
-`SKILL.md` 必须包含YAML frontmatter：
+Your `SKILL.md` must include YAML frontmatter:
 
 ```yaml
 ---
 name: skill-name
-description: 详细描述你的skill，包括它解决什么问题、什么时候应该使用它
+description: Detailed description including what problem it solves and when to use it
 ---
 
 # Skill Name
 
-## 功能说明
+## Overview
 
-[详细说明skill的功能]
+[Explain what the skill does]
 
-## 使用方法
+## Usage
 
-[使用示例和说明]
+[Usage examples and instructions]
 
-## 示例
+## Examples
 
-[具体的使用示例]
+[Concrete usage examples]
 ```
 
-**命名规范**：
-- 使用小写字母和连字符（kebab-case）
-- 名称应该简洁、描述性强
-- 例如：`pdf-processor`、`code-reviewer`、`api-tester`
+**Naming Conventions**:
+- Use lowercase letters and hyphens (kebab-case)
+- Names should be concise and descriptive
+- Examples: `pdf-processor`, `code-reviewer`, `api-tester`
 
-### 2. 推荐优秀的第三方Skills/工具
+### 2. Recommend Third-Party Skills/Tools
 
-发现了好用的skills或MCP服务器？欢迎推荐！
+Found an amazing skill or MCP server? Share it with us!
 
-**步骤**：
-1. Fork 此仓库
-2. 编辑 `AWESOME.md` 文件
-3. 在合适的分类下添加你的推荐
-4. 提交 Pull Request
+**Steps**:
+1. Fork this repository
+2. Edit `AWESOME.md`
+3. Add your recommendation under the appropriate category
+4. Submit a Pull Request
 
-**推荐格式**：
+**Recommendation Format**:
 
 ```markdown
-- **[skill-name](https://github.com/author/repo)** by author-name
-  - 说明：简短描述
-  - 安装：`claude skill add https://...`
-  - 功能：主要功能列表
+- **[tool-name](https://github.com/author/repo)** by author-name
+  - Description: Brief description of what it does
+  - Install: `claude skill add https://...`
+  - Features: Key features list
 ```
 
-**推荐标准**：
-- ✅ 开源项目（MIT、Apache 2.0、BSD等）
-- ✅ 有清晰的文档
-- ✅ 项目活跃（6个月内有更新）
-- ✅ 功能实用、质量可靠
+**Recommendation Criteria**:
+- ✅ Open source license (MIT, Apache 2.0, BSD, etc.)
+- ✅ Clear documentation
+- ✅ Active maintenance (updated within last 6 months)
+- ✅ High quality and reliability
 
-### 3. 贡献MCP服务器
+### 3. Contribute MCP Servers
 
-如果你开发了MCP服务器，可以添加到 `mcp-servers/` 目录：
+Built an MCP server? Add it to the `mcp-servers/` directory!
 
-**步骤**：
-1. Fork 此仓库
-2. 在 `mcp-servers/` 下创建子目录
-3. 添加你的MCP服务器代码
-4. 包含 `README.md` 说明安装和使用方法
-5. 提交 Pull Request
+**Steps**:
+1. Fork this repository
+2. Create a subdirectory under `mcp-servers/`
+3. Add your MCP server code
+4. Include a `README.md` with installation and usage instructions
+5. Submit a Pull Request
 
-**MCP服务器要求**：
-- 遵循 [MCP规范](https://modelcontextprotocol.io/specification/2025-11-25)
-- 包含清晰的安装和配置说明
-- 提供使用示例
-- 处理错误情况
+**MCP Server Requirements**:
+- Follows the [MCP specification](https://modelcontextprotocol.io/specification)
+- Includes clear installation and configuration instructions
+- Provides usage examples
+- Handles errors gracefully
 
-### 4. 改进文档
+### 4. Improve Documentation
 
-发现文档有误或需要改进？欢迎提交PR！
+Found a typo or unclear instruction? Help us improve!
 
-## Pull Request 指南
+**Documentation Files**:
+- `README.md` - Main English documentation
+- `docs/README_CN.md` - Chinese documentation
+- `AWESOME.md` - Curated list of tools
+- `CONTRIBUTING.md` - This file
 
-### PR检查清单
+## Pull Request Guidelines
 
-在提交PR之前，请确保：
+### PR Checklist
 
-- [ ] 我已阅读并遵循贡献指南
-- [ ] 代码/内容符合格式要求
-- [ ] 包含必要的文档和说明
-- [ ] SKILL.md包含完整的frontmatter（如适用）
-- [ ] 链接有效且指向正确的资源（如适用）
-- [ ] 提交信息清晰描述了改动
+Before submitting your PR, ensure:
 
-### PR模板
+- [ ] I have read the contribution guidelines
+- [ ] My content follows the format specifications
+- [ ] Documentation is clear and complete
+- [ ] SKILL.md includes complete frontmatter (if applicable)
+- [ ] Links are valid and point to correct resources (if applicable)
+- [ ] Commit messages clearly describe changes
+
+### PR Template
+
+When submitting a PR, please include:
 
 ```markdown
-## 改动类型
-- [ ] 添加新skill
-- [ ] 推荐第三方工具
-- [ ] 添加MCP服务器
-- [ ] 文档改进
-- [ ] Bug修复
-- [ ] 其他
+## Type of Contribution
+- [ ] Add new skill
+- [ ] Recommend third-party tool
+- [ ] Add MCP server
+- [ ] Improve documentation
+- [ ] Bug fix
+- [ ] Other
 
-## 描述
-[清楚描述你的改动]
+## Description
+[Clearly describe what this adds or changes]
 
-## 测试
-[如何测试这些改动]
+## Testing
+[Explain how you tested these changes]
+
+## Screenshots (if applicable)
+[Add screenshots to help explain your changes]
 ```
 
-## Skill开发最佳实践
+## Skill Development Best Practices
 
-### SKILL.md结构
+### SKILL.md Structure
 
-一个好的SKILL.md应该包含：
+A well-written SKILL.md should include:
 
-1. **清晰的description** - 说明何时使用这个skill
-2. **功能说明** - 详细解释skill做什么
-3. **使用方法** - 如何使用skill
-4. **示例** - 具体的使用示例
-5. **限制** - 说明skill的局限性（如果有）
+1. **Clear Description** - Explain when to use this skill
+2. **Overview** - What the skill does in detail
+3. **Usage Instructions** - How to use the skill
+4. **Examples** - Concrete usage examples
+5. **Limitations** - Known limitations (if any)
 
-### 目录结构建议
+### Directory Structure
 
 ```
 skills/my-skill/
-├── SKILL.md           # 必需
-├── README.md          # 推荐 - 额外的说明
-├── scripts/           # 可选 - 可执行脚本
+├── SKILL.md           # Required
+├── README.md          # Recommended - additional documentation
+├── scripts/           # Optional - executable scripts
 │   └── helper.py
-├── references/        # 可选 - 参考文档
+├── references/        # Optional - reference documentation
 │   └── api-docs.md
-└── assets/           # 可选 - 资源文件
+└── assets/           # Optional - resource files
     └── template.json
 ```
 
-## 代码规范
+### Testing Your Skill
 
-- 使用清晰的变量和函数命名
-- 添加适当的注释
-- 保持代码简洁易读
-- 处理错误情况
+**Local Testing for Claude Code**:
+```bash
+# Copy to local skills directory
+cp -r skills/my-skill ~/.claude/skills/
 
-## 获取帮助
+# Restart Claude Code
+# Test the skill with various inputs
+```
 
-有问题？可以通过以下方式获取帮助：
+**Local Testing for Codex**:
+```bash
+# Copy to Codex skills directory
+cp -r skills/my-skill ~/.codex/skills/
 
-- 提交 [Issue](https://github.com/your-username/awesome-coding-agents/issues)
-- 查看 [文档](./README.md)
-- 参考现有的skills示例
+# Restart Codex
+# Test the skill
+```
 
-## 行为准则
+## Code Standards
 
-我们致力于提供友好、安全和包容的环境：
+- Use clear variable and function names
+- Add appropriate comments
+- Keep code simple and readable
+- Handle error cases properly
+- Follow language-specific best practices
 
-- 尊重不同观点和经验
-- 优雅地接受建设性批评
-- 专注于对社区最有利的事情
-- 对其他社区成员表示同理心
+## Quality Standards
 
-## 许可证
+All contributions must meet these minimum criteria:
 
-通过贡献代码，你同意你的贡献将使用与本项目相同的 [MIT许可证](./LICENSE)。
+### For Skills
 
-推荐的第三方内容保持其原始许可证。
+- ✅ Valid SKILL.md with complete frontmatter
+- ✅ Clear description including usage scenarios
+- ✅ At least 2 usage examples
+- ✅ README.md explaining the skill's purpose
+- ✅ License file (MIT recommended)
+
+### For MCP Servers
+
+- ✅ Valid server.json following MCP spec
+- ✅ Works with latest Claude Code/MCP clients
+- ✅ Installation instructions
+- ✅ Security considerations documented
+- ✅ Error handling implemented
+
+### For Recommendations
+
+- ✅ Open source license (MIT, Apache 2.0, BSD, GPL)
+- ✅ Public GitHub/GitLab repository
+- ✅ Active maintenance (commit within 6 months)
+- ✅ Minimum 10 GitHub stars OR vouched by maintainer
+- ✅ No known security vulnerabilities
+- ✅ Passes basic quality checks
+
+## Getting Help
+
+Need assistance? Here's how to get help:
+
+- **Questions**: Open a [Discussion](https://github.com/Awakehsh/awesome-agent-tools/discussions)
+- **Bugs**: Create an [Issue](https://github.com/Awakehsh/awesome-agent-tools/issues)
+- **Documentation**: Check [README.md](./README.md) and [CLAUDE.md](./CLAUDE.md)
+- **Examples**: Look at existing skills in `skills/example-skill/`
+
+## Code of Conduct
+
+We are committed to providing a friendly, safe, and welcoming environment:
+
+- ✅ Be respectful of differing viewpoints and experiences
+- ✅ Accept constructive criticism gracefully
+- ✅ Focus on what's best for the community
+- ✅ Show empathy towards other community members
+- ❌ No harassment, trolling, or insulting behavior
+- ❌ No publishing others' private information
+- ❌ No inappropriate sexual attention or advances
+
+## License
+
+By contributing, you agree that your contributions will be licensed under the same [MIT License](./LICENSE) that covers this project.
+
+Third-party recommended content maintains its original licenses.
 
 ---
 
-感谢你的贡献！🎉
+## Quick Start for New Contributors
+
+1. **Fork** the repository
+2. **Clone** your fork: `git clone https://github.com/YOUR-USERNAME/awesome-agent-tools`
+3. **Create a branch**: `git checkout -b my-contribution`
+4. **Make your changes**
+5. **Test** your changes
+6. **Commit**: `git commit -m "Add: brief description"`
+7. **Push**: `git push origin my-contribution`
+8. **Open a Pull Request** on GitHub
+
+---
+
+Thank you for contributing! 🎉
+
+Your contributions help make AI agents more powerful and accessible to everyone.

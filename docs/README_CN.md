@@ -73,7 +73,7 @@ Claude Code提供最佳体验，原生支持SKILL.md和MCP集成。
 #### 作为Marketplace安装
 ```bash
 # 将此marketplace添加到Claude Code
-claude plugin marketplace add your-username/awesome-agent-tools
+claude plugin marketplace add Awakehsh/awesome-agent-tools
 
 # 通过UI浏览和安装skills
 claude plugin
@@ -81,7 +81,7 @@ claude plugin
 
 #### 安装单个Skill
 ```bash
-claude skill add https://github.com/your-username/awesome-agent-tools/tree/main/skills/example-skill
+claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/example-skill
 ```
 
 ### Codex 用户
@@ -90,11 +90,11 @@ Codex原生支持SKILL.md格式的skills。
 
 ```bash
 # 使用skill-installer安装skill
-$skill-installer https://github.com/your-username/awesome-agent-tools/tree/main/skills/example-skill
+$skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/example-skill
 
 # 或克隆到你的skills目录
 cd ~/.codex/skills
-git clone https://github.com/your-username/awesome-agent-tools
+git clone https://github.com/Awakehsh/awesome-agent-tools
 ```
 
 ### Cursor 用户
@@ -283,8 +283,8 @@ MCP是一个开放标准，它：
 
 ## 📮 联系与支持
 
-- **Issues**: [GitHub Issues](https://github.com/your-username/awesome-agent-tools/issues)
-- **讨论**: [GitHub Discussions](https://github.com/your-username/awesome-agent-tools/discussions)
+- **Issues**: [GitHub Issues](https://github.com/Awakehsh/awesome-agent-tools/issues)
+- **讨论**: [GitHub Discussions](https://github.com/Awakehsh/awesome-agent-tools/discussions)
 - **贡献**: 查看 [CONTRIBUTING.md](../CONTRIBUTING.md)
 
 ---
@@ -305,6 +305,6 @@ MCP是一个开放标准，它：
 
 用 ❤️ 由社区制作
 
-[报告Bug](https://github.com/your-username/awesome-agent-tools/issues) · [请求功能](https://github.com/your-username/awesome-agent-tools/issues) · [贡献](../CONTRIBUTING.md)
+[报告Bug](https://github.com/Awakehsh/awesome-agent-tools/issues) · [请求功能](https://github.com/Awakehsh/awesome-agent-tools/issues) · [贡献](../CONTRIBUTING.md)
 
 </div>

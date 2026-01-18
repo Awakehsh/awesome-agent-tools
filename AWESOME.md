@@ -1,141 +1,140 @@
-# 精选Skills和MCP服务器推荐 ⭐
+# Curated Skills and MCP Servers ⭐
 
-这是一份精心挑选的AI编程助手工具清单，包括Skills、MCP服务器和相关资源。
+A carefully curated list of AI coding assistant tools, including Skills, MCP servers, and related resources.
 
-## 🎯 优秀Skills
+## 🎯 Excellent Skills
 
-### 官方Skills（Anthropic）
+### Official Skills (Anthropic)
 
 - **[skill-creator](https://github.com/anthropics/skills/tree/main/skill-creator)** by Anthropic
-  - 说明：帮助创建新的Claude Code skills的工具
-  - 安装：`claude skill add https://github.com/anthropics/skills/tree/main/skill-creator`
-  - 功能：自动生成SKILL.md模板、验证格式、打包发布
+  - Description: Tool for creating new Claude Code skills
+  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/skill-creator`
+  - Features: Auto-generate SKILL.md templates, validate formats, package for publishing
 
 - **[changelog-generator](https://github.com/anthropics/skills/tree/main/changelog-generator)** by Anthropic
-  - 说明：从Git提交历史自动生成用户友好的变更日志
-  - 安装：`claude skill add https://github.com/anthropics/skills/tree/main/changelog-generator`
-  - 功能：分析commits、分类变更、生成markdown格式
+  - Description: Automatically generate user-friendly changelogs from Git commit history
+  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/changelog-generator`
+  - Features: Analyze commits, categorize changes, generate markdown format
 
 - **[pdf](https://github.com/anthropics/skills/tree/main/pdf)** by Anthropic
-  - 说明：PDF文件处理工具包（提取、转换、填表单）
-  - 安装：`claude skill add https://github.com/anthropics/skills/tree/main/pdf`
-  - 功能：PDF文本提取、图片转换、表单填写
+  - Description: PDF file processing toolkit (extract, convert, fill forms)
+  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/pdf`
+  - Features: PDF text extraction, image conversion, form filling
 
-### 社区Skills集合
+### Community Skills Collections
 
 - **[awesome-agent-skills](https://github.com/heilcheng/awesome-agent-skills)** by heilcheng
-  - 说明：大型AI编程助手skills集合，支持Claude、Codex、Copilot等
-  - 分类：包含多个类别的实用skills
+  - Description: Large collection of AI coding assistant skills supporting Claude, Codex, Copilot, etc.
+  - Categories: Contains practical skills across multiple categories
 
 - **[awesome-codex-skills](https://github.com/ComposioHQ/awesome-codex-skills)** by ComposioHQ
-  - 说明：Codex CLI和API的实用skills集合
-  - 特点：针对Codex优化的工作流自动化
+  - Description: Collection of practical skills for Codex CLI and API
+  - Features: Workflow automation optimized for Codex
 
-### 开发工具类
+### Development Tools
 
 - **[cursor-skills](https://github.com/chrisboden/cursor-skills)** by chrisboden
-  - 说明：Cursor AI编辑器的skills启动模板
-  - 功能：MCP服务器、自动导入、快速上手
+  - Description: Skills starter template for Cursor AI editor
+  - Features: MCP server integration, auto-import, quick start
 
-### 通用安装器
+### Universal Installers
 
 - **[ai-agent-skills](https://github.com/skillcreatorai/Ai-Agent-Skills)** by skillcreatorai
-  - 说明：一键安装skill到所有AI工具的通用安装器
-  - 使用：`npx ai-agent-skills install skill-name`
-  - 支持：Claude Code、Cursor、Codex、VS Code等10+工具
+  - Description: Universal installer for one-click skill installation across all AI tools
+  - Usage: `npx ai-agent-skills install skill-name`
+  - Supports: Claude Code, Cursor, Codex, VS Code, and 10+ tools
 
 - **[openskills](https://github.com/numman-ali/openskills)** by numman-ali
-  - 说明：通用skills加载器
-  - 使用：`npm i -g openskills && openskills install anthropics/skills`
+  - Description: Universal skills loader
+  - Usage: `npm i -g openskills && openskills install anthropics/skills`
 
-## 🔧 MCP服务器推荐
+## 🔧 Recommended MCP Servers
 
-### 官方MCP服务器（Model Context Protocol）
+### Official MCP Servers (Model Context Protocol)
 
 - **[filesystem](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem)** by MCP Official
-  - 说明：安全的文件系统操作服务器
-  - 功能：读写文件、目录管理、权限控制
+  - Description: Secure file system operations server
+  - Features: Read/write files, directory management, permission control
 
 - **[github](https://github.com/modelcontextprotocol/servers/tree/main/src/github)** by MCP Official
-  - 说明：GitHub集成服务器
-  - 功能：仓库管理、Issue、PR操作
+  - Description: GitHub integration server
+  - Features: Repository management, Issues, PR operations
 
 - **[fetch](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch)** by MCP Official
-  - 说明：Web内容获取服务器
-  - 功能：HTTP请求、内容抓取、API调用
+  - Description: Web content fetching server
+  - Features: HTTP requests, content scraping, API calls
 
 - **[git](https://github.com/modelcontextprotocol/servers/tree/main/src/git)** by MCP Official
-  - 说明：Git仓库操作工具
-  - 功能：提交、分支、日志查看
+  - Description: Git repository operations tool
+  - Features: Commit, branch, log viewing
 
 - **[memory](https://github.com/modelcontextprotocol/servers/tree/main/src/memory)** by MCP Official
-  - 说明：知识图谱持久化记忆服务器
-  - 功能：存储和检索上下文信息
+  - Description: Knowledge graph persistent memory server
+  - Features: Store and retrieve contextual information
 
-### 社区MCP服务器
+### Community MCP Servers
 
 - **[awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers)** by wong2
-  - 说明：精选MCP服务器集合
-  - 包含：生产就绪和实验性MCP服务器
+  - Description: Curated collection of MCP servers
+  - Includes: Production-ready and experimental MCP servers
 
 - **[GitHub MCP Server](https://github.com/github/github-mcp-server)** by GitHub Official
-  - 说明：GitHub官方MCP实现
-  - 功能：完整的GitHub API集成
+  - Description: Official GitHub MCP implementation
+  - Features: Complete GitHub API integration
 
-## 🛠️ 相关工具和资源
+## 🛠️ Related Tools and Resources
 
-### Marketplace和插件注册表
+### Marketplaces and Plugin Registries
 
 - **[Claude Code Plugin Marketplace](https://claudemarketplaces.com/)**
-  - Claude Code官方插件市场
+  - Official Claude Code plugin marketplace
 
 - **[Claude Plugins Registry](https://claude-plugins.dev/)**
-  - 社区插件注册表
+  - Community plugin registry
 
-### 开发资源
+### Development Resources
 
 - **[MCP Servers Repository](https://github.com/modelcontextprotocol/servers)**
-  - 官方MCP服务器参考实现
+  - Official MCP server reference implementations
 
 - **[MCP SDK](https://github.com/modelcontextprotocol/typescript-sdk)**
-  - TypeScript SDK用于构建MCP服务器
+  - TypeScript SDK for building MCP servers
 
-### Cursor相关
+### Cursor Related
 
 - **[awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules)** by PatrickJS
-  - Cursor AI编辑器的配置文件集合
-  - 包含自定义规则和行为
+  - Configuration file collection for Cursor AI editor
+  - Includes custom rules and behaviors
 
 - **[vibe-tools](https://github.com/eastlondoner/vibe-tools)** by eastlondoner
-  - 为Cursor Agent提供AI团队和高级skills
+  - Provides AI teams and advanced skills for Cursor Agent
 
-## 📚 学习资源
+## 📚 Learning Resources
 
-### 官方文档
+### Official Documentation
 
-- [Claude Code Skills 文档](https://code.claude.com/docs/en/skills)
-- [Claude Code Plugins 文档](https://code.claude.com/docs/en/plugins)
-- [MCP 规范](https://modelcontextprotocol.io/specification/2025-11-25)
-- [Codex Skills 文档](https://developers.openai.com/codex/skills/)
+- [Claude Code Skills Documentation](https://code.claude.com/docs/en/skills)
+- [Claude Code Plugins Documentation](https://code.claude.com/docs/en/plugins)
+- [MCP Specification](https://modelcontextprotocol.io/specification/2025-11-25)
+- [Codex Skills Documentation](https://developers.openai.com/codex/skills/)
 
-### 教程和指南
+### Tutorials and Guides
 
-- [构建MCP服务器](https://modelcontextprotocol.io/docs/develop/build-server)
-- [MCP最佳实践](https://modelcontextprotocol.info/docs/best-practices/)
-- [Composio MCP开发指南](https://composio.dev/blog/mcp-server-step-by-step-guide-to-building-from-scrtch)
+- [Building MCP Servers](https://modelcontextprotocol.io/docs/develop/build-server)
+- [MCP Best Practices](https://modelcontextprotocol.info/docs/best-practices/)
+- [Composio MCP Development Guide](https://composio.dev/blog/mcp-server-step-by-step-guide-to-building-from-scrtch)
 
-## 🤝 贡献
+## 🤝 Contributing
 
-发现了优秀的Skills或MCP服务器？欢迎提交PR添加到这个列表！
+Found an excellent Skill or MCP server? Feel free to submit a PR to add it to this list!
 
-请确保包含：
-- 名称和链接
-- 作者信息
-- 简短描述
-- 安装说明
-- 主要功能
+Please ensure you include:
+- Name and link
+- Author information
+- Brief description
+- Installation instructions
+- Key features
 
 ---
 
-**更新日期**：2026-01-18
-
+**Last Updated**: 2026-01-18

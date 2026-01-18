@@ -6,19 +6,19 @@
 
 ### Claude Code
 ```bash
-claude skill add https://github.com/your-username/awesome-coding-agents/tree/main/skills/example-skill
+claude skill add https://github.com/Awakehsh/awesome-coding-agents/tree/main/skills/example-skill
 ```
 
 ### Codex
 ```bash
-$skill-installer https://github.com/your-username/awesome-coding-agents/tree/main/skills/example-skill
+$skill-installer https://github.com/Awakehsh/awesome-coding-agents/tree/main/skills/example-skill
 ```
 
 ### 手动安装
 ```bash
 # 克隆到本地skills目录
 cd ~/.claude/skills
-git clone https://github.com/your-username/awesome-coding-agents
+git clone https://github.com/Awakehsh/awesome-coding-agents
 ln -s awesome-coding-agents/skills/example-skill example-skill
 ```
 
