@@ -119,10 +119,23 @@ Cursor通过MCP服务器或直接GitHub导入支持skills。
 
 ### 原创Skills
 
-目前正在构建原创skills。即将推出：
-- 自定义工作流自动化skills
-- 专业开发工具
-- 更多...
+#### codex-cli
+
+**与 OpenAI Codex CLI 交互，进行计划审查、代码审查和复杂问题讨论。**
+
+- **目的**: 让 Claude Code 能够利用 Codex 强大的推理能力进行代码分析和计划验证
+- **理念**: 结合 Claude 的速度与 Codex 的全面分析 - "先审查，再编码"以实现更高质量的结果
+- **使用场景**:
+  - 编码前审查实现计划
+  - 代码审查（未提交的更改、分支对比）
+  - 需要深度推理的复杂技术讨论
+  - 多轮迭代改进（最多3轮）
+- **核心优势**: 避免盲目编写代码，先获得 Codex 的全面分析
+- **安装**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli`
+
+**前置条件**: 需要安装 Codex CLI 并配置 OpenAI API key。[查看设置指南 →](../skills/codex-cli/README.md#prerequisites--required)
+
+[了解更多 →](../skills/codex-cli/README.md)
 
 ### 原创MCP服务器
 
@@ -257,9 +270,9 @@ MCP是一个开放标准，它：
 - [Awesome MCP服务器](https://github.com/wong2/awesome-mcp-servers)
 
 ### 教程与指南
-- [构建你的第一个Skill](./tutorials/first-skill.md) (即将推出)
-- [创建MCP服务器](./tutorials/mcp-server.md) (即将推出)
-- [跨平台设置](./CROSS_PLATFORM.md) (即将推出)
+- [构建你的第一个Skill](./tutorials/first-skill.md)
+- [创建MCP服务器](./tutorials/mcp-server.md)
+- [跨平台设置](./CROSS_PLATFORM.md)
 
 ---
 

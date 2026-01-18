@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
-[English](./README.md) | [中文](./docs/README_CN.md)
+[English](./README.md) | [Chinese](./docs/README_CN.md)
 
 ---
 
@@ -119,10 +119,23 @@ Most AI coding tools support SKILL.md format. Check your tool's documentation fo
 
 ### Original Skills
 
-Currently building original skills. Coming soon:
-- Custom workflow automation skills
-- Specialized development tools
-- And more...
+#### codex-cli
+
+**Interact with OpenAI Codex CLI for plan review, code review, and complex problem discussion.**
+
+- **Purpose**: Enable Claude Code to leverage Codex's powerful reasoning for code analysis and plan validation
+- **Philosophy**: Combine Claude's speed with Codex's thorough analysis - "review before coding" for higher quality outcomes
+- **Use Cases**:
+  - Review implementation plans before coding
+  - Code review (uncommitted changes, branch comparisons)
+  - Complex technical discussions requiring deep reasoning
+  - Multi-round iterative improvement (up to 3 rounds)
+- **Key Benefit**: Instead of blindly writing code, get Codex's comprehensive analysis first
+- **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli`
+
+**Prerequisites**: Requires Codex CLI installed and OpenAI API key configured. [See setup guide →](./skills/codex-cli/README.md#prerequisites--required)
+
+[Learn more →](./skills/codex-cli/README.md)
 
 ### Original MCP Servers
 
@@ -257,9 +270,9 @@ Please read our **[CONTRIBUTING.md](./CONTRIBUTING.md)** for:
 - [Awesome MCP Servers](https://github.com/wong2/awesome-mcp-servers)
 
 ### Tutorials & Guides
-- [Building Your First Skill](./docs/tutorials/first-skill.md) (Coming soon)
-- [Creating MCP Servers](./docs/tutorials/mcp-server.md) (Coming soon)
-- [Cross-Platform Setup](./docs/CROSS_PLATFORM.md) (Coming soon)
+- [Building Your First Skill](./docs/tutorials/first-skill.md)
+- [Creating MCP Servers](./docs/tutorials/mcp-server.md)
+- [Cross-Platform Setup](./docs/CROSS_PLATFORM.md)
 
 ---
 
@@ -305,7 +318,7 @@ Thanks to:
 
 Made with ❤️ by the community
 
-[English](./README.md) · [中文文档](./docs/README_CN.md)
+[English](./README.md) · [Chinese Docs](./docs/README_CN.md)
 
 [Report Bug](https://github.com/Awakehsh/awesome-agent-tools/issues) · [Request Feature](https://github.com/Awakehsh/awesome-agent-tools/issues) · [Contribute](./CONTRIBUTING.md)
 
