@@ -117,12 +117,21 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
 - [Claude Code Plugins Documentation](https://code.claude.com/docs/en/plugins)
 - [MCP Specification](https://modelcontextprotocol.io/specification/2025-11-25)
 - [Codex Skills Documentation](https://developers.openai.com/codex/skills/)
+- [Cursor Agent Documentation](https://cursor.com/docs)
+
+### Community Resource Directories
+
+- **[Awesome Claude](https://awesomeclaude.ai/)**
+  - Comprehensive directory of Claude AI resources, tools, and integrations
+  - Categories: Official resources, community lists, extensions, applications, education, community
+  - Regularly updated with latest tools and servers
 
 ### Tutorials and Guides
 
 - [Building MCP Servers](https://modelcontextprotocol.io/docs/develop/build-server)
 - [MCP Best Practices](https://modelcontextprotocol.info/docs/best-practices/)
 - [Composio MCP Development Guide](https://composio.dev/blog/mcp-server-step-by-step-guide-to-building-from-scrtch)
+- [Anthropic Official Courses](https://www.anthropic.com/courses) - Learn Claude API and prompt engineering
 
 ## 🤝 Contributing
 
