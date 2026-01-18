@@ -121,16 +121,15 @@ Cursor通过MCP服务器或直接GitHub导入支持skills。
 
 #### codex-cli
 
-**与 OpenAI Codex CLI 交互，进行计划审查、代码审查和复杂问题讨论。**
+**让非 Codex LLM（如 Claude Code）调用 OpenAI Codex CLI 进行计划审查和代码分析。**
 
-- **目的**: 让 Claude Code 能够利用 Codex 强大的推理能力进行代码分析和计划验证
-- **理念**: 结合 Claude 的速度与 Codex 的全面分析 - "先审查，再编码"以实现更高质量的结果
+- **目的**: 在计划或审查代码时，利用 Codex 的深度推理能力
+- **为什么**: Claude Code 很快但需要深度分析 - 结合速度与深度才能获得更高质量
 - **使用场景**:
   - 编码前审查实现计划
   - 代码审查（未提交的更改、分支对比）
-  - 需要深度推理的复杂技术讨论
-  - 多轮迭代改进（最多3轮）
-- **核心优势**: 避免盲目编写代码，先获得 Codex 的全面分析
+  - 复杂技术讨论
+  - 多轮迭代改进
 - **安装**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli`
 
 **前置条件**: 需要安装 Codex CLI 并配置 OpenAI API key。[查看设置指南 →](../skills/codex-cli/README.md#prerequisites--required)

@@ -122,16 +122,15 @@ Most AI coding tools support SKILL.md format. Check your tool's documentation fo
 
 #### codex-cli
 
-**Interact with OpenAI Codex CLI for plan review, code review, and complex problem discussion.**
+**Let non-Codex LLMs (like Claude Code) call OpenAI Codex CLI for plan review and code analysis.**
 
-- **Purpose**: Enable Claude Code to leverage Codex's powerful reasoning for code analysis and plan validation
-- **Philosophy**: Combine Claude's speed with Codex's thorough analysis - "review before coding" for higher quality outcomes
+- **Purpose**: Leverage Codex's thorough reasoning when planning or reviewing code
+- **Why**: Claude Code is fast but thorough analysis matters - combine speed with depth for better quality
 - **Use Cases**:
   - Review implementation plans before coding
   - Code review (uncommitted changes, branch comparisons)
-  - Complex technical discussions requiring deep reasoning
-  - Multi-round iterative improvement (up to 3 rounds)
-- **Key Benefit**: Instead of blindly writing code, get Codex's comprehensive analysis first
+  - Complex technical discussions
+  - Multi-round iterative improvement
 - **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli`
 
 **Prerequisites**: Requires Codex CLI installed and OpenAI API key configured. [See setup guide →](./skills/codex-cli/README.md#prerequisites--required)
