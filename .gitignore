@@ -82,7 +82,11 @@ temp/
 *.tmp
 
 # AI Coding Tools
-# Note: CLAUDE.md, AGENTS.md, and .claude-plugin/ are committed as project files
+claude.md
+CLAUDE.md
+AGENTS.md
+.agent
+.agent/
 .claude/
 .codex/
 .cursor/
