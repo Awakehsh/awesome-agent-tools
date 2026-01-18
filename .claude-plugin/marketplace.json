@@ -1,13 +1,16 @@
 {
-  "owner": "Awakehsh",
+  "name": "awesome-agent-tools",
   "displayName": "Awesome Agent Tools",
   "description": "A curated collection of powerful Skills, MCP servers, and tools for AI agents. Supports Claude Code (recommended), Codex, Cursor, and more.",
+  "owner": {
+    "name": "Awakehsh",
+    "url": "https://github.com/Awakehsh"
+  },
   "plugins": [
     {
       "name": "codex-cli",
-      "type": "skill",
-      "description": "Call OpenAI Codex CLI from Claude Code or other non-Codex LLMs for plan review and code analysis",
-      "path": "skills/codex-cli"
+      "source": "skills/codex-cli",
+      "description": "Call OpenAI Codex CLI from Claude Code or other non-Codex LLMs for plan review and code analysis"
     }
   ]
 }
