@@ -50,20 +50,25 @@ claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skill
 ### Codex
 
 ```text
-# In Codex CLI chat (this is not a shell command)
+# Install a single skill (in Codex CLI chat, not your shell)
 $skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn
 
 # Restart Codex to pick up new skills
 ```
 
 ```bash
-# Alternative: install from your terminal (requires Python 3)
-python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --url \
-  https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn
-
-# Manual: clone repo, then copy (or symlink) the skill folder
+# Install all skills (recommended if this repo will keep adding skills)
 git clone https://github.com/Awakehsh/awesome-agent-tools ~/awesome-agent-tools
-cp -r ~/awesome-agent-tools/skills/learn ~/.codex/skills/
+mkdir -p ~/.codex/skills
+
+# Option A (recommended): symlink all skills for easy updates via `git pull`
+for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
+
+# Option B: copy all skills (no symlinks)
+# cp -R ~/awesome-agent-tools/skills/* ~/.codex/skills/
+
+# Update later
+# (cd ~/awesome-agent-tools && git pull) && restart Codex
 ```
 
 ### Cursor / Windsurf / Antigravity
@@ -184,7 +189,10 @@ Codex skill loading is folder-based. A skill lives at `~/.codex/skills/<skill-na
 | Tip | Description |
 |-----|-------------|
 | **`$skill-installer ...`** | Run this in the Codex CLI chat (not your shell), then restart Codex |
-| **Create a new skill** | Make a folder in `~/.codex/skills/<skill-name>/` and add `SKILL.md` (YAML frontmatter + Markdown) |
+| **Verify install** | Check `~/.codex/skills/<skill-name>/SKILL.md` exists |
+| **Create a new skill** | Make `~/.codex/skills/<skill-name>/SKILL.md` (YAML frontmatter + Markdown) |
+| **Reload skills** | Restart Codex after adding or editing a skill folder |
+
 ---
 
 ## Resources

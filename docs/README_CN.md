@@ -50,20 +50,25 @@ claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skill
 ### Codex
 
 ```text
-# 在 Codex CLI 对话里运行（这不是 shell 命令）
+# 安装单个 skill（在 Codex CLI 对话里运行，不是 shell 命令）
 $skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn
 
 # 安装后重启 Codex 才会生效
 ```
 
 ```bash
-# 备选：在终端里安装（需要 Python 3）
-python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --url \
-  https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn
-
-# 手动方式：克隆仓库，然后复制（或软链）skill 目录
+# 安装全部 skills
 git clone https://github.com/Awakehsh/awesome-agent-tools ~/awesome-agent-tools
-cp -r ~/awesome-agent-tools/skills/learn ~/.codex/skills/
+mkdir -p ~/.codex/skills
+
+# 方式 A（推荐）：把所有 skills 软链到 ~/.codex/skills，后续 `git pull` 就能更新
+for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
+
+# 方式 B：直接复制（不使用软链）
+# cp -R ~/awesome-agent-tools/skills/* ~/.codex/skills/
+
+# 后续更新
+# (cd ~/awesome-agent-tools && git pull) 后重启 Codex
 ```
 
 ### Cursor / Windsurf / Antigravity
@@ -184,7 +189,10 @@ Codex 的 skill 是按文件夹加载的：`~/.codex/skills/<skill-name>/SKILL.m
 | 提示 | 说明 |
 |------|------|
 | **`$skill-installer ...`** | 在 Codex CLI 对话里运行（不是终端 shell），然后重启 Codex |
-| **创建新 skill** | 在 `~/.codex/skills/<skill-name>/` 建文件夹并添加 `SKILL.md`|
+| **验证是否安装成功** | 确认 `~/.codex/skills/<skill-name>/SKILL.md` 存在 |
+| **创建新 skill** | 在 `~/.codex/skills/<skill-name>/` 建文件夹并添加 `SKILL.md`（YAML 头 + Markdown） |
+| **重新加载** | 新增或修改 skill 后重启 Codex |
+
 ---
 
 ## 资源
