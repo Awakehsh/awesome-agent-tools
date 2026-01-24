@@ -1,28 +1,42 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "awesome-agent-tools",
-  "description": "A curated collection of powerful Skills, MCP servers, and tools for AI agents. Supports Claude Code (recommended), Codex, Cursor, and more.",
   "owner": {
     "name": "Awakehsh"
   },
+  "metadata": {
+    "description": "A curated collection of powerful Skills, MCP servers, and tools for AI agents"
+  },
   "plugins": [
     {
-      "name": "codex-cli",
-      "description": "Call OpenAI Codex CLI from Claude Code or other non-Codex LLMs for plan review and code analysis",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/Awakehsh/awesome-agent-tools.git"
+      "name": "awesome-agent-tools",
+      "source": "./",
+      "description": "Complete collection of cross-platform tools for AI agents: Skills, MCP servers, plugins, and more. Supports Claude Code, Codex, Cursor, and other AI coding assistants.",
+      "author": {
+        "name": "Awakehsh"
       },
-      "category": "development"
-    },
-    {
-      "name": "learn",
-      "description": "Universal learning system that extracts insights from conversations and updates project memory files with LLM-friendly documentation",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/Awakehsh/awesome-agent-tools.git"
-      },
-      "category": "productivity"
+      "homepage": "https://github.com/Awakehsh/awesome-agent-tools",
+      "repository": "https://github.com/Awakehsh/awesome-agent-tools",
+      "license": "MIT",
+      "keywords": [
+        "agents",
+        "skills",
+        "mcp-servers",
+        "tools",
+        "productivity",
+        "development",
+        "automation",
+        "cross-platform"
+      ],
+      "category": "productivity",
+      "tags": [
+        "agents",
+        "skills",
+        "mcp-servers",
+        "productivity",
+        "development",
+        "automation"
+      ]
     }
   ]
 }

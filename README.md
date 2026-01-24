@@ -40,12 +40,30 @@ Most "awesome" lists focus on one platform or one type. **We're different**:
 
 ```bash
 # Install as marketplace (browse all skills)
-/plugin
-# Enter: Awakehsh/awesome-agent-tools
+/plugin marketplace add Awakehsh/awesome-agent-tools
+/plugin install awesome-agent-tools@awesome-agent-tools
+
+# Or add to settings manually
+# Add to ~/.claude/settings.json:
+# {
+#   "extraKnownMarketplaces": {
+#     "awesome-agent-tools": {
+#       "source": {
+#         "source": "github",
+#         "repo": "Awakehsh/awesome-agent-tools"
+#       }
+#     }
+#   },
+#   "enabledPlugins": {
+#     "awesome-agent-tools@awesome-agent-tools": true
+#   }
+# }
 
 # Or install individual skill
 claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn
 ```
+
+> **Note**: Marketplace configuration inspired by [everything-claude-code](https://github.com/affaan-m/everything-claude-code) - a battle-tested collection from an Anthropic hackathon winner.
 
 ### Codex
 

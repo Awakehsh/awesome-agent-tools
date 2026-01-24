@@ -40,12 +40,30 @@
 
 ```bash
 # 作为 marketplace 安装（浏览所有 skills）
-/plugin
-# 输入: Awakehsh/awesome-agent-tools
+/plugin marketplace add Awakehsh/awesome-agent-tools
+/plugin install awesome-agent-tools@awesome-agent-tools
+
+# 或手动添加到设置
+# 添加到 ~/.claude/settings.json：
+# {
+#   "extraKnownMarketplaces": {
+#     "awesome-agent-tools": {
+#       "source": {
+#         "source": "github",
+#         "repo": "Awakehsh/awesome-agent-tools"
+#       }
+#     }
+#   },
+#   "enabledPlugins": {
+#     "awesome-agent-tools@awesome-agent-tools": true
+#   }
+# }
 
 # 或安装单个 skill
 claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn
 ```
+
+> **注意**: Marketplace 配置方式参考了 [everything-claude-code](https://github.com/affaan-m/everything-claude-code) - 来自 Anthropic 黑客松获奖者的实战验证集合。
 
 ### Codex
 
