@@ -141,7 +141,22 @@ for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
 
 本仓库的开源贡献：
 
-#### Skills (2)
+#### Skills (3)
+
+##### system-prompt-architect
+
+**用于构建单体和多 agent 系统的系统提示词工程工具，配备模块化模板。**
+
+- **目的**：通过引导式工作流将需求转化为生产就绪的系统提示词
+- **理念**：模块化组合 + 经过验证的模式 + 动态研究，实现最佳 agent 设计
+- **使用场景**:
+  - 设计多 agent 编排系统（orchestrator-workers、evaluator-optimizer）
+  - 创建结构化的单 agent 工作流，正确定义角色
+  - 导出跨平台的提示词（Markdown、JSON、YAML、XML、纯文本）
+- **核心优势**：利用久经考验的模板，将提示词工程时间从数小时缩短到数分钟
+- **安装**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/system-prompt-architect`
+
+[了解更多 →](../skills/system-prompt-architect/README.md)
 
 ##### codex-cli
 **在 Claude Code 中调用 OpenAI Codex CLI 进行计划审查和代码分析。**

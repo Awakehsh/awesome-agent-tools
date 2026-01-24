@@ -141,17 +141,36 @@ Start here if you're new - these tools deliver immediate value:
 
 Open-source contributions from this repository:
 
-#### Skills (2)
+#### Skills (3)
+
+##### system-prompt-architect
+
+**System prompt engineering tool for building single and multi-agent systems with modular templates.**
+
+- **Purpose**: Transform requirements into production-ready system prompts through guided workflows
+- **Philosophy**: Modular composition + proven patterns + dynamic research for optimal agent design
+- **Use Cases**:
+  - Design multi-agent orchestration systems (orchestrator-workers, evaluator-optimizer)
+  - Create structured single-agent workflows with proper role definition
+  - Export platform-agnostic prompts (Markdown, JSON, YAML, XML, Plain Text)
+- **Key Benefit**: Reduces prompt engineering time from hours to minutes with battle-tested templates
+- **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/system-prompt-architect`
+
+[Learn more →](./skills/system-prompt-architect/README.md)
 
 ##### codex-cli
+
 **Call OpenAI Codex CLI from Claude Code for plan review and code analysis.**
+
 - **Use Cases**: Plan review, code analysis, technical discussions, multi-round iteration
 - **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli`
 
 [Learn more →](./skills/codex-cli/README.md)
 
 ##### learn
+
 **Universal learning system that extracts insights from conversations and updates project memory files.**
+
 - **Use Cases**: Capture learnings, auto-route to docs (CLAUDE.md, AGENTS.md), cross-platform sync
 - **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn`
 
