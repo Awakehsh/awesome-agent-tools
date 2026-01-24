@@ -26,21 +26,69 @@ Interact with OpenAI Codex CLI to leverage its powerful reasoning capabilities f
    ```
 
 2. **OpenAI API Key** - Required for authentication
-   ```bash
-   # Login with your API key
-   echo "YOUR_OPENAI_API_KEY" | codex login --with-api-key
 
-   # Verify login status
+   **Option A: Interactive login (Recommended - most secure)**
+   ```bash
+   # Interactive prompt - API key won't appear in shell history
+   codex login
+   # Follow the prompts to enter your API key
+   ```
+
+   **Option B: Environment variable**
+   ```bash
+   # Add to ~/.zshrc or ~/.bashrc (not in shell history)
+   export OPENAI_API_KEY="your-api-key-here"
+   source ~/.zshrc
+
+   # Then login
+   codex login --with-api-key <<< "$OPENAI_API_KEY"
+   ```
+
+   **Option C: File-based (if interactive not available)**
+   ```bash
+   # Create a temporary file with your key
+   echo "your-api-key" > /tmp/key.txt
+   codex login --with-api-key < /tmp/key.txt
+   rm /tmp/key.txt
+
+   # Or pipe directly (⚠️ key appears in shell history)
+   echo "YOUR_KEY" | codex login --with-api-key
+   ```
+
+   **Verify login:**
+   ```bash
    codex login status
    # Should show: "Logged in using an API key - sk-proj-***"
    ```
 
 3. **Active API Access** - Your OpenAI account must have API access and credits
 
+4. **Security Best Practices**
+
+   ```bash
+   # Secure your config file (contains API key reference)
+   chmod 600 ~/.codex/config.toml
+
+   # Clear shell history if you used echo with API key
+   history -c  # or close and reopen terminal
+   ```
+
 **If not installed:**
 - Get OpenAI API key from: https://platform.openai.com/api-keys
 - Install Codex CLI: Refer to OpenAI Codex CLI documentation
 - Alternative: This skill will NOT work without Codex CLI installed and configured
+
+## 🔒 Security & Privacy Notice
+
+**Important considerations when using this skill:**
+
+1. **Code Transmission**: When you use Codex CLI, your code/prompts are sent to OpenAI servers for processing
+2. **API Key Storage**: Your API key is stored in `~/.codex/config.toml` - ensure proper file permissions
+3. **Sandbox Mode**: By default, this skill uses `--sandbox read-only` which prevents Codex from modifying files
+4. **Shell History**: Avoid typing API keys directly in commands; use interactive login or environment variables
+5. **Sensitive Code**: Be mindful when reviewing code containing secrets, credentials, or proprietary logic
+
+**Recommendation**: Review OpenAI's [data usage policies](https://openai.com/policies/api-data-usage-policies) for API usage
 
 ## Quick Start
 
@@ -86,8 +134,9 @@ which codex  # Should return path like /opt/homebrew/bin/codex
 **Error: "Authentication required" or "API key not found"**
 ```bash
 # Not logged in with OpenAI API key
-# Solution: Login with your API key
-echo "YOUR_OPENAI_API_KEY" | codex login --with-api-key
+# Solution: Login with your API key (use interactive method for security)
+codex login  # Interactive - recommended
+# Or: codex login --with-api-key <<< "$OPENAI_API_KEY"
 codex login status  # Verify you're logged in
 ```
 

@@ -39,15 +39,37 @@ If not installed, refer to OpenAI Codex CLI documentation for installation instr
 
 ### 3. Login Configuration
 
+**Option A: Interactive login (Recommended - most secure)**
 ```bash
-echo "YOUR_OPENAI_API_KEY" | codex login --with-api-key
+codex login
+# Follow the prompts to enter your API key
+```
 
-# Verify login status
+**Option B: Environment variable**
+```bash
+# Add to ~/.zshrc or ~/.bashrc
+export OPENAI_API_KEY="your-api-key-here"
+source ~/.zshrc
+codex login --with-api-key <<< "$OPENAI_API_KEY"
+```
+
+**Verify login:**
+```bash
 codex login status
 # Should display: "Logged in using an API key - sk-proj-***"
 ```
 
-### 4. Confirm Account Has Credits
+### 4. Security Best Practices
+
+```bash
+# Secure your config file (contains API key reference)
+chmod 600 ~/.codex/config.toml
+
+# Clear shell history if you typed API key directly
+history -c
+```
+
+### 5. Confirm Account Has Credits
 
 - Visit https://platform.openai.com/account/billing
 - Ensure you have available credits for API usage
@@ -187,8 +209,8 @@ which codex  # Should return path like /opt/homebrew/bin/codex
 
 **Error: "Authentication required"**
 ```bash
-# Solution: Login with API key
-echo "YOUR_KEY" | codex login --with-api-key
+# Solution: Login with API key (interactive method recommended)
+codex login  # Interactive - most secure
 codex login status  # Verify
 ```
 
@@ -216,6 +238,19 @@ codex login status
 codex exec "test" -m gpt-5.2 --skip-git-repo-check
 ```
 
+## 🔒 Security & Privacy Notice
+
+**Important considerations when using this skill:**
+
+| Aspect | Detail |
+|--------|--------|
+| **Code Transmission** | Your code/prompts are sent to OpenAI servers for processing |
+| **API Key Storage** | Stored in `~/.codex/config.toml` - use `chmod 600` to secure |
+| **Sandbox Mode** | Uses `--sandbox read-only` by default (prevents file modifications) |
+| **Sensitive Code** | Be mindful when reviewing code with secrets or proprietary logic |
+
+**Recommendation**: Review [OpenAI's data usage policies](https://openai.com/policies/api-data-usage-policies) for API usage.
+
 ## How It Works
 
 ```
@@ -235,6 +270,7 @@ Multi-round iteration (max 3 rounds if NEEDS REVISION)
 - Uses OpenAI API (consumes credits)
 - Provides detailed feedback with reasoning
 - Supports iterative improvement
+- Uses read-only sandbox for security
 
 ## Output Format
 
