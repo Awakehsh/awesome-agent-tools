@@ -67,8 +67,6 @@ Unlike other lists, we offer:
 claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn
 ```
 
-> **Note**: Marketplace configuration inspired by [everything-claude-code](https://github.com/affaan-m/everything-claude-code) - a battle-tested collection from an Anthropic hackathon winner.
-
 ### Codex
 
 ```text
@@ -134,6 +132,8 @@ Start here if you're new - these tools deliver immediate value:
 | **[context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit)** | Community Tool | Advanced context engineering, 8-21% quality improvement | All |
 | **[codex-cli](./skills/codex-cli)** | Original Skill | Call OpenAI Codex from Claude Code for plan review | Claude Code |
 | **[awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers)** | Curated List | 79k+ stars - The definitive MCP server collection | All |
+| **[superpowers](https://github.com/obra/superpowers)** | Skill Framework | 35k+ stars - Complete AI agent development workflow (TDD, code review, debugging) | Claude Code |
+| **[everything-claude-code](https://github.com/affaan-m/everything-claude-code)** | Config Collection | Battle-tested agents/skills/commands/hooks from hackathon winner | Claude Code |
 
 ---
 

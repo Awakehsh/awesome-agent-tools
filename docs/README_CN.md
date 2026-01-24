@@ -67,8 +67,6 @@
 claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn
 ```
 
-> **注意**: Marketplace 配置方式参考了 [everything-claude-code](https://github.com/affaan-m/everything-claude-code) - 来自 Anthropic 黑客松获奖者的实战验证集合。
-
 ### Codex
 
 ```text
@@ -134,6 +132,8 @@ for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
 | **[context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit)** | 社区工具 | 高级上下文工程，提升 8-21% 质量 | 所有平台 |
 | **[codex-cli](../skills/codex-cli)** | 原创 Skill | 在 Claude Code 中调用 OpenAI Codex 进行计划审查 | Claude Code |
 | **[awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers)** | 策展列表 | 79k+ stars - 权威的 MCP 服务器合集 | 所有平台 |
+| **[superpowers](https://github.com/obra/superpowers)** | Skill 框架 | 35k+ stars - 完整的 AI agent 开发工作流（TDD、代码审查、调试） | Claude Code |
+| **[everything-claude-code](https://github.com/affaan-m/everything-claude-code)** | 配置合集 | 黑客松获奖者的实战验证 agents/skills/commands/hooks | Claude Code |
 
 ---
 
