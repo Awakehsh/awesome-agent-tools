@@ -79,9 +79,13 @@ Add a `README.md` with:
 Test your agent locally before committing:
 
 ```bash
-# For Claude Code
+# For Claude Code (primary platform)
 cp -r agents/my-agent ~/.claude/agents/
 # Restart Claude Code and test
+
+# For Codex (using AGENTS.md format)
+# Note: Codex uses project-level AGENTS.md files, not separate agent directories
+# You may need to adapt the agent instructions to AGENTS.md format
 ```
 
 ## Available Agents
@@ -100,12 +104,15 @@ Have an agent to share? See our [Contributing Guide](../CONTRIBUTING.md) for det
 
 ## Platform Compatibility
 
-Agents are designed to work with:
-- ✅ Claude Code (full support)
-- ✅ Codex (compatible format)
-- ✅ Cursor (via configuration)
-- ✅ Windsurf (via configuration)
-- ✅ Antigravity (via configuration)
+**Primary Support:**
+- ✅ **Claude Code** - Full native support with `~/.claude/agents/` directory and AGENT.md format
+
+**Partial/Alternative Support:**
+- ⚠️ **Codex** - Supports AGENTS.md format (`~/.codex/AGENTS.md`) for project-level agent instructions, but not the same pluggable agents system as Claude Code
+- ⚠️ **Cursor** - Has built-in agent mode and configuration, but uses its own agent system rather than external agent files
+- ❌ **Windsurf / Antigravity** - No native agents directory support currently
+
+**Note:** This agents directory is primarily designed for Claude Code. Other platforms may require adaptation or may use their own agent configuration formats.
 
 ## Resources
 
