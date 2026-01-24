@@ -11,6 +11,7 @@
     {
       "name": "awesome-agent-tools",
       "source": "./",
+      "agents": "./agents/",
       "description": "Hybrid marketplace for AI agent development: original skills we built + curated recommendations. Built by developers, for developers using AI agents. Cross-platform support for Claude Code, Codex, Cursor, Windsurf, and Antigravity.",
       "author": {
         "name": "Awakehsh"
