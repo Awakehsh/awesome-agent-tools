@@ -38,6 +38,35 @@
         "development",
         "automation"
       ]
+    },
+    {
+      "name": "system-prompt-architect",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Awakehsh/awesome-agent-tools.git",
+        "path": "skills/system-prompt-architect"
+      },
+      "description": "System prompt engineering tool for building single and multi-agent systems with modular templates and dynamic research",
+      "author": {
+        "name": "Awakehsh"
+      },
+      "homepage": "https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/system-prompt-architect",
+      "repository": "https://github.com/Awakehsh/awesome-agent-tools",
+      "license": "MIT",
+      "keywords": [
+        "prompt-engineering",
+        "multi-agent",
+        "system-prompts",
+        "orchestration",
+        "agent-design"
+      ],
+      "category": "development",
+      "tags": [
+        "development",
+        "agents",
+        "prompts",
+        "architecture"
+      ]
     }
   ]
 }
