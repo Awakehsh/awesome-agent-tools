@@ -1,6 +1,8 @@
 # Awesome Agent Tools 🤖✨
 
-> A curated collection of cross-platform tools for AI coding agents: Skills, MCP servers, plugins, and more.
+> The hybrid marketplace for AI agent development: original skills, curated tools, and cross-platform support.
+
+**For developers building with AI agents** | Original Skills + Curated Tools | Cross-Platform
 
 **Supports**: [Claude Code](#quick-install) (⭐ Recommended) | [Codex](#quick-install) | [Cursor](#platform-support) | [Windsurf](#platform-support) | [Antigravity](#platform-support)
 
@@ -14,12 +16,14 @@
 
 ## Why This Collection?
 
-Most "awesome" lists focus on one platform or one type. **We're different**:
+Unlike other lists, we offer:
 
-- **Cross-Platform**: Works with Claude Code, Codex, Cursor, Windsurf, Antigravity, and more
-- **Multi-Type**: Skills + MCP Servers + Plugins + Tools (not just one category)
-- **Quality-First**: Every tool is vetted, not a link dump
-- **Developer-Focused**: Prioritizing productivity tools, but not limited to coding
+- **🔀 Hybrid Marketplace**: Original skills we built + carefully curated third-party tools
+- **👨‍💻 For Developers**: Built by developers, for developers building with AI agents
+- **🌐 Cross-Platform**: Works with Claude Code, Codex, Cursor, Windsurf, Antigravity, and more
+- **⚡ Multi-Type**: Skills + MCP Servers + Agents + Plugins (not just one category)
+- **✨ Quality-First**: Every tool is vetted and tested, not a link dump
+- **🎯 Agent Development**: Special focus on agent workflows, parallel execution, and automation
 
 ---
 
@@ -101,80 +105,94 @@ for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
 
 ---
 
-## What's Included
+## 🤖 Agent Development Highlights
 
-### Original Skills
+Special features for building AI agent systems:
 
-#### codex-cli
+| Feature | Description | Platform |
+|---------|-------------|----------|
+| **Custom Sub-Agents** | Independent contexts for specialized tasks ([guide](./agents/README.md)) | Claude Code |
+| **Parallel Execution** | Run multiple agents simultaneously ([examples](./agents/README.md#triggering-parallel-agents)) | Claude Code |
+| **Agent Skills** | Reusable skill bundles for agents | Claude Code, Codex |
+| **MCP Integration** | Connect agents to external tools & data sources | All platforms |
+| **Workflow Automation** | Slash commands, hooks, and agent orchestration | Claude Code |
 
+**New to agents?** Check out our [Agent Development Guide](./agents/README.md) for workflows, patterns, and best practices.
+
+---
+
+## 📦 What's Included
+
+### 🎯 Editor's Picks (Quick Wins)
+
+Start here if you're new - these tools deliver immediate value:
+
+| Tool | Type | What It Does | Platform |
+|------|------|--------------|----------|
+| **[ralph-loop](https://github.com/anthropics/claude-plugins-official)** | Official Plugin | Overnight automated development with iterative loops | Claude Code |
+| **[learn](./skills/learn)** | Original Skill | Auto-capture insights to project memory (CLAUDE.md, AGENTS.md) | All |
+| **[context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit)** | Community Tool | Advanced context engineering, 8-21% quality improvement | All |
+| **[codex-cli](./skills/codex-cli)** | Original Skill | Call OpenAI Codex from Claude Code for plan review | Claude Code |
+| **[awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers)** | Curated List | 79k+ stars - The definitive MCP server collection | All |
+
+---
+
+### 🛠️ Original Tools
+
+Open-source contributions from this repository:
+
+#### Skills (2)
+
+##### codex-cli
 **Call OpenAI Codex CLI from Claude Code for plan review and code analysis.**
-
-- **Use Cases**:
-  - Plan review before coding
-  - Code review and analysis
-  - Complex technical discussions
-  - Multi-round iteration and improvement
+- **Use Cases**: Plan review, code analysis, technical discussions, multi-round iteration
 - **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli`
 
 [Learn more →](./skills/codex-cli/README.md)
 
-#### learn
-
+##### learn
 **Universal learning system that extracts insights from conversations and updates project memory files.**
-
-- **Use Cases**:
-  - Capture learnings from debugging sessions
-  - Auto-route knowledge to appropriate docs (CLAUDE.md, AGENTS.md, .cursorrules)
-  - Cross-platform memory file sync
-  - Lifecycle management with freshness decay
+- **Use Cases**: Capture learnings, auto-route to docs (CLAUDE.md, AGENTS.md), cross-platform sync
 - **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn`
 
 [Learn more →](./skills/learn/README.md)
 
-### Original Agents
+#### Agents (Documentation)
 
-#### Claude Code Agents
-
-**Custom agent configurations for specialized, repeatable workflows with independent contexts.**
-
-- **What Are Agents**: Specialized mini-agents with own system prompts, tool permissions, and independent context windows
-- **Key Benefits**:
-  - Independent contexts prevent pollution of main agent
-  - Parallel execution for multiple simultaneous tasks
-  - Automatic routing - Claude delegates work intelligently
-  - Scalable, repeatable workflows
-- **Use Cases**:
-  - Code review with specific standards
-  - Test generation and validation
-  - Large-scale migrations and refactoring
-  - Parallel analysis of multiple modules
-- **Platform**: Claude Code only (not cross-platform)
+**Claude Code Agents** - Custom agent configurations for specialized workflows
+- Independent contexts prevent pollution
+- Parallel execution for simultaneous tasks
+- Automatic routing and delegation
 
 [Learn more →](./agents/README.md)
 
-### Original MCP Servers
-
-Coming soon:
+#### MCP Servers (Coming Soon)
 - Custom integrations
 - Specialized tooling
-- And more...
+- Watch this space!
 
-### Curated Recommendations
+---
 
-See **[AWESOME.md](./AWESOME.md)** for the full categorized list:
+### 🌟 Curated Recommendations (30+ Tools)
 
-- 🎯 **Official Skills** - Anthropic, OpenAI
-- 🌟 **Community Skills** - From trusted developers
+Carefully vetted third-party tools organized by category:
+
+**See the full curated list**: **[AWESOME.md](./AWESOME.md)**
+
+Categories:
+- 🎯 **Official Skills** - From Anthropic, OpenAI
+- 🌟 **Community Skills** - Trusted developers
 - 🔧 **MCP Servers** - Official and community-built
 - 🛠️ **Tools & Utilities** - Installers, frameworks, resources
 
-**Highlights**:
+---
 
-| Tool | Description |
-|------|-------------|
-| [ralph-loop](https://github.com/anthropics/claude-plugins-official) | Overnight automated development with iterative loops |
-| [context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit) | Advanced context engineering, 8-21% quality improvement |
-| [openskills](https://github.com/numman-ali/openskills) | Universal skills loader for multi-platform support |
+### 📚 Guides & Documentation
+
+- [Agent Development Guide](./agents/README.md) - Workflows, parallel execution, best practices
+- [Cross-Platform Setup](./docs/CROSS_PLATFORM.md) - Detailed setup for each platform
+- [Contributing Guide](./CONTRIBUTING.md) - How to add your tools
+- [Project Guidelines](./CLAUDE.md) - Repository philosophy and standards
 
 ---
 

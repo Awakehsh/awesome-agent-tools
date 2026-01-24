@@ -5,13 +5,13 @@
     "name": "Awakehsh"
   },
   "metadata": {
-    "description": "A curated collection of powerful Skills, MCP servers, and tools for AI agents"
+    "description": "The hybrid marketplace for AI agent development: original skills, curated tools, and cross-platform support"
   },
   "plugins": [
     {
       "name": "awesome-agent-tools",
       "source": "./",
-      "description": "Complete collection of cross-platform tools for AI agents: Skills, MCP servers, plugins, and more. Supports Claude Code, Codex, Cursor, and other AI coding assistants.",
+      "description": "Hybrid marketplace for AI agent development: original skills we built + curated recommendations. Built by developers, for developers using AI agents. Cross-platform support for Claude Code, Codex, Cursor, Windsurf, and Antigravity.",
       "author": {
         "name": "Awakehsh"
       },

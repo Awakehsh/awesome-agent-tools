@@ -1,6 +1,8 @@
 # Awesome Agent Tools 🤖✨
 
-> 跨平台 AI 编程代理工具精选：Skills、MCP 服务器、插件等。
+> AI agent 开发的混合平台：原创 skills、精选工具和跨平台支持。
+
+**服务开发者构建 AI agents** | 原创 Skills + 精选工具 | 跨平台
 
 **支持平台**: [Claude Code](#快速安装) (⭐ 推荐) | [Codex](#快速安装) | [Cursor](#平台支持) | [Windsurf](#平台支持) | [Antigravity](#平台支持)
 
@@ -14,12 +16,14 @@
 
 ## 为什么选择这个合集？
 
-大多数 "awesome" 列表只关注单一平台或单一类型。**我们不同**：
+与其他列表不同，我们提供：
 
-- **跨平台**：支持 Claude Code、Codex、Cursor、Windsurf、Antigravity 等
-- **多样化**：Skills + MCP 服务器 + 插件 + 工具（不止一种类型）
-- **质量优先**：每个工具都经过筛选，不是链接堆砌
-- **开发者聚焦**：优先收录生产力工具，但不局限于编程
+- **🔀 混合平台**：我们构建的原创 skills + 精心策展的第三方工具
+- **👨‍💻 为开发者服务**：由开发者构建，为使用 AI agents 的开发者服务
+- **🌐 跨平台**：支持 Claude Code、Codex、Cursor、Windsurf、Antigravity 等
+- **⚡ 多样化**：Skills + MCP 服务器 + Agents + 插件（不止一种类型）
+- **✨ 质量优先**：每个工具都经过测试和筛选，不是链接堆砌
+- **🎯 Agent 开发**：特别关注 agent 工作流、并行执行和自动化
 
 ---
 
@@ -101,80 +105,94 @@ for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
 
 ---
 
-## 包含内容
+## 🤖 Agent 开发亮点
 
-### 原创 Skills
+构建 AI agent 系统的特色功能：
 
-#### codex-cli
+| 功能 | 说明 | 平台 |
+|------|------|------|
+| **自定义 Sub-Agents** | 为专业任务提供独立上下文（[指南](../agents/README.md)） | Claude Code |
+| **并行执行** | 同时运行多个 agents（[示例](../agents/README.md#triggering-parallel-agents)） | Claude Code |
+| **Agent Skills** | 可重用的 agent 技能包 | Claude Code, Codex |
+| **MCP 集成** | 连接 agents 到外部工具和数据源 | 所有平台 |
+| **工作流自动化** | Slash 命令、钩子和 agent 编排 | Claude Code |
 
+**刚接触 agents？** 查看我们的 [Agent 开发指南](../agents/README.md)了解工作流、模式和最佳实践。
+
+---
+
+## 📦 包含内容
+
+### 🎯 编辑精选（快速上手）
+
+如果你是新手，从这里开始 - 这些工具可以立即带来价值：
+
+| 工具 | 类型 | 功能说明 | 平台 |
+|------|------|----------|------|
+| **[ralph-loop](https://github.com/anthropics/claude-plugins-official)** | 官方插件 | 通过迭代循环实现通宵自动化开发 | Claude Code |
+| **[learn](../skills/learn)** | 原创 Skill | 自动捕获见解到项目记忆（CLAUDE.md、AGENTS.md） | 所有平台 |
+| **[context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit)** | 社区工具 | 高级上下文工程，提升 8-21% 质量 | 所有平台 |
+| **[codex-cli](../skills/codex-cli)** | 原创 Skill | 在 Claude Code 中调用 OpenAI Codex 进行计划审查 | Claude Code |
+| **[awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers)** | 策展列表 | 79k+ stars - 权威的 MCP 服务器合集 | 所有平台 |
+
+---
+
+### 🛠️ 原创工具
+
+本仓库的开源贡献：
+
+#### Skills (2)
+
+##### codex-cli
 **在 Claude Code 中调用 OpenAI Codex CLI 进行计划审查和代码分析。**
-
-- **使用场景**：
-  - 编码前审查计划
-  - 代码审查和分析
-  - 复杂技术讨论
-  - 多轮迭代改进
+- **使用场景**：计划审查、代码分析、技术讨论、多轮迭代
 - **安装**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli`
 
 [了解更多 →](../skills/codex-cli/README.md)
 
-#### learn
-
+##### learn
 **通用学习系统，从对话中提取见解并更新项目内存文件。**
-
-- **使用场景**：
-  - 从调试会话中捕获学习
-  - 自动将知识路由到合适的文档（CLAUDE.md、AGENTS.md、.cursorrules）
-  - 跨平台内存文件同步
-  - 基于新鲜度衰减的生命周期管理
+- **使用场景**：捕获学习、自动路由到文档（CLAUDE.md、AGENTS.md）、跨平台同步
 - **安装**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn`
 
 [了解更多 →](../skills/learn/README.md)
 
-### 原创 Agents
+#### Agents（文档）
 
-#### Claude Code Agents
-
-**用于专业化、可重复工作流的自定义 agent 配置，具有独立上下文。**
-
-- **什么是 Agents**：专业化的迷你代理，拥有独立的系统提示、工具权限和独立的上下文窗口
-- **核心优势**：
-  - 独立上下文防止污染主 agent
-  - 并行执行多个同时任务
-  - 自动路由 - Claude 智能委派工作
-  - 可扩展、可重复的工作流
-- **使用场景**：
-  - 基于特定标准的代码审查
-  - 测试生成和验证
-  - 大规模迁移和重构
-  - 并行分析多个模块
-- **平台支持**：仅 Claude Code（非跨平台）
+**Claude Code Agents** - 专业化工作流的自定义 agent 配置
+- 独立上下文防止污染
+- 并行执行同时任务
+- 自动路由和委派
 
 [了解更多 →](../agents/README.md)
 
-### 原创 MCP 服务器
-
-即将推出：
+#### MCP 服务器（即将推出）
 - 自定义集成
 - 专业工具
-- 更多...
+- 敬请期待！
 
-### 精选推荐
+---
 
-完整分类列表见 **[AWESOME.md](../AWESOME.md)**：
+### 🌟 精选推荐（30+ 工具）
 
-- 🎯 **官方 Skills** - Anthropic、OpenAI
-- 🌟 **社区 Skills** - 来自可信开发者
+经过精心审查的第三方工具，按类别组织：
+
+**查看完整策展列表**：**[AWESOME.md](../AWESOME.md)**
+
+分类：
+- 🎯 **官方 Skills** - 来自 Anthropic、OpenAI
+- 🌟 **社区 Skills** - 可信开发者
 - 🔧 **MCP 服务器** - 官方和社区构建
 - 🛠️ **工具与实用程序** - 安装器、框架、资源
 
-**亮点**：
+---
 
-| 工具 | 说明 |
-|------|------|
-| [ralph-loop](https://github.com/anthropics/claude-plugins-official) | 迭代循环实现自动化开发 |
-| [context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit) | 高级上下文工程，提升 8-21% 质量 |
-| [openskills](https://github.com/numman-ali/openskills) | 通用 skills 加载器，支持多平台 |
+### 📚 指南与文档
+
+- [Agent 开发指南](../agents/README.md) - 工作流、并行执行、最佳实践
+- [跨平台设置](./CROSS_PLATFORM.md) - 各平台的详细设置
+- [贡献指南](../CONTRIBUTING.md) - 如何添加你的工具
+- [项目指南](../CLAUDE.md) - 仓库理念和标准
 
 ---
 
