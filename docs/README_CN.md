@@ -157,14 +157,22 @@ for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
 
 [了解更多 →](../skills/learn/README.md)
 
-#### Agents（文档）
+#### Agents (1)
 
-**Claude Code Agents** - 专业化工作流的自定义 agent 配置
-- 独立上下文防止污染
-- 并行执行同时任务
-- 自动路由和委派
+##### tech-scout
 
-[了解更多 →](../agents/README.md)
+**技术研究专家。从 GitHub 和网络资源搜索业界解决方案、设计模式和 Bug 修复。**
+
+- **目的**：在开发工作流程中进行并行研究
+- **理念**：不要浪费时间重新发明轮子 - 先从业界方案中学习
+- **使用场景**:
+  - 功能规划 - 搜索架构模式和设计方法
+  - Bug 调试 - 查找错误和常见问题的解决方案
+  - 技术对比 - 研究库和框架的优缺点
+- **核心优势**：独立运行不阻塞主工作流，返回包含对比和来源的结构化报告
+- **安装**：将 `agents/tech-scout/` 复制到 `~/.claude/agents/` 或通过 marketplace 安装
+
+[了解更多 →](../agents/tech-scout/README.md) | [所有 Agents 文档 →](../agents/README.md)
 
 #### MCP 服务器（即将推出）
 - 自定义集成

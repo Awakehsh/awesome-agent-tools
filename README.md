@@ -157,14 +157,22 @@ Open-source contributions from this repository:
 
 [Learn more →](./skills/learn/README.md)
 
-#### Agents (Documentation)
+#### Agents (1)
 
-**Claude Code Agents** - Custom agent configurations for specialized workflows
-- Independent contexts prevent pollution
-- Parallel execution for simultaneous tasks
-- Automatic routing and delegation
+##### tech-scout
 
-[Learn more →](./agents/README.md)
+**Technical research specialist. Searches industry solutions, design patterns, and bug fixes from GitHub and web sources.**
+
+- **Purpose**: Parallel research during development workflows
+- **Philosophy**: Don't waste time reinventing - learn from industry solutions first
+- **Use Cases**:
+  - Feature planning - Search architecture patterns and design approaches
+  - Bug debugging - Find solutions for errors and common problems
+  - Technology comparison - Research pros/cons of libraries and frameworks
+- **Key Benefit**: Runs independently without blocking main workflow, returns structured reports with comparisons and sources
+- **Install**: Copy `agents/tech-scout/` to `~/.claude/agents/` or install via marketplace
+
+[Learn more →](./agents/tech-scout/README.md) | [All Agents Documentation →](./agents/README.md)
 
 #### MCP Servers (Coming Soon)
 - Custom integrations
