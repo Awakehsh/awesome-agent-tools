@@ -131,6 +131,27 @@ for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
 
 [了解更多 →](../skills/learn/README.md)
 
+### 原创 Agents
+
+#### Claude Code Agents
+
+**用于专业化、可重复工作流的自定义 agent 配置，具有独立上下文。**
+
+- **什么是 Agents**：专业化的迷你代理，拥有独立的系统提示、工具权限和独立的上下文窗口
+- **核心优势**：
+  - 独立上下文防止污染主 agent
+  - 并行执行多个同时任务
+  - 自动路由 - Claude 智能委派工作
+  - 可扩展、可重复的工作流
+- **使用场景**：
+  - 基于特定标准的代码审查
+  - 测试生成和验证
+  - 大规模迁移和重构
+  - 并行分析多个模块
+- **平台支持**：仅 Claude Code（非跨平台）
+
+[了解更多 →](../agents/README.md)
+
 ### 原创 MCP 服务器
 
 即将推出：
@@ -189,9 +210,10 @@ Claude Code 有强大的内置功能：
 | 功能 | 说明 |
 |------|------|
 | **`/skills`** | 直接在 CLI 中创建自定义 skills |
+| **`/agents`** | 创建具有独立上下文的自定义 sub-agents（[了解更多](../agents/README.md)） |
 | **`CLAUDE.md`** | 项目记忆，防止重复犯错 |
 | **Slash Commands** | 在 `.claude/commands/` 中存储工作流实现自动化 |
-| **并行 Agents** | 运行多个 Claude 实例提升生产力 |
+| **并行 Agents** | 同时运行多个 agents 处理独立任务（[了解更多](../agents/README.md#triggering-parallel-agents)） |
 | **Plan Mode** | 修改前进行只读代码库分析 |
 
 **Anthropic 团队的专业技巧**：将错误添加到 CLAUDE.md，让 Claude 学习不再重复。

@@ -131,6 +131,27 @@ for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
 
 [Learn more →](./skills/learn/README.md)
 
+### Original Agents
+
+#### Claude Code Agents
+
+**Custom agent configurations for specialized, repeatable workflows with independent contexts.**
+
+- **What Are Agents**: Specialized mini-agents with own system prompts, tool permissions, and independent context windows
+- **Key Benefits**:
+  - Independent contexts prevent pollution of main agent
+  - Parallel execution for multiple simultaneous tasks
+  - Automatic routing - Claude delegates work intelligently
+  - Scalable, repeatable workflows
+- **Use Cases**:
+  - Code review with specific standards
+  - Test generation and validation
+  - Large-scale migrations and refactoring
+  - Parallel analysis of multiple modules
+- **Platform**: Claude Code only (not cross-platform)
+
+[Learn more →](./agents/README.md)
+
 ### Original MCP Servers
 
 Coming soon:
@@ -189,9 +210,10 @@ Claude Code has powerful built-in features you might not know:
 | Feature | Description |
 |---------|-------------|
 | **`/skills`** | Create custom skills directly in CLI |
+| **`/agents`** | Create custom sub-agents with independent contexts ([learn more](./agents/README.md)) |
 | **`CLAUDE.md`** | Project memory that prevents repeated mistakes |
 | **Slash Commands** | Store workflows in `.claude/commands/` for automation |
-| **Parallel Agents** | Run multiple Claude instances for compound productivity |
+| **Parallel Agents** | Run multiple agents simultaneously for independent tasks ([learn more](./agents/README.md#triggering-parallel-agents)) |
 | **Plan Mode** | Read-only codebase analysis before making changes |
 
 **Pro tip from Anthropic team**: Add mistakes to CLAUDE.md so Claude learns and doesn't repeat them.
