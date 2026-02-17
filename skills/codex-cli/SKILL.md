@@ -5,6 +5,12 @@ description: "Interact with OpenAI Codex CLI for plan review, code review, and c
 
 # Codex CLI Interaction Skill
 
+> **🚨 MANDATORY MODEL RULE — READ FIRST**:
+> - If the user specifies `--model <name>`, use **exactly** that model. Respect the user's choice.
+> - If the user does NOT specify a model, default to `-m gpt-5.2`.
+> - **NEVER** pick a model on your own. Do NOT substitute o3, o4-mini, or any other model you think is "better" — that is the user's decision, not yours.
+> - **NEVER** override the model via `-c model="..."` config parameter.
+
 Interact with OpenAI Codex CLI to leverage its powerful reasoning capabilities for plan review, code analysis, and complex problem discussions.
 
 > **⚠️ Naming Clarification**:
@@ -174,18 +180,20 @@ codex exec "test" -m gpt-5.2 --skip-git-repo-check
 
 ## Model Selection (Simple!)
 
-**Default: Always `gpt-5.2`** unless you specify `--model` flag.
+> **⚠️ CRITICAL RULE**: Use the model the user specifies via `--model`. If the user does NOT specify a model, always default to `-m gpt-5.2`. NEVER pick a different model on your own judgment.
 
-**Available models** (January 2026):
+**Default: `gpt-5.2`** when no `--model` is specified by the user.
+
+**Available models** (user must explicitly request via `--model`):
 
 | Model | When to Use |
 |-------|-------------|
-| `gpt-5.2` | **Default** - all tasks |
-| `gpt-5.2-codex` | Deep coding (user override with `--model`) |
-| `gpt-5.1-codex-max` | Complex migrations (user override) |
-| `gpt-5.1-codex-mini` | Budget-conscious (user override) |
+| `gpt-5.2` | **Default** - ALL tasks, ALWAYS |
+| `gpt-5.2-codex` | Code-optimized (only if user specifies `--model gpt-5.2-codex`) |
+| `gpt-5.1-codex-max` | Complex migrations (only if user specifies `--model`) |
+| `gpt-5.1-codex-mini` | Budget-conscious (only if user specifies `--model`) |
 
-> **Note**: Model names may change. If a model fails, it will fallback to `gpt-5.2`.
+> **Note**: Model names may change. If a model fails, fallback to `gpt-5.2`. NEVER fallback to o-series models.
 
 **Reasoning effort:**
 - Short questions (< 500 chars): `medium`
