@@ -103,7 +103,6 @@ Interact with OpenAI Codex CLI to leverage its powerful reasoning capabilities f
 **With custom model:**
 ```bash
 /codex-cli --model gpt-5.2-codex reviewplan       # Use code-optimized variant
-/codex-cli --model o3 ask "complex question"      # Use reasoning model
 ```
 
 **Default behavior:**
@@ -185,7 +184,6 @@ codex exec "test" -m gpt-5.2 --skip-git-repo-check
 | `gpt-5.2-codex` | Deep coding (user override with `--model`) |
 | `gpt-5.1-codex-max` | Complex migrations (user override) |
 | `gpt-5.1-codex-mini` | Budget-conscious (user override) |
-| `o3`, `o4-mini` | Reasoning tasks (user override) |
 
 > **Note**: Model names may change. If a model fails, it will fallback to `gpt-5.2`.
 

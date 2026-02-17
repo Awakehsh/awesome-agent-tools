@@ -119,9 +119,6 @@ cp -r awesome-agent-tools/skills/codex-cli ~/.claude/skills/
 ```bash
 # Use code-optimized model
 /codex-cli --model gpt-5.2-codex reviewplan
-
-# Use reasoning model for complex questions
-/codex-cli --model o3 ask "complex architecture question"
 ```
 
 ## Use Cases
@@ -193,7 +190,6 @@ cp -r awesome-agent-tools/skills/codex-cli ~/.claude/skills/
 | `gpt-5.2` | Default, general tasks |
 | `gpt-5.2-codex` | Code-optimized tasks |
 | `gpt-5.1-codex-max` | Complex migrations |
-| `o3`, `o4-mini` | Reasoning tasks |
 
 **Note**: Model availability may change. Check [OpenAI Models Documentation](https://platform.openai.com/docs/models) for latest information.
 
