@@ -6,10 +6,12 @@ description: "Interact with OpenAI Codex CLI for plan review, code review, and c
 # Codex CLI Interaction Skill
 
 > **🚨 MANDATORY MODEL RULE — READ FIRST**:
-> - If the user specifies `--model <name>`, use **exactly** that model. Respect the user's choice.
-> - If the user does NOT specify a model, default to `-m gpt-5.2`.
+> - If the user specifies a model, use **exactly** that model. Respect the user's choice.
+> - If the user does NOT specify a model, default to `gpt-5.2`.
+>   - For `codex exec` / `codex exec review`: use `-m gpt-5.2`
+>   - For `codex review` (top-level): use `-c model="gpt-5.2"` (this command has NO `-m` flag)
 > - **NEVER** pick a model on your own. Do NOT substitute o3, o4-mini, or any other model you think is "better" — that is the user's decision, not yours.
-> - **NEVER** override the model via `-c model="..."` config parameter.
+> - The `-c model="..."` syntax is **REQUIRED** for top-level `codex review`. It is NOT an override — it is the only way to set the model for that command.
 
 Interact with OpenAI Codex CLI to leverage its powerful reasoning capabilities for plan review, code analysis, and complex problem discussions.
 
@@ -96,6 +98,75 @@ Interact with OpenAI Codex CLI to leverage its powerful reasoning capabilities f
 
 **Recommendation**: Review OpenAI's [data usage policies](https://openai.com/policies/api-data-usage-policies) for API usage
 
+## CLI Flag Reference
+
+> **⚠️ CRITICAL: `codex review` and `codex exec review` have DIFFERENT flags!**
+> - `codex review`: Use `-c model="gpt-5.2"` (NO `-m` flag exists)
+> - `codex exec review`: Can use `-m gpt-5.2` OR `-c model="gpt-5.2"`
+> - When in doubt, use `codex review` with `-c` — it always works.
+
+### `codex review --help` (top-level review)
+```
+Usage: codex review [OPTIONS] [PROMPT]
+
+Options:
+  -c, --config <key=value>    Override config value (e.g., -c model="o3")
+      --uncommitted           Review staged, unstaged, and untracked changes
+      --base <BRANCH>         Review changes against the given base branch
+      --commit <SHA>          Review the changes introduced by a commit
+      --title <TITLE>         Optional commit title for the review summary
+      --enable <FEATURE>      Enable a feature
+      --disable <FEATURE>     Disable a feature
+  -h, --help                  Print help
+```
+
+### `codex exec --help` (non-interactive execution)
+```
+Usage: codex exec [OPTIONS] [PROMPT] [COMMAND]
+
+Subcommands: resume, review, help
+
+Options:
+  -m, --model <MODEL>         Model the agent should use
+  -c, --config <key=value>    Override config value
+  -s, --sandbox <MODE>        Sandbox policy (read-only, workspace-write, danger-full-access)
+  -i, --image <FILE>...       Attach image(s) to the prompt
+      --skip-git-repo-check   Allow running outside a Git repository
+      --full-auto             Low-friction sandboxed automatic execution
+      --ephemeral             Run without persisting session files
+      --enable <FEATURE>      Enable a feature
+      --disable <FEATURE>     Disable a feature
+  -h, --help                  Print help
+```
+
+### `codex exec review --help` (review via exec — inherits exec flags)
+```
+Usage: codex exec review [OPTIONS] [PROMPT]
+
+Options:
+  -m, --model <MODEL>         Model the agent should use      ← NOT available in top-level review!
+  -c, --config <key=value>    Override config value
+      --uncommitted           Review staged, unstaged, and untracked changes
+      --base <BRANCH>         Review changes against the given base branch
+      --commit <SHA>          Review the changes introduced by a commit
+      --title <TITLE>         Optional commit title for the review summary
+      --skip-git-repo-check   Allow running outside a Git repository
+      --full-auto             Low-friction sandboxed automatic execution
+  -h, --help                  Print help
+```
+
+### Flag Compatibility Matrix
+
+| Flag | `codex review` | `codex exec review` | `codex exec "prompt"` |
+|------|:-:|:-:|:-:|
+| `-m, --model` | **NO** | YES | YES |
+| `-c, --config` | YES | YES | YES |
+| `--uncommitted` | YES | YES | NO |
+| `--base` | YES | YES | NO |
+| `--commit` | YES | YES | NO |
+| `--sandbox` | NO | NO | YES |
+| `--skip-git-repo-check` | NO | YES | YES |
+
 ## Quick Start
 
 **Most common commands:**
@@ -180,7 +251,7 @@ codex exec "test" -m gpt-5.2 --skip-git-repo-check
 
 ## Model Selection (Simple!)
 
-> **⚠️ CRITICAL RULE**: Use the model the user specifies via `--model`. If the user does NOT specify a model, always default to `-m gpt-5.2`. NEVER pick a different model on your own judgment.
+> **⚠️ CRITICAL RULE**: Use the model the user specifies. If the user does NOT specify a model, default to `gpt-5.2`. For `codex exec`/`codex exec review` use `-m gpt-5.2`; for top-level `codex review` use `-c model="gpt-5.2"`. NEVER pick a different model on your own judgment.
 
 **Default: `gpt-5.2`** when no `--model` is specified by the user.
 
@@ -198,7 +269,7 @@ codex exec "test" -m gpt-5.2 --skip-git-repo-check
 **Reasoning effort:**
 - Short questions (< 500 chars): `medium`
 - Everything else: `high`
-- Critical tasks: `xhigh` (specify with `--reasoning xhigh`)
+- Critical tasks: `xhigh` (use `-c model_reasoning_effort="xhigh"`)
 
 ## Advanced Usage
 
@@ -212,28 +283,52 @@ codex exec "test" -m gpt-5.2 --skip-git-repo-check
 - Provide details when Codex requests
 - Max 4000 chars per submission
 
-## Command Templates (for internal use)
+## Recommended Command Forms
 
-### Plan Review
+> Always use these exact forms. Do NOT mix flags between commands.
+
+### Code Review (use top-level `codex review` — simplest and most reliable)
 ```bash
+# Review uncommitted changes
+codex review --uncommitted -c model="gpt-5.2" -c model_reasoning_effort="high"
+
+# Review changes vs a branch
+codex review --base main -c model="gpt-5.2" -c model_reasoning_effort="high"
+
+# Review a specific commit
+codex review --commit HEAD~1 -c model="gpt-5.2" -c model_reasoning_effort="high"
+```
+
+### Plan Review / Questions (use `codex exec` — supports `-m` and `--sandbox`)
+```bash
+# Plan review
 codex exec "Review this implementation plan: [plan content]
 Evaluate: technical soundness, risks, missing considerations, approval status" \
-  --skip-git-repo-check \
-  --sandbox read-only \
   -m gpt-5.2 \
-  -c model_reasoning_effort="high"
+  -c model_reasoning_effort="high" \
+  --sandbox read-only \
+  --skip-git-repo-check
+
+# Simple question
+codex exec "Quick question: [...]" \
+  -m gpt-5.2 \
+  -c model_reasoning_effort="medium" \
+  --sandbox read-only \
+  --skip-git-repo-check
 ```
 
-### Code Review
+### Alternative: Code Review via exec (if you need `-m` flag)
 ```bash
-codex exec review --uncommitted -m gpt-5.2 -c model_reasoning_effort="high"
+# Only use this form if you specifically need -m instead of -c model=
 codex exec review --base main -m gpt-5.2 -c model_reasoning_effort="high"
+codex exec review --uncommitted -m gpt-5.2 -c model_reasoning_effort="high"
 ```
 
-### Simple Question
-```bash
-codex exec "Quick question: [...]" -m gpt-5.2 -c model_reasoning_effort="medium" --skip-git-repo-check --sandbox read-only
-```
+> **⚠️ WARNING — Flag Mismatch Will Cause Errors:**
+> - `codex review -m gpt-5.2` → **WILL FAIL** (`-m` does not exist on top-level `codex review`)
+> - `codex review -c model="gpt-5.2"` → **CORRECT** (use `-c` for top-level review)
+> - `codex exec review -m gpt-5.2` → **CORRECT** (`-m` works on `exec review`)
+> - See the **CLI Flag Reference** section above for the full compatibility matrix.
 
 
 ## Code Context Handling
