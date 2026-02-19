@@ -104,6 +104,73 @@ for file in ~/CLAUDE.md ~/AGENTS.md ~/.cursorrules ~/.agentrules; do
     fi
 done
 
+# Search for Claude Code auto memory
+echo -e "${GREEN}🧠 Auto Memory (Claude Code)${NC}"
+echo "----------------------------------------"
+
+AUTO_MEMORY_COUNT=0
+# Resolve current project path for matching
+CURRENT_PROJECT_ABS=$(cd "$SEARCH_PATH" && pwd -P 2>/dev/null || echo "")
+# Claude Code encodes paths by replacing / with - and prefixing with -
+CURRENT_PROJECT_ENCODED=$(echo "$CURRENT_PROJECT_ABS" | sed 's|/|-|g')
+
+if [ -d "$HOME/.claude/projects" ]; then
+    while IFS= read -r file; do
+        if [ -f "$file" ]; then
+            size=$(wc -c < "$file" | tr -d ' ')
+            modified=$(stat -f "%Sm" -t "%Y-%m-%d %H:%M" "$file" 2>/dev/null || stat -c "%y" "$file" 2>/dev/null | cut -d. -f1)
+            lines=$(wc -l < "$file" | tr -d ' ')
+
+            # Extract project path from directory structure
+            project_path=$(echo "$file" | sed "s|$HOME/.claude/projects/||" | sed 's|/memory/.*||')
+
+            # Check if this matches the current project
+            is_current=""
+            if [ -n "$CURRENT_PROJECT_ENCODED" ] && [[ "$project_path" == *"$CURRENT_PROJECT_ENCODED"* ]]; then
+                is_current=" ${GREEN}← current project${NC}"
+            fi
+
+            echo -e "  ${GREEN}✓${NC} $file"
+            echo -e "    Platform: ${YELLOW}Claude Code (Auto Memory)${NC}"
+            echo -e "    Scope: ${YELLOW}Personal${NC}"
+            echo -e "    Project: ${project_path}${is_current}"
+            echo -e "    Size: ${size} bytes | Lines: ${lines}/200 (system prompt limit)"
+
+            if [ "$lines" -gt 180 ]; then
+                echo -e "    ${RED}⚠️  Approaching 200-line limit!${NC}"
+            fi
+
+            echo -e "    Modified: ${modified}"
+            echo ""
+
+            AUTO_MEMORY_COUNT=$((AUTO_MEMORY_COUNT + 1))
+        fi
+    done < <(find "$HOME/.claude/projects" -path "*/memory/MEMORY.md" -type f 2>/dev/null)
+
+    # Also find topic files in memory directories
+    while IFS= read -r file; do
+        basename_file=$(basename "$file")
+        if [ "$basename_file" != "MEMORY.md" ]; then
+            size=$(wc -c < "$file" | tr -d ' ')
+            modified=$(stat -f "%Sm" -t "%Y-%m-%d %H:%M" "$file" 2>/dev/null || stat -c "%y" "$file" 2>/dev/null | cut -d. -f1)
+            lines=$(wc -l < "$file" | tr -d ' ')
+
+            echo -e "  ${BLUE}•${NC} $file"
+            echo -e "    Type: Auto Memory topic file"
+            echo -e "    Size: ${size} bytes | Lines: ${lines}"
+            echo -e "    Modified: ${modified}"
+            echo ""
+
+            AUTO_MEMORY_COUNT=$((AUTO_MEMORY_COUNT + 1))
+        fi
+    done < <(find "$HOME/.claude/projects" -path "*/memory/*.md" -type f 2>/dev/null)
+fi
+
+if [ $AUTO_MEMORY_COUNT -eq 0 ]; then
+    echo -e "  ${YELLOW}No auto memory files found${NC}"
+    echo ""
+fi
+
 # Search for specialized documentation
 echo -e "${GREEN}📚 Specialized Documentation${NC}"
 echo "----------------------------------------"
@@ -155,9 +222,10 @@ fi
 echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "${GREEN}Summary${NC}"
 echo "----------------------------------------"
-echo -e "Primary Memory Files: ${GREEN}${PRIMARY_COUNT}${NC}"
+echo -e "Primary Memory Files: ${GREEN}${PRIMARY_COUNT}${NC} (shared)"
+echo -e "Auto Memory Files: ${GREEN}${AUTO_MEMORY_COUNT}${NC} (personal)"
 echo -e "Specialized Docs: ${BLUE}${SPECIALIZED_COUNT}${NC}"
-echo -e "Total: ${YELLOW}$((PRIMARY_COUNT + SPECIALIZED_COUNT))${NC}"
+echo -e "Total: ${YELLOW}$((PRIMARY_COUNT + AUTO_MEMORY_COUNT + SPECIALIZED_COUNT))${NC}"
 echo ""
 
 # Recommendations

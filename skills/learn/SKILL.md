@@ -23,12 +23,18 @@ Analyze conversations to identify valuable learnings, then:
 
 When invoked, automatically scan for these files:
 
-**Primary Memory Files** (global project rules):
+**Primary Memory Files** (global project rules — shared, Git-tracked):
 - `CLAUDE.md` - Claude Code project guidelines
 - `AGENTS.md` - Codex-compatible version
 - `.cursorrules` - Cursor IDE rules
 - `.agentrules` - Generic agent rules
 - `.agent/rules/project-rules.md` - Gemini/Antigravity rules
+
+**Auto Memory** (personal experience — Claude-only, NOT Git-tracked):
+- `~/.claude/projects/<project-path>/memory/MEMORY.md` - Claude Code auto memory
+- Auto-loaded into system prompt (first 200 lines)
+- Per-project, per-path scoping
+- For Claude's own cross-session experience notes
 
 **Specialized Documentation**:
 - `.agent/rules/*.md` - Domain-specific rules (API, workflows, etc.)
@@ -48,6 +54,13 @@ When invoked, automatically scan for these files:
 ls [PROJECT_DIR]/CLAUDE.md [PROJECT_DIR]/AGENTS.md [PROJECT_DIR]/.agent/rules/*.md 2>/dev/null
 ```
 
+**Scan auto memory**:
+```
+ls ~/.claude/projects/*/memory/MEMORY.md 2>/dev/null
+```
+- Match the auto memory path to current project directory
+- Check existing content and line count (200-line system prompt limit)
+
 **If no memory files found**:
 - Only record the learning (show analysis)
 - Do NOT propose file updates
@@ -55,10 +68,11 @@ ls [PROJECT_DIR]/CLAUDE.md [PROJECT_DIR]/AGENTS.md [PROJECT_DIR]/.agent/rules/*.
 
 **Output**: Memory file inventory with:
 - File path
-- File type (primary/specialized)
+- File type (primary/specialized/auto-memory)
 - Platform (Claude/Cursor/Codex/Gemini/Generic)
+- Scope (shared/personal)
 - Last modified date
-- File size
+- File size (and line count for auto memory)
 
 ---
 
@@ -114,6 +128,27 @@ Score each learning on three dimensions:
 
 ---
 
+### Shareability Classification
+
+**Before scoring, classify the learning's shareability** to determine target file type:
+
+| Shareability | Definition | Target | Examples |
+|-------------|------------|--------|----------|
+| **Shared** | Team/project rules, coding standards, architecture decisions | CLAUDE.md + sync | "Always use Bearer auth", "API rate limit is 100/min" |
+| **Personal** | Individual debugging experience, workflow preferences, Claude-specific patterns | Auto Memory | "User prefers TDD", "This codebase uses unusual import style" |
+| **Hybrid** | Broadly useful pattern discovered through personal experience | Both (condensed in CLAUDE.md, detailed in auto memory) | Complex debug retrospective with reusable fix |
+
+**Decision Heuristics**:
+- Would a **new team member** benefit from this? → **Shared** → CLAUDE.md
+- Is this about **how Claude should behave** in this project? → **Personal** → Auto Memory
+- Is this a **project convention** or **architectural decision**? → **Shared** → CLAUDE.md
+- Is this a **debugging pattern** or **troubleshooting shortcut**? → **Personal** → Auto Memory
+- Is this a **critical prevention rule** (avoid data loss, security)? → **Shared** → CLAUDE.md (regardless)
+
+**When Unsure**: Default to **Shared** (CLAUDE.md). It's better to over-share than to lose useful knowledge in personal notes.
+
+---
+
 ### Freshness-Adjusted Scoring
 
 **Purpose**: Prevent documentation bloat by automatically downgrading older learnings
@@ -165,26 +200,43 @@ else:
 **Decision Tree**:
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│           Learning Importance Score ≥ 18?              │
-└───────────────┬─────────────────────┬───────────────────┘
-                │ Yes                 │ No
-                ▼                     ▼
-    ┌───────────────────────┐   ┌──────────────────────┐
-    │  Update Primary Files │   │ Update Specialized   │
-    │  (CLAUDE.md, etc.)    │   │ Docs Only            │
-    └───────────┬───────────┘   └──────────────────────┘
-                │
-                ▼
-┌────────────────────────────────────────────────────────┐
-│         Detect Current Platform & Sync                 │
-├────────────────────────────────────────────────────────┤
-│  Current: Claude Code → Update CLAUDE.md first         │
-│  Found: AGENTS.md → Sync identical content             │
-│  Found: .cursorrules → Translate to Cursor format      │
-│  Found: .agent/rules/project-rules.md → Sync w/ prefix │
-└────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────┐
+│         Step A: Shareability Classification       │
+└──────────┬──────────────────┬─────────┬──────────┘
+           │ Shared           │ Personal│ Hybrid
+           ▼                  ▼         ▼
+   ┌──────────────┐  ┌─────────────┐  ┌──────────────────┐
+   │ Score-based  │  │ Auto Memory │  │ Both targets:    │
+   │ routing      │  │ (MEMORY.md) │  │ Summary→CLAUDE.md│
+   │ (see below)  │  │             │  │ Detail→MEMORY.md │
+   └──────┬───────┘  └─────────────┘  └──────────────────┘
+          ▼
+┌──────────────────────────────────────────────────┐
+│      Step B: Score-based Routing (Shared only)    │
+├──────────────────────────────────────────────────┤
+│  Score ≥ 18 → Primary files (CLAUDE.md + sync)   │
+│  Score 9-17 → Specialized docs only              │
+│  Score 5-8  → Aging section (review needed)       │
+│  Score < 5  → Archive candidate                   │
+└──────────┬───────────────────────────────────────┘
+           ▼
+┌──────────────────────────────────────────────────┐
+│      Step C: Platform Sync (Shared only)          │
+├──────────────────────────────────────────────────┤
+│  Current: Claude Code → Update CLAUDE.md first    │
+│  Found: AGENTS.md → Sync identical content        │
+│  Found: .cursorrules → Translate to Cursor format │
+│  Found: .agent/rules/ → Sync w/ prefix            │
+└──────────────────────────────────────────────────┘
 ```
+
+**Auto Memory Routing Rules**:
+- Target: `~/.claude/projects/<project-path>/memory/MEMORY.md`
+- Max 200 lines (system prompt truncation limit)
+- Use concise format: topic files for details, link from MEMORY.md
+- If MEMORY.md approaching 200 lines: create topic file (e.g., `debugging.md`) and link
+- Never sync auto memory to other platforms (Claude-only feature)
+- Auto memory entries do NOT need metadata/freshness scoring (managed by Claude itself)
 
 **Platform Translation Rules**:
 
@@ -339,14 +391,16 @@ Before any modification, present:
 ## 📝 Learning Analysis Complete
 
 ### Discovered Memory Files
-- ✅ CLAUDE.md (primary, Claude Code)
-- ✅ AGENTS.md (primary, Codex)
+- ✅ CLAUDE.md (primary, Claude Code, shared)
+- ✅ AGENTS.md (primary, Codex, shared)
 - ⚠️ .cursorrules (not found, will create if needed)
-- ✅ .agent/rules/api-patterns.md (specialized)
+- ✅ .agent/rules/api-patterns.md (specialized, shared)
+- ✅ ~/.claude/projects/.../memory/MEMORY.md (auto memory, personal)
 
 ### Extracted Learning
 
 **Type**: [Error Resolution | Design Pattern | Workflow Improvement]
+**Shareability**: [Shared | Personal | Hybrid]
 **Base Score**: [X/27] (S:[X] × I:[X] × R:[X])
 **Freshness**: 1.0 (new learning, 0 months old)
 **Final Score**: [X/27] (base × freshness)
@@ -382,6 +436,11 @@ Review with `/learn --review` after 6 months to verify relevance.
 + [Same content with Codex-specific adjustments]
 ```
 
+#### 🧠 Auto Memory: MEMORY.md (if personal/hybrid)
+```diff
++ [Concise experience note for Claude's cross-session reference]
+```
+
 #### 📚 Navigation: CLAUDE.md (end of file)
 ```diff
 + - [New Doc Title](path) - Brief description
@@ -405,13 +464,17 @@ Options:
 
 ### Sync Execution Order
 
-1. **Update primary file first** (e.g., CLAUDE.md)
-2. **Sync to compatible platforms**:
+1. **Update auto memory first** (if personal/hybrid learning)
+   - Write to `~/.claude/projects/<path>/memory/MEMORY.md`
+   - Or create topic file and link from MEMORY.md
+   - **Auto memory is NEVER synced to other platforms**
+2. **Update primary file** (if shared/hybrid learning, e.g., CLAUDE.md)
+3. **Sync to compatible platforms**:
    - AGENTS.md (content identical)
    - .agent/rules/project-rules.md (add compatibility note)
-3. **Translate to different formats**:
+4. **Translate to different formats**:
    - .cursorrules (if exists, translate format)
-4. **Update navigation** in all primary files
+5. **Update navigation** in all primary files
 
 ### Sync Verification
 
@@ -606,11 +669,14 @@ Do you approve all updates?
 
 Before presenting to user, verify:
 
-- [ ] All memory files discovered and categorized
+- [ ] All memory files discovered and categorized (including auto memory)
+- [ ] Shareability classified (shared/personal/hybrid)
 - [ ] Conversation timeline accurately reconstructed
 - [ ] Importance score calculated with reasoning
 - [ ] Learning formatted in compact style (≤30 lines)
+- [ ] Correct target selected (CLAUDE.md vs auto memory vs both)
 - [ ] Sync strategy identified (which files need updates)
+- [ ] Auto memory line count checked (≤200 lines for MEMORY.md)
 - [ ] Navigation updates prepared (if score ≥18)
 - [ ] Diff format clear and readable
 - [ ] User approval requested explicitly
@@ -624,20 +690,27 @@ Before presenting to user, verify:
 - Request user approval before ANY file modification
 - Follow compact format rules (telegraphic, lists, symbols)
 - Detect and sync all primary memory files
+- Discover auto memory directory for current project
+- Classify shareability (shared/personal/hybrid) before routing
 - Include navigation updates for high-importance learnings
 - Verify documentation errors before reporting
+- Respect auto memory's 200-line limit for MEMORY.md
 
 **MUST NOT**:
 - Modify files without explicit approval
 - Exceed length limits (30 lines/entry, 50 lines/update)
 - Create new files without asking
 - Assume sync requirements without checking file existence
+- Sync auto memory content to other platforms (Claude-only)
+- Write shared project rules to auto memory (use CLAUDE.md)
 
 **SHOULD**:
 - Prioritize global learnings over local edge cases
-- Explain reasoning behind classification and routing
+- Explain reasoning behind shareability classification
 - Offer alternative update locations if ambiguous
 - Preserve existing documentation style
+- Use topic files in auto memory for detailed notes, link from MEMORY.md
+- Default to "Shared" (CLAUDE.md) when shareability is unclear
 
 ---
 

@@ -6,13 +6,14 @@ This reference documents the differences between memory files across different A
 
 ## Overview
 
-| Platform | Primary File | Format | Sync Strategy |
-|----------|-------------|--------|---------------|
-| Claude Code | `CLAUDE.md` | Markdown | Source of truth |
-| Codex | `AGENTS.md` | Markdown | Identical content |
-| Cursor | `.cursorrules` | Cursor-specific | Format translation |
-| Gemini (Antigravity) | `.agent/rules/project-rules.md` | Markdown | Content + prefix |
-| Generic | `.agentrules` | Markdown | Identical content |
+| Platform | Primary File | Format | Sync Strategy | Scope |
+|----------|-------------|--------|---------------|-------|
+| Claude Code | `CLAUDE.md` | Markdown | Source of truth | Shared |
+| Claude Code | `~/.claude/projects/<path>/memory/MEMORY.md` | Markdown | No sync (personal) | Personal |
+| Codex | `AGENTS.md` | Markdown | Identical content | Shared |
+| Cursor | `.cursorrules` | Cursor-specific | Format translation | Shared |
+| Gemini (Antigravity) | `.agent/rules/project-rules.md` | Markdown | Content + prefix | Shared |
+| Generic | `.agentrules` | Markdown | Identical content | Shared |
 
 ---
 
@@ -47,6 +48,55 @@ This reference documents the differences between memory files across different A
 - Use `.claude/` for Claude-specific paths
 - Skills: `/skill-name`
 - Plugins: References to Claude plugins
+
+---
+
+## Auto Memory (Claude Code)
+
+**Location**: `~/.claude/projects/<project-path>/memory/MEMORY.md`
+
+**Format**: Standard Markdown, concise notes
+
+**Characteristics**:
+- Auto-loaded into Claude's system prompt (first 200 lines of MEMORY.md)
+- Per-project, per-path scoping (different projects have different memory)
+- NOT Git-tracked — lives in Claude's local config directory
+- Written by Claude itself, not by users or other tools
+- Persists across conversation sessions
+
+**Structure**:
+```markdown
+# Project Patterns
+
+## Debugging
+- This codebase uses unusual import aliasing: `import X as Y`
+- Database migrations require running `make migrate` before tests
+
+## User Preferences
+- User prefers TDD workflow
+- Always respond in Chinese
+
+## Links
+- [Detailed debugging notes](debugging.md)
+- [API patterns discovered](api-notes.md)
+```
+
+**Content Guidelines**:
+- Keep MEMORY.md under 200 lines (system prompt truncation)
+- Use topic files (e.g., `debugging.md`, `patterns.md`) for detailed notes
+- Link topic files from MEMORY.md
+- Focus on experience-based knowledge, not project rules
+
+**What Belongs Here** (vs CLAUDE.md):
+
+| Auto Memory | CLAUDE.md |
+|-------------|-----------|
+| "User prefers concise output" | "Use ESLint with Airbnb config" |
+| "Debug pattern: check Redis connection first" | "API rate limit is 100 req/min" |
+| "This codebase's test runner needs `--forceExit`" | "Always run tests before committing" |
+| "Common pitfall: forgot to update the index" | "Architecture: hexagonal pattern" |
+
+**Sync Strategy**: Never synced. Auto memory is Claude-only and personal.
 
 ---
 
@@ -178,13 +228,14 @@ This reference documents the differences between memory files across different A
 
 ### Content Sync
 
-| Source Section | AGENTS.md | .cursorrules | .agent/rules/ | .agentrules |
-|----------------|-----------|--------------|---------------|-------------|
-| Core Rules | ✅ Identical | ⚡ Simplified | ✅ Identical | ✅ Identical |
-| Workflows | ✅ Identical | ⚡ Simplified | ✅ Identical | ✅ Identical |
-| Architecture | ✅ Identical | ⚡ Simplified | ✅ Identical | ✅ Identical |
-| Tool Paths | 🔄 Translate | ❌ Remove | 🔄 Translate | ❌ Remove |
-| Platform Notes | ✅ Add Codex note | ❌ Skip | ✅ Add Gemini note | ❌ Skip |
+| Source Section | AGENTS.md | .cursorrules | .agent/rules/ | .agentrules | Auto Memory |
+|----------------|-----------|--------------|---------------|-------------|-------------|
+| Core Rules | ✅ Identical | ⚡ Simplified | ✅ Identical | ✅ Identical | ❌ Not synced |
+| Workflows | ✅ Identical | ⚡ Simplified | ✅ Identical | ✅ Identical | ❌ Not synced |
+| Architecture | ✅ Identical | ⚡ Simplified | ✅ Identical | ✅ Identical | ❌ Not synced |
+| Tool Paths | 🔄 Translate | ❌ Remove | 🔄 Translate | ❌ Remove | N/A |
+| Platform Notes | ✅ Add Codex note | ❌ Skip | ✅ Add Gemini note | ❌ Skip | N/A |
+| Personal Notes | ❌ Skip | ❌ Skip | ❌ Skip | ❌ Skip | ✅ Target |
 
 **Legend**:
 - ✅ Keep identical
@@ -366,4 +417,4 @@ diff -u CLAUDE.md AGENTS.md | grep -E "^\+|^\-" | grep -v "^+++\|^---"
 
 ---
 
-*Last updated: 2026-01-18*
+*Last updated: 2026-02-19*

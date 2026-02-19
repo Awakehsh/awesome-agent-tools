@@ -48,7 +48,8 @@
 1. 🔍 Memory File Discovery
    ├─ Scan project directory
    ├─ Check home directory
-   └─ Categorize by platform & purpose
+   ├─ Discover auto memory path
+   └─ Categorize by platform, purpose & scope
 
 2. 📊 Conversation Analysis
    ├─ Reconstruct timeline
@@ -56,14 +57,16 @@
    └─ Detect problem-solving patterns
 
 3. 📏 Learning Classification
+   ├─ Shareability: Shared vs Personal vs Hybrid
    ├─ Score: Scope × Impact × Reusability
    ├─ Threshold: 18+ = primary files
-   └─ Route to appropriate docs
+   └─ Route to appropriate target
 
 4. 🎯 Document Routing
-   ├─ High importance → CLAUDE.md + sync
-   ├─ Domain-specific → .agent/rules/*.md
-   └─ Platform-specific → .cursorrules, etc.
+   ├─ Shared + high importance → CLAUDE.md + sync
+   ├─ Shared + domain-specific → .agent/rules/*.md
+   ├─ Personal → Auto Memory (MEMORY.md)
+   └─ Hybrid → Both (summary + detail)
 
 5. ✍️ LLM-Friendly Drafting
    ├─ Telegraphic language
@@ -89,7 +92,7 @@
 
 ## Supported Memory Files
 
-### Primary Memory Files (Global Rules)
+### Primary Memory Files (Shared — Git-tracked, team-visible)
 
 | File | Platform | Auto-Sync |
 |------|----------|-----------|
@@ -98,6 +101,24 @@
 | `.cursorrules` | Cursor | ⚠️ Format translation |
 | `.agentrules` | Generic | ✅ Yes |
 | `.agent/rules/project-rules.md` | Gemini | ✅ Yes |
+
+### Auto Memory (Personal — NOT Git-tracked, Claude-only)
+
+| File | Platform | Auto-Sync |
+|------|----------|-----------|
+| `~/.claude/projects/<path>/memory/MEMORY.md` | Claude Code | ❌ No (personal) |
+
+**Auto Memory vs CLAUDE.md**:
+
+| Aspect | CLAUDE.md | Auto Memory |
+|--------|-----------|-------------|
+| **Audience** | All developers + AI | Claude only |
+| **Scope** | Project rules & conventions | Personal experience & patterns |
+| **Git tracked** | ✅ Yes | ❌ No |
+| **Cross-platform** | ✅ Synced to AGENTS.md etc. | ❌ Claude Code only |
+| **Who writes** | User or tools | Claude itself |
+| **Limit** | No hard limit | 200 lines in MEMORY.md |
+| **Examples** | "Use Bearer auth", "API rate limit is 100/min" | "User prefers TDD", "Debug pattern for this codebase" |
 
 ### Specialized Documentation
 
@@ -184,11 +205,15 @@ Verify: `curl /health` returns 200
 ### Sync Strategy
 
 ```
-CLAUDE.md (updated)
-    ↓
-    ├─→ AGENTS.md (identical content)
-    ├─→ .agent/rules/project-rules.md (+ Gemini prefix)
-    └─→ .cursorrules (translate format if needed)
+Learning classified
+    ├─ Shared/Hybrid ──→ CLAUDE.md (updated)
+    │                        ↓
+    │                        ├─→ AGENTS.md (identical content)
+    │                        ├─→ .agent/rules/project-rules.md (+ Gemini prefix)
+    │                        └─→ .cursorrules (translate format if needed)
+    │
+    └─ Personal/Hybrid ──→ Auto Memory (MEMORY.md)
+                             └─→ NOT synced (Claude-only)
 ```
 
 ### Platform Differences
@@ -399,6 +424,23 @@ Healthy documentation targets:
 - Already well-documented
 - Trivial/obvious patterns
 
+### Choosing the Right Target
+
+**→ CLAUDE.md** (shared):
+- ✅ Team coding standards and conventions
+- ✅ Architecture decisions
+- ✅ API contracts and rate limits
+- ✅ Critical prevention rules (security, data loss)
+
+**→ Auto Memory** (personal):
+- ✅ User workflow preferences ("prefers TDD", "likes concise output")
+- ✅ Debugging shortcuts for this specific codebase
+- ✅ Claude-specific behavioral notes
+- ✅ Patterns observed across multiple sessions
+
+**→ Both** (hybrid):
+- ✅ Complex debug retrospective → summary in CLAUDE.md, detail in auto memory
+
 ### Writing Effective Learnings
 
 **DO**:
@@ -406,12 +448,15 @@ Healthy documentation targets:
 - ✅ Focus on reusable patterns
 - ✅ Include verification steps
 - ✅ Link related docs
+- ✅ Classify shareability before choosing target
 
 **DON'T**:
 - ❌ Document one-time fixes
 - ❌ Use verbose prose
 - ❌ Duplicate existing content
 - ❌ Skip root cause analysis
+- ❌ Put shared project rules in auto memory
+- ❌ Exceed 200 lines in MEMORY.md (use topic files)
 
 ---
 
@@ -535,6 +580,13 @@ Found a bug or have suggestions?
 ---
 
 ## Changelog
+
+### v1.1.0 (2026-02-19)
+- Add Claude Code auto memory support (`~/.claude/projects/*/memory/`)
+- Add shareability classification (shared/personal/hybrid)
+- Update routing logic to distinguish CLAUDE.md vs auto memory
+- Add auto memory discovery and line-count awareness
+- Update sync strategy: auto memory excluded from cross-platform sync
 
 ### v1.0.0 (2026-01-18)
 - Initial release
