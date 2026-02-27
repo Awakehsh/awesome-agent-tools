@@ -97,6 +97,13 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Description: Official GitHub MCP implementation
   - Features: Complete GitHub API integration
 
+- **[GitNexus](https://github.com/abhigyanpatwari/GitNexus)** by abhigyanpatwari
+  - Description: Client-side knowledge graph engine that indexes codebases into a structured graph database, providing AI agents with deep architecture understanding via MCP
+  - Install: `claude mcp add gitnexus -- npx -y gitnexus@latest mcp`
+  - Features: 7 MCP tools (query, context, impact, detect_changes, rename, cypher, list_repos), hybrid search (BM25 + semantic), 9 languages (TS/JS/Python/Java/C/C++/C#/Go/Rust), execution flow tracing, community detection
+  - Supports: Claude Code (MCP + Skills + Hooks), Cursor, Windsurf, OpenCode
+  - Note: License is PolyForm Noncommercial 1.0.0 (free for non-commercial use only)
+
 ## 🛠️ Related Tools and Resources
 
 ### Marketplaces and Plugin Registries
@@ -161,4 +168,4 @@ Please ensure you include:
 
 ---
 
-**Last Updated**: 2026-01-18
+**Last Updated**: 2026-02-27
