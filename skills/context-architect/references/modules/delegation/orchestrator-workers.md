@@ -255,6 +255,71 @@ After step 1 results:
 - User provides additional requirements mid-execution
 ```
 
+## Context Isolation
+
+**Principle:** Each agent should operate in a clean context window with only task-relevant information. This prevents context rot and ensures focused reasoning.
+
+### Context Distribution
+
+```markdown
+### What Each Agent Sees
+
+**Orchestrator context:**
+- High-level task description and goals
+- Worker capabilities and specializations
+- Aggregated summaries from completed workers
+- Current plan state and remaining tasks
+- Does NOT see: Raw worker tool outputs, detailed worker reasoning
+
+**Worker context:**
+- Focused task instruction (from delegation message)
+- Tools relevant to this specific task only
+- Input data needed for this task only
+- Does NOT see: Other workers' tasks, full conversation history, orchestrator's planning
+
+**Evaluator context:**
+- Output to evaluate
+- Evaluation criteria and rubrics
+- Does NOT see: How the output was produced, worker tool calls
+```
+
+### Summary Constraints
+
+```markdown
+### Worker Summary Requirements
+
+**Max tokens:** 1,000-2,000 tokens per worker summary
+**Must be self-contained:** Readable without worker's full context
+
+**Required sections:**
+- Task: What was asked (1-2 sentences)
+- Findings: Key results (bulleted list)
+- Decisions: Choices made and why (if applicable)
+- Issues: Problems encountered (if any)
+- Recommendation: Next steps (if applicable)
+
+**Example summary (good — ~300 tokens):**
+Task: Research React authentication patterns for SPAs.
+Findings:
+- JWT with httpOnly cookies is the current best practice
+- OAuth 2.0 PKCE flow recommended for third-party auth
+- Session-based auth still viable for server-rendered apps
+Decisions: Focused on SPA patterns per task scope.
+Issues: Limited recent data on React 19 auth patterns.
+Recommendation: Use JWT + httpOnly cookies with refresh token rotation.
+
+**Anti-pattern (bad — 5,000+ tokens):**
+[Entire search history, raw API responses, full code examples, verbose reasoning...]
+```
+
+### Benefits of Context Isolation
+
+1. **Prevents context rot** — Each agent has a focused, high-signal context
+2. **Enables parallelism** — Agents don't need to wait for shared context
+3. **Reduces costs** — Smaller context windows = fewer tokens processed
+4. **Improves quality** — Agents reason better with focused information
+5. **Enables scaling** — Add more agents without degrading existing ones
+
 ## Parameters to Customize
 
 - Worker types and specializations
@@ -264,3 +329,5 @@ After step 1 results:
 - Success criteria templates
 - Output format standards
 - Communication protocol details
+- Summary token limit (default: 1,500)
+- Context isolation level (strict / relaxed)

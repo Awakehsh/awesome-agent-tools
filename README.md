@@ -143,20 +143,20 @@ Open-source contributions from this repository:
 
 #### Skills (3)
 
-##### system-prompt-architect
+##### context-architect
 
-**System prompt engineering tool for building single and multi-agent systems with modular templates.**
+**Context engineering tool for building AI agent systems — design system prompts, tool sets, examples, and runtime context management.**
 
-- **Purpose**: Transform requirements into production-ready system prompts through guided workflows
-- **Philosophy**: Modular composition + proven patterns + dynamic research for optimal agent design
+- **Purpose**: Transform requirements into production-ready Context Engineering Packages through guided workflows
+- **Philosophy**: Context-first design — manage the entire information state (prompts, tools, examples, retrieval, compaction), not just instructions
 - **Use Cases**:
-  - Design multi-agent orchestration systems (orchestrator-workers, evaluator-optimizer)
-  - Create structured single-agent workflows with proper role definition
-  - Export platform-agnostic prompts (Markdown, JSON, YAML, XML, Plain Text)
-- **Key Benefit**: Reduces prompt engineering time from hours to minutes with battle-tested templates
-- **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/system-prompt-architect`
+  - Design multi-agent orchestration systems with context isolation and sub-agent summary constraints
+  - Plan token budgets, tool sets, and few-shot examples with engineering rigor
+  - Manage long-horizon agent sessions with compaction, note-taking, and Just-in-Time retrieval strategies
+- **Key Benefit**: Goes beyond prompt engineering to full context engineering — based on [Anthropic's context engineering research](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+- **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/context-architect`
 
-[Learn more →](./skills/system-prompt-architect/README.md)
+[Learn more →](./skills/context-architect/README.md)
 
 ##### codex-cli
 

@@ -143,20 +143,20 @@ for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
 
 #### Skills (3)
 
-##### system-prompt-architect
+##### context-architect
 
-**用于构建单体和多 agent 系统的系统提示词工程工具，配备模块化模板。**
+**AI Agent 系统的上下文工程工具 — 设计系统提示词、工具集、示例策略和运行时上下文管理。**
 
-- **目的**：通过引导式工作流将需求转化为生产就绪的系统提示词
-- **理念**：模块化组合 + 经过验证的模式 + 动态研究，实现最佳 agent 设计
+- **目的**：通过引导式工作流将需求转化为生产就绪的 Context Engineering Package
+- **理念**：上下文优先设计 — 管理整个信息状态（提示词、工具、示例、检索、压缩），而非仅仅编写指令
 - **使用场景**:
-  - 设计多 agent 编排系统（orchestrator-workers、evaluator-optimizer）
-  - 创建结构化的单 agent 工作流，正确定义角色
-  - 导出跨平台的提示词（Markdown、JSON、YAML、XML、纯文本）
-- **核心优势**：利用久经考验的模板，将提示词工程时间从数小时缩短到数分钟
-- **安装**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/system-prompt-architect`
+  - 设计具有上下文隔离和子 agent 摘要约束的多 agent 编排系统
+  - 以工程化方式规划 token 预算、工具集和 few-shot 示例
+  - 通过压缩、笔记和即时检索策略管理长期运行的 agent 会话
+- **核心优势**：从提示词工程升级到完整的上下文工程 — 基于 [Anthropic 上下文工程研究](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+- **安装**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/context-architect`
 
-[了解更多 →](../skills/system-prompt-architect/README.md)
+[了解更多 →](../skills/context-architect/README.md)
 
 ##### codex-cli
 **在 Claude Code 中调用 OpenAI Codex CLI 进行计划审查和代码分析。**
