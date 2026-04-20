@@ -104,6 +104,13 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Supports: Claude Code (MCP + Skills + Hooks), Cursor, Windsurf, OpenCode
   - Note: License is PolyForm Noncommercial 1.0.0 (free for non-commercial use only)
 
+- **[Helium MCP](https://github.com/connerlambden/helium-mcp)** by connerlambden
+  - Description: MCP server providing 9 tools for real-time news with bias scoring across 5,000+ sources and 15+ dimensions, live market data, AI options pricing, balanced news synthesis, and meme search
+  - Install: `claude mcp add helium-mcp -- npx -y helium-mcp`
+  - Features: Real-time news search with political/epistemic bias scoring, live stock/crypto/options market data, AI-powered options pricing, balanced multi-perspective news synthesis, meme search, no auth required, 50 free queries per network
+  - Supports: Claude Code, Cursor, Windsurf, Codex, and any MCP-compatible client
+  - Website: [heliumtrades.com/mcp-page](https://heliumtrades.com/mcp-page/)
+
 ## 🛠️ Related Tools and Resources
 
 ### Marketplaces and Plugin Registries
