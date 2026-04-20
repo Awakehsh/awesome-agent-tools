@@ -21,6 +21,31 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Install: `claude skill add https://github.com/anthropics/skills/tree/main/pdf`
   - Features: PDF text extraction, image conversion, form filling
 
+- **[pptx](https://github.com/anthropics/skills/tree/main/pptx)** by Anthropic
+  - Description: Create and edit PowerPoint presentations programmatically
+  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/pptx`
+  - Features: Slide creation, layouts, speaker notes, template support
+
+- **[xlsx](https://github.com/anthropics/skills/tree/main/xlsx)** by Anthropic
+  - Description: Create and edit Excel/CSV spreadsheets programmatically
+  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/xlsx`
+  - Features: Workbook generation, formulas, formatting, data import/export
+
+- **[docx](https://github.com/anthropics/skills/tree/main/docx)** by Anthropic
+  - Description: Create and edit Word documents programmatically
+  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/docx`
+  - Features: Structured authoring, styles, tables, review workflows
+
+- **[mcp-builder](https://github.com/anthropics/skills/tree/main/mcp-builder)** by Anthropic
+  - Description: Meta-skill that guides building high-quality MCP servers (Python FastMCP or TypeScript SDK)
+  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/mcp-builder`
+  - Features: Scaffolding, best-practice patterns, validation helpers
+
+- **[webapp-testing](https://github.com/anthropics/skills/tree/main/webapp-testing)** by Anthropic
+  - Description: Playwright-based toolkit for testing and debugging local web applications
+  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/webapp-testing`
+  - Features: Browser automation, UI verification, screenshot capture, console/log inspection
+
 ### Community Skills Collections
 
 - **[awesome-agent-skills](https://github.com/heilcheng/awesome-agent-skills)** by heilcheng
@@ -87,10 +112,22 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Description: Knowledge graph persistent memory server
   - Features: Store and retrieve contextual information
 
+- **[sequentialthinking](https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking)** by MCP Official
+  - Description: Structured multi-step reasoning tool for complex problem solving
+  - Features: Step sequencing, revision, branching thought chains
+
+- **[time](https://github.com/modelcontextprotocol/servers/tree/main/src/time)** by MCP Official
+  - Description: Timezone conversion and current-time queries
+  - Features: IANA timezone support, formatted output, lightweight utility
+
 ### Community MCP Servers
 
+- **[awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)** by punkpeye
+  - Description: Most active MCP server directory (85k+ stars, 1,500+ contributors)
+  - Includes: Production-ready and experimental MCP servers across all categories
+
 - **[awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers)** by wong2
-  - Description: Curated collection of MCP servers
+  - Description: Long-standing curated collection of MCP servers (alternative directory)
   - Includes: Production-ready and experimental MCP servers
 
 - **[GitHub MCP Server](https://github.com/github/github-mcp-server)** by GitHub Official
@@ -105,11 +142,31 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Note: License is PolyForm Noncommercial 1.0.0 (free for non-commercial use only)
 
 - **[Helium MCP](https://github.com/connerlambden/helium-mcp)** by connerlambden
-  - Description: MCP server providing 9 tools for real-time news with bias scoring across 5,000+ sources and 15+ dimensions, live market data, AI options pricing, balanced news synthesis, and meme search
+  - Description: MCP server for real-time news with bias scoring (5,000+ sources, 15+ dimensions), live stock/crypto/options market data, AI options pricing, and meme search
   - Install: `claude mcp add helium-mcp -- npx -y helium-mcp`
-  - Features: Real-time news search with political/epistemic bias scoring, live stock/crypto/options market data, AI-powered options pricing, balanced multi-perspective news synthesis, meme search, no auth required, 50 free queries per network
+  - Features: 9 tools (news search, balanced synthesis, source/URL bias analysis, ticker data, option pricing/strategies, meme search), no auth required, free tier available
   - Supports: Claude Code, Cursor, Windsurf, Codex, and any MCP-compatible client
   - Website: [heliumtrades.com/mcp-page](https://heliumtrades.com/mcp-page/)
+
+- **[playwright-mcp](https://github.com/microsoft/playwright-mcp)** by Microsoft
+  - Description: Official browser-automation MCP server using Playwright's accessibility tree for reliable, LLM-friendly web interaction (31k+ stars)
+  - Install: `claude mcp add playwright -- npx -y @playwright/mcp@latest`
+  - Features: Accessibility-first automation (no screenshots needed), form interaction, navigation, console/network inspection, Apache-2.0
+  - Note: Recommended successor to the archived puppeteer reference server
+
+- **[mcp-server-cloudflare](https://github.com/cloudflare/mcp-server-cloudflare)** by Cloudflare
+  - Description: Official Cloudflare MCP servers covering Workers, KV, D1, R2, Observability, and more (13 sub-servers)
+  - Features: Remote/hosted deployment, OAuth support, per-service granularity, Apache-2.0
+
+- **[exa-mcp-server](https://github.com/exa-labs/exa-mcp-server)** by Exa Labs
+  - Description: Semantic web search and crawling via the Exa API — a high-quality replacement for the archived brave-search reference server
+  - Install: `claude mcp add exa -- npx -y exa-mcp-server`
+  - Features: Neural search, content extraction, domain filtering, research workflows
+  - Note: Requires Exa API key
+
+- **[sentry-mcp](https://github.com/getsentry/sentry-mcp)** by Sentry
+  - Description: Official Sentry error-tracking and observability MCP server (remote, OAuth-based)
+  - Features: Issue search, stack-trace inspection, release/deploy correlation, hosted remote MCP (no local install)
 
 ## 🛠️ Related Tools and Resources
 
@@ -128,6 +185,9 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
 
 - **[MCP SDK](https://github.com/modelcontextprotocol/typescript-sdk)**
   - TypeScript SDK for building MCP servers
+
+- **[FastMCP](https://github.com/jlowin/fastmcp)** by jlowin
+  - Python framework for building MCP servers and clients (24k+ stars, Apache-2.0) — de-facto standard for Python MCP development
 
 ### Cursor Related
 
@@ -175,4 +235,4 @@ Please ensure you include:
 
 ---
 
-**Last Updated**: 2026-02-27
+**Last Updated**: 2026-04-20
