@@ -68,6 +68,11 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Features: Reflexion (reflection loops), scientifically proven techniques, 8-21% quality improvement, token-efficient
   - Plugins: reflexion, memorize, critique with multi-agent debate
 
+- **[agenttrace](https://github.com/luoyuctl/agenttrace)** by luoyuctl
+  - Description: Local TUI observability for AI coding agent sessions across cost, tokens, latency, failures, and reports
+  - Install: `go install github.com/luoyuctl/agenttrace/cmd/agenttrace@latest`
+  - Features: Supports Claude Code, Codex CLI, Gemini CLI, Aider, Cursor exports, health checks, anomaly detection, and CI gates
+
 ### Workflow & Automation Skills
 
 - **[ralph-loop](https://github.com/anthropics/claude-plugins-official)** by Anthropic Official
