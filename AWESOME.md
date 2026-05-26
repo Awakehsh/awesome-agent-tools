@@ -82,6 +82,16 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Use Cases: Greenfield development, automated testing workflows, tasks with clear success criteria
   - Note: Real-world impact - $50k contract completed for ~$297 in API costs
 
+### Planning & Design Skills
+
+- **[grill-me](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me)** by Matt Pocock
+  - Description: Interviews you relentlessly about a plan or design until reaching shared understanding, walking down each branch of the decision tree one question at a time
+  - Install: `npx skills@latest add mattpocock/skills` (then select `grill-me`)
+  - Features: One-question-at-a-time interviewing, recommended answer for every question, falls back to codebase exploration when an answer can be derived from code
+  - Use Cases: Stress-testing a plan before implementation, surfacing unstated assumptions, resolving dependencies between design decisions
+  - Trigger: Mention "grill me" or ask to stress-test a design
+  - Note: Part of Matt Pocock's broader [Skills For Real Engineers](https://github.com/mattpocock/skills) collection
+
 ### Universal Installers
 
 - **[ai-agent-skills](https://github.com/skillcreatorai/Ai-Agent-Skills)** by skillcreatorai
@@ -240,4 +250,4 @@ Please ensure you include:
 
 ---
 
-**Last Updated**: 2026-04-20
+**Last Updated**: 2026-05-26
