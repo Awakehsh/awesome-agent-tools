@@ -67,6 +67,35 @@
         "prompts",
         "architecture"
       ]
+    },
+    {
+      "name": "handoff",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Awakehsh/awesome-agent-tools.git",
+        "path": "commands/handoff"
+      },
+      "description": "Slash command that generates a structured 8-section handoff to pass mid-task work between coding agents",
+      "author": {
+        "name": "Awakehsh"
+      },
+      "homepage": "https://github.com/Awakehsh/awesome-agent-tools/tree/main/commands/handoff",
+      "repository": "https://github.com/Awakehsh/awesome-agent-tools",
+      "license": "MIT",
+      "keywords": [
+        "handoff",
+        "slash-command",
+        "agent-handoff",
+        "context-transfer",
+        "cross-agent"
+      ],
+      "category": "productivity",
+      "tags": [
+        "productivity",
+        "agents",
+        "handoff",
+        "slash-command"
+      ]
     }
   ]
 }

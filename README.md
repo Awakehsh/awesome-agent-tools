@@ -176,6 +176,18 @@ Open-source contributions from this repository:
 
 [Learn more →](./skills/learn/README.md)
 
+#### Slash Commands (1)
+
+##### handoff
+
+**Generate a structured handoff for the next coding agent (Codex / Claude / Cursor) picking up your task.**
+
+- **Use Cases**: Cross-agent work transfer, mid-task pause/resume, switching tools mid-feature
+- **Output**: 8-section paste-ready brief — goal, state, decisions, failed approaches, evidence, open questions, next steps, relevant files
+- **Install**: `cp commands/handoff/handoff.md ~/.claude/commands/handoff.md`
+
+[Learn more →](./commands/handoff/README.md)
+
 #### Agents (1)
 
 ##### tech-scout

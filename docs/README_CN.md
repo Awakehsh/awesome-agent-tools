@@ -172,6 +172,18 @@ for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
 
 [了解更多 →](../skills/learn/README.md)
 
+#### Slash 命令 (1)
+
+##### handoff
+
+**为下一个 coding agent（Codex / Claude / Cursor）生成结构化交接文档。**
+
+- **使用场景**：跨 agent 工作交接、任务中途暂停/恢复、特性开发中切换工具
+- **输出**：8 个 section 的即可粘贴 brief — 目标、当前状态、关键决策、失败尝试、证据、未决问题、下一步、相关文件
+- **安装**：`cp commands/handoff/handoff.md ~/.claude/commands/handoff.md`
+
+[了解更多 →](../commands/handoff/README.md)
+
 #### Agents (1)
 
 ##### tech-scout
