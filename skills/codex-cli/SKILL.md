@@ -7,9 +7,9 @@ description: "Interact with OpenAI Codex CLI for plan review, code review, and c
 
 > **🚨 MANDATORY MODEL RULE — READ FIRST**:
 > - If the user specifies a model, use **exactly** that model. Respect the user's choice.
-> - If the user does NOT specify a model, default to `gpt-5.2`.
->   - For `codex exec` / `codex exec review`: use `-m gpt-5.2`
->   - For `codex review` (top-level): use `-c model="gpt-5.2"` (this command has NO `-m` flag)
+> - If the user does NOT specify a model, default to `gpt-5.5`.
+>   - For `codex exec` / `codex exec review`: use `-m gpt-5.5`
+>   - For `codex review` (top-level): use `-c model="gpt-5.5"` (this command has NO `-m` flag)
 > - **NEVER** pick a model on your own. Do NOT substitute o3, o4-mini, or any other model you think is "better" — that is the user's decision, not yours.
 > - The `-c model="..."` syntax is **REQUIRED** for top-level `codex review`. It is NOT an override — it is the only way to set the model for that command.
 
@@ -18,7 +18,6 @@ Interact with OpenAI Codex CLI to leverage its powerful reasoning capabilities f
 > **⚠️ Naming Clarification**:
 > - **"codex-cli" Skill** = This AI agent skill (current document)
 > - **Codex CLI** = The OpenAI command-line tool being invoked (the program)
-> - **gpt-X-codex** = Model name suffix (e.g., gpt-5.2-codex) indicating code-optimized variants
 >
 > Throughout this document, "Codex CLI" refers to the command-line tool being called.
 
@@ -101,8 +100,8 @@ Interact with OpenAI Codex CLI to leverage its powerful reasoning capabilities f
 ## CLI Flag Reference
 
 > **⚠️ CRITICAL: `codex review` and `codex exec review` have DIFFERENT flags!**
-> - `codex review`: Use `-c model="gpt-5.2"` (NO `-m` flag exists)
-> - `codex exec review`: Can use `-m gpt-5.2` OR `-c model="gpt-5.2"`
+> - `codex review`: Use `-c model="gpt-5.5"` (NO `-m` flag exists)
+> - `codex exec review`: Can use `-m gpt-5.5` OR `-c model="gpt-5.5"`
 > - When in doubt, use `codex review` with `-c` — it always works.
 
 ### `codex review --help` (top-level review)
@@ -177,23 +176,21 @@ Options:
 /codex-cli review --base main                     # Review changes vs branch
 ```
 
-**With custom model:**
-```bash
-/codex-cli --model gpt-5.2-codex reviewplan       # Use code-optimized variant
-```
-
 **Default behavior:**
-- Model: `gpt-5.2` (unless you specify --model)
+- Model: `gpt-5.5` (unless you specify --model)
 - Reasoning: `medium` for short questions, `high` for everything else
+
+**Long-running calls (>60s expected) — use Bash background mode:**
+- Trigger conditions: `reasoning=high`/`xhigh`, `codex review --base <branch>` on large diffs, full-repo audits
+- How: invoke via `Bash(run_in_background=true)` so the main session stays responsive; poll progress with `BashOutput` or read the output file
+- Sampling tip: launch 2–3 background runs of the same prompt in parallel — codex output is non-deterministic, and merging multiple runs surfaces ~2× more real issues than a single run (empirically verified)
+- Do NOT use background for short `ask`/single-file reviews — the realtime reasoning trace is more useful in foreground
 
 **Convenience shortcuts:**
 ```bash
 # These are equivalent:
 /codex-cli ask "question"
 /codex-cli "question"                     # Shorter form
-
-# For code-heavy tasks, add --coding flag idea:
-/codex-cli --model gpt-5.2-codex reviewplan
 ```
 
 ## Help & Troubleshooting
@@ -219,8 +216,8 @@ codex login status  # Verify you're logged in
 **Error: "model 'xxx' does not exist"**
 ```bash
 # The model name changed or doesn't exist
-# Solution: Use default gpt-5.2
-/codex-cli ask "question"  # Will auto-use gpt-5.2
+# Solution: Use default gpt-5.5
+/codex-cli ask "question"  # Will auto-use gpt-5.5
 ```
 
 **Error: "Specify --uncommitted, --base, or --commit"**
@@ -246,25 +243,22 @@ which codex && codex --version
 codex login status
 
 # Test basic functionality
-codex exec "test" -m gpt-5.2 --skip-git-repo-check
+codex exec "test" -m gpt-5.5 --skip-git-repo-check
 ```
 
 ## Model Selection (Simple!)
 
-> **⚠️ CRITICAL RULE**: Use the model the user specifies. If the user does NOT specify a model, default to `gpt-5.2`. For `codex exec`/`codex exec review` use `-m gpt-5.2`; for top-level `codex review` use `-c model="gpt-5.2"`. NEVER pick a different model on your own judgment.
+> **⚠️ CRITICAL RULE**: Use the model the user specifies. If the user does NOT specify a model, default to `gpt-5.5`. For `codex exec`/`codex exec review` use `-m gpt-5.5`; for top-level `codex review` use `-c model="gpt-5.5"`. NEVER pick a different model on your own judgment.
 
-**Default: `gpt-5.2`** when no `--model` is specified by the user.
+**Default: `gpt-5.5`** when no `--model` is specified by the user.
 
 **Available models** (user must explicitly request via `--model`):
 
 | Model | When to Use |
 |-------|-------------|
-| `gpt-5.2` | **Default** - ALL tasks, ALWAYS |
-| `gpt-5.2-codex` | Code-optimized (only if user specifies `--model gpt-5.2-codex`) |
-| `gpt-5.1-codex-max` | Complex migrations (only if user specifies `--model`) |
-| `gpt-5.1-codex-mini` | Budget-conscious (only if user specifies `--model`) |
+| `gpt-5.5` | **Default** - ALL tasks, ALWAYS |
 
-> **Note**: Model names may change. If a model fails, fallback to `gpt-5.2`. NEVER fallback to o-series models.
+> **Note**: Model names may change. If a model fails, fallback to `gpt-5.5`. NEVER fallback to o-series models.
 
 **Reasoning effort:**
 - Short questions (< 500 chars): `medium`
@@ -290,13 +284,13 @@ codex exec "test" -m gpt-5.2 --skip-git-repo-check
 ### Code Review (use top-level `codex review` — simplest and most reliable)
 ```bash
 # Review uncommitted changes
-codex review --uncommitted -c model="gpt-5.2" -c model_reasoning_effort="high"
+codex review --uncommitted -c model="gpt-5.5" -c model_reasoning_effort="high"
 
 # Review changes vs a branch
-codex review --base main -c model="gpt-5.2" -c model_reasoning_effort="high"
+codex review --base main -c model="gpt-5.5" -c model_reasoning_effort="high"
 
 # Review a specific commit
-codex review --commit HEAD~1 -c model="gpt-5.2" -c model_reasoning_effort="high"
+codex review --commit HEAD~1 -c model="gpt-5.5" -c model_reasoning_effort="high"
 ```
 
 ### Plan Review / Questions (use `codex exec` — supports `-m` and `--sandbox`)
@@ -304,14 +298,14 @@ codex review --commit HEAD~1 -c model="gpt-5.2" -c model_reasoning_effort="high"
 # Plan review
 codex exec "Review this implementation plan: [plan content]
 Evaluate: technical soundness, risks, missing considerations, approval status" \
-  -m gpt-5.2 \
+  -m gpt-5.5 \
   -c model_reasoning_effort="high" \
   --sandbox read-only \
   --skip-git-repo-check
 
 # Simple question
 codex exec "Quick question: [...]" \
-  -m gpt-5.2 \
+  -m gpt-5.5 \
   -c model_reasoning_effort="medium" \
   --sandbox read-only \
   --skip-git-repo-check
@@ -320,14 +314,14 @@ codex exec "Quick question: [...]" \
 ### Alternative: Code Review via exec (if you need `-m` flag)
 ```bash
 # Only use this form if you specifically need -m instead of -c model=
-codex exec review --base main -m gpt-5.2 -c model_reasoning_effort="high"
-codex exec review --uncommitted -m gpt-5.2 -c model_reasoning_effort="high"
+codex exec review --base main -m gpt-5.5 -c model_reasoning_effort="high"
+codex exec review --uncommitted -m gpt-5.5 -c model_reasoning_effort="high"
 ```
 
 > **⚠️ WARNING — Flag Mismatch Will Cause Errors:**
-> - `codex review -m gpt-5.2` → **WILL FAIL** (`-m` does not exist on top-level `codex review`)
-> - `codex review -c model="gpt-5.2"` → **CORRECT** (use `-c` for top-level review)
-> - `codex exec review -m gpt-5.2` → **CORRECT** (`-m` works on `exec review`)
+> - `codex review -m gpt-5.5` → **WILL FAIL** (`-m` does not exist on top-level `codex review`)
+> - `codex review -c model="gpt-5.5"` → **CORRECT** (use `-c` for top-level review)
+> - `codex exec review -m gpt-5.5` → **CORRECT** (`-m` works on `exec review`)
 > - See the **CLI Flag Reference** section above for the full compatibility matrix.
 
 
@@ -400,7 +394,9 @@ Status: APPROVED / NEEDS REVISION
 ## Important Notes
 
 1. **Permission Required**: Codex calls must execute in main session (requires user Bash approval)
-2. **No Background**: Do not invoke this skill via background `Task` tool
+2. **Background mode**:
+   - ❌ Do NOT invoke via subagent `Task(...)` — subagents cannot surface Bash permission prompts and will hang
+   - ✅ DO use `Bash(run_in_background=true)` for long-running calls. See "Long-running calls" under Quick Start for thresholds.
 3. **Preserve Original**: Faithfully relay Codex feedback, do not summarize or filter
 4. **Track Iterations**: Always display `[Round N/MAX]`
 5. **Models Evolve**: Check OpenAI docs for latest models before assuming availability
