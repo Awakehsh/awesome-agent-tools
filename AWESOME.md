@@ -183,6 +183,11 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Description: Official Sentry error-tracking and observability MCP server (remote, OAuth-based)
   - Features: Issue search, stack-trace inspection, release/deploy correlation, hosted remote MCP (no local install)
 
+- **[TWZRD Agent Intel](https://intel.twzrd.xyz)** by TWZRD
+  - Description: On-chain trust scoring MCP server for AI agents on Solana
+  - Features: `score_agent` and `preflight_check` (free) verify agent wallet reputation on-chain before task delegation or x402 micropayments; `get_trust_receipt` (paid) issues a cryptographic receipt
+  - Install: `{"mcpServers":{"twzrd-agent-intel":{"url":"https://intel.twzrd.xyz/mcp"}}}`
+
 ## 🛠️ Related Tools and Resources
 
 ### Marketplaces and Plugin Registries
