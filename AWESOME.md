@@ -183,6 +183,13 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Description: Official Sentry error-tracking and observability MCP server (remote, OAuth-based)
   - Features: Issue search, stack-trace inspection, release/deploy correlation, hosted remote MCP (no local install)
 
+- **[x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper)** by Xquik-dev
+  - Description: Xquik remote MCP server and installable skill for X/Twitter data workflows
+  - Install: See the [MCP setup docs](https://docs.xquik.com/mcp/overview)
+  - Features: Tweet search, profile lookups, media downloads, monitors, HMAC webhooks, and REST API exploration
+  - Supports: MCP-compatible clients and skills-compatible agents
+  - Note: Requires a Xquik API key
+
 ## 🛠️ Related Tools and Resources
 
 ### Marketplaces and Plugin Registries
