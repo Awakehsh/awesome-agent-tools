@@ -75,6 +75,11 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
 
 ### Workflow & Automation Skills
 
+- **[Hermes Tweet](https://github.com/Xquik-dev/hermes-tweet)** by Xquik-dev
+  - Description: Native Hermes Agent plugin for X/Twitter research, monitoring, and approval-gated actions.
+  - Install: `hermes plugins install Xquik-dev/hermes-tweet --enable`
+  - Features: Read-first X search, account reads, trend and monitor workflows, plus opt-in posting, replies, likes, retweets, follows, and DMs through Hermes.
+
 - **[ralph-loop](https://github.com/anthropics/claude-plugins-official)** by Anthropic Official
   - Description: Iterative AI development methodology using automatic retry loops for overnight development
   - Install: `claude plugin install ralph-loop@claude-plugins-official`
