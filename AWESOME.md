@@ -72,6 +72,10 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Description: Local TUI observability for AI coding agent sessions across cost, tokens, latency, failures, and reports
   - Install: `go install github.com/luoyuctl/agenttrace/cmd/agenttrace@latest`
   - Features: Supports Claude Code, Codex CLI, Gemini CLI, Aider, Cursor exports, health checks, anomaly detection, and CI gates
+- **[rust-norion](https://github.com/yanghao1143/rust-norion)** by yanghao1143
+  - Description: Rust prototype for agent runtime control, memory gates, model routing policy, audit evidence, and self-evolution loop tooling
+  - Install: Follow the repository README and contributor docs; published packages are not the main surface yet
+  - Features: Rust control layer, memory admission/recall boundaries, model-pool policy, evidence gates, status surfaces, and contributor-facing evolution workflows
 
 ### Workflow & Automation Skills
 
