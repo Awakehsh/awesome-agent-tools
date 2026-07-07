@@ -129,6 +129,7 @@ Start here if you're new - these tools deliver immediate value:
 |------|------|--------------|----------|
 | **[ralph-loop](https://github.com/anthropics/claude-plugins-official)** | Official Plugin | Overnight automated development with iterative loops | Claude Code |
 | **[learn](./skills/learn)** | Original Skill | Auto-capture insights to project memory (CLAUDE.md, AGENTS.md) | All |
+| **[tree-ring-memory](./skills/tree-ring-memory)** | Community Skill | Local-first memory lifecycle guidance for recall, evidence, audit, and forgetting | Claude Code, Codex |
 | **[context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit)** | Community Tool | Advanced context engineering, 8-21% quality improvement | All |
 | **[codex-cli](./skills/codex-cli)** | Original Skill | Call OpenAI Codex from Claude Code for plan review | Claude Code |
 | **[awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers)** | Curated List | 79k+ stars - The definitive MCP server collection | All |
@@ -141,7 +142,7 @@ Start here if you're new - these tools deliver immediate value:
 
 Open-source contributions from this repository:
 
-#### Skills (3)
+#### Skills (4)
 
 ##### context-architect
 
@@ -175,6 +176,20 @@ Open-source contributions from this repository:
 - **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn`
 
 [Learn more →](./skills/learn/README.md)
+
+##### tree-ring-memory
+
+**Lifecycle-aware local memory guidance for AI agents using Tree Ring Memory.**
+
+- **Purpose**: Help agents recall, write, audit, forget, and evidence project memory without turning memory into raw transcript storage
+- **Philosophy**: Memory should age — fresh work stays detailed, older learning compresses, failures become scars, durable truths become heartwood, and future ideas stay as seeds
+- **Use Cases**:
+  - Recall project-scoped lessons before risky architecture, release, storage, or privacy changes
+  - Store concise decisions, warnings, preferences, and evaluated outcomes
+  - Use explicit audit, redaction, forgetting, and source-linked DOX/Revolve adapter workflows
+- **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/tree-ring-memory`
+
+[Learn more →](./skills/tree-ring-memory/README.md)
 
 #### Slash Commands (1)
 
