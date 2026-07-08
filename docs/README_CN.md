@@ -129,6 +129,7 @@ for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
 |------|------|----------|------|
 | **[ralph-loop](https://github.com/anthropics/claude-plugins-official)** | 官方插件 | 通过迭代循环实现通宵自动化开发 | Claude Code |
 | **[learn](../skills/learn)** | 原创 Skill | 自动捕获见解到项目记忆（CLAUDE.md、AGENTS.md） | 所有平台 |
+| **[tree-ring-memory](../skills/tree-ring-memory)** | 社区 Skill | 本地优先的记忆生命周期指导，支持 recall、evidence、audit 和 forgetting | Claude Code, Codex |
 | **[context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit)** | 社区工具 | 高级上下文工程，提升 8-21% 质量 | 所有平台 |
 | **[codex-cli](../skills/codex-cli)** | 原创 Skill | 在 Claude Code 中调用 OpenAI Codex 进行计划审查 | Claude Code |
 | **[awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers)** | 策展列表 | 79k+ stars - 权威的 MCP 服务器合集 | 所有平台 |
@@ -141,7 +142,7 @@ for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
 
 本仓库的开源贡献：
 
-#### Skills (3)
+#### Skills (4)
 
 ##### context-architect
 
@@ -171,6 +172,20 @@ for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
 - **安装**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn`
 
 [了解更多 →](../skills/learn/README.md)
+
+##### tree-ring-memory
+
+**使用 Tree Ring Memory 为 AI agents 提供本地优先的记忆生命周期指导。**
+
+- **目的**：帮助 agents recall、写入、audit、forget 和记录 evidence，同时避免把原始对话 transcript 当作长期记忆
+- **理念**：记忆应该会老化 —— 新鲜工作保持细节，旧经验压缩成 rings，失败成为 scars，稳定事实成为 heartwood，未来想法成为 seeds
+- **使用场景**:
+  - 在高风险架构、发布、存储或隐私变更前 recall 项目经验
+  - 记录简洁的 decisions、warnings、preferences 和 evaluated outcomes
+  - 使用显式 audit、redaction、forgetting，以及带来源链接的 DOX/Revolve adapter 工作流
+- **安装**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/tree-ring-memory`
+
+[了解更多 →](../skills/tree-ring-memory/README.md)
 
 #### Slash 命令 (1)
 
