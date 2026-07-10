@@ -1,158 +1,77 @@
 ---
 name: codex-cli
-description: "Interact with OpenAI Codex CLI for plan review, code review, and complex problem discussion. Supports model selection and multi-round conversations. Usage: /codex-cli <command> [options]"
+description: "Interact with OpenAI Codex CLI for plan review, code review, and complex problem discussion. Supports either ChatGPT-account or API-key login, model selection, and multi-round conversations. Usage: /codex-cli <command> [options]"
 ---
 
 # Codex CLI Interaction Skill
 
-> **🚨 MANDATORY MODEL RULE — READ FIRST**:
-> - If the user specifies a model, use **exactly** that model. Respect the user's choice.
-> - If the user does NOT specify a model, default to `gpt-5.5`.
->   - For `codex exec` / `codex exec review`: use `-m gpt-5.5`
->   - For `codex review` (top-level): use `-c model="gpt-5.5"` (this command has NO `-m` flag)
-> - **NEVER** pick a model on your own. Do NOT substitute o3, o4-mini, or any other model you think is "better" — that is the user's decision, not yours.
-> - The `-c model="..."` syntax is **REQUIRED** for top-level `codex review`. It is NOT an override — it is the only way to set the model for that command.
+Interact with OpenAI Codex CLI to leverage its reasoning for plan review, code analysis, and complex problem discussions.
 
-Interact with OpenAI Codex CLI to leverage its powerful reasoning capabilities for plan review, code analysis, and complex problem discussions.
+> **Naming**: "codex-cli" **Skill** = this document. "Codex CLI" = the OpenAI command-line tool being invoked.
 
-> **⚠️ Naming Clarification**:
-> - **"codex-cli" Skill** = This AI agent skill (current document)
-> - **Codex CLI** = The OpenAI command-line tool being invoked (the program)
->
-> Throughout this document, "Codex CLI" refers to the command-line tool being called.
+## 🚨 Model Rule — READ FIRST
 
-## ⚠️ Prerequisites (Required!)
+- **If the user names a model, use exactly that model.** Respect the user's choice.
+- **If the user does NOT name a model, do NOT pass `-m` or `-c model=` at all.** Let Codex use the default from `~/.codex/config.toml`.
+- **Never hardcode a model name.** Model names change across Codex releases, and the names available under ChatGPT-account login differ from those under API-key login. Hardcoding a name is the #1 cause of "model does not exist" failures.
+- To see the active default without guessing: run any `codex exec` — its header prints `model: <name>` — or read the `model = "..."` line in `~/.codex/config.toml`.
 
-**You MUST have these installed before using this skill:**
+## `codex exec` IS an agent loop (not single-shot)
 
-1. **Codex CLI** - The OpenAI Codex command-line tool
+`codex exec` is **non-interactive**, which is NOT the same as "single-shot". Each `codex exec` call runs a **full agent loop**: Codex autonomously reads files, greps, runs shell commands, and reasons over many steps before returning. "Non-interactive" only means there is no human back-and-forth *mid-run* — it does not reduce Codex's agentic capability.
+
+- This is why the skill uses `codex exec` (not the interactive TUI): you can't drive an interactive terminal from another agent, but `exec` gives you the same autonomous loop.
+- For a **follow-up round** (e.g. round 2 of a review), continue the SAME session:
+  `codex exec resume <session-id> "<follow-up>"`. Capture the `session id:` printed in round 1's header.
+- **Do NOT use `resume --last` in automation.** `--last` resolves to the most recent session globally; any concurrent Codex call steals "last", so you resume the wrong thread. Always resume by explicit `<session-id>`.
+
+## Prerequisites
+
+1. **Codex CLI installed**
    ```bash
-   # Check if installed
-   which codex
-   codex --version
+   which codex && codex --version
    ```
+   Install path depends on your installer (e.g. `~/.local/bin/codex`, or a package manager). If missing, follow the OpenAI Codex CLI install docs.
 
-2. **OpenAI API Key** - Required for authentication
-
-   **Option A: Interactive login (Recommended - most secure)**
-   ```bash
-   # Interactive prompt - API key won't appear in shell history
-   codex login
-   # Follow the prompts to enter your API key
-   ```
-
-   **Option B: Environment variable**
-   ```bash
-   # Add to ~/.zshrc or ~/.bashrc (not in shell history)
-   export OPENAI_API_KEY="your-api-key-here"
-   source ~/.zshrc
-
-   # Then login
-   codex login --with-api-key <<< "$OPENAI_API_KEY"
-   ```
-
-   **Option C: File-based (if interactive not available)**
-   ```bash
-   # Create a temporary file with your key
-   echo "your-api-key" > /tmp/key.txt
-   codex login --with-api-key < /tmp/key.txt
-   rm /tmp/key.txt
-
-   # Or pipe directly (⚠️ key appears in shell history)
-   echo "YOUR_KEY" | codex login --with-api-key
-   ```
-
-   **Verify login:**
+2. **Logged in — two supported paradigms.** Check the current one first:
    ```bash
    codex login status
-   # Should show: "Logged in using an API key - sk-proj-***"
    ```
 
-3. **Active API Access** - Your OpenAI account must have API access and credits
-
-4. **Security Best Practices**
-
+   **Paradigm A — ChatGPT account (OAuth).** Uses your ChatGPT subscription quota and rate limits.
    ```bash
-   # Secure your config file (contains API key reference)
-   chmod 600 ~/.codex/config.toml
-
-   # Clear shell history if you used echo with API key
-   history -c  # or close and reopen terminal
+   codex login          # opens a browser to authorize; no API key needed
    ```
+   `codex login status` → `Logged in using ChatGPT`.
 
-**If not installed:**
-- Get OpenAI API key from: https://platform.openai.com/api-keys
-- Install Codex CLI: Refer to OpenAI Codex CLI documentation
-- Alternative: This skill will NOT work without Codex CLI installed and configured
+   **Paradigm B — API key.** Billed per API usage.
+   ```bash
+   codex login --with-api-key            # reads the key from stdin
+   # non-interactive: codex login --with-api-key <<< "$OPENAI_API_KEY"
+   ```
+   `codex login status` → `Logged in using an API key - sk-***`.
 
-## 🔒 Security & Privacy Notice
+   > The skill's commands are **identical** under both paradigms. What differs: billing, rate limits, and which **model names** are available — which is exactly why you must not hardcode `-m` (see Model Rule).
 
-**Important considerations when using this skill:**
+## Sandbox — what actually runs
 
-1. **Code Transmission**: When you use Codex CLI, your code/prompts are sent to OpenAI servers for processing
-2. **API Key Storage**: Your API key is stored in `~/.codex/config.toml` - ensure proper file permissions
-3. **Sandbox Mode**: By default, this skill uses `--sandbox read-only` which prevents Codex from modifying files
-4. **Shell History**: Avoid typing API keys directly in commands; use interactive login or environment variables
-5. **Sensitive Code**: Be mindful when reviewing code containing secrets, credentials, or proprietary logic
+- `codex exec`'s **nominal** default is `read-only`, **but `~/.codex/config.toml` (`sandbox_mode`) overrides it.** If your config sets `danger-full-access`, commands run with full write access unless you pass `-s read-only` explicitly.
+- **This skill follows your config; it does NOT force a sandbox.** For a guaranteed no-writes review, add `-s read-only`.
+- Check yours: the `codex exec` header prints `sandbox: <mode>`, or read `sandbox_mode` in `~/.codex/config.toml`.
 
-**Recommendation**: Review OpenAI's [data usage policies](https://openai.com/policies/api-data-usage-policies) for API usage
+## Capabilities inside `codex exec`
+
+| Capability | Status | Notes |
+|------------|--------|-------|
+| Shell + file tools | ✅ stable | Codex autonomously reads your repo, greps, runs commands (subject to sandbox). |
+| Web / internet search | ⚠️ not a stable default | Web-search feature flags are removed/deprecated in the current CLI. Do not assume Codex can browse the web from `exec`. |
+| `browser_use` / `computer_use` | ⚠️ account-only | Depend on the ChatGPT.app ecosystem; unreliable under non-interactive `exec`. |
 
 ## CLI Flag Reference
 
-> **⚠️ CRITICAL: `codex review` and `codex exec review` have DIFFERENT flags!**
-> - `codex review`: Use `-c model="gpt-5.5"` (NO `-m` flag exists)
-> - `codex exec review`: Can use `-m gpt-5.5` OR `-c model="gpt-5.5"`
-> - When in doubt, use `codex review` with `-c` — it always works.
-
-### `codex review --help` (top-level review)
-```
-Usage: codex review [OPTIONS] [PROMPT]
-
-Options:
-  -c, --config <key=value>    Override config value (e.g., -c model="o3")
-      --uncommitted           Review staged, unstaged, and untracked changes
-      --base <BRANCH>         Review changes against the given base branch
-      --commit <SHA>          Review the changes introduced by a commit
-      --title <TITLE>         Optional commit title for the review summary
-      --enable <FEATURE>      Enable a feature
-      --disable <FEATURE>     Disable a feature
-  -h, --help                  Print help
-```
-
-### `codex exec --help` (non-interactive execution)
-```
-Usage: codex exec [OPTIONS] [PROMPT] [COMMAND]
-
-Subcommands: resume, review, help
-
-Options:
-  -m, --model <MODEL>         Model the agent should use
-  -c, --config <key=value>    Override config value
-  -s, --sandbox <MODE>        Sandbox policy (read-only, workspace-write, danger-full-access)
-  -i, --image <FILE>...       Attach image(s) to the prompt
-      --skip-git-repo-check   Allow running outside a Git repository
-      --full-auto             Low-friction sandboxed automatic execution
-      --ephemeral             Run without persisting session files
-      --enable <FEATURE>      Enable a feature
-      --disable <FEATURE>     Disable a feature
-  -h, --help                  Print help
-```
-
-### `codex exec review --help` (review via exec — inherits exec flags)
-```
-Usage: codex exec review [OPTIONS] [PROMPT]
-
-Options:
-  -m, --model <MODEL>         Model the agent should use      ← NOT available in top-level review!
-  -c, --config <key=value>    Override config value
-      --uncommitted           Review staged, unstaged, and untracked changes
-      --base <BRANCH>         Review changes against the given base branch
-      --commit <SHA>          Review the changes introduced by a commit
-      --title <TITLE>         Optional commit title for the review summary
-      --skip-git-repo-check   Allow running outside a Git repository
-      --full-auto             Low-friction sandboxed automatic execution
-  -h, --help                  Print help
-```
+> **⚠️ `codex review` and `codex exec review` have DIFFERENT flags.**
+> - `codex review` (top-level): **NO `-m` flag.** Set a model with `-c model="..."` only.
+> - `codex exec review`: supports `-m` **and** `-c model="..."`.
 
 ### Flag Compatibility Matrix
 
@@ -163,248 +82,108 @@ Options:
 | `--uncommitted` | YES | YES | NO |
 | `--base` | YES | YES | NO |
 | `--commit` | YES | YES | NO |
-| `--sandbox` | NO | NO | YES |
+| `-s, --sandbox` | NO | NO | YES |
 | `--skip-git-repo-check` | NO | YES | YES |
-
-## Quick Start
-
-**Most common commands:**
-```bash
-/codex-cli ask "your question"                    # Quick questions (medium reasoning)
-/codex-cli reviewplan                             # Review implementation plans (high reasoning)
-/codex-cli review --uncommitted                   # Review uncommitted changes
-/codex-cli review --base main                     # Review changes vs branch
-```
-
-**Default behavior:**
-- Model: `gpt-5.5` (unless you specify --model)
-- Reasoning: `medium` for short questions, `high` for everything else
-
-**Long-running calls (>60s expected) — use Bash background mode:**
-- Trigger conditions: `reasoning=high`/`xhigh`, `codex review --base <branch>` on large diffs, full-repo audits
-- How: invoke via `Bash(run_in_background=true)` so the main session stays responsive; poll progress with `BashOutput` or read the output file
-- Sampling tip: launch 2–3 background runs of the same prompt in parallel — codex output is non-deterministic, and merging multiple runs surfaces ~2× more real issues than a single run (empirically verified)
-- Do NOT use background for short `ask`/single-file reviews — the realtime reasoning trace is more useful in foreground
-
-**Convenience shortcuts:**
-```bash
-# These are equivalent:
-/codex-cli ask "question"
-/codex-cli "question"                     # Shorter form
-```
-
-## Help & Troubleshooting
-
-### Common Errors & Solutions
-
-**Error: "command not found: codex"**
-```bash
-# Codex CLI is not installed
-# Solution: Install Codex CLI first (see Prerequisites above)
-which codex  # Should return path like /opt/homebrew/bin/codex
-```
-
-**Error: "Authentication required" or "API key not found"**
-```bash
-# Not logged in with OpenAI API key
-# Solution: Login with your API key (use interactive method for security)
-codex login  # Interactive - recommended
-# Or: codex login --with-api-key <<< "$OPENAI_API_KEY"
-codex login status  # Verify you're logged in
-```
-
-**Error: "model 'xxx' does not exist"**
-```bash
-# The model name changed or doesn't exist
-# Solution: Use default gpt-5.5
-/codex-cli ask "question"  # Will auto-use gpt-5.5
-```
-
-**Error: "Specify --uncommitted, --base, or --commit"**
-```bash
-# Review command needs to know what to review
-# Solutions:
-/codex-cli review --uncommitted          # Review unstaged changes
-/codex-cli review --base main            # Review vs main branch
-/codex-cli review --commit HEAD~1        # Review specific commit
-```
-
-**Error: "Permission denied" or "Must execute in main session"**
-- This skill requires running Bash commands
-- It cannot run in background/Task mode
-- Just approve the Bash execution when prompted
-
-**Verify setup:**
-```bash
-# Check installation
-which codex && codex --version
-
-# Check login status
-codex login status
-
-# Test basic functionality
-codex exec "test" -m gpt-5.5 --skip-git-repo-check
-```
-
-## Model Selection (Simple!)
-
-> **⚠️ CRITICAL RULE**: Use the model the user specifies. If the user does NOT specify a model, default to `gpt-5.5`. For `codex exec`/`codex exec review` use `-m gpt-5.5`; for top-level `codex review` use `-c model="gpt-5.5"`. NEVER pick a different model on your own judgment.
-
-**Default: `gpt-5.5`** when no `--model` is specified by the user.
-
-**Available models** (user must explicitly request via `--model`):
-
-| Model | When to Use |
-|-------|-------------|
-| `gpt-5.5` | **Default** - ALL tasks, ALWAYS |
-
-> **Note**: Model names may change. If a model fails, fallback to `gpt-5.5`. NEVER fallback to o-series models.
-
-**Reasoning effort:**
-- Short questions (< 500 chars): `medium`
-- Everything else: `high`
-- Critical tasks: `xhigh` (use `-c model_reasoning_effort="xhigh"`)
-
-## Advanced Usage
-
-**Multiple review rounds:**
-- Max 3 rounds by default
-- Codex returns "APPROVED" or "NEEDS REVISION"
-- Continue until approved or max rounds reached
-
-**For very long plans (>2000 chars):**
-- Send executive summary first
-- Provide details when Codex requests
-- Max 4000 chars per submission
 
 ## Recommended Command Forms
 
-> Always use these exact forms. Do NOT mix flags between commands.
+> These follow your `config.toml` model by default. Add `-c model_reasoning_effort="..."` to override effort; add a model flag ONLY if the user named a model.
 
-### Code Review (use top-level `codex review` — simplest and most reliable)
+### Code review (use top-level `codex review` — simplest)
 ```bash
-# Review uncommitted changes
-codex review --uncommitted -c model="gpt-5.5" -c model_reasoning_effort="high"
-
-# Review changes vs a branch
-codex review --base main -c model="gpt-5.5" -c model_reasoning_effort="high"
-
-# Review a specific commit
-codex review --commit HEAD~1 -c model="gpt-5.5" -c model_reasoning_effort="high"
+codex review --uncommitted                       # review staged+unstaged+untracked
+codex review --base main                          # review changes vs a branch
+codex review --commit HEAD~1                      # review a specific commit
+# effort override:  codex review --uncommitted -c model_reasoning_effort="high"
+# user named model M: codex review --uncommitted -c model="M"   # NOTE: -c, not -m
 ```
 
-### Plan Review / Questions (use `codex exec` — supports `-m` and `--sandbox`)
+### Plan review / questions (use `codex exec`)
 ```bash
-# Plan review
-codex exec "Review this implementation plan: [plan content]
+codex exec "Review this implementation plan: [...]
 Evaluate: technical soundness, risks, missing considerations, approval status" \
-  -m gpt-5.5 \
-  -c model_reasoning_effort="high" \
-  --sandbox read-only \
   --skip-git-repo-check
-
-# Simple question
-codex exec "Quick question: [...]" \
-  -m gpt-5.5 \
-  -c model_reasoning_effort="medium" \
-  --sandbox read-only \
-  --skip-git-repo-check
+# guaranteed no writes:  add  -s read-only
+# user named model M:    add  -m M
 ```
 
-### Alternative: Code Review via exec (if you need `-m` flag)
+### Code review via exec (only when you need `-m`)
 ```bash
-# Only use this form if you specifically need -m instead of -c model=
-codex exec review --base main -m gpt-5.5 -c model_reasoning_effort="high"
-codex exec review --uncommitted -m gpt-5.5 -c model_reasoning_effort="high"
+codex exec review --base main
+codex exec review --uncommitted
 ```
 
-> **⚠️ WARNING — Flag Mismatch Will Cause Errors:**
-> - `codex review -m gpt-5.5` → **WILL FAIL** (`-m` does not exist on top-level `codex review`)
-> - `codex review -c model="gpt-5.5"` → **CORRECT** (use `-c` for top-level review)
-> - `codex exec review -m gpt-5.5` → **CORRECT** (`-m` works on `exec review`)
-> - See the **CLI Flag Reference** section above for the full compatibility matrix.
+### Multi-round review (preserve context)
+```bash
+# Round 1 — capture the session id printed in the header
+codex exec review --uncommitted            # header shows: session id: <UUID>
+# Round 2+ — resume that EXACT session (never --last in automation)
+codex exec resume <UUID> "Re-review after I addressed points 1 and 3."
+```
 
+## Reasoning Effort
 
-## Code Context Handling
+- **Default: follow config** — do not pass an effort flag. Your config may already set a high tier (e.g. `xhigh`).
+- **Override per call:** `-c model_reasoning_effort="medium|high|xhigh"`.
+- Rule of thumb if you must choose: short questions → `medium`; reviews/plans → `high`; critical → `xhigh`.
 
-Different commands have different ways of accessing your codebase:
+## Long-Running Calls — Background Mode
 
-### Commands with Automatic Context
+For calls expected to exceed ~60s (`xhigh` effort, `--base` on large diffs, full-repo audits):
+- Invoke via `Bash(run_in_background=true)` so the main session stays responsive; poll with `BashOutput` or read the output file.
+- **Sampling tip:** launch 2–3 background runs of the same prompt in parallel — Codex output is non-deterministic, and merging runs surfaces more real issues than one run.
+- Do NOT background short `ask`/single-file reviews — the realtime reasoning trace is more useful in foreground.
+- ❌ Do NOT invoke Codex via a subagent `Task(...)` — subagents can't surface Bash permission prompts and will hang. Use `Bash(run_in_background=true)` instead.
 
-**`review` / `exec review`**
-- Automatically reads `git diff` as context
-- No manual input needed
-- Works in `--sandbox read-only` mode
+## User Interface (how the skill is invoked)
 
-### Commands Requiring Manual Context
-
-**`reviewplan`**
-- Plan content must be included in the prompt
-- To provide code context, you have two options:
-
-  **Option 1: Reference file paths in plan**
-  ```markdown
-  Plan modifies these files:
-  - src/components/Button.tsx (lines 45-60)
-  - src/utils/validate.ts (add validateEmail function)
-  ```
-
-  **Option 2: Include code snippets in prompt**
-  ```markdown
-  Current implementation (Button.tsx):
-  [code snippet]
-
-  Planned changes:
-  [improved code]
-  ```
-
-- Codex CLI can read files in current working directory under `--sandbox read-only`
-
-**`ask`**
-- Completely depends on what you include in your question
-- No automatic codebase access
-- Provide relevant code snippets in the question if needed
-
-> **Note**: Codex CLI uses `--sandbox read-only` by default, which allows reading files in the current directory but prevents writes.
+```bash
+/codex-cli ask "question"          # quick question
+/codex-cli "question"              # shorter form of ask
+/codex-cli reviewplan              # review an implementation plan
+/codex-cli review --uncommitted    # review uncommitted changes
+/codex-cli review --base main      # review changes vs branch
+```
+Map each to the recommended command forms above.
 
 ## Output Format
 
-After each Codex interaction:
+Relay Codex feedback faithfully — do not summarize or filter. After each interaction:
 
 ```
 === CODEX FEEDBACK [Round N/MAX] ===
-Model: <model name>
-Reasoning: <effort level>
-Status: APPROVED / NEEDS REVISION
-
+Model: <from header>   Reasoning: <effort>   Status: APPROVED / NEEDS REVISION
 [Codex full response]
-
 === END CODEX FEEDBACK ===
 ```
 
-## Error Handling
+## Troubleshooting
 
-| Error | Resolution |
-|-------|------------|
-| `codex` command fails | Check Codex installation: `brew install openai-codex` |
-| Response timeout (3min) | Report and offer retry option |
-| Plan file not found | Ask user to specify location |
-| Permission denied | **Must execute in main session**, background Task not supported |
+| Symptom | Fix |
+|---------|-----|
+| `command not found: codex` | Not installed. `which codex` should return your install path. |
+| `Authentication required` | Not logged in. `codex login` (account) or `codex login --with-api-key` (API); verify with `codex login status`. |
+| `model 'xxx' does not exist` | You passed `-m` with a name unavailable in your login mode. **Drop `-m`** to use the config default. |
+| `-m` rejected on `codex review` | Top-level `codex review` has no `-m`. Use `-c model="..."`, or switch to `codex exec review`. |
+| `Specify --uncommitted, --base, or --commit` | Review needs a target: `--uncommitted` / `--base <branch>` / `--commit <sha>`. |
+| Resume ignored my prior context | You used `--last` with concurrent sessions. Resume by explicit `<session-id>`. |
+| Command hangs | You invoked Codex via a subagent `Task`. Use `Bash(run_in_background=true)`. |
 
-## Important Notes
+**Verify setup:**
+```bash
+which codex && codex --version
+codex login status
+codex exec "reply OK" --skip-git-repo-check   # header shows active model + sandbox
+```
 
-1. **Permission Required**: Codex calls must execute in main session (requires user Bash approval)
-2. **Background mode**:
-   - ❌ Do NOT invoke via subagent `Task(...)` — subagents cannot surface Bash permission prompts and will hang
-   - ✅ DO use `Bash(run_in_background=true)` for long-running calls. See "Long-running calls" under Quick Start for thresholds.
-3. **Preserve Original**: Faithfully relay Codex feedback, do not summarize or filter
-4. **Track Iterations**: Always display `[Round N/MAX]`
-5. **Models Evolve**: Check OpenAI docs for latest models before assuming availability
+## Security & Privacy
 
+- **Code transmission:** your code/prompts are sent to OpenAI for processing.
+- **Credentials:** stored under `~/.codex/` (`auth.json`). Keep the directory private.
+- **Sensitive code:** be mindful when reviewing code with secrets or proprietary logic.
+- See [OpenAI's data usage policies](https://openai.com/policies/api-data-usage-policies).
 
 ## References
 
-- [OpenAI Models Documentation](https://platform.openai.com/docs/models) - Latest model list and updates
-- [OpenAI API Changelog](https://platform.openai.com/docs/changelog) - Model releases and changes
-
-> **Note**: Model availability and naming may change over time. If links are outdated or models fail, check your local Codex CLI configuration at `~/.codex/config.toml` or consult the latest OpenAI documentation.
+- [OpenAI Models Documentation](https://platform.openai.com/docs/models) — model names change; verify against your login mode.
+- Local source of truth for defaults: `~/.codex/config.toml` and `codex login status`.
