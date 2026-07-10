@@ -199,6 +199,12 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Supports: MCP-compatible clients and skills-compatible agents
   - Note: Requires a Xquik API key
 
+- **[RunAPI MCP Server](https://github.com/runapi-ai/mcp)** by runapi-ai
+  - Description: MCP server for browsing the RunAPI model catalog and running AI model tasks from agent workflows
+  - Install: `claude mcp add runapi -s user -- npx -y @runapi.ai/mcp`
+  - Features: Catalog browsing, model info, pricing snapshots, prompt search, image/video/music/audio/text-to-speech task creation, task status, and balance checks
+  - Supports: Claude Code, Codex, Cursor, Windsurf, VS Code, Roo Code, and other MCP-compatible clients
+
 ## 🛠️ Related Tools and Resources
 
 ### Marketplaces and Plugin Registries
