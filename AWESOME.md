@@ -77,6 +77,12 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Install: Follow the repository README and contributor docs; published packages are not the main surface yet
   - Features: Rust control layer, memory admission/recall boundaries, model-pool policy, evidence gates, status surfaces, and contributor-facing evolution workflows
 
+- **[codex-cli](https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli)** by awesome-agent-tools
+  - Description: Skill that drives OpenAI Codex CLI for plan review, code review, and complex-problem discussion from inside your agent
+  - Install: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli`
+  - Features: Config-driven model selection (no hardcoded model, stays valid across Codex releases), dual ChatGPT-account / API-key login, agent-loop-aware `codex exec`, multi-round resume by explicit session id
+  - Use Cases: Second-opinion plan/code review, offloading heavy reasoning to Codex, cross-model verification
+
 ### Workflow & Automation Skills
 
 - **[Hermes Tweet](https://github.com/Xquik-dev/hermes-tweet)** by Xquik-dev
@@ -272,4 +278,4 @@ Please ensure you include:
 
 ---
 
-**Last Updated**: 2026-05-26
+**Last Updated**: 2026-07-13
