@@ -56,6 +56,11 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Description: Collection of practical skills for Codex CLI and API
   - Features: Workflow automation optimized for Codex
 
+- **[NotFair](https://github.com/nowork-studio/NotFair)** by nowork-studio
+  - Description: Open-source marketing skill collection for SEO, GEO, Google Ads, and Meta Ads
+  - Install: `/plugin marketplace add nowork-studio/notfair`, then `/plugin install notfair@nowork-studio`
+  - Features: 18 public `SKILL.md` workflows; optional hosted MCP connectors provide live Google Search Console, Google Ads, and Meta Ads access
+
 ### Development Tools
 
 - **[cursor-skills](https://github.com/chrisboden/cursor-skills)** by chrisboden
