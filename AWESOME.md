@@ -61,6 +61,11 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Install: `/plugin marketplace add nowork-studio/notfair`, then `/plugin install notfair@nowork-studio`
   - Features: 18 public `SKILL.md` workflows; optional hosted MCP connectors provide live Google Search Console, Google Ads, and Meta Ads access
 
+- **[Orkas VideoStudio](https://github.com/Orkas-AI/Orkas-VideoStudio)** by Orkas-AI
+  - Description: Open-source video workflow skills and MCP tools for Codex and Claude Code
+  - Install: Follow the repository's source-install instructions for the target agent platform
+  - Features: Plain-language composition and editing with editable timelines, transcription, and optional provider-backed generation
+
 ### Development Tools
 
 - **[cursor-skills](https://github.com/chrisboden/cursor-skills)** by chrisboden
