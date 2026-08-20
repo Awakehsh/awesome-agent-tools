@@ -123,6 +123,12 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Description: Universal skills loader
   - Usage: `npm i -g openskills && openskills install anthropics/skills`
 
+## 📊 Agent Evaluation & Benchmarks
+
+- **[ClawBench](https://github.com/TIGER-AI-Lab/ClawBench)** by TIGER-AI-Lab
+  - Description: Open-source live-web benchmark for browser and computer-use agents, covering 283 V1/V2 tasks across 163 live websites.
+  - Features: Isolated Docker runs, selectable agent harnesses, request interception, and replayable action, screenshot, recording, HTTP, and agent-message evidence; [paper](https://arxiv.org/abs/2604.08523) and [project](https://claw-bench.com).
+
 ## 🔧 Recommended MCP Servers
 
 ### Official MCP Servers (Model Context Protocol)
