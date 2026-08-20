@@ -216,6 +216,13 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Features: Catalog browsing, model info, pricing snapshots, prompt search, image/video/music/audio/text-to-speech task creation, task status, and balance checks
   - Supports: Claude Code, Codex, Cursor, Windsurf, VS Code, Roo Code, and other MCP-compatible clients
 
+- **[API Status Check](https://apistatuscheck.com/mcp)** by apistatuscheck
+  - Description: Lets an agent find out whether a third-party API is actually down before it blames its own code — live-probes the vendor endpoint at call time and reads what the vendor publishes on its own status page, across 285 developer APIs
+  - Install: `claude mcp add --transport http apistatuscheck https://apistatuscheck.com/api/mcp`
+  - Features: 8 tools (list_apis, search_apis, get_api_status, list_down_apis, get_uptime_history, get_incident_history, rank_reliability, list_categories), hosted Streamable HTTP, no API key and no local install
+  - Supports: Claude Code, Codex, Cursor, Windsurf, and any MCP-compatible client
+  - Note: `get_api_status` probes live; `list_down_apis` reflects a background sweep that runs hourly. Hosted service, source not public
+
 ## 🛠️ Related Tools and Resources
 
 ### Marketplaces and Plugin Registries
