@@ -1,3 +1,5 @@
+
+
 # Awesome Agent Tools 🤖✨
 
 > The hybrid marketplace for AI agent development: original skills, curated tools, and cross-platform support.
@@ -216,7 +218,7 @@ Open-source contributions from this repository:
   - Bug debugging - Find solutions for errors and common problems
   - Technology comparison - Research pros/cons of libraries and frameworks
 - **Key Benefit**: Runs independently without blocking main workflow, returns structured reports with comparisons and sources
-- **Install**: Copy `agents/tech-scout/` to `~/.claude/agents/` or install via marketplace
+- **Install**: `cp -r agents/tech-scout ~/.claude/agents/` or install via marketplace
 
 [Learn more →](./agents/tech-scout/README.md) | [All Agents Documentation →](./agents/README.md)
 
