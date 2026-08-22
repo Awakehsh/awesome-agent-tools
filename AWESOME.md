@@ -234,6 +234,12 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Supports: Claude Code, Codex, Cursor, Windsurf, and any MCP-compatible client
   - Note: `get_api_status` probes live; `list_down_apis` reflects a background sweep that runs hourly. Hosted service, source not public
 
+- **[Pocket Drives](https://github.com/RevList/pocket-drives-mcp)** by PocketList Inc
+  - Description: Search peer-to-peer luxury, exotic, and EV rentals from independent hosts. Remote Streamable HTTP at https://pocketdrives.ai/mcp, no auth.
+  - Install: `claude mcp add --transport http pocket-drives https://pocketdrives.ai/mcp`
+  - Features: 9 read-only tools (search, quotes, availability, host profiles), hosted Streamable HTTP, no API key and no local install
+  - Supports: Claude Code, Codex, Cursor, Windsurf, and any MCP-compatible client
+
 ## 🛠️ Related Tools and Resources
 
 ### Marketplaces and Plugin Registries
