@@ -261,6 +261,13 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
 - **[FastMCP](https://github.com/jlowin/fastmcp)** by jlowin
   - Python framework for building MCP servers and clients (24k+ stars, Apache-2.0) — de-facto standard for Python MCP development
 
+### Agent Runtimes
+
+- **[SandBase Harness](https://github.com/sandbaseai/sandbase-harness)** by SandBase AI
+  - Description: Local-first runtime for running agents with persistent sessions, sandbox backends, MCP tool governance, and audit trails
+  - Install: Clone the repository, run `npm ci && npm run build`, then follow the [installation guide](https://github.com/sandbaseai/sandbase-harness/blob/main/llms-install.md)
+  - Features: Approval-gated tool execution, local/Docker/Kubernetes/self-hosted workers, resumable sessions, artifacts, and a built-in Console
+
 ### Cursor Related
 
 - **[awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules)** by PatrickJS
