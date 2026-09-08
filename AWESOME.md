@@ -268,6 +268,11 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Install: Clone the repository, run `npm ci && npm run build`, then follow the [installation guide](https://github.com/sandbaseai/sandbase-harness/blob/main/llms-install.md)
   - Features: Approval-gated tool execution, local/Docker/Kubernetes/self-hosted workers, resumable sessions, artifacts, and a built-in Console
 
+- **[YYLO](https://github.com/yylo-dev/yylo)** by yylo-dev
+  - Description: Command-line orchestrator for coding agents, repeatable workflows, and receipt-backed repository changes, with typed task, validation, merge, and release-readiness boundaries
+  - Install: `npm install --global '@yylo/cli@latest'`
+  - Features: Each task runs in a dedicated branch/worktree; the merge queue owns risk-based review; runs Pi and Codex subagents with receipt-backed changes
+
 ### Cursor Related
 
 - **[awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules)** by PatrickJS
