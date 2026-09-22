@@ -168,6 +168,12 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
 
 ### Community MCP Servers
 
+- **[Statsnet](https://github.com/usenetstate/statsnet-mcp)** by usenetstate
+  - Description: Background check any company in the world: registration, executives, courts and finances
+  - Remote: `https://statsnet.co/mcp` · Registry: `io.github.usenetstate/statsnet`
+  - Features: World company background checks via remote MCP
+  - Supports: Claude Code, Cursor, Windsurf, Codex, and any MCP-compatible client
+
 - **[awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)** by punkpeye
   - Description: Most active MCP server directory (85k+ stars, 1,500+ contributors)
   - Includes: Production-ready and experimental MCP servers across all categories
