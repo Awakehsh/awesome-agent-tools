@@ -239,6 +239,11 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Install: `claude mcp add --transport http pocket-drives https://pocketdrives.ai/mcp`
   - Features: 9 read-only tools (search, quotes, availability, host profiles), hosted Streamable HTTP, no API key and no local install
   - Supports: Claude Code, Codex, Cursor, Windsurf, and any MCP-compatible client
+- **[OrcaReplay](https://github.com/Continuum-AI-Corp/OrcaReplay)** by Continuum AI
+  - Description: Read an agent's own recorded runs — walk the timeline, ask what happened at a step, and replay a past run offline with no model call.
+  - Install: `npm i -g orcareplay` (stdio; registered as `io.github.Continuum-AI-Corp/orcareplay`)
+  - Features: Lists recorded runs, walks a run's timeline, answers what happened at a given step, replays against the recorded bytes with no provider called
+  - Supports: Claude Code, Codex, Cursor, opencode, and any MCP-compatible client
 
 ## 🛠️ Related Tools and Resources
 
