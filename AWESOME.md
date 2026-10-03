@@ -240,6 +240,12 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Features: 9 read-only tools (search, quotes, availability, host profiles), hosted Streamable HTTP, no API key and no local install
   - Supports: Claude Code, Codex, Cursor, Windsurf, and any MCP-compatible client
 
+- **[LogNorm](https://github.com/lognorm/lognorm-mcp)** by LogNorm
+  - Description: Hosted MCP server that hands a site's SEO/GEO growth backlog (site audits, fixes, content drafts, AI-visibility tracking) to your coding agent. Remote Streamable HTTP at https://lognorm.com/api/mcp, OAuth 2.1, MIT-licensed connector repo.
+  - Install: `claude mcp add --transport http lognorm https://lognorm.com/api/mcp`
+  - Features: hosted Streamable HTTP, no API key and no local install; needs a LogNorm account (free plan for 1 website). Docs: https://lognorm.com/docs/agents
+  - Supports: Claude Code, Codex, Cursor, and other MCP-compatible clients
+
 ## 🛠️ Related Tools and Resources
 
 ### Marketplaces and Plugin Registries
