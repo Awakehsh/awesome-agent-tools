@@ -240,6 +240,12 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Features: 9 read-only tools (search, quotes, availability, host profiles), hosted Streamable HTTP, no API key and no local install
   - Supports: Claude Code, Codex, Cursor, Windsurf, and any MCP-compatible client
 
+- **[Tale](https://github.com/tale-project/tale)** by Tale / Ruler GmbH
+  - Description: Self-hostable human-agent collaboration platform with a deployment-scoped MCP server for knowledge and automation.
+  - Install: Follow the repository's self-hosting guide, then connect to your deployment's `/api/v1/mcp` endpoint.
+  - Features: 22 knowledge/automation tools; Bearer organization API key and `X-Organization-Slug` scope. Project/task CRUD uses REST, not these MCP tools; assignment alone does not execute agents, and execution requires a configured, authorized trigger.
+  - Note: Community Edition is MIT-licensed and free to self-host; infrastructure/model costs are separate. Cloud and Enterprise are paid. No global anonymous MCP endpoint.
+
 ## 🛠️ Related Tools and Resources
 
 ### Marketplaces and Plugin Registries
