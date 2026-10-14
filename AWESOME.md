@@ -68,6 +68,18 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
 
 ### Development Tools
 
+- **[cpyref](https://github.com/LIghtJUNction/cpyref)** by LIghtJUNction
+  - Description: Rust CLI and companion agent skill for saving files, snippets, or command output once and retrieving the exact original bytes by short reference ID instead of regenerating them
+  - Install: `cargo install cpyref --locked`; companion [skill](https://github.com/LIghtJUNction/cpyref/tree/main/skills/cpyref) requires the CLI
+  - Features: Project-scoped snapshots, namespaces for same-machine multi-agent sharing, line/text/regex selectors, and length/SHA-256 verification before paste; Linux, macOS, and Windows support
+  - License: MIT
+
+- **[AgentGC](https://github.com/LIghtJUNction/AgentGC)** by LIghtJUNction
+  - Description: Local-first CLI (`agcc`) and companion agent skill for tracking files created or changed during agent sessions and reviewing leftover artifacts
+  - Install: Clone the repository, run `uv tool install .` from its root, then `agcc --version` (Python 3.11+); see the [installation guide](https://github.com/LIghtJUNction/AgentGC/blob/main/README.en.md#installation)
+  - Features: Command wrapping and selected-directory watching, local SQLite history, file labels, and preview-first quarantine with restore; observations are session-correlated, not proof of writer identity, and quarantine does not free disk space
+  - License: [Agent Upstream License 1.0-draft.1](https://github.com/LIghtJUNction/AgentGC/blob/main/LICENSE), a custom license that is not OSI-approved
+
 - **[cursor-skills](https://github.com/chrisboden/cursor-skills)** by chrisboden
   - Description: Skills starter template for Cursor AI editor
   - Features: MCP server integration, auto-import, quick start
