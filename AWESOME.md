@@ -257,6 +257,12 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Features: hosted Streamable HTTP, no API key and no local install; needs a LogNorm account (free plan for 1 website). Docs: https://lognorm.com/docs/agents
   - Supports: Claude Code, Codex, Cursor, and other MCP-compatible clients
 
+- **[looot](https://github.com/loootai/looot-mcp)** by loootai
+  - Description: Hosted MCP server for about 2,400 business-data endpoints from 77 providers: people and company enrichment, work email find and verify, web search, web page reading, local business search. MIT-licensed bridge repo, docs at https://docs.looot.ai.
+  - Install: `claude mcp add --transport http looot https://api.looot.ai/mcp`
+  - Features: hosted Streamable HTTP, browser OAuth sign-in or `Authorization: Bearer <LOOOT_API_KEY>`; paid per call from a prepaid balance, no free tier
+  - Supports: Claude Code, Codex, Cursor, and other MCP-compatible clients
+
 ## 🛠️ Related Tools and Resources
 
 ### Marketplaces and Plugin Registries
