@@ -257,6 +257,12 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Features: hosted Streamable HTTP, no API key and no local install; needs a LogNorm account (free plan for 1 website). Docs: https://lognorm.com/docs/agents
   - Supports: Claude Code, Codex, Cursor, and other MCP-compatible clients
 
+- **[DC Hub](https://github.com/azmartone67/dchub-mcp-server)** by DC Hub
+  - Description: DC Hub is the live data layer for data-center site selection. Its Data Center Power Index (DCPI) is a daily score of where data centers can get grid power, across 300+ markets. Remote Streamable HTTP at https://dchub.cloud/mcp.
+  - Install: `claude mcp add --transport http dc-hub https://dchub.cloud/mcp`
+  - Features: 94 MCP tools for markets, power and grid interconnection, energy prices, fiber and siting; answers carry an as-of timestamp and a citation line; free tier needs no key
+  - Supports: Claude Code, Codex, Cursor, Windsurf, and any MCP-compatible client
+
 ## 🛠️ Related Tools and Resources
 
 ### Marketplaces and Plugin Registries
