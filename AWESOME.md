@@ -257,6 +257,13 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Features: hosted Streamable HTTP, no API key and no local install; needs a LogNorm account (free plan for 1 website). Docs: https://lognorm.com/docs/agents
   - Supports: Claude Code, Codex, Cursor, and other MCP-compatible clients
 
+- **[CurlShot](https://curlshot.com/docs/guides/ai-agents)** by CurlShot
+  - Description: Hosted MCP server for a website screenshot API, so an agent can see a web page. URL, HTML or Markdown in; PNG, JPEG, WebP, PDF or scrolling video out, rendered in a real browser.
+  - Install: `claude mcp add --transport http curlshot https://curlshot.com/api/mcp --header "Authorization: Bearer YOUR_ACCESS_KEY"`
+  - Features: 2 tools (take_screenshot, list_devices), hosted Streamable HTTP, full-page capture, phone/tablet/desktop presets, cookie banners and ads hidden before capture; also OpenAPI 3.1 and llms.txt
+  - Supports: Claude Code, Cursor, and any MCP-compatible client
+  - Note: Requires a CurlShot access key (free plan: 100 screenshots a month, no card). Hosted service, source not public
+
 ## 🛠️ Related Tools and Resources
 
 ### Marketplaces and Plugin Registries
