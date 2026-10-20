@@ -294,6 +294,12 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Install: See the [installation guide](https://invompt.com/install)
   - Features: Hosted MCP with OAuth or Continue as guest; MIT-licensed connector repo
 
+- **[Aident Loadout](https://aident.ai)** by Aident AI
+  - Description: Hosted MCP server that gives coding and chat agents one reusable set of connected apps plus 400+ expert-built Skills. Accounts are connected once and reused across agents, credentials stay in Aident Vault, and every action is logged in Audit. MIT-licensed skill repo: https://github.com/Aident-AI/aident-skill
+  - Install: `claude mcp add --transport http aident https://loadout.aident.ai/mcp`
+  - Features: remote Streamable HTTP with OAuth sign-in on first use, capability search by intent with live schemas, cost preflight before actions run, also available as a CLI (`npm i -g @aident-ai/cli`) and an agent Skill. Free pay-as-you-go start. Docs: https://docs.aident.ai/loadout/overview
+  - Supports: Claude Code, Codex, Cursor, ChatGPT, Claude Desktop, OpenCode, and any MCP-compatible client
+
 ## 🛠️ Related Tools and Resources
 
 ### Marketplaces and Plugin Registries
