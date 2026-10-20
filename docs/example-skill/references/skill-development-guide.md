@@ -26,8 +26,9 @@ description: |                # Required: detailed description
   Description of when to use this skill.
   Should clearly describe trigger conditions and usage scenarios.
 license: MIT                  # Optional: license
-version: 1.0.0               # Optional: version number
-author: Your Name            # Optional: author
+metadata:                     # Optional: free-form string key-value pairs
+  author: your-name
+  version: "1.0"
 ---
 ```
 
@@ -194,7 +195,7 @@ Ensure repo contains `.claude-plugin/marketplace.json`
 
 ### Q: How large should a skill be?
 
-**A**: Keep SKILL.md under 5000 words, place detailed content in references/.
+**A**: Keep SKILL.md under 500 lines (under about 5,000 tokens) and move detailed content to references/, which agents load only when needed.
 
 ### Q: When to use scripts/?
 

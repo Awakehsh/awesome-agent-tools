@@ -1,12 +1,10 @@
-
-
 # Awesome Agent Tools 🤖✨
 
 > The hybrid marketplace for AI agent development: original skills, curated tools, and cross-platform support.
 
 **For developers building with AI agents** | Original Skills + Curated Tools | Cross-Platform
 
-**Supports**: [Claude Code](#quick-install) (⭐ Recommended) | [Codex](#quick-install) | [Cursor](#platform-support) | [Windsurf](#platform-support) | [Antigravity](#platform-support)
+**Supports**: [Claude Code](#quick-install) (⭐ Recommended) | [Codex](#platform-support) | [Cursor](#platform-support) | [GitHub Copilot](#platform-support) | [Antigravity](#platform-support) | [Devin Desktop](#platform-support) | [Other Agent Skills clients](https://agentskills.io/clients)
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -22,7 +20,7 @@ Unlike other lists, we offer:
 
 - **🔀 Hybrid Marketplace**: Original skills we built + carefully curated third-party tools
 - **👨‍💻 For Developers**: Built by developers, for developers building with AI agents
-- **🌐 Cross-Platform**: Works with Claude Code, Codex, Cursor, Windsurf, Antigravity, and more
+- **🌐 Cross-Platform**: Skills use the open [Agent Skills](https://agentskills.io) format, so they work in Claude Code, Codex, Cursor, GitHub Copilot, Antigravity, and other compatible agents
 - **⚡ Multi-Type**: Skills + MCP Servers + Agents + Plugins (not just one category)
 - **✨ Quality-First**: Every tool is vetted and tested, not a link dump
 - **🎯 Agent Development**: Special focus on agent workflows, parallel execution, and automation
@@ -32,7 +30,7 @@ Unlike other lists, we offer:
 ## ✨ Features
 
 - 🎯 **Curated Collection** - Only high-quality, well-tested tools and skills
-- 🔧 **Cross-Platform** - Works with Claude Code, Codex, Cursor, Windsurf, Antigravity
+- 🔧 **Cross-Platform** - Skills work in any Agent Skills-compatible agent: Claude Code, Codex, Cursor, GitHub Copilot, Antigravity, and more
 - 📦 **Easy Installation** - Simple one-command setup for most tools
 - 🌍 **Community-Driven** - Open source and welcoming contributions
 - 🚀 **MCP-Powered** - Leverages the Model Context Protocol standard
@@ -44,64 +42,41 @@ Unlike other lists, we offer:
 
 ### Claude Code (⭐ Recommended)
 
+Install everything (skills, the tech-scout agent, and the handoff command) as one plugin:
+
 ```bash
-# Install as marketplace (browse all skills)
+# In a Claude Code session
 /plugin marketplace add Awakehsh/awesome-agent-tools
 /plugin install awesome-agent-tools@awesome-agent-tools
 
-# Or add to settings manually
-# Add to ~/.claude/settings.json:
-# {
-#   "extraKnownMarketplaces": {
-#     "awesome-agent-tools": {
-#       "source": {
-#         "source": "github",
-#         "repo": "Awakehsh/awesome-agent-tools"
-#       }
-#     }
-#   },
-#   "enabledPlugins": {
-#     "awesome-agent-tools@awesome-agent-tools": true
-#   }
-# }
-
-# Or install individual skill
-claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn
+# Or from your shell
+claude plugin marketplace add Awakehsh/awesome-agent-tools
+claude plugin install awesome-agent-tools@awesome-agent-tools
 ```
 
-### Codex
+Plugin components are namespaced, for example `/awesome-agent-tools:codex-cli` and `/awesome-agent-tools:handoff`.
 
-```text
-# Install a single skill (in Codex CLI chat, not your shell)
-$skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn
+### Any Agent Skills-Compatible Agent
 
-# Restart Codex to pick up new skills
-```
+Install a single skill with the [skills CLI](https://github.com/vercel-labs/skills):
 
 ```bash
-# Install all skills (recommended if this repo will keep adding skills)
-git clone https://github.com/Awakehsh/awesome-agent-tools ~/awesome-agent-tools
-mkdir -p ~/.codex/skills
-
-# Option A (recommended): symlink all skills for easy updates via `git pull`
-for d in ~/awesome-agent-tools/skills/*; do ln -s "$d" ~/.codex/skills/; done
-
-# Option B: copy all skills (no symlinks)
-# cp -R ~/awesome-agent-tools/skills/* ~/.codex/skills/
-
-# Update later
-# (cd ~/awesome-agent-tools && git pull) && restart Codex
+npx skills add Awakehsh/awesome-agent-tools --skill learn
+# --list shows available skills, -g installs for your user, -a picks the agent (e.g. -a codex)
 ```
 
-### Cursor / Windsurf / Antigravity
+### Manual Copy
 
 ```bash
-# Import from GitHub URL in settings
-# Or configure MCP server integration
-# See detailed guide below
+git clone https://github.com/Awakehsh/awesome-agent-tools
+mkdir -p ~/.claude/skills ~/.agents/skills
+cp -R awesome-agent-tools/skills/learn ~/.claude/skills/   # Claude Code
+cp -R awesome-agent-tools/skills/learn ~/.agents/skills/   # Codex
 ```
 
-**Detailed setup**: [Cross-Platform Guide](./docs/CROSS_PLATFORM.md)
+In Codex you can also run `$skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn` inside a session (not your shell).
+
+Skill folders for other agents: [Platform Support](#platform-support). **Detailed setup**: [Cross-Platform Guide](./docs/CROSS_PLATFORM.md)
 
 ---
 
@@ -111,13 +86,13 @@ Special features for building AI agent systems:
 
 | Feature | Description | Platform |
 |---------|-------------|----------|
-| **Custom Sub-Agents** | Independent contexts for specialized tasks ([guide](./agents/README.md)) | Claude Code |
-| **Parallel Execution** | Run multiple agents simultaneously ([examples](./agents/README.md#triggering-parallel-agents)) | Claude Code |
-| **Agent Skills** | Reusable skill bundles for agents | Claude Code, Codex |
+| **Custom Sub-Agents** | Independent contexts for specialized tasks ([guide](./docs/agents/README.md)) | Claude Code |
+| **Parallel Execution** | Run multiple agents simultaneously ([examples](./docs/agents/README.md#triggering-parallel-agents)) | Claude Code |
+| **Agent Skills** | Reusable skill bundles for agents | Any [Agent Skills](https://agentskills.io)-compatible agent |
 | **MCP Integration** | Connect agents to external tools & data sources | All platforms |
 | **Workflow Automation** | Slash commands, hooks, and agent orchestration | Claude Code |
 
-**New to agents?** Check out our [Agent Development Guide](./agents/README.md) for workflows, patterns, and best practices.
+**New to agents?** Check out our [Agent Development Guide](./docs/agents/README.md) for workflows, patterns, and best practices.
 
 ---
 
@@ -131,12 +106,11 @@ Start here if you're new - these tools deliver immediate value:
 |------|------|--------------|----------|
 | **[ralph-loop](https://github.com/anthropics/claude-plugins-official)** | Official Plugin | Overnight automated development with iterative loops | Claude Code |
 | **[learn](./skills/learn)** | Original Skill | Auto-capture insights to project memory (CLAUDE.md, AGENTS.md) | All |
-| **[tree-ring-memory](./skills/tree-ring-memory)** | Community Skill | Local-first memory lifecycle guidance for recall, evidence, audit, and forgetting | Claude Code, Codex |
 | **[context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit)** | Community Tool | Advanced context engineering, 8-21% quality improvement | All |
 | **[codex-cli](./skills/codex-cli)** | Original Skill | Call OpenAI Codex from Claude Code for plan review | Claude Code |
-| **[awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers)** | Curated List | 79k+ stars - The definitive MCP server collection | All |
-| **[superpowers](https://github.com/obra/superpowers)** | Skill Framework | 35k+ stars - Complete AI agent development workflow (TDD, code review, debugging) | Claude Code |
-| **[everything-claude-code](https://github.com/affaan-m/everything-claude-code)** | Config Collection | Battle-tested agents/skills/commands/hooks from hackathon winner | Claude Code |
+| **[awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)** | Curated List | Widely used community collection of MCP servers | All |
+| **[superpowers](https://github.com/obra/superpowers)** | Skill Framework | Complete AI agent development workflow (TDD, code review, debugging) | Claude Code, Codex, Cursor, and more |
+| **[ECC](https://github.com/affaan-m/ECC)** (formerly everything-claude-code) | Config Collection | Battle-tested agents, skills, hooks, and rules from a hackathon winner | Claude Code, Codex, and more |
 
 ---
 
@@ -144,7 +118,7 @@ Start here if you're new - these tools deliver immediate value:
 
 Open-source contributions from this repository:
 
-#### Skills (4)
+#### Skills (3)
 
 ##### context-architect
 
@@ -157,7 +131,7 @@ Open-source contributions from this repository:
   - Plan token budgets, tool sets, and few-shot examples with engineering rigor
   - Manage long-horizon agent sessions with compaction, note-taking, and Just-in-Time retrieval strategies
 - **Key Benefit**: Goes beyond prompt engineering to full context engineering — based on [Anthropic's context engineering research](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
-- **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/context-architect`
+- **Install**: `npx skills add Awakehsh/awesome-agent-tools --skill context-architect` (or the [Claude Code plugin](#quick-install))
 
 [Learn more →](./skills/context-architect/README.md)
 
@@ -166,7 +140,7 @@ Open-source contributions from this repository:
 **Call OpenAI Codex CLI from Claude Code for plan review and code analysis.**
 
 - **Use Cases**: Plan review, code analysis, technical discussions, multi-round iteration
-- **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli`
+- **Install**: `npx skills add Awakehsh/awesome-agent-tools --skill codex-cli` (or the [Claude Code plugin](#quick-install))
 
 [Learn more →](./skills/codex-cli/README.md)
 
@@ -175,23 +149,9 @@ Open-source contributions from this repository:
 **Universal learning system that extracts insights from conversations and updates project memory files.**
 
 - **Use Cases**: Capture learnings, auto-route to docs (CLAUDE.md, AGENTS.md), cross-platform sync
-- **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn`
+- **Install**: `npx skills add Awakehsh/awesome-agent-tools --skill learn` (or the [Claude Code plugin](#quick-install))
 
 [Learn more →](./skills/learn/README.md)
-
-##### tree-ring-memory
-
-**Lifecycle-aware local memory guidance for AI agents using Tree Ring Memory.**
-
-- **Purpose**: Help agents recall, write, audit, forget, and evidence project memory without turning memory into raw transcript storage
-- **Philosophy**: Memory should age — fresh work stays detailed, older learning compresses, failures become scars, durable truths become heartwood, and future ideas stay as seeds
-- **Use Cases**:
-  - Recall project-scoped lessons before risky architecture, release, storage, or privacy changes
-  - Store concise decisions, warnings, preferences, and evaluated outcomes
-  - Use explicit audit, redaction, forgetting, and source-linked DOX/Revolve adapter workflows
-- **Install**: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/tree-ring-memory`
-
-[Learn more →](./skills/tree-ring-memory/README.md)
 
 #### Slash Commands (1)
 
@@ -201,9 +161,9 @@ Open-source contributions from this repository:
 
 - **Use Cases**: Cross-agent work transfer, mid-task pause/resume, switching tools mid-feature
 - **Output**: 8-section paste-ready brief — goal, state, decisions, failed approaches, evidence, open questions, next steps, relevant files
-- **Install**: `cp commands/handoff/handoff.md ~/.claude/commands/handoff.md`
+- **Install**: Included in the [Claude Code plugin](#quick-install) as `/awesome-agent-tools:handoff`, or `mkdir -p ~/.claude/commands && cp commands/handoff.md ~/.claude/commands/`
 
-[Learn more →](./commands/handoff/README.md)
+[Learn more →](./docs/commands/handoff.md)
 
 #### Agents (1)
 
@@ -218,9 +178,9 @@ Open-source contributions from this repository:
   - Bug debugging - Find solutions for errors and common problems
   - Technology comparison - Research pros/cons of libraries and frameworks
 - **Key Benefit**: Runs independently without blocking main workflow, returns structured reports with comparisons and sources
-- **Install**: `cp -r agents/tech-scout ~/.claude/agents/` or install via marketplace
+- **Install**: Included in the [Claude Code plugin](#quick-install), or `mkdir -p ~/.claude/agents && cp agents/tech-scout.md ~/.claude/agents/`
 
-[Learn more →](./agents/tech-scout/README.md) | [All Agents Documentation →](./agents/README.md)
+[Learn more →](./docs/agents/tech-scout.md) | [All Agents Documentation →](./docs/agents/README.md)
 
 #### MCP Servers (Coming Soon)
 - Custom integrations
@@ -229,26 +189,28 @@ Open-source contributions from this repository:
 
 ---
 
-### 🌟 Curated Recommendations (30+ Tools)
+### 🌟 Curated Recommendations
 
 Carefully vetted third-party tools organized by category:
 
 **See the full curated list**: **[AWESOME.md](./AWESOME.md)**
 
 Categories:
-- 🎯 **Official Skills** - From Anthropic, OpenAI
-- 🌟 **Community Skills** - Trusted developers
-- 🔧 **MCP Servers** - Official and community-built
-- 🛠️ **Tools & Utilities** - Installers, frameworks, resources
+- 🎯 **Skills** - Official Anthropic skills, collections, and installers
+- 🧩 **Plugins & Marketplaces** - Claude Code marketplaces and notable plugins
+- 🔧 **MCP Servers** - Reference, open-source, and hosted servers
+- 🧰 **Agent Runtimes, Security, and Evaluation** - Orchestrators, memory, scanners, and benchmarks
+- 🛠️ **Developer Resources** - SDKs, frameworks, and community directories
 
 ---
 
 ### 📚 Guides & Documentation
 
-- [Agent Development Guide](./agents/README.md) - Workflows, parallel execution, best practices
-- [Cross-Platform Setup](./docs/CROSS_PLATFORM.md) - Detailed setup for each platform
-- [Contributing Guide](./CONTRIBUTING.md) - How to add your tools
-- [Project Guidelines](./CLAUDE.md) - Repository philosophy and standards
+- [Agent Development Guide](./docs/agents/README.md) - Workflows, parallel execution, best practices
+- [Cross-Platform Setup](./docs/CROSS_PLATFORM.md) - Skill folders and install steps for each platform
+- [Build Your First Skill](./docs/tutorials/first-skill.md) - Step-by-step `SKILL.md` tutorial
+- [Create an MCP Server](./docs/tutorials/mcp-server.md) - Checklist for an MCP server that works across clients
+- [Contributing Guide](./CONTRIBUTING.md) - How to add your tools, inclusion criteria, and repository standards
 
 ---
 
@@ -265,15 +227,20 @@ Categories:
 
 ## Platform Support
 
-| Platform | SKILL.md | MCP | Memory Files | Recommended |
-|----------|----------|-----|--------------|-------------|
-| Claude Code | ✅ | ✅ | CLAUDE.md | ⭐ Best |
-| Codex | ✅ | ✅ | AGENTS.md | Great |
-| Cursor | ✅ | ✅ | .cursorrules | Great |
-| Windsurf | ✅ | ✅ | .windsurfrules | Good |
-| Antigravity | ✅ | ✅ | .agent/rules/ | Good |
+Skills in this repository follow the open [Agent Skills](https://agentskills.io) standard: a folder with a `SKILL.md` file. These agents read `SKILL.md` natively:
 
-**Why we recommend Claude Code**: Best skill management, excellent MCP support, great documentation.
+| Platform | Project skills | User skills |
+|----------|----------------|-------------|
+| Claude Code ⭐ | `.claude/skills/` | `~/.claude/skills/` |
+| Codex | `.agents/skills/` | `~/.agents/skills/` |
+| Cursor | `.agents/skills/` or `.cursor/skills/` | `~/.agents/skills/` or `~/.cursor/skills/` |
+| GitHub Copilot | `.agents/skills/` or `.github/skills/` | `~/.agents/skills/` or `~/.copilot/skills/` |
+| Antigravity | `.agents/skills/` | `~/.gemini/config/skills/` (CLI: `~/.gemini/antigravity-cli/skills/`) |
+| Devin Desktop (formerly Windsurf) | `.agents/skills/` or `.devin/skills/` | `~/.agents/skills/` or `~/.config/devin/skills/` |
+
+Every agent above except Claude Code reads project skills from `.agents/skills/`. Per-platform details and docs links: [Cross-Platform Guide](./docs/CROSS_PLATFORM.md). More compatible agents: [Agent Skills client showcase](https://agentskills.io/clients).
+
+**Why we recommend Claude Code**: this repository ships a Claude Code plugin, so one install brings the skills, the tech-scout agent, and the handoff command. Other agents use the skills.
 
 ---
 
@@ -283,11 +250,11 @@ Claude Code has powerful built-in features you might not know:
 
 | Feature | Description |
 |---------|-------------|
-| **`/skills`** | Create custom skills directly in CLI |
-| **`/agents`** | Create custom sub-agents with independent contexts ([learn more](./agents/README.md)) |
+| **`/skills`** | List the skills available in your session and manage their visibility |
+| **`/agents`** | Create custom sub-agents with independent contexts ([learn more](./docs/agents/README.md)) |
 | **`CLAUDE.md`** | Project memory that prevents repeated mistakes |
 | **Slash Commands** | Store workflows in `.claude/commands/` for automation |
-| **Parallel Agents** | Run multiple agents simultaneously for independent tasks ([learn more](./agents/README.md#triggering-parallel-agents)) |
+| **Parallel Agents** | Run multiple agents simultaneously for independent tasks ([learn more](./docs/agents/README.md#triggering-parallel-agents)) |
 | **Plan Mode** | Read-only codebase analysis before making changes |
 
 **Pro tip from Anthropic team**: Add mistakes to CLAUDE.md so Claude learns and doesn't repeat them.
@@ -298,14 +265,14 @@ Learn more: [Official Docs](https://code.claude.com/docs/en/skills) | [Creator's
 
 ## Codex Tips
 
-Codex skill loading is folder-based. A skill lives at `~/.codex/skills/<skill-name>/SKILL.md`.
+Codex skill loading is folder-based. A skill lives at `~/.agents/skills/<skill-name>/SKILL.md` (user) or `.agents/skills/<skill-name>/SKILL.md` (repository).
 
 | Tip | Description |
 |-----|-------------|
-| **`$skill-installer ...`** | Run this in the Codex CLI chat (not your shell), then restart Codex |
-| **Verify install** | Check `~/.codex/skills/<skill-name>/SKILL.md` exists |
-| **Create a new skill** | Make `~/.codex/skills/<skill-name>/SKILL.md` (YAML frontmatter + Markdown) |
-| **Reload skills** | Restart Codex after adding or editing a skill folder |
+| **`$skill-installer ...`** | Run this in a Codex session (not your shell) with a skill name or a GitHub URL to a skill folder |
+| **Verify install** | Run `/skills` in Codex, or type `$` to mention a skill |
+| **Create a new skill** | Make `~/.agents/skills/<skill-name>/SKILL.md` (YAML frontmatter + Markdown) |
+| **Reload skills** | Codex detects new and changed skills automatically; restart Codex if one doesn't appear |
 
 ---
 
@@ -315,13 +282,15 @@ Codex skill loading is folder-based. A skill lives at `~/.codex/skills/<skill-na
 
 - [Claude Code Skills Docs](https://code.claude.com/docs/en/skills)
 - [MCP Specification](https://modelcontextprotocol.io/specification)
-- [Codex Skills Documentation](https://developers.openai.com/codex/skills/)
+- [Codex Skills Documentation](https://learn.chatgpt.com/docs/build-skills)
+- [Agent Skills Specification](https://agentskills.io/specification)
 
 ### Community Resources
 
-- [Awesome MCP Servers](https://github.com/wong2/awesome-mcp-servers) - 79,000+ stars
+- [Awesome MCP Servers](https://github.com/wong2/awesome-mcp-servers) - Curated list of MCP servers
 - [Awesome Claude](https://awesomeclaude.ai/) - Comprehensive directory
 - [MCP Servers Repository](https://github.com/modelcontextprotocol/servers)
+- [MCP Registry](https://registry.modelcontextprotocol.io) - Official registry of publicly available MCP servers (preview)
 
 ---
 
@@ -342,8 +311,8 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines.
 
 MIT License. See [LICENSE](./LICENSE) for details.
 
-- **Our Content**: Original skills and documentation are MIT licensed
-- **Third-Party Content**: Tools in AWESOME.md maintain their original licenses
+- **Our Content**: The MIT License covers this repository's original content and documentation
+- **Third-Party Content**: Tools listed in [AWESOME.md](./AWESOME.md) keep their own licenses; this repository is an index and claims no ownership of them
 
 ---
 
