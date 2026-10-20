@@ -4,32 +4,27 @@ This is an example skill that demonstrates how to create a well-structured skill
 
 ## Installation
 
+This skill lives at `docs/example-skill` in this repository.
+
 ### Claude Code
 ```bash
-claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/example-skill
+git clone https://github.com/Awakehsh/awesome-agent-tools
+mkdir -p ~/.claude/skills
+cp -R awesome-agent-tools/docs/example-skill ~/.claude/skills/
 ```
 
 ### Codex
 ```text
-# In Codex CLI chat (this is not a shell command)
-$skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/example-skill
-
-# Restart Codex to pick up new skills
+# In a Codex session (this is not a shell command)
+$skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/docs/example-skill
 ```
 
+### Any Agent Skills-compatible agent
 ```bash
-# Alternative: install from your terminal (requires Python 3)
-python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --url \
-  https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/example-skill
+npx skills add https://github.com/Awakehsh/awesome-agent-tools/tree/main/docs/example-skill
 ```
 
-### Manual Install
-```bash
-# Clone into your local skills directory
-cd ~/.claude/skills
-git clone https://github.com/Awakehsh/awesome-agent-tools
-ln -s awesome-agent-tools/skills/example-skill example-skill
-```
+See the [Cross-Platform Guide](../CROSS_PLATFORM.md) for each agent's skill folders.
 
 ## What This Demonstrates
 

@@ -25,12 +25,17 @@ description: |
 - `name`: Unique, lowercase identifier (use hyphens for separators).
 - `description`: Clear usage scenarios and trigger conditions.
 
-### Optional Fields (Common)
+### Optional Fields
+
+From the [Agent Skills specification](https://agentskills.io/specification):
 
 ```yaml
 license: MIT
-version: 1.0.0
-author: Your Name
+compatibility: Requires Python 3 and network access   # only if there are environment requirements
+metadata:              # free-form string key-value pairs, e.g. author and version
+  author: your-name
+  version: "1.0"
+allowed-tools: Bash(git:*) Read                       # experimental; support varies by agent
 ```
 
 ## Markdown Content

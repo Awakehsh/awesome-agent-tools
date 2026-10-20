@@ -43,6 +43,8 @@ description: |
 - What this skill will not do
 ```
 
+`name` must match the folder name and use only lowercase letters, numbers, and hyphens. See the [Agent Skills specification](https://agentskills.io/specification) for all fields.
+
 ## 3) Add a `README.md` (recommended)
 
 Add `skills/my-first-skill/README.md` with installation instructions and extra detail that doesn’t need to be in `SKILL.md`.
@@ -56,16 +58,20 @@ Put reusable code in `skills/my-first-skill/scripts/` and make sure it can run s
 ### Claude Code
 
 ```bash
+mkdir -p ~/.claude/skills
 cp -r skills/my-first-skill ~/.claude/skills/
 ```
 
-Restart Claude Code and try prompts that match your skill description.
+Claude Code picks up the new skill in the running session. Try prompts that match your skill description.
 
 ### Codex
 
 ```bash
-cp -r skills/my-first-skill ~/.codex/skills/
+mkdir -p ~/.agents/skills
+cp -r skills/my-first-skill ~/.agents/skills/
 ```
 
-Restart Codex and try the same prompts.
+Codex detects new skills automatically (restart Codex if it doesn't appear). Try the same prompts.
+
+For other agents' skill folders, see the [Cross-Platform Guide](../CROSS_PLATFORM.md).
 

@@ -12,9 +12,9 @@ This tutorial provides a practical checklist for building an MCP server that wor
 ## Recommended Structure
 
 ```
-mcp-servers/my-server/
+my-server/
 ├── README.md
-├── server.json            # If your ecosystem uses it
+├── server.json            # MCP Registry metadata, if you publish there
 ├── src/                   # Implementation
 └── build/                 # Compiled output (if applicable)
 ```
@@ -33,7 +33,7 @@ Example shape (exact location varies per client):
   "mcpServers": {
     "my-server": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-servers/my-server/build/index.js"]
+      "args": ["/absolute/path/to/my-server/build/index.js"]
     }
   }
 }
