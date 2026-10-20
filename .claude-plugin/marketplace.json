@@ -11,8 +11,7 @@
     {
       "name": "awesome-agent-tools",
       "source": "./",
-      "agents": "./agents/",
-      "description": "Hybrid marketplace for AI agent development: original skills we built + curated recommendations. Built by developers, for developers using AI agents. Cross-platform support for Claude Code, Codex, Cursor, Windsurf, and Antigravity.",
+      "description": "Original skills (codex-cli, context-architect, learn), the tech-scout research subagent, and the /handoff command for developers working with AI coding agents.",
       "author": {
         "name": "Awakehsh"
       },
@@ -22,7 +21,6 @@
       "keywords": [
         "agents",
         "skills",
-        "mcp-servers",
         "tools",
         "productivity",
         "development",
@@ -33,68 +31,9 @@
       "tags": [
         "agents",
         "skills",
-        "mcp-servers",
         "productivity",
         "development",
         "automation"
-      ]
-    },
-    {
-      "name": "system-prompt-architect",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/Awakehsh/awesome-agent-tools.git",
-        "path": "skills/system-prompt-architect"
-      },
-      "description": "System prompt engineering tool for building single and multi-agent systems with modular templates and dynamic research",
-      "author": {
-        "name": "Awakehsh"
-      },
-      "homepage": "https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/system-prompt-architect",
-      "repository": "https://github.com/Awakehsh/awesome-agent-tools",
-      "license": "MIT",
-      "keywords": [
-        "prompt-engineering",
-        "multi-agent",
-        "system-prompts",
-        "orchestration",
-        "agent-design"
-      ],
-      "category": "development",
-      "tags": [
-        "development",
-        "agents",
-        "prompts",
-        "architecture"
-      ]
-    },
-    {
-      "name": "handoff",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/Awakehsh/awesome-agent-tools.git",
-        "path": "commands/handoff"
-      },
-      "description": "Slash command that generates a structured 8-section handoff to pass mid-task work between coding agents",
-      "author": {
-        "name": "Awakehsh"
-      },
-      "homepage": "https://github.com/Awakehsh/awesome-agent-tools/tree/main/commands/handoff",
-      "repository": "https://github.com/Awakehsh/awesome-agent-tools",
-      "license": "MIT",
-      "keywords": [
-        "handoff",
-        "slash-command",
-        "agent-handoff",
-        "context-transfer",
-        "cross-agent"
-      ],
-      "category": "productivity",
-      "tags": [
-        "productivity",
-        "agents",
-        "handoff",
-        "slash-command"
       ]
     }
   ]
