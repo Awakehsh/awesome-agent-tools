@@ -94,6 +94,9 @@ Interact with OpenAI Codex CLI to leverage its reasoning for plan review, code a
 codex review --uncommitted                       # review staged+unstaged+untracked
 codex review --base main                          # review changes vs a branch
 codex review --commit HEAD~1                      # review a specific commit
+# A review target (--uncommitted/--base/--commit) cannot be combined with custom
+# instructions. For a focused review, use exec and name the diff in the prompt:
+#   codex exec -s read-only "Review git diff main...HEAD for <focus>. Report file:line findings."
 # effort override:  codex review --uncommitted -c model_reasoning_effort="high"
 # user named model M: codex review --uncommitted -c model="M"   # NOTE: -c, not -m
 ```

@@ -33,6 +33,7 @@ A standalone install is invoked as `/learn` in Claude Code (`$learn` in Codex).
 **Manual:**
 ```bash
 git clone https://github.com/Awakehsh/awesome-agent-tools.git
+mkdir -p ~/.claude/skills ~/.agents/skills
 cp -r awesome-agent-tools/skills/learn ~/.claude/skills/   # Claude Code (project: .claude/skills/)
 cp -r awesome-agent-tools/skills/learn ~/.agents/skills/   # Codex (repo: .agents/skills/)
 ```

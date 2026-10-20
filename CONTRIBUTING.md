@@ -22,7 +22,8 @@ AWESOME.md lists tools that meet these criteria:
    - Listed in the separate **Hosted MCP Services** section; the entry states authentication and pricing (free tier or not)
 3. **Official vendor tools** (published by the company that owns the product) follow rule 1 or 2, depending on whether the source is public.
 4. **Affiliation is disclosed.** Every submission states whether the submitter is affiliated with the project. Submitting your own tool is fine, as long as you say so.
-5. **Removal.** An entry is removed when its link is dead, its repository is archived, it has had no commits for 12 months, or it no longer meets these criteria.
+5. **Directories, documentation, and learning resources** (community directories, official docs, tutorials): publicly accessible, actively maintained, and focused on building with AI agents. Official documentation is preferred over third-party summaries.
+6. **Removal.** An entry is removed when its link is dead, its repository is archived, it has had no commits for 12 months, or it no longer meets these criteria.
 
 ## Suggest a Tool
 

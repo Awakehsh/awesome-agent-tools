@@ -46,7 +46,7 @@ A carefully curated list of third-party tools for AI agents: Skills, MCP servers
   - Install: `claude plugin install mattpocock-skills@claude-plugins-official`, or `npx skills@latest add mattpocock/skills` for other agents
 
 - **[context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit)** by NeoLabHQ - Collection of context engineering techniques packaged as plugins, such as reflexion (reflection loops), code review, and spec-driven development
-  - Install: `/plugin marketplace add NeoLabHQ/context-engineering-kit`, then for example `/plugin install reflexion@NeoLabHQ/context-engineering-kit`
+  - Install: `/plugin marketplace add NeoLabHQ/context-engineering-kit`, then for example `/plugin install reflexion@context-engineering-kit`
 
 ### Skill Installers
 

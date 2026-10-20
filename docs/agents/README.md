@@ -182,6 +182,7 @@ Add `docs/agents/my-agent.md` with:
 
 ```bash
 # Copy to user-level agents
+mkdir -p ~/.claude/agents
 cp agents/my-agent.md ~/.claude/agents/
 
 # Or load the whole plugin from your checkout

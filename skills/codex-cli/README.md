@@ -67,6 +67,7 @@ A standalone install is invoked as `/codex-cli` in Claude Code (`$codex-cli` in 
 ### Manual
 ```bash
 git clone https://github.com/Awakehsh/awesome-agent-tools.git
+mkdir -p ~/.claude/skills ~/.agents/skills
 cp -r awesome-agent-tools/skills/codex-cli ~/.claude/skills/   # Claude Code (project: .claude/skills/)
 cp -r awesome-agent-tools/skills/codex-cli ~/.agents/skills/   # Codex (repo: .agents/skills/)
 ```

@@ -37,6 +37,7 @@ A standalone install is invoked as `/context-architect` in Claude Code (`$contex
 **Manual:**
 ```bash
 git clone https://github.com/Awakehsh/awesome-agent-tools.git
+mkdir -p ~/.claude/skills ~/.agents/skills
 cp -r awesome-agent-tools/skills/context-architect ~/.claude/skills/   # Claude Code (project: .claude/skills/)
 cp -r awesome-agent-tools/skills/context-architect ~/.agents/skills/   # Codex (repo: .agents/skills/)
 ```

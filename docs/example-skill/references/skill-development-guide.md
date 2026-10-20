@@ -153,6 +153,7 @@ complex-skill/
 
 ```bash
 # 1. Copy to skills directory
+mkdir -p ~/.claude/skills
 cp -r your-skill ~/.claude/skills/
 
 # 2. Restart Claude Code
