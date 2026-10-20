@@ -1,0 +1,20 @@
+# Link checker configuration: https://lychee.cli.rs/guides/config/
+
+# Many sites block automated requests (403) or rate-limit them (429).
+# Treat those as reachable so the check only reports real breakage.
+accept = ["200..=299", "403", "429"]
+
+timeout = 30
+max_retries = 3
+retry_wait_time = 5
+
+exclude_loopback = true
+
+# Placeholders used in templates and examples.
+exclude = [
+  '^https?://([a-z0-9-]+\.)?example\.(com|org|net)',
+  'YOUR-USERNAME',
+  '^https://github\.com/(author|owner)/repo',
+  # The "[Title](URL)" output template in agents/tech-scout.md.
+  '^file://.*/URL$',
+]
