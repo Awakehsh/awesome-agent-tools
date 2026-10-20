@@ -68,6 +68,18 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
 
 ### Development Tools
 
+- **[cpyref](https://github.com/LIghtJUNction/cpyref)** by LIghtJUNction
+  - Description: Rust CLI and companion agent skill for saving files, snippets, or command output once and retrieving the exact original bytes by short reference ID instead of regenerating them
+  - Install: `cargo install cpyref --locked`; companion [skill](https://github.com/LIghtJUNction/cpyref/tree/main/skills/cpyref) requires the CLI
+  - Features: Project-scoped snapshots, namespaces for same-machine multi-agent sharing, line/text/regex selectors, and length/SHA-256 verification before paste; Linux, macOS, and Windows support
+  - License: MIT
+
+- **[AgentGC](https://github.com/LIghtJUNction/AgentGC)** by LIghtJUNction
+  - Description: Local-first CLI (`agcc`) and companion agent skill for tracking files created or changed during agent sessions and reviewing leftover artifacts
+  - Install: Clone the repository, run `uv tool install .` from its root, then `agcc --version` (Python 3.11+); see the [installation guide](https://github.com/LIghtJUNction/AgentGC/blob/main/README.en.md#installation)
+  - Features: Command wrapping and selected-directory watching, local SQLite history, file labels, and preview-first quarantine with restore; observations are session-correlated, not proof of writer identity, and quarantine does not free disk space
+  - License: [Agent Upstream License 1.0-draft.1](https://github.com/LIghtJUNction/AgentGC/blob/main/LICENSE), a custom license that is not OSI-approved
+
 - **[cursor-skills](https://github.com/chrisboden/cursor-skills)** by chrisboden
   - Description: Skills starter template for Cursor AI editor
   - Features: MCP server integration, auto-import, quick start
@@ -255,6 +267,19 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Description: Hosted MCP server that hands a site's SEO/GEO growth backlog (site audits, fixes, content drafts, AI-visibility tracking) to your coding agent. Remote Streamable HTTP at https://lognorm.com/api/mcp, OAuth 2.1, MIT-licensed connector repo.
   - Install: `claude mcp add --transport http lognorm https://lognorm.com/api/mcp`
   - Features: hosted Streamable HTTP, no API key and no local install; needs a LogNorm account (free plan for 1 website). Docs: https://lognorm.com/docs/agents
+  - Supports: Claude Code, Codex, Cursor, and other MCP-compatible clients
+
+- **[CurlShot](https://curlshot.com/docs/guides/ai-agents)** by CurlShot
+  - Description: Hosted MCP server for a website screenshot API, so an agent can see a web page. URL, HTML or Markdown in; PNG, JPEG, WebP, PDF or scrolling video out, rendered in a real browser.
+  - Install: `claude mcp add --transport http curlshot https://curlshot.com/api/mcp --header "Authorization: Bearer YOUR_ACCESS_KEY"`
+  - Features: 2 tools (take_screenshot, list_devices), hosted Streamable HTTP, full-page capture, phone/tablet/desktop presets, cookie banners and ads hidden before capture; also OpenAPI 3.1 and llms.txt
+  - Supports: Claude Code, Cursor, and any MCP-compatible client
+  - Note: Requires a CurlShot access key (free plan: 100 screenshots a month, no card). Hosted service, source not public
+
+- **[looot](https://github.com/loootai/looot-mcp)** by loootai
+  - Description: Hosted MCP server for about 2,400 business-data endpoints from 77 providers: people and company enrichment, work email find and verify, web search, web page reading, local business search. MIT-licensed bridge repo, docs at https://docs.looot.ai.
+  - Install: `claude mcp add --transport http looot https://api.looot.ai/mcp`
+  - Features: hosted Streamable HTTP, browser OAuth sign-in or `Authorization: Bearer <LOOOT_API_KEY>`; paid per call from a prepaid balance, no free tier
   - Supports: Claude Code, Codex, Cursor, and other MCP-compatible clients
 
 - **[DC Hub](https://github.com/azmartone67/dchub-mcp-server)** by DC Hub
