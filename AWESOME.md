@@ -288,6 +288,12 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Features: 94 MCP tools for markets, power and grid interconnection, energy prices, fiber and siting; answers carry an as-of timestamp and a citation line; free tier needs no key
   - Supports: Claude Code, Codex, Cursor, Windsurf, and any MCP-compatible client
 
+- **[Invompt](https://github.com/Invompt/invompt-mcp)** by Invompt
+  - Description: Turn AI-host work into invoices you review before send — Continue as guest or OAuth via hosted MCP.
+  - Remote: `https://mcp.invompt.com/mcp` · Registry: `com.invompt/invompt`
+  - Install: See the [installation guide](https://invompt.com/install)
+  - Features: Hosted MCP with OAuth or Continue as guest; MIT-licensed connector repo
+
 ## 🛠️ Related Tools and Resources
 
 ### Marketplaces and Plugin Registries
