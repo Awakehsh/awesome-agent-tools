@@ -1,347 +1,382 @@
 # Curated Skills and MCP Servers ⭐
 
-A carefully curated list of AI coding assistant tools, including Skills, MCP servers, and related resources.
+A carefully curated list of third-party tools for AI agents: Skills, MCP servers, plugins, and related resources. Original tools maintained in this repository are listed in the [README](./README.md).
 
-## 🎯 Excellent Skills
+**Inclusion criteria**: Open-source entries have a public repository, a stated license (non-OSI licenses are named in the entry), at least 10 GitHub stars, a commit in the last 6 months, and clear install docs. Hosted MCP services are listed in the [official MCP Registry](https://registry.modelcontextprotocol.io) under a verified namespace, serve Streamable HTTP, and publicly document authentication and pricing. See [CONTRIBUTING.md](./CONTRIBUTING.md#inclusion-criteria) for the full criteria and removal policy.
 
-### Official Skills (Anthropic)
+## 🎯 Skills
 
-- **[skill-creator](https://github.com/anthropics/skills/tree/main/skill-creator)** by Anthropic
-  - Description: Tool for creating new Claude Code skills
-  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/skill-creator`
-  - Features: Auto-generate SKILL.md templates, validate formats, package for publishing
+### Official Anthropic Skills
 
-- **[changelog-generator](https://github.com/anthropics/skills/tree/main/changelog-generator)** by Anthropic
-  - Description: Automatically generate user-friendly changelogs from Git commit history
-  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/changelog-generator`
-  - Features: Analyze commits, categorize changes, generate markdown format
+- **[anthropics/skills](https://github.com/anthropics/skills)** by Anthropic - Anthropic's public skills repository, which doubles as the `anthropic-agent-skills` Claude Code plugin marketplace
+  - Install: `/plugin marketplace add anthropics/skills`, then install one of the bundles below
+  - Bundles:
+    - `document-skills`: [xlsx](https://github.com/anthropics/skills/tree/main/skills/xlsx), [docx](https://github.com/anthropics/skills/tree/main/skills/docx), [pptx](https://github.com/anthropics/skills/tree/main/skills/pptx), and [pdf](https://github.com/anthropics/skills/tree/main/skills/pdf) for creating, editing, and analyzing Office documents and PDFs. Install: `/plugin install document-skills@anthropic-agent-skills`
+    - `example-skills`: includes [skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator), [mcp-builder](https://github.com/anthropics/skills/tree/main/skills/mcp-builder), [webapp-testing](https://github.com/anthropics/skills/tree/main/skills/webapp-testing), [frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design), [doc-coauthoring](https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring), and [web-artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder). Install: `/plugin install example-skills@anthropic-agent-skills`
+    - `claude-api`: [claude-api](https://github.com/anthropics/skills/tree/main/skills/claude-api), a reference for building with the Claude API and SDKs. Install: `/plugin install claude-api@anthropic-agent-skills`
+  - License: Apache-2.0 for most skills; the four document skills are source-available, not open source (see each skill's `LICENSE.txt`)
 
-- **[pdf](https://github.com/anthropics/skills/tree/main/pdf)** by Anthropic
-  - Description: PDF file processing toolkit (extract, convert, fill forms)
-  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/pdf`
-  - Features: PDF text extraction, image conversion, form filling
+### Skill Collections
 
-- **[pptx](https://github.com/anthropics/skills/tree/main/pptx)** by Anthropic
-  - Description: Create and edit PowerPoint presentations programmatically
-  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/pptx`
-  - Features: Slide creation, layouts, speaker notes, template support
+- **[wshobson/agents](https://github.com/wshobson/agents)** by Seth Hobson - Large plugin marketplace of agents, skills, and commands for development, code review, testing, infrastructure, and security, adapted for Claude Code, Codex, Cursor, OpenCode, and more
+  - Install: `/plugin marketplace add wshobson/agents`, then for example `/plugin install python-development@claude-code-workflows`
 
-- **[xlsx](https://github.com/anthropics/skills/tree/main/xlsx)** by Anthropic
-  - Description: Create and edit Excel/CSV spreadsheets programmatically
-  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/xlsx`
-  - Features: Workbook generation, formulas, formatting, data import/export
+- **[Trail of Bits Skills](https://github.com/trailofbits/skills)** by Trail of Bits - Plugin marketplace of skills for AI-assisted security analysis, testing, and development workflows
+  - Install: `/plugin marketplace add trailofbits/skills`, then browse with `/plugin`
+  - License: CC-BY-SA-4.0
 
-- **[docx](https://github.com/anthropics/skills/tree/main/docx)** by Anthropic
-  - Description: Create and edit Word documents programmatically
-  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/docx`
-  - Features: Structured authoring, styles, tables, review workflows
+- **[Vercel Agent Skills](https://github.com/vercel-labs/agent-skills)** by Vercel - Vercel's official skills, such as React and Next.js best practices, web design guidelines, and Vercel project audits
+  - Install: `npx skills add vercel-labs/agent-skills`
+  - License: MIT (stated in the README; the repository has no license file)
 
-- **[mcp-builder](https://github.com/anthropics/skills/tree/main/mcp-builder)** by Anthropic
-  - Description: Meta-skill that guides building high-quality MCP servers (Python FastMCP or TypeScript SDK)
-  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/mcp-builder`
-  - Features: Scaffolding, best-practice patterns, validation helpers
+- **[NotFair](https://github.com/nowork-studio/notfair-plugin)** by nowork-studio - Open-source marketing skills for SEO, GEO, paid media, analytics, and content workflows
+  - Install: `/plugin marketplace add nowork-studio/notfair-plugin`, then `/plugin install notfair@nowork-studio`
+  - Note: Live account analysis (Search Console, GA4, ad platforms) goes through NotFair's hosted MCP server and requires a NotFair account
 
-- **[webapp-testing](https://github.com/anthropics/skills/tree/main/webapp-testing)** by Anthropic
-  - Description: Playwright-based toolkit for testing and debugging local web applications
-  - Install: `claude skill add https://github.com/anthropics/skills/tree/main/webapp-testing`
-  - Features: Browser automation, UI verification, screenshot capture, console/log inspection
+- **[Orkas VideoStudio](https://github.com/Orkas-AI/Orkas-VideoStudio)** by Orkas-AI - Video composition, editing, transcription, and optional generation driven from a coding agent, with the video expressed as an editable `plan.json` timeline
+  - Install: Build from source (`pnpm install && pnpm build`) per the [README](https://github.com/Orkas-AI/Orkas-VideoStudio#install); it ships skills for Claude Code and Codex plus an MCP server
+  - Note: Requires Node 22+ and `ffmpeg`; generation is opt-in and uses your own provider keys
 
-### Community Skills Collections
+### Development & Workflow Skills
 
-- **[awesome-agent-skills](https://github.com/heilcheng/awesome-agent-skills)** by heilcheng
-  - Description: Large collection of AI coding assistant skills supporting Claude, Codex, Copilot, etc.
-  - Categories: Contains practical skills across multiple categories
+- **[Superpowers](https://github.com/obra/superpowers)** by Jesse Vincent - Software development methodology built from composable skills: brainstorming a spec, writing an implementation plan, then subagent-driven development with TDD and code review
+  - Install: `/plugin install superpowers@claude-plugins-official` (the README also covers Codex, Copilot CLI, OpenCode, and other agents)
 
-- **[awesome-codex-skills](https://github.com/ComposioHQ/awesome-codex-skills)** by ComposioHQ
-  - Description: Collection of practical skills for Codex CLI and API
-  - Features: Workflow automation optimized for Codex
+- **[Skills For Real Engineers](https://github.com/mattpocock/skills)** by Matt Pocock - Small, composable engineering skills, including [grill-me](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me), which interviews you one question at a time about a plan or design until every branch of the decision tree is resolved
+  - Install: `claude plugin install mattpocock-skills@claude-plugins-official`, or `npx skills@latest add mattpocock/skills` for other agents
 
-- **[NotFair](https://github.com/nowork-studio/NotFair)** by nowork-studio
-  - Description: Open-source marketing skill collection for SEO, GEO, Google Ads, and Meta Ads
-  - Install: `/plugin marketplace add nowork-studio/notfair`, then `/plugin install notfair@nowork-studio`
-  - Features: 18 public `SKILL.md` workflows; optional hosted MCP connectors provide live Google Search Console, Google Ads, and Meta Ads access
+- **[context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit)** by NeoLabHQ - Collection of context engineering techniques packaged as plugins, such as reflexion (reflection loops), code review, and spec-driven development
+  - Install: `/plugin marketplace add NeoLabHQ/context-engineering-kit`, then for example `/plugin install reflexion@NeoLabHQ/context-engineering-kit`
 
-- **[Orkas VideoStudio](https://github.com/Orkas-AI/Orkas-VideoStudio)** by Orkas-AI
-  - Description: Open-source video workflow skills and MCP tools for Codex and Claude Code
-  - Install: Follow the repository's source-install instructions for the target agent platform
-  - Features: Plain-language composition and editing with editable timelines, transcription, and optional provider-backed generation
+### Skill Installers
 
-### Development Tools
+- **[skills](https://github.com/vercel-labs/skills)** by Vercel - The `npx skills` CLI for the open Agent Skills ecosystem; installs skills from any GitHub repository into Claude Code, Codex, Cursor, OpenCode, and many other agents. Browse skills at [skills.sh](https://skills.sh)
+  - Install: `npx skills add <owner>/<repo>` (add `--skill <name>` for one skill, `-g` for user scope)
 
-- **[cpyref](https://github.com/LIghtJUNction/cpyref)** by LIghtJUNction
-  - Description: Rust CLI and companion agent skill for saving files, snippets, or command output once and retrieving the exact original bytes by short reference ID instead of regenerating them
-  - Install: `cargo install cpyref --locked`; companion [skill](https://github.com/LIghtJUNction/cpyref/tree/main/skills/cpyref) requires the CLI
-  - Features: Project-scoped snapshots, namespaces for same-machine multi-agent sharing, line/text/regex selectors, and length/SHA-256 verification before paste; Linux, macOS, and Windows support
-  - License: MIT
+- **[ai-agent-skills](https://github.com/MoizIbnYousaf/ai-agent-skills)** by MoizIbnYousaf - Curated skill library plus a CLI for installing skills and building your own shareable library
+  - Install: `npx ai-agent-skills install <skill-name>` (`npx ai-agent-skills` opens a terminal browser)
 
-- **[AgentGC](https://github.com/LIghtJUNction/AgentGC)** by LIghtJUNction
-  - Description: Local-first CLI (`agcc`) and companion agent skill for tracking files created or changed during agent sessions and reviewing leftover artifacts
-  - Install: Clone the repository, run `uv tool install .` from its root, then `agcc --version` (Python 3.11+); see the [installation guide](https://github.com/LIghtJUNction/AgentGC/blob/main/README.en.md#installation)
-  - Features: Command wrapping and selected-directory watching, local SQLite history, file labels, and preview-first quarantine with restore; observations are session-correlated, not proof of writer identity, and quarantine does not free disk space
-  - License: [Agent Upstream License 1.0-draft.1](https://github.com/LIghtJUNction/AgentGC/blob/main/LICENSE), a custom license that is not OSI-approved
+## 🧩 Plugins & Marketplaces
 
-- **[cursor-skills](https://github.com/chrisboden/cursor-skills)** by chrisboden
-  - Description: Skills starter template for Cursor AI editor
-  - Features: MCP server integration, auto-import, quick start
+### Marketplaces & Directories
 
-- **[context-engineering-kit](https://github.com/NeoLabHQ/context-engineering-kit)** by NeoLabHQ
-  - Description: Hand-crafted collection of advanced context engineering techniques for improving agent quality
-  - Install: `claude plugin marketplace add NeoLabHQ/context-engineering-kit`
-  - Features: Reflexion (reflection loops), scientifically proven techniques, 8-21% quality improvement, token-efficient
-  - Plugins: reflexion, memorize, critique with multi-agent debate
+- **[claude-plugins-official](https://github.com/anthropics/claude-plugins-official)** by Anthropic - Anthropic's official Claude Code plugin marketplace: plugins maintained by Anthropic plus approved third-party plugins from partners and the community
+  - Install: Added automatically on the first interactive Claude Code session; install with `/plugin install <name>@claude-plugins-official`, browse with `/plugin`, or browse on the web at [claude.com/plugins](https://claude.com/plugins)
 
-- **[agenttrace](https://github.com/luoyuctl/agenttrace)** by luoyuctl
-  - Description: Local TUI observability for AI coding agent sessions across cost, tokens, latency, failures, and reports
-  - Install: `go install github.com/luoyuctl/agenttrace/cmd/agenttrace@latest`
-  - Features: Supports Claude Code, Codex CLI, Gemini CLI, Aider, Cursor exports, health checks, anomaly detection, and CI gates
-- **[rust-norion](https://github.com/yanghao1143/rust-norion)** by yanghao1143
-  - Description: Rust prototype for agent runtime control, memory gates, model routing policy, audit evidence, and self-evolution loop tooling
-  - Install: Follow the repository README and contributor docs; published packages are not the main surface yet
-  - Features: Rust control layer, memory admission/recall boundaries, model-pool policy, evidence gates, status surfaces, and contributor-facing evolution workflows
+- **[claude-plugins-community](https://github.com/anthropics/claude-plugins-community)** by Anthropic - Read-only mirror of the community plugin marketplace; every plugin is submitted through Anthropic's directory form and passes automated security scanning
+  - Install: `claude plugin marketplace add anthropics/claude-plugins-community`, then `claude plugin install <name>@claude-community`
 
-- **[codex-cli](https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli)** by awesome-agent-tools
-  - Description: Skill that drives OpenAI Codex CLI for plan review, code review, and complex-problem discussion from inside your agent
-  - Install: `claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli`
-  - Features: Config-driven model selection (no hardcoded model, stays valid across Codex releases), dual ChatGPT-account / API-key login, agent-loop-aware `codex exec`, multi-round resume by explicit session id
-  - Use Cases: Second-opinion plan/code review, offloading heavy reasoning to Codex, cross-model verification
+- **[claudemarketplaces.com](https://claudemarketplaces.com/)** - Community directory of Claude Code skills, plugin marketplaces, and MCP servers (independent project, not affiliated with Anthropic)
 
-### Workflow & Automation Skills
+- **[Claude Plugins Registry](https://claude-plugins.dev/)** - Community-maintained plugin and skill registry with a CLI that adds the marketplace and installs a plugin in one step
 
-- **[Hermes Tweet](https://github.com/Xquik-dev/hermes-tweet)** by Xquik-dev
-  - Description: Native Hermes Agent plugin for X/Twitter research, monitoring, and approval-gated actions.
+### Notable Plugins
+
+- **[ralph-loop](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-loop)** by Anthropic - Runs the "Ralph Wiggum" technique inside a Claude Code session: a Stop hook feeds the same prompt back until a completion promise appears or an iteration limit is hit
+  - Install: `/plugin install ralph-loop@claude-plugins-official`
+  - Features: `/ralph-loop "<prompt>" --completion-promise "<text>" --max-iterations <n>`, `/cancel-ralph`
+  - Note: Suited to well-defined tasks with automatic verification (tests, linters); always set `--max-iterations` as a safety limit
+
+- **[Codex plugin for Claude Code](https://github.com/openai/codex-plugin-cc)** by OpenAI - Use Codex from inside Claude Code for read-only reviews, adversarial reviews, and delegating background tasks
+  - Install: `/plugin marketplace add openai/codex-plugin-cc`, then `/plugin install codex@openai-codex`
+  - Note: Requires a ChatGPT account (Free included) or an OpenAI API key; usage counts toward Codex limits
+
+- **[Hermes Tweet](https://github.com/Xquik-dev/hermes-tweet)** by Xquik-dev - Hermes Agent plugin for X/Twitter search, monitoring, and approval-gated actions
   - Install: `hermes plugins install Xquik-dev/hermes-tweet --enable`
-  - Features: Read-first X search, account reads, trend and monitor workflows, plus opt-in posting, replies, likes, retweets, follows, and DMs through Hermes.
+  - Features: Read-first X search, account reads, trend and monitor workflows, plus opt-in posting, replies, likes, retweets, follows, and DMs
+  - Note: Requires an Xquik API key (`XQUIK_API_KEY`) for anything beyond tweet exploration
 
-- **[ralph-loop](https://github.com/anthropics/claude-plugins-official)** by Anthropic Official
-  - Description: Iterative AI development methodology using automatic retry loops for overnight development
-  - Install: `claude plugin install ralph-loop@claude-plugins-official`
-  - Features: Automatic retry logic, completion detection, safety guardrails, ideal for well-defined tasks
-  - Use Cases: Greenfield development, automated testing workflows, tasks with clear success criteria
-  - Note: Real-world impact - $50k contract completed for ~$297 in API costs
+## 🔧 MCP Servers
 
-### Planning & Design Skills
+### Reference Servers (Model Context Protocol)
 
-- **[grill-me](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me)** by Matt Pocock
-  - Description: Interviews you relentlessly about a plan or design until reaching shared understanding, walking down each branch of the decision tree one question at a time
-  - Install: `npx skills@latest add mattpocock/skills` (then select `grill-me`)
-  - Features: One-question-at-a-time interviewing, recommended answer for every question, falls back to codebase exploration when an answer can be derived from code
-  - Use Cases: Stress-testing a plan before implementation, surfacing unstated assumptions, resolving dependencies between design decisions
-  - Trigger: Mention "grill me" or ask to stress-test a design
-  - Note: Part of Matt Pocock's broader [Skills For Real Engineers](https://github.com/mattpocock/skills) collection
+Reference implementations maintained by the MCP steering group to demonstrate MCP features and the official SDKs. They are educational examples, not production-ready servers.
 
-### Universal Installers
+- **[filesystem](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem)** by MCP
+  - Description: Secure file operations with configurable access controls
+  - Install: `claude mcp add filesystem -- npx -y @modelcontextprotocol/server-filesystem <allowed-dir>`
+  - Features: Read/write files, directory management, access limited to allowed directories
+  - Supports: Any MCP client (stdio)
 
-- **[ai-agent-skills](https://github.com/skillcreatorai/Ai-Agent-Skills)** by skillcreatorai
-  - Description: Universal installer for one-click skill installation across all AI tools
-  - Usage: `npx ai-agent-skills install skill-name`
-  - Supports: Claude Code, Cursor, Codex, VS Code, and 10+ tools
+- **[fetch](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch)** by MCP
+  - Description: Web content fetching and conversion to Markdown for LLM use
+  - Install: `claude mcp add fetch -- uvx mcp-server-fetch`
+  - Features: Fetch URLs, HTML-to-Markdown conversion, chunked reading of long pages
+  - Supports: Any MCP client (stdio)
 
-- **[openskills](https://github.com/numman-ali/openskills)** by numman-ali
-  - Description: Universal skills loader
-  - Usage: `npm i -g openskills && openskills install anthropics/skills`
+- **[git](https://github.com/modelcontextprotocol/servers/tree/main/src/git)** by MCP
+  - Description: Tools to read, search, and manipulate Git repositories
+  - Install: `claude mcp add git -- uvx mcp-server-git`
+  - Features: Status, diff, log, commit, and branch operations
+  - Supports: Any MCP client (stdio)
 
-## 📊 Agent Evaluation & Benchmarks
+- **[memory](https://github.com/modelcontextprotocol/servers/tree/main/src/memory)** by MCP
+  - Description: Knowledge graph-based persistent memory
+  - Install: `claude mcp add memory -- npx -y @modelcontextprotocol/server-memory`
+  - Features: Store and retrieve entities, relations, and observations across sessions
+  - Supports: Any MCP client (stdio)
 
-- **[ClawBench](https://github.com/TIGER-AI-Lab/ClawBench)** by TIGER-AI-Lab
-  - Description: Open-source live-web benchmark for browser and computer-use agents, covering 283 V1/V2 tasks across 163 live websites.
-  - Features: Isolated Docker runs, selectable agent harnesses, request interception, and replayable action, screenshot, recording, HTTP, and agent-message evidence; [paper](https://arxiv.org/abs/2604.08523) and [project](https://claw-bench.com).
-
-## 🔧 Recommended MCP Servers
-
-### Official MCP Servers (Model Context Protocol)
-
-- **[filesystem](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem)** by MCP Official
-  - Description: Secure file system operations server
-  - Features: Read/write files, directory management, permission control
-
-- **[github](https://github.com/modelcontextprotocol/servers/tree/main/src/github)** by MCP Official
-  - Description: GitHub integration server
-  - Features: Repository management, Issues, PR operations
-
-- **[fetch](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch)** by MCP Official
-  - Description: Web content fetching server
-  - Features: HTTP requests, content scraping, API calls
-
-- **[git](https://github.com/modelcontextprotocol/servers/tree/main/src/git)** by MCP Official
-  - Description: Git repository operations tool
-  - Features: Commit, branch, log viewing
-
-- **[memory](https://github.com/modelcontextprotocol/servers/tree/main/src/memory)** by MCP Official
-  - Description: Knowledge graph persistent memory server
-  - Features: Store and retrieve contextual information
-
-- **[sequentialthinking](https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking)** by MCP Official
-  - Description: Structured multi-step reasoning tool for complex problem solving
+- **[sequentialthinking](https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking)** by MCP
+  - Description: Structured, reflective multi-step reasoning for complex problems
+  - Install: `claude mcp add sequential-thinking -- npx -y @modelcontextprotocol/server-sequential-thinking`
   - Features: Step sequencing, revision, branching thought chains
+  - Supports: Any MCP client (stdio)
 
-- **[time](https://github.com/modelcontextprotocol/servers/tree/main/src/time)** by MCP Official
-  - Description: Timezone conversion and current-time queries
-  - Features: IANA timezone support, formatted output, lightweight utility
+- **[time](https://github.com/modelcontextprotocol/servers/tree/main/src/time)** by MCP
+  - Description: Current time and timezone conversion
+  - Install: `claude mcp add time -- uvx mcp-server-time`
+  - Features: IANA timezone support, conversion between timezones
+  - Supports: Any MCP client (stdio)
 
-### Community MCP Servers
+### Open-Source Servers
 
-- **[Statsnet](https://github.com/usenetstate/statsnet-mcp)** by usenetstate
-  - Description: Background check any company in the world: registration, executives, courts and finances
-  - Remote: `https://statsnet.co/mcp` · Registry: `io.github.usenetstate/statsnet`
-  - Features: World company background checks via remote MCP
-  - Supports: Claude Code, Cursor, Windsurf, Codex, and any MCP-compatible client
-
-- **[awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)** by punkpeye
-  - Description: Most active MCP server directory (85k+ stars, 1,500+ contributors)
-  - Includes: Production-ready and experimental MCP servers across all categories
-
-- **[awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers)** by wong2
-  - Description: Long-standing curated collection of MCP servers (alternative directory)
-  - Includes: Production-ready and experimental MCP servers
-
-- **[GitHub MCP Server](https://github.com/github/github-mcp-server)** by GitHub Official
-  - Description: Official GitHub MCP implementation
-  - Features: Complete GitHub API integration
-
-- **[GitNexus](https://github.com/abhigyanpatwari/GitNexus)** by abhigyanpatwari
-  - Description: Client-side knowledge graph engine that indexes codebases into a structured graph database, providing AI agents with deep architecture understanding via MCP
-  - Install: `claude mcp add gitnexus -- npx -y gitnexus@latest mcp`
-  - Features: 7 MCP tools (query, context, impact, detect_changes, rename, cypher, list_repos), hybrid search (BM25 + semantic), 9 languages (TS/JS/Python/Java/C/C++/C#/Go/Rust), execution flow tracing, community detection
-  - Supports: Claude Code (MCP + Skills + Hooks), Cursor, Windsurf, OpenCode
-  - Note: License is PolyForm Noncommercial 1.0.0 (free for non-commercial use only)
-
-- **[Helium MCP](https://github.com/connerlambden/helium-mcp)** by connerlambden
-  - Description: MCP server for real-time news with bias scoring (5,000+ sources, 15+ dimensions), live stock/crypto/options market data, AI options pricing, and meme search
-  - Install: `claude mcp add helium-mcp -- npx -y helium-mcp`
-  - Features: 9 tools (news search, balanced synthesis, source/URL bias analysis, ticker data, option pricing/strategies, meme search), no auth required, free tier available
-  - Supports: Claude Code, Cursor, Windsurf, Codex, and any MCP-compatible client
-  - Website: [heliumtrades.com/mcp-page](https://heliumtrades.com/mcp-page/)
+- **[GitHub MCP Server](https://github.com/github/github-mcp-server)** by GitHub
+  - Description: GitHub's official MCP server for repositories, code, issues, pull requests, Actions, and security findings
+  - Install: `claude mcp add-json github '{"type":"http","url":"https://api.githubcopilot.com/mcp","headers":{"Authorization":"Bearer YOUR_GITHUB_PAT"}}'` (see the [Claude Code guide](https://github.com/github/github-mcp-server/blob/main/docs/installation-guides/install-claude.md) for the local Docker image `ghcr.io/github/github-mcp-server`)
+  - Features: Hosted remote server or local server, OAuth or personal access token, toolsets to enable only the GitHub capabilities you need
+  - Supports: Any MCP client (Streamable HTTP or stdio)
 
 - **[playwright-mcp](https://github.com/microsoft/playwright-mcp)** by Microsoft
-  - Description: Official browser-automation MCP server using Playwright's accessibility tree for reliable, LLM-friendly web interaction (31k+ stars)
-  - Install: `claude mcp add playwright -- npx -y @playwright/mcp@latest`
-  - Features: Accessibility-first automation (no screenshots needed), form interaction, navigation, console/network inspection, Apache-2.0
-  - Note: Recommended successor to the archived puppeteer reference server
+  - Description: Browser automation through Playwright's accessibility snapshots, so the model works with structured page data instead of screenshots
+  - Install: `claude mcp add playwright npx @playwright/mcp@latest`
+  - Features: Navigation, form interaction, console and network inspection; Microsoft also offers [Playwright CLI with skills](https://github.com/microsoft/playwright-cli) for token-efficient coding-agent workflows
+  - Supports: Any MCP client (stdio, or HTTP with `--port`)
 
-- **[mcp-server-cloudflare](https://github.com/cloudflare/mcp-server-cloudflare)** by Cloudflare
-  - Description: Official Cloudflare MCP servers covering Workers, KV, D1, R2, Observability, and more (13 sub-servers)
-  - Features: Remote/hosted deployment, OAuth support, per-service granularity, Apache-2.0
+- **[Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp)** by ChromeDevTools
+  - Description: Lets a coding agent control and inspect a live Chrome browser with the full power of Chrome DevTools
+  - Install: `claude mcp add chrome-devtools --scope user npx chrome-devtools-mcp@latest`, or `/plugin marketplace add ChromeDevTools/chrome-devtools-mcp` for the MCP server plus skills
+  - Features: Performance traces and insights, network and console inspection with source-mapped stack traces, screenshots, Puppeteer-based automation; a CLI is also available
+  - Supports: Any MCP client (stdio)
 
-- **[exa-mcp-server](https://github.com/exa-labs/exa-mcp-server)** by Exa Labs
-  - Description: Semantic web search and crawling via the Exa API — a high-quality replacement for the archived brave-search reference server
-  - Install: `claude mcp add exa -- npx -y exa-mcp-server`
-  - Features: Neural search, content extraction, domain filtering, research workflows
-  - Note: Requires Exa API key
+- **[Context7](https://github.com/upstash/context7)** by Upstash
+  - Description: Pulls up-to-date, version-specific library documentation and code examples into the agent's context
+  - Install: `npx ctx7 setup` (choose MCP or CLI + skills mode), or connect any client to `https://mcp.context7.com/mcp` (send an API key as `Authorization: Bearer <key>`)
+  - Features: `resolve-library-id` and `query-docs` tools
+  - Supports: Any MCP client (Streamable HTTP or stdio)
+  - Note: Works without a key at lower rate limits; a free API key from context7.com raises them
 
-- **[sentry-mcp](https://github.com/getsentry/sentry-mcp)** by Sentry
-  - Description: Official Sentry error-tracking and observability MCP server (remote, OAuth-based)
-  - Features: Issue search, stack-trace inspection, release/deploy correlation, hosted remote MCP (no local install)
+- **[Serena](https://github.com/oraios/serena)** by Oraios AI
+  - Description: IDE-like semantic code retrieval, editing, refactoring, and debugging tools that operate at the symbol level
+  - Install: `uv tool install -p 3.13 serena-agent`, then `serena init`; the README links per-client setup guides
+  - Features: Symbol-level navigation, cross-file renames and moves, reference lookups, language-server backend
+  - Supports: Claude Code, Codex, Claude Desktop, MCP-enabled IDEs, and other MCP clients
 
-- **[x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper)** by Xquik-dev
-  - Description: Xquik remote MCP server and installable skill for X/Twitter data workflows
-  - Install: See the [MCP setup docs](https://docs.xquik.com/mcp/overview)
-  - Features: Tweet search, profile lookups, media downloads, monitors, HMAC webhooks, and REST API exploration
-  - Supports: MCP-compatible clients and skills-compatible agents
-  - Note: Requires a Xquik API key
+- **[GitNexus](https://github.com/abhigyanpatwari/GitNexus)** by abhigyanpatwari
+  - Description: Indexes a codebase into a local knowledge graph and exposes it through MCP tools so agents understand architecture, call chains, and change impact
+  - Install: `claude mcp add gitnexus -- npx -y gitnexus@latest mcp` (run `npx gitnexus analyze` in the repository first)
+  - Features: Query, context, impact analysis, change detection, rename, and Cypher tools; hybrid BM25 + semantic search; many languages including TypeScript, Python, Java, Go, Rust, C#, and C/C++
+  - Supports: Claude Code, Codex, Cursor, and Antigravity (MCP + skills + hooks); OpenCode, Windsurf, and other MCP clients
+  - Note: License is PolyForm Noncommercial 1.0.0 (free for non-commercial use only; commercial licenses available from the authors)
+
+- **[Cloudflare MCP Server](https://github.com/cloudflare/mcp)** by Cloudflare
+  - Description: Token-efficient MCP server for the entire Cloudflare API, using Code Mode: broad API access through code execution with a handful of tools
+  - Install: `claude mcp add --transport http cloudflare-api https://mcp.cloudflare.com/mcp`
+  - Features: OAuth with per-permission authorization or a Cloudflare API token; product-specific servers (docs, containers, browser rendering, and more) live in [mcp-server-cloudflare](https://github.com/cloudflare/mcp-server-cloudflare)
+  - Supports: Any MCP client (Streamable HTTP)
+
+- **[Sentry MCP](https://github.com/getsentry/toolkit)** by Sentry
+  - Description: Sentry's MCP server for coding agents: search issues, errors, traces, and logs, and inspect stack traces while debugging
+  - Install: `claude mcp add --transport http sentry https://mcp.sentry.dev/mcp` (optionally append `/<org>/<project>`)
+  - Features: Hosted remote server with OAuth; stdio transport for self-hosted Sentry; AI-powered search tools need an LLM provider key
+  - Supports: Any MCP client (Streamable HTTP or stdio)
+  - Note: Source lives in the `getsentry/toolkit` repository under FSL-1.1-Apache-2.0 (Functional Source License, source-available; each release becomes Apache-2.0 two years after it is published)
+
+- **[Supabase MCP Server](https://github.com/supabase/mcp)** by Supabase
+  - Description: Connects agents to your Supabase projects to manage tables, fetch configuration, and query data
+  - Install: `claude mcp add --transport http supabase https://mcp.supabase.com/mcp` (sign in to Supabase when prompted)
+  - Features: OAuth login, feature groups (docs, database, functions, branching, and more), local CLI and self-hosted endpoints with a subset of tools
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Read Supabase's [security best practices](https://supabase.com/docs/guides/ai-tools/mcp#security-risks) before connecting an LLM to a project
+
+- **[Exa MCP Server](https://github.com/exa-labs/exa-mcp-server)** by Exa Labs
+  - Description: Web search, page fetching, and research tools backed by the Exa search API
+  - Install: `claude plugin install exa@claude-plugins-official`, or connect any client to `https://mcp.exa.ai/mcp`
+  - Features: Default search and fetch tools, optional advanced tools selected with the `tools` URL parameter, bundled skills
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: The hosted server works anonymously with rate limits; sign in with OAuth or use an Exa API key for higher limits and Exa Agent
 
 - **[RunAPI MCP Server](https://github.com/runapi-ai/mcp)** by runapi-ai
-  - Description: MCP server for browsing the RunAPI model catalog and running AI model tasks from agent workflows
+  - Description: Browse the RunAPI model catalog and run AI model tasks from agent workflows
   - Install: `claude mcp add runapi -s user -- npx -y @runapi.ai/mcp`
-  - Features: Catalog browsing, model info, pricing snapshots, prompt search, image/video/music/audio/text-to-speech task creation, task status, and balance checks
-  - Supports: Claude Code, Codex, Cursor, Windsurf, VS Code, Roo Code, and other MCP-compatible clients
+  - Features: Catalog browsing, model info, pricing, image/video/music/audio/text-to-speech task creation, task status, and balance checks
+  - Supports: Claude Code, Codex, Cursor, Windsurf, VS Code, Roo Code, and other MCP clients (stdio)
+  - Note: Discovery tools work without a key; running tasks requires a RunAPI account
 
-- **[API Status Check](https://apistatuscheck.com/mcp)** by apistatuscheck
-  - Description: Lets an agent find out whether a third-party API is actually down before it blames its own code — live-probes the vendor endpoint at call time and reads what the vendor publishes on its own status page, across 285 developer APIs
+### Hosted MCP Services
+
+Remote MCP endpoints whose backend is not open source. Each is listed in the [MCP Registry](https://registry.modelcontextprotocol.io) and serves Streamable HTTP.
+
+- **[Atlassian Rovo MCP Server](https://github.com/atlassian/atlassian-mcp-server)** by Atlassian
+  - Description: Atlassian's hosted MCP server for Jira, Confluence, Jira Service Management, Bitbucket, Compass, and Loom
+  - Install: `claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp`, then authenticate with `/mcp`
+  - Features: Search and summarize across Atlassian products, create and update work items and pages, respects each user's existing permissions
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `com.atlassian/atlassian-mcp-server`. Auth: OAuth 2.1 or API token. Pricing: calls that return enriched cross-product context use Rovo credits, which paid Atlassian Cloud plans include per user each month; extra usage is billed ([docs](https://support.atlassian.com/atlassian-ai-gateway/docs/get-started-with-the-atlassian-remote-mcp-server/), [credits](https://support.atlassian.com/rovo/docs/rovo-usage-limits/))
+
+- **[Figma MCP Server](https://developers.figma.com/docs/figma-mcp-server/)** by Figma
+  - Description: Brings Figma design context into coding agents that generate code from designs, and can write back to the canvas
+  - Install: `claude plugin install figma@claude-plugins-official` (MCP server plus skills), or `claude mcp add --transport http figma https://mcp.figma.com/mcp`
+  - Features: Design context, variables, components, Code Connect, code-to-canvas
+  - Supports: Any MCP client (Streamable HTTP); a desktop server is also available for some paid plans
+  - Note: Registry: `com.figma.mcp/mcp`. Auth: browser sign-in to your Figma account. Pricing: Starter plan and View/Collab seats get up to 20 tool calls a month; Dev and Full seats on paid plans get daily and per-minute limits ([rate limits](https://developers.figma.com/docs/figma-mcp-server/rate-limits-access/))
+
+- **[Linear MCP Server](https://linear.app/docs/mcp)** by Linear
+  - Description: Linear's hosted MCP server for finding, creating, and updating issues, projects, and comments
+  - Install: `claude mcp add --transport http linear-server https://mcp.linear.app/mcp`, then run `/mcp` to sign in
+  - Features: Read-write endpoint, plus `https://mcp.linear.app/mcp/readonly` for read-only access
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `app.linear/linear`. Auth: OAuth 2.1, or a Linear API key as a bearer token. Pricing: MCP access is included on every Linear plan, including Free ([pricing](https://linear.app/pricing))
+
+- **[Notion MCP](https://developers.notion.com/guides/mcp/overview)** by Notion
+  - Description: Notion's hosted MCP server for searching, reading, creating, and updating workspace pages and databases
+  - Install: `claude mcp add --transport http notion https://mcp.notion.com/mcp`, then run `/mcp` to sign in
+  - Features: Search Notion and connected sources, read and update content, create pages and databases
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `com.notion/mcp`. Auth: OAuth. Pricing: tools work on every plan; AI search, some filters, and meeting-notes queries need a Business or Enterprise plan with Notion AI ([supported tools](https://developers.notion.com/guides/mcp/mcp-supported-tools))
+
+- **[Statsnet](https://github.com/usenetstate/statsnet-mcp)** by Statsnet
+  - Description: Company background checks for Kazakhstan, Uzbekistan, Kyrgyzstan, Georgia, and Armenia (the tools also accept Tajikistan, Azerbaijan, and US states): registration, executives, government contracts, courts, and finances
+  - Install: `claude mcp add --transport http statsnet https://statsnet.co/mcp` (add `--header "Authorization: Bearer <key>"` for paid tools)
+  - Features: `search_companies` and `get_company` (public company card); contacts, full contracts, relations, and exports on paid plans
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `io.github.usenetstate/statsnet`. Auth: none for public tools; API key (Bearer) for extended data. Pricing: public tools are free with a limit on anonymous searches; extended tools need the Pro plan ([MCP docs, in Russian](https://statsnet.co/integrations/mcp.md), [pricing](https://statsnet.co/pricing.md))
+
+- **[API Status Check](https://apistatuscheck.com/mcp)** by API Status Check
+  - Description: Lets an agent find out whether a third-party API is actually down before it blames its own code: probes the vendor endpoint live and reads the vendor's own status page
   - Install: `claude mcp add --transport http apistatuscheck https://apistatuscheck.com/api/mcp`
-  - Features: 8 tools (list_apis, search_apis, get_api_status, list_down_apis, get_uptime_history, get_incident_history, rank_reliability, list_categories), hosted Streamable HTTP, no API key and no local install
-  - Supports: Claude Code, Codex, Cursor, Windsurf, and any MCP-compatible client
-  - Note: `get_api_status` probes live; `list_down_apis` reflects a background sweep that runs hourly. Hosted service, source not public
-
-- **[Pocket Drives](https://github.com/RevList/pocket-drives-mcp)** by PocketList Inc
-  - Description: Search peer-to-peer luxury, exotic, and EV rentals from independent hosts. Remote Streamable HTTP at https://pocketdrives.ai/mcp, no auth.
-  - Install: `claude mcp add --transport http pocket-drives https://pocketdrives.ai/mcp`
-  - Features: 9 read-only tools (search, quotes, availability, host profiles), hosted Streamable HTTP, no API key and no local install
-  - Supports: Claude Code, Codex, Cursor, Windsurf, and any MCP-compatible client
-
-- **[OrcaReplay](https://github.com/Continuum-AI-Corp/OrcaReplay)** by Continuum AI
-  - Description: Read an agent's own recorded runs — walk the timeline, ask what happened at a step, and replay a past run offline with no model call.
-  - Install: `npm i -g orcareplay` (stdio; registered as `io.github.Continuum-AI-Corp/orcareplay`)
-  - Features: Lists recorded runs, walks a run's timeline, answers what happened at a given step, replays against the recorded bytes with no provider called
-  - Supports: Claude Code, Codex, Cursor, opencode, and any MCP-compatible client
-
-- **[LogNorm](https://github.com/lognorm/lognorm-mcp)** by LogNorm
-  - Description: Hosted MCP server that hands a site's SEO/GEO growth backlog (site audits, fixes, content drafts, AI-visibility tracking) to your coding agent. Remote Streamable HTTP at https://lognorm.com/api/mcp, OAuth 2.1, MIT-licensed connector repo.
-  - Install: `claude mcp add --transport http lognorm https://lognorm.com/api/mcp`
-  - Features: hosted Streamable HTTP, no API key and no local install; needs a LogNorm account (free plan for 1 website). Docs: https://lognorm.com/docs/agents
-  - Supports: Claude Code, Codex, Cursor, and other MCP-compatible clients
+  - Features: `get_api_status`, `list_down_apis`, `get_uptime_history`, `get_incident_history`, `rank_reliability`, and search/list tools
+  - Supports: Any MCP client (Streamable HTTP; SSE-only clients cannot connect)
+  - Note: Registry: `io.github.shibley/apistatuscheck`. Auth: none. Pricing: the MCP endpoint is free; optional email alerts (Alert Pro) are paid ([docs](https://apistatuscheck.com/mcp))
 
 - **[CurlShot](https://curlshot.com/docs/guides/ai-agents)** by CurlShot
-  - Description: Hosted MCP server for a website screenshot API, so an agent can see a web page. URL, HTML or Markdown in; PNG, JPEG, WebP, PDF or scrolling video out, rendered in a real browser.
+  - Description: Website screenshot API for agents: URL, HTML, or Markdown in; PNG, JPEG, WebP, PDF, or scrolling video out, rendered in a real browser
   - Install: `claude mcp add --transport http curlshot https://curlshot.com/api/mcp --header "Authorization: Bearer YOUR_ACCESS_KEY"`
-  - Features: 2 tools (take_screenshot, list_devices), hosted Streamable HTTP, full-page capture, phone/tablet/desktop presets, cookie banners and ads hidden before capture; also OpenAPI 3.1 and llms.txt
-  - Supports: Claude Code, Cursor, and any MCP-compatible client
-  - Note: Requires a CurlShot access key (free plan: 100 screenshots a month, no card). Hosted service, source not public
+  - Features: `take_screenshot` and `list_devices` tools, full-page capture, device presets, blocking of ads and cookie banners
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `io.github.SergiuPogor/curlshot`. Auth: access key (Bearer). Pricing: free plan with 100 screenshots a month and no card, paid plans from $19/month ([pricing](https://curlshot.com/pricing))
 
-- **[looot](https://github.com/loootai/looot-mcp)** by loootai
-  - Description: Hosted MCP server for about 2,400 business-data endpoints from 77 providers: people and company enrichment, work email find and verify, web search, web page reading, local business search. MIT-licensed bridge repo, docs at https://docs.looot.ai.
-  - Install: `claude mcp add --transport http looot https://api.looot.ai/mcp`
-  - Features: hosted Streamable HTTP, browser OAuth sign-in or `Authorization: Bearer <LOOOT_API_KEY>`; paid per call from a prepaid balance, no free tier
-  - Supports: Claude Code, Codex, Cursor, and other MCP-compatible clients
+- **[looot](https://docs.looot.ai)** by looot
+  - Description: One catalog of paid data APIs (people and company enrichment, work email finding and verification, web search, scraping) behind one account and one prepaid balance
+  - Install: `claude mcp add --scope user --transport http looot https://api.looot.ai/mcp`, then `claude mcp login looot`
+  - Features: Catalog search with prices shown before running, jobs with provider fallback, receipts, failed runs settle at $0
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `ai.looot/looot`. Auth: browser sign-in or a Bearer agent token. Pricing: prepaid balance, pay per call or per result, no subscription; catalog search tools are free ([pricing](https://docs.looot.ai/get-started/pricing-basics))
 
-- **[DC Hub](https://github.com/azmartone67/dchub-mcp-server)** by DC Hub
-  - Description: DC Hub is the live data layer for data-center site selection. Its Data Center Power Index (DCPI) is a daily score of where data centers can get grid power, across 300+ markets. Remote Streamable HTTP at https://dchub.cloud/mcp.
-  - Install: `claude mcp add --transport http dc-hub https://dchub.cloud/mcp`
-  - Features: 94 MCP tools for markets, power and grid interconnection, energy prices, fiber and siting; answers carry an as-of timestamp and a citation line; free tier needs no key
-  - Supports: Claude Code, Codex, Cursor, Windsurf, and any MCP-compatible client
+- **[DC Hub](https://dchub.cloud/connect)** by DC Hub
+  - Description: Live data-center, power, grid, fiber, and deal data for data-center site selection, including the daily Data Center Power Index across 300+ markets
+  - Install: `claude mcp add dchub --transport http https://dchub.cloud/mcp`
+  - Features: Market, power and interconnection, energy price, fiber, and capacity-sourcing tools
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `cloud.dchub/mcp-server`. Auth: none for the free tier; optional API key header or OAuth sign-in. Pricing: free tier (anonymous previews; a free key adds 2 full answers per tool per day, or 50 calls a day with an email); numeric data beyond that needs a paid plan ([pricing](https://dchub.cloud/pricing))
 
-- **[Invompt](https://github.com/Invompt/invompt-mcp)** by Invompt
-  - Description: Hosted MCP server that drafts invoices, quotes, estimates, and pro formas from a conversation, so you review every document before it goes to a client. Remote Streamable HTTP at https://mcp.invompt.com/mcp, OAuth, MIT-licensed connector repo.
-  - Install: `claude mcp add --transport http invompt https://mcp.invompt.com/mcp`
-  - Features: hosted Streamable HTTP, no local install; start as a guest without an account, emailing invoices needs a registered account. Registry: `com.invompt/invompt`. Setup guide: https://invompt.com/install
-  - Supports: Claude Code, Codex, Claude Desktop, Cursor, and other MCP-compatible clients
+- **[Invompt](https://invompt.com/docs)** by Invompt
+  - Description: Drafts invoices, quotes, estimates, and pro formas from a conversation, so you review every document before it goes to a client
+  - Install: `claude mcp add --transport http invompt https://mcp.invompt.com/mcp`, then `claude mcp login invompt`
+  - Features: Revise a selected document, reuse saved clients and business settings, start as a guest; emailing invoices needs a registered account
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `com.invompt/invompt`. Auth: OAuth, including a guest option without an account. Pricing: free during prerelease; paid plans are not available yet ([terms](https://invompt.com/terms))
 
-- **[Aident Loadout](https://aident.ai)** by Aident AI
-  - Description: Hosted MCP server that gives coding and chat agents one reusable set of connected apps plus 400+ expert-built Skills. Accounts are connected once and reused across agents, credentials stay in Aident Vault, and every action is logged in Audit. MIT-licensed skill repo: https://github.com/Aident-AI/aident-skill
-  - Install: `claude mcp add --transport http aident https://loadout.aident.ai/mcp`
-  - Features: remote Streamable HTTP with OAuth sign-in on first use, capability search by intent with live schemas, cost preflight before actions run, also available as a CLI (`npm i -g @aident-ai/cli`) and an agent Skill. Free pay-as-you-go start. Docs: https://docs.aident.ai/loadout/overview
-  - Supports: Claude Code, Codex, Cursor, ChatGPT, Claude Desktop, OpenCode, and any MCP-compatible client
+- **[Aident Loadout](https://docs.aident.ai/loadout/overview)** by Aident AI
+  - Description: One reusable set of connected apps plus expert-built skills for coding and chat agents; credentials stay in Aident Vault and every action is logged in Audit
+  - Install: In Claude Code, ask it to `Follow https://aident.ai/SETUP.md` (installs the Loadout CLI and skill); other MCP clients connect to `https://loadout.aident.ai/mcp`
+  - Features: Action search with live schemas, Vault connection management, Audit receipts; also available as a CLI and an [agent skill](https://github.com/Aident-AI/aident-skill)
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `io.github.Aident-AI/loadout`. Auth: browser OAuth sign-in. Pricing: free to start, then credit top-ups or plan upgrades ([pricing](https://aident.ai/pricing))
 
-## 🛠️ Related Tools and Resources
+- **[Xquik](https://docs.xquik.com/mcp/overview)** by Xquik
+  - Description: X/Twitter data for agents: tweet search, profile lookups, monitors, and API exploration
+  - Install: `claude mcp add --transport http xquik https://xquik.com/mcp`, then `claude mcp login xquik`
+  - Features: `docs`, `search`, and `execute` tools; companion skill and plugin in [x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper)
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
-### Marketplaces and Plugin Registries
+## 🧰 Agent Runtimes & Orchestration
 
-- **[Claude Code Plugin Marketplace](https://claudemarketplaces.com/)**
-  - Official Claude Code plugin marketplace
+### Runtimes & Orchestrators
 
-- **[Claude Plugins Registry](https://claude-plugins.dev/)**
-  - Community plugin registry
-
-### Development Resources
-
-- **[MCP Servers Repository](https://github.com/modelcontextprotocol/servers)**
-  - Official MCP server reference implementations
-
-- **[MCP SDK](https://github.com/modelcontextprotocol/typescript-sdk)**
-  - TypeScript SDK for building MCP servers
-
-- **[FastMCP](https://github.com/jlowin/fastmcp)** by jlowin
-  - Python framework for building MCP servers and clients (24k+ stars, Apache-2.0) — de-facto standard for Python MCP development
-
-### Agent Runtimes
-
-- **[SandBase Harness](https://github.com/sandbaseai/sandbase-harness)** by SandBase AI
-  - Description: Local-first runtime for running agents with persistent sessions, sandbox backends, MCP tool governance, and audit trails
+- **[SandBase Harness](https://github.com/sandbaseai/sandbase-harness)** by SandBase AI - Local-first runtime for running agents with persistent sessions, sandbox backends, MCP tool governance, and audit trails
   - Install: Clone the repository, run `npm ci && npm run build`, then follow the [installation guide](https://github.com/sandbaseai/sandbase-harness/blob/main/llms-install.md)
   - Features: Approval-gated tool execution, local/Docker/Kubernetes/self-hosted workers, resumable sessions, artifacts, and a built-in Console
 
-- **[YYLO](https://github.com/yylo-dev/yylo)** by yylo-dev
-  - Description: Command-line orchestrator for coding agents, repeatable workflows, and receipt-backed repository changes, with typed task, validation, merge, and release-readiness boundaries
+- **[YYLO](https://github.com/yylo-dev/yylo)** by yylo-dev - Command-line orchestrator for coding agents, repeatable workflows, and receipt-backed repository changes, with typed task, validation, merge, and release-readiness boundaries
   - Install: `npm install --global '@yylo/cli@latest'`
   - Features: Each task runs in a dedicated branch/worktree; the merge queue owns risk-based review; runs Pi and Codex subagents with receipt-backed changes
 
-### Cursor Related
+- **[rust-norion](https://github.com/yanghao1143/rust-norion)** by yanghao1143 - Rust research prototype of a reasoning control layer: model routing, memory gates, reflection, experience replay, and audited self-evolution gates
+  - Install: Clone the repository and build with Cargo per the README (for example `cargo run -q -p norion-cli -- --help`)
+  - Note: Not a production inference engine; documentation is in Chinese
 
-- **[awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules)** by PatrickJS
-  - Configuration file collection for Cursor AI editor
-  - Includes custom rules and behaviors
+### Memory & Observability
 
-- **[vibe-tools](https://github.com/eastlondoner/vibe-tools)** by eastlondoner
-  - Provides AI teams and advanced skills for Cursor Agent
+- **[Tree Ring Memory](https://github.com/TerminallyLazy/Tree-Ring-Memory)** by TerminallyLazy - Local-first memory lifecycle layer for agents: a Rust CLI (`tree-ring`) that stores decisions, lessons, and warnings in SQLite/FTS and compresses older memory over time
+  - Install: `brew tap TerminallyLazy/tree-ring && brew install tree-ring` (macOS ARM64) or the release install script in the README; optional agent guidance plugin: `/plugin marketplace add TerminallyLazy/Tree-Ring-Memory`, then `/plugin install tree-ring-memory@tree-ring-memory`
+  - Features: `tree-ring init` writes a portable `SKILL.md` and `AGENTS.md` guidance into the memory root; import/export, audit, consolidation, secret redaction, and a terminal UI
+
+- **[agenttrace](https://github.com/luoyuctl/agenttrace)** by luoyuctl - Local-first TUI and reports for coding-agent session history: cost, tokens, time, failures, and slow-run diagnosis
+  - Install: `brew install luoyuctl/tap/agenttrace` or `npm install -g @zack78/agenttrace` (see the README for the install script and Cargo)
+  - Features: Reads Claude Code, Codex CLI, Qwen Code, Cline, Aider, Cursor exports, OpenCode, and generic JSON/JSONL traces; ranks sessions by cost, duration, health, failures, and anomalies
+
+- **[OrcaReplay](https://github.com/Continuum-AI-Corp/OrcaReplay)** by Continuum AI - Record a coding agent's run, replay it byte-for-byte offline with no model call, and fork it from any step onto a different model
+  - Install: `npm i -g orcareplay` (installs the `orca` command)
+  - Features: `orca record claude`, offline replay, forking, and `orca mcp`, an MCP server (stdio) that lets an agent read, explain, and replay its own recorded runs
+
+## 🛡️ Security
+
+- **[Snyk Agent Scan](https://github.com/snyk/agent-scan)** by Snyk - Discovers agent components on a machine (agent configs, MCP servers, skills) and scans them for prompt injection and other vulnerabilities
+  - Install: `uvx snyk-agent-scan@latest` (or `uvx snyk-agent-scan@latest ~/.claude/skills` for one directory)
+  - Note: Requires a Snyk account and `SNYK_TOKEN`; CLI output format is experimental
+
+- **[Skill Scanner](https://github.com/cisco-ai-defense/skill-scanner)** by Cisco AI Defense - Best-effort security scanner for Agent Skills that detects prompt injection, data exfiltration, and malicious code patterns using static, dataflow, and optional LLM analysis
+  - Install: `uv tool install cisco-ai-skill-scanner`, then `skill-scanner scan /path/to/skill`
+  - Features: SARIF output, GitHub Actions workflow, pre-commit hook; the companion [MCP Scanner](https://github.com/cisco-ai-defense/mcp-scanner) (`uv tool install --python 3.13 cisco-ai-mcp-scanner`) scans MCP servers, tools, prompts, and resources with YARA rules, LLM analysis, and the optional Cisco AI Defense API
+
+## 📊 Evaluation & Benchmarks
+
+- **[Terminal-Bench](https://www.tbench.ai/)** by Harbor - Benchmark of difficult terminal tasks for measuring agents, published as a continuously updated dataset with a public leaderboard
+  - Install: `uv tool install harbor`, then `harbor run -d terminal-bench/terminal-bench@latest -a <agent> -m <model>`
+  - Features: Runs through [Harbor](https://github.com/harbor-framework/harbor), a framework for evaluating agents such as Claude Code, Codex CLI, and OpenHands, building your own benchmarks, and running thousands of sandboxed environments in parallel; [tasks repository](https://github.com/harbor-framework/terminal-bench)
+
+- **[SWE-Bench Pro](https://github.com/scaleapi/SWE-bench_Pro-os)** by Scale AI - Benchmark of long-horizon software engineering tasks: given a codebase and an issue, the agent must produce a patch that resolves it
+  - Install: Clone the repository and run the V2 tasks with Harbor (`harbor run -p v2/tasks ...`); see the [V2 README](https://github.com/scaleapi/SWE-bench_Pro-os/tree/main/v2)
+  - Features: Public tasks as Harbor task directories, a [public leaderboard](https://labs.scale.com/leaderboard/swe_bench_pro), and a separate private commercial leaderboard
+
+- **[MCP-Atlas](https://github.com/scaleapi/mcp-atlas)** by Scale AI - Benchmark of tool-use competency with real MCP servers, run in a reproducible Docker sandbox and scored by an LLM judge
+  - Features: [Paper](https://arxiv.org/abs/2602.00933), [leaderboard](https://labs.scale.com/leaderboard/mcp_atlas), and [dataset](https://huggingface.co/datasets/ScaleAI/MCP-Atlas)
+
+- **[ClawBench](https://github.com/TIGER-AI-Lab/ClawBench)** by TIGER-AI-Lab - Live-web benchmark for browser agents on everyday online tasks (booking travel, ordering food, applying for jobs) across real websites
+  - Install: `uv tool install clawbench-eval`, then `clawbench`
+  - Features: Isolated Docker runs, selectable agent harnesses, request interception, and replayable action, screenshot, recording, HTTP, and agent-message evidence; [paper](https://arxiv.org/abs/2604.08523) and [project](https://claw-bench.com)
+
+## 🛠️ Developer Resources
+
+- **[MCP SDKs](https://modelcontextprotocol.io/docs/sdk)** by MCP - Official SDKs for building MCP servers and clients, including [TypeScript](https://github.com/modelcontextprotocol/typescript-sdk) and [Python](https://github.com/modelcontextprotocol/python-sdk)
+
+- **[FastMCP](https://github.com/PrefectHQ/fastmcp)** by Prefect - Python framework for building MCP servers and clients
+  - Install: `uv add fastmcp`
+
+- **[MCP Inspector](https://github.com/modelcontextprotocol/inspector)** by MCP - Developer tool for testing and debugging MCP servers, with web UI, CLI, and TUI modes
+  - Install: `npx @modelcontextprotocol/inspector` (add `--cli` or `--tui`)
+
+- **[MCP Registry](https://registry.modelcontextprotocol.io)** by MCP - Official registry and API of published MCP servers; publishers must prove control of their namespace (a GitHub account or a domain)
+  - Features: [Source and publishing guide](https://github.com/modelcontextprotocol/registry)
+
+## 🗂️ Community Directories
+
+- **[awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)** by punkpeye - Large, actively maintained directory of production-ready and experimental MCP servers
+
+- **[awesome-mcp-servers](https://github.com/wong2/awesome-mcp-servers)** by wong2 - Long-standing curated MCP server list; new submissions go through [mcpservers.org](https://mcpservers.org/submit)
+
+- **[Awesome Claude Code](https://github.com/hesreallyhim/awesome-claude-code)** by hesreallyhim - Hand-picked skills, agents, status lines, plugins, and developer tooling for Claude Code
+  - License: CC BY-NC-ND 4.0
+
+- **[Awesome Agent Skills](https://github.com/VoltAgent/awesome-agent-skills)** by VoltAgent - Curated list of real-world Agent Skills from engineering teams, with install paths for Claude Code, Codex, Cursor, Gemini CLI, and more
+
+- **[Agent Skill Index](https://github.com/heilcheng/awesome-agent-skills)** by heilcheng - Community-curated list of agent skills for Claude, Codex, Copilot, and other assistants, also browsable at [agent-skill.co](https://agent-skill.co)
+
+- **[Awesome Claude](https://awesomeclaude.ai/)** - Directory of Claude resources, tools, and integrations
+
+- **[awesome-cursorrules](https://github.com/PatrickJS/awesome-cursorrules)** by PatrickJS - Collection of Cursor Project Rules (`.mdc` files for `.cursor/rules/`)
+  - Note: Cursor reads project rules from `.cursor/rules/*.mdc` and also supports plain `AGENTS.md` files; see the [Cursor rules docs](https://cursor.com/docs/rules)
 
 ## 📚 Learning Resources
 
@@ -349,35 +384,22 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
 
 - [Claude Code Skills Documentation](https://code.claude.com/docs/en/skills)
 - [Claude Code Plugins Documentation](https://code.claude.com/docs/en/plugins)
-- [MCP Specification](https://modelcontextprotocol.io/specification/2025-11-25)
-- [Codex Skills Documentation](https://developers.openai.com/codex/skills/)
+- [Agent Skills Specification](https://agentskills.io/specification) - The open SKILL.md format, originally developed by Anthropic
+- [MCP Specification](https://modelcontextprotocol.io/specification/latest)
+- [Codex Skills Documentation](https://learn.chatgpt.com/docs/build-skills)
 - [Cursor Agent Documentation](https://cursor.com/docs)
-
-### Community Resource Directories
-
-- **[Awesome Claude](https://awesomeclaude.ai/)**
-  - Comprehensive directory of Claude AI resources, tools, and integrations
-  - Categories: Official resources, community lists, extensions, applications, education, community
-  - Regularly updated with latest tools and servers
 
 ### Tutorials and Guides
 
 - [Building MCP Servers](https://modelcontextprotocol.io/docs/develop/build-server)
-- [MCP Best Practices](https://modelcontextprotocol.info/docs/best-practices/)
-- [Composio MCP Development Guide](https://composio.dev/blog/mcp-server-step-by-step-guide-to-building-from-scrtch)
-- [Anthropic Official Courses](https://www.anthropic.com/courses) - Learn Claude API and prompt engineering
+- [MCP Best Practices](https://modelcontextprotocol.info/docs/best-practices/) - Community site, not the official MCP documentation
+- [Composio MCP Development Guide](https://composio.dev/content/mcp-server-step-by-step-guide-to-building-from-scrtch)
+- [Claude Academy](https://academy.claude.com/) - Free courses and tutorials from Anthropic's education team
 
 ## 🤝 Contributing
 
-Found an excellent Skill or MCP server? Feel free to submit a PR to add it to this list!
-
-Please ensure you include:
-- Name and link
-- Author information
-- Brief description
-- Installation instructions
-- Key features
+Found a tool that meets the inclusion criteria? See [CONTRIBUTING.md](./CONTRIBUTING.md) for the entry templates, then submit one entry per pull request and state whether you are affiliated with the project.
 
 ---
 
-**Last Updated**: 2026-07-13
+**Last Updated**: 2026-10-20
