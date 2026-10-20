@@ -1,6 +1,6 @@
 # Claude Code Agents
 
-This directory contains custom agent configurations for Claude Code.
+A guide to custom subagents for Claude Code. This repository's agents live in [`agents/`](../../agents/).
 
 ## What Are Agents?
 
@@ -17,8 +17,8 @@ Think of agents like specialized team members: a code-reviewer, test-runner, deb
 
 Claude Code includes specialized agents out of the box:
 - **Explore** - Fast, read-only agent for searching and analyzing codebases
-- **Plan** - Software architect agent for designing implementation plans
-- **Bash** - Command execution specialist
+- **Plan** - Read-only research agent used in plan mode to gather context before presenting a plan
+- **General-purpose** - Capable agent for complex, multi-step tasks that need both exploration and action
 - And more...
 
 ## Why Use Agents?
@@ -76,14 +76,16 @@ Use custom agents when you have:
 
 ## How to Create Agents
 
-### Using the /agents Command (Recommended)
+### Ask Claude (Recommended)
 
-```bash
-# In Claude Code CLI
-/agents
+Describe the agent and where to save it, and Claude writes the file:
 
-# Follow the interactive walkthrough to create a new agent
+```text
+Create a code-reviewer subagent in ~/.claude/agents/ that reviews changed
+files for security and quality issues. Make it read-only.
 ```
+
+On Claude Code v2.1.197 and earlier, `/agents` also opens an interactive wizard; in later versions it only points you to the agent directories.
 
 ### Manual Creation
 
@@ -92,8 +94,7 @@ Agents are defined in Markdown files with YAML frontmatter:
 ```markdown
 ---
 name: my-agent
-description: Brief description of what this agent does
-role: The agent's specialized role
+description: Brief description of what this agent does and when to use it
 tools:
   - Read
   - Grep
@@ -105,28 +106,29 @@ tools:
 Your detailed instructions for this agent's behavior...
 ```
 
+Only `name` and `description` are required. Optional fields include `tools`, `disallowedTools`, `model` (`sonnet`, `opus`, `haiku`, `fable`, a full model ID, or `inherit`), `permissionMode`, `skills`, and `hooks`; see the [supported frontmatter fields](https://code.claude.com/docs/en/sub-agents#supported-frontmatter-fields). Unknown fields are ignored.
+
 ### Agent Storage Locations
 
 ```bash
 # User-level agents (available in all projects)
-~/.claude/agents/my-agent/AGENT.md
+~/.claude/agents/my-agent.md
 
 # Project-level agents (specific to current project)
-.claude/agents/my-agent/AGENT.md
+.claude/agents/my-agent.md
 ```
 
 ## Agent Directory Structure
 
 ```
 agents/
-├── README.md              # This file
-└── [agent-name]/          # Individual agent directories
-    ├── AGENT.md           # Agent definition with YAML frontmatter
-    ├── README.md          # Agent documentation
-    ├── scripts/           # Optional helper scripts
-    ├── references/        # Optional reference materials
-    └── config/            # Optional configuration files
+└── my-agent.md            # Agent definition (YAML frontmatter + system prompt)
+docs/agents/
+├── README.md              # This guide
+└── my-agent.md            # Agent documentation
 ```
+
+Keep only agent definitions in `agents/`: the plugin registers every Markdown file there as an agent, a `README.md` included.
 
 ## Example Agent Template
 
@@ -134,7 +136,6 @@ agents/
 ---
 name: code-reviewer
 description: Automated code review with security and quality checks
-role: code-reviewer
 tools:
   - Read
   - Grep
@@ -165,51 +166,42 @@ This agent performs comprehensive code reviews focusing on:
 
 ## Adding Agents to This Repository
 
-### 1. Create Agent Directory
+### 1. Create the Agent File
 
-```bash
-mkdir -p agents/my-agent/{scripts,references}
-```
+Create `agents/my-agent.md` with proper frontmatter and instructions.
 
-### 2. Create AGENT.md
+### 2. Create Documentation
 
-Define your agent with proper frontmatter and instructions.
-
-### 3. Create Documentation
-
-Add `README.md` with:
+Add `docs/agents/my-agent.md` with:
 - Installation instructions
 - Usage examples
 - Configuration options
 - Best practices
 
-### 4. Test Locally
+### 3. Test Locally
 
 ```bash
 # Copy to user-level agents
-cp -r agents/my-agent ~/.claude/agents/
+cp agents/my-agent.md ~/.claude/agents/
 
-# Restart Claude Code and test
+# Or load the whole plugin from your checkout
+claude --plugin-dir .
+
 # Claude will automatically invoke your agent when appropriate
 ```
 
-### 5. Commit and Share
+### 4. Commit and Share
 
 ```bash
-git add agents/my-agent
+git add agents/my-agent.md docs/agents/my-agent.md
 git commit -m "feat: Add my-agent for [purpose]"
 ```
 
 ## Available Agents
 
-Currently, this directory is being set up. Agents will be added based on community needs and contributions.
-
-**Coming Soon**:
-- Code Review Agent
-- Test Generation Agent
-- Documentation Agent
-- Security Analysis Agent
-- Migration Assistant Agent
+| Agent | Description |
+|-------|-------------|
+| [tech-scout](./tech-scout.md) | Technical research specialist: searches industry solutions, design patterns, and bug fixes from GitHub and web sources. Definition: [`agents/tech-scout.md`](../../agents/tech-scout.md) |
 
 ## Triggering Parallel Agents
 
@@ -232,20 +224,20 @@ Claude Code uses agents conservatively by default. To maximize parallelization, 
 
 ## Platform Support
 
-⚠️ **Claude Code Only**: Custom agents are a Claude Code-specific feature. This directory and the agents within are designed exclusively for Claude Code.
+⚠️ **Designed for Claude Code**: The agents in this repository are Claude Code subagent files.
 
-Other platforms (Codex, Cursor, Windsurf, etc.) use different agent systems and are not compatible with this agent format.
+- **Cursor** also loads subagents from `.claude/agents/` and `~/.claude/agents/`, but supports a different set of frontmatter fields. See [Cursor subagents](https://cursor.com/docs/subagents).
+- **Codex** defines custom agents as TOML files in `~/.codex/agents/` or `.codex/agents/`, so these Markdown files don't work there as-is. See [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents).
 
 ## Resources
 
 ### Official Documentation
 - [Create Custom Subagents - Claude Code Docs](https://code.claude.com/docs/en/sub-agents)
-- [Building Agents with the Claude Agent SDK](https://www.anthropic.com/engineering/building-agents-with-the-claude-agent-sdk)
-- [Agent SDK Overview](https://platform.claude.com/docs/en/agent-sdk/overview)
+- [Building Agents with the Claude Agent SDK](https://claude.com/resources/articles/building-agents-with-the-claude-agent-sdk)
+- [Agent SDK Overview](https://code.claude.com/docs/en/agent-sdk/overview)
 
 ### Tutorials & Guides (2026)
 - [How to Use Claude Code Subagents to Parallelize Development](https://zachwills.net/how-to-use-claude-code-subagents-to-parallelize-development/)
-- [Practical Guide to Mastering Claude Code's Main Agent and Sub-agents](https://jewelhuq.medium.com/practical-guide-to-mastering-claude-codes-main-agent-and-sub-agents-fd52952dcf00)
 - [How to Use Claude Code Sub-Agents for Parallel Work](https://timdietrich.me/blog/claude-code-parallel-subagents/)
 - [A Guide to Claude Code 2.0](https://sankalp.bearblog.dev/my-experience-with-claude-code-20-and-how-to-get-better-at-using-coding-agents/)
 
@@ -261,8 +253,8 @@ Other platforms (Codex, Cursor, Windsurf, etc.) use different agent systems and 
 
 ## Contributing
 
-Have an agent to share? See our [Contributing Guide](../CONTRIBUTING.md) for details on how to add your agent to this collection.
+Have an agent to share? See our [Contributing Guide](../../CONTRIBUTING.md) for details on how to add your agent to this collection.
 
 ## License
 
-All agents in this directory are released under the MIT License unless otherwise specified.
+All agents in this repository's `agents/` directory are released under the MIT License unless otherwise specified.

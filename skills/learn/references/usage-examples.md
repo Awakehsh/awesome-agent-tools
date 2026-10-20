@@ -183,7 +183,7 @@ User: "Perfect! /learn - this was a complex one"
 
 **Sync Strategy**:
 1. Update CLAUDE.md first
-2. Sync identical content to AGENTS.md (change `.claude/` → `.codex_cache/`)
+2. Sync identical content to AGENTS.md (change `.claude/skills/` → `.agents/skills/`)
 3. Sync to .agent/rules/project-rules.md (add Gemini compatibility note)
 4. Update .agent/rules/workflow-architecture.md
 5. Update navigation in all primary files

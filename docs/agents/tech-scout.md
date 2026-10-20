@@ -19,16 +19,29 @@ Tech Scout is a Claude Code agent designed to run in parallel during development
 
 ## Installation
 
+### Claude Code plugin (Recommended)
+
+Installs tech-scout together with the other tools in this repository. In a Claude Code session:
+
+```text
+/plugin marketplace add Awakehsh/awesome-agent-tools
+/plugin install awesome-agent-tools@awesome-agent-tools
+```
+
+Plugin agents are namespaced: the agent appears as `awesome-agent-tools:tech-scout`.
+
 ### User-level (Available in all projects)
 
 ```bash
+# Clone this repository
+git clone https://github.com/Awakehsh/awesome-agent-tools.git
+
 # Copy to user-level agents directory
-cp -r agents/tech-scout ~/.claude/agents/
+mkdir -p ~/.claude/agents
+cp awesome-agent-tools/agents/tech-scout.md ~/.claude/agents/
 
-# Or use symbolic link
-ln -s $(pwd)/agents/tech-scout ~/.claude/agents/tech-scout
-
-# Restart Claude Code
+# Or use a symbolic link
+ln -s "$(pwd)/awesome-agent-tools/agents/tech-scout.md" ~/.claude/agents/tech-scout.md
 ```
 
 ### Project-level (Current project only)
@@ -36,22 +49,10 @@ ln -s $(pwd)/agents/tech-scout ~/.claude/agents/tech-scout
 ```bash
 # Copy to project agents directory
 mkdir -p .claude/agents
-cp -r agents/tech-scout .claude/agents/
-
-# Restart Claude Code
+cp awesome-agent-tools/agents/tech-scout.md .claude/agents/
 ```
 
-### Via GitHub (Recommended)
-
-```bash
-# Clone this repository
-git clone https://github.com/Awakehsh/awesome-agent-tools.git
-
-# Copy tech-scout to your agents directory
-cp -r awesome-agent-tools/agents/tech-scout ~/.claude/agents/
-
-# Restart Claude Code
-```
+Claude Code picks up new agent files without a restart, unless the `agents/` directory didn't exist when the session started; in that case, restart Claude Code.
 
 ## Usage
 
@@ -190,7 +191,7 @@ To modify, edit `tech-scout.md` frontmatter.
    - ✅ "Research JWT vs session auth for REST APIs"
    - ❌ "Tell me about authentication"
 
-2. **Combine with other workflows:**
+2. **Combine with other workflows** (for example, skills from the third-party [Superpowers](https://github.com/obra/superpowers) plugin):
    - Use during `brainstorming` skill for design research
    - Use during `systematic-debugging` for error solutions
    - Use during `writing-plans` for architecture reference
@@ -203,7 +204,7 @@ To modify, edit `tech-scout.md` frontmatter.
 ## Troubleshooting
 
 **Agent not being invoked?**
-- Check agent is installed: `ls ~/.claude/agents/tech-scout/`
+- Check agent is installed: `ls ~/.claude/agents/tech-scout.md` (or `.claude/agents/tech-scout.md`; for a plugin install, check `/plugin`)
 - Restart Claude Code
 - Try explicit invocation: "Use tech-scout to..."
 
@@ -220,14 +221,14 @@ To modify, edit `tech-scout.md` frontmatter.
 ## Technical Details
 
 **Files:**
-- `tech-scout.md` - Agent definition with YAML frontmatter and system prompt
+- [`agents/tech-scout.md`](../../agents/tech-scout.md) - Agent definition with YAML frontmatter and system prompt
 
 **Tools:**
 - `WebSearch` - Primary search tool for finding resources
 - `WebFetch` - Secondary tool for fetching page details
 
 **Model:**
-- Default: `sonnet` (claude-sonnet-4-5)
+- Default: the `sonnet` model alias
 - Configurable via frontmatter
 
 ## Contributing
@@ -250,12 +251,11 @@ MIT License - see [LICENSE](../../LICENSE) for details.
 - `Explore` - Built-in agent for codebase exploration
 - `Plan` - Built-in agent for implementation planning
 
-**Skills:**
+**Skills** (from [obra/superpowers](https://github.com/obra/superpowers), MIT, installed separately):
 - `brainstorming` - Feature design with research integration
 - `systematic-debugging` - Debugging workflow with solution search
 - `writing-plans` - Implementation planning with architecture research
 
 **Documentation:**
 - [Custom Subagents - Claude Code Docs](https://code.claude.com/docs/en/sub-agents)
-- [Agent Best Practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)
-- [This Repository's Agent Guide](../README.md)
+- [This Repository's Agent Guide](./README.md)

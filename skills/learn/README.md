@@ -17,13 +17,26 @@
 
 ### Installation
 
-```bash
-# Already installed at:
-~/.claude/skills/learn/
-
-# To use in any project, just invoke:
-/learn
+**Claude Code plugin (all tools in this repo)** — in a Claude Code session:
+```text
+/plugin marketplace add Awakehsh/awesome-agent-tools
+/plugin install awesome-agent-tools@awesome-agent-tools
 ```
+Plugin skills are namespaced: invoke this one as `/awesome-agent-tools:learn`.
+
+**This skill only (any Agent Skills-compatible agent):**
+```bash
+npx skills add Awakehsh/awesome-agent-tools --skill learn   # add -g for user-level
+```
+A standalone install is invoked as `/learn` in Claude Code (`$learn` in Codex).
+
+**Manual:**
+```bash
+git clone https://github.com/Awakehsh/awesome-agent-tools.git
+cp -r awesome-agent-tools/skills/learn ~/.claude/skills/   # Claude Code (project: .claude/skills/)
+cp -r awesome-agent-tools/skills/learn ~/.agents/skills/   # Codex (repo: .agents/skills/)
+```
+In Codex you can also ask `$skill-installer` to install `https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/learn`.
 
 ### Basic Usage
 
@@ -98,7 +111,7 @@
 |------|----------|-----------|
 | `CLAUDE.md` | Claude Code | Source |
 | `AGENTS.md` | Codex | ✅ Yes |
-| `.cursorrules` | Cursor | ⚠️ Format translation |
+| `.cursorrules` | Cursor (legacy; current Cursor uses `.cursor/rules/*.mdc` and also reads `AGENTS.md`) | ⚠️ Format translation |
 | `.agentrules` | Generic | ✅ Yes |
 | `.agent/rules/project-rules.md` | Gemini | ✅ Yes |
 
@@ -222,7 +235,7 @@ Learning classified
 |--------|-----------|-----------|--------------|
 | Format | Markdown | Markdown | Cursor-specific |
 | Content | Full | Identical | Translated |
-| Tool paths | `.claude/` | `.codex_cache/` | Cursor format |
+| Tool paths | `.claude/` | Codex paths (e.g. `.agents/skills/`) | Cursor format |
 
 ---
 
@@ -273,21 +286,6 @@ Automatically detects and fixes:
 
 ## Configuration
 
-### Customization
-
-Create `~/.claude/skills/learn/config.json` (optional):
-
-```json
-{
-  "primaryFiles": ["CLAUDE.md", "AGENTS.md"],
-  "syncEnabled": true,
-  "minImportanceScore": 9,
-  "maxLinesPerEntry": 30,
-  "autoDetectPlatform": true,
-  "navigationPlacement": "end"
-}
-```
-
 ### Platform Detection
 
 The skill automatically detects:
@@ -303,7 +301,7 @@ The skill automatically detects:
 ### Common Issues
 
 **Q: "/learn not found"**
-A: Restart Claude Code to load the skill
+A: After a plugin install the command is `/awesome-agent-tools:learn`. If you copied the skill into a skills directory that didn't exist when the session started, run `/reload-skills` or restart Claude Code
 
 **Q: "No memory files found"**
 A: Create `CLAUDE.md` in project root or home directory
@@ -607,8 +605,8 @@ MIT License - See project LICENSE file
 ## Links
 
 - [Claude Code Documentation](https://code.claude.com/docs)
-- [Cursor Rules Guide](https://cursor.sh/docs)
-- [Codex Documentation](https://developers.openai.com/codex)
+- [Cursor Rules Guide](https://cursor.com/docs/rules)
+- [Codex Documentation](https://learn.chatgpt.com/docs)
 
 ---
 

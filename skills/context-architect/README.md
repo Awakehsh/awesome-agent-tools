@@ -21,16 +21,26 @@ Context Architect helps agent system developers transform high-level requirement
 
 ### Installation
 
-**Claude Code:**
-```bash
-claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/context-architect
+**Claude Code plugin (all tools in this repo)** — in a Claude Code session:
+```text
+/plugin marketplace add Awakehsh/awesome-agent-tools
+/plugin install awesome-agent-tools@awesome-agent-tools
 ```
+Plugin skills are namespaced: invoke this one as `/awesome-agent-tools:context-architect`.
+
+**This skill only (any Agent Skills-compatible agent):**
+```bash
+npx skills add Awakehsh/awesome-agent-tools --skill context-architect   # add -g for user-level
+```
+A standalone install is invoked as `/context-architect` in Claude Code (`$context-architect` in Codex).
 
 **Manual:**
 ```bash
-# Clone or download this directory
-cp -r context-architect ~/.claude/skills/
+git clone https://github.com/Awakehsh/awesome-agent-tools.git
+cp -r awesome-agent-tools/skills/context-architect ~/.claude/skills/   # Claude Code (project: .claude/skills/)
+cp -r awesome-agent-tools/skills/context-architect ~/.agents/skills/   # Codex (repo: .agents/skills/)
 ```
+In Codex you can also ask `$skill-installer` to install `https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/context-architect`.
 
 ### Basic Usage
 
@@ -191,8 +201,8 @@ context-architect/
 **Primary Platform:** Claude Code — Optimized for Claude Code but generates **platform-agnostic** outputs.
 
 **Other Platforms:**
-- **Codex:** Copy to `~/.codex/skills/`, invoke with `/context-architect`
-- **Cursor:** Import via skill marketplace or manual copy
+- **Codex:** Copy to `~/.agents/skills/` (or `.agents/skills/` in the repo), invoke with `$context-architect`
+- **Cursor:** Copy to `~/.cursor/skills/` or `.cursor/skills/`; Cursor also loads skills from `.claude/skills/` and `~/.claude/skills/`
 - **Custom:** Generated packages work with any LLM framework
 
 ## Limitations
@@ -232,10 +242,12 @@ MIT License - See repository LICENSE file
 **Ready to build better agent systems?**
 
 ```bash
-claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/context-architect
+npx skills add Awakehsh/awesome-agent-tools --skill context-architect
 ```
 
 Then:
 ```
 /context-architect
 ```
+
+(Installed as part of the Claude Code plugin? Use `/awesome-agent-tools:context-architect`. See [Installation](#installation).)

@@ -11,7 +11,7 @@ This reference documents the differences between memory files across different A
 | Claude Code | `CLAUDE.md` | Markdown | Source of truth | Shared |
 | Claude Code | `~/.claude/projects/<path>/memory/MEMORY.md` | Markdown | No sync (personal) | Personal |
 | Codex | `AGENTS.md` | Markdown | Identical content | Shared |
-| Cursor | `.cursorrules` | Cursor-specific | Format translation | Shared |
+| Cursor | `.cursorrules` (legacy; current: `.cursor/rules/*.mdc`, `AGENTS.md`) | Cursor-specific | Format translation | Shared |
 | Gemini (Antigravity) | `.agent/rules/project-rules.md` | Markdown | Content + prefix | Shared |
 | Generic | `.agentrules` | Markdown | Identical content | Shared |
 
@@ -19,7 +19,7 @@ This reference documents the differences between memory files across different A
 
 ## CLAUDE.md (Claude Code)
 
-**Location**: Project root or `~/CLAUDE.md`
+**Location**: Project root (`./CLAUDE.md` or `./.claude/CLAUDE.md`) or user-level `~/.claude/CLAUDE.md`
 
 **Format**: Standard Markdown with sections
 
@@ -102,12 +102,12 @@ This reference documents the differences between memory files across different A
 
 ## AGENTS.md (Codex)
 
-**Location**: Project root or `~/AGENTS.md`
+**Location**: Project root (and subdirectories down to the working directory), or global `~/.codex/AGENTS.md` (`$CODEX_HOME`)
 
 **Format**: Identical to CLAUDE.md except:
 
 **Differences**:
-1. Tool paths: `.codex_cache/` instead of `.claude/`
+1. Tool paths: Codex equivalents instead of `.claude/` paths (e.g. `.agents/skills/` for `.claude/skills/`)
 2. Command format: Same skill names work
 3. Header note: Add compatibility note at top
 
@@ -127,7 +127,7 @@ This reference documents the differences between memory files across different A
 
 ## .cursorrules (Cursor)
 
-**Location**: Project root or `~/.cursorrules`
+**Location**: Project root (legacy; current Cursor uses `.cursor/rules/*.mdc` and `AGENTS.md`, and user rules are set in Cursor's settings, not a file)
 
 **Format**: Cursor-specific syntax (can be markdown-like)
 
@@ -247,9 +247,9 @@ This reference documents the differences between memory files across different A
 
 | CLAUDE.md | AGENTS.md | .agent/rules/ |
 |-----------|-----------|---------------|
-| `.claude/skills/` | `.codex_cache/skills/` | `.agent/rules/` |
-| `.claude/plugins/` | `.codex_cache/plugins/` | `.agent/scripts/` |
-| `/tmp/claude/` | `/tmp/codex/` | `.agent/tmp/` |
+| `.claude/skills/` | `.agents/skills/` | `.agent/rules/` |
+| `.claude/plugins/` | No path equivalent (Codex plugins are managed with `codex plugin`) | `.agent/scripts/` |
+| `/tmp/claude/` | No documented equivalent; omit | `.agent/tmp/` |
 
 ### Command Translation
 
@@ -314,7 +314,7 @@ Pattern: Bearer token in Authorization header
 - Check: `Authorization: Bearer <token>` present
 - Miss: Forgetting header in new endpoints
 - Test: `curl -H "Authorization: Bearer test_token"`
-- Ref: .codex_cache/rules/api-patterns.md#auth
+- Ref: .claude/rules/api-patterns.md#auth
 ```
 
 ### .cursorrules Format (Simplified)
@@ -411,9 +411,9 @@ diff -u CLAUDE.md AGENTS.md | grep -E "^\+|^\-" | grep -v "^+++\|^---"
 ## References
 
 - [Claude Code Documentation](https://code.claude.com/docs)
-- [Cursor Rules Guide](https://cursor.sh/docs)
-- [Codex Documentation](https://developers.openai.com/codex)
-- [Gemini Antigravity Docs](https://gemini.google.com/docs)
+- [Cursor Rules Guide](https://cursor.com/docs/rules)
+- [Codex Documentation](https://learn.chatgpt.com/docs)
+- [Google Antigravity Rules](https://antigravity.google/docs/rules)
 
 ---
 

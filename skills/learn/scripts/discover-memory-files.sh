@@ -76,7 +76,7 @@ fi
 echo -e "${GREEN}📍 Home Directory Memory Files${NC}"
 echo "----------------------------------------"
 
-for file in ~/CLAUDE.md ~/AGENTS.md ~/.cursorrules ~/.agentrules; do
+for file in ~/.claude/CLAUDE.md ~/.codex/AGENTS.md ~/.agentrules; do
     if [ -f "$file" ]; then
         size=$(wc -c < "$file" | tr -d ' ')
         modified=$(stat -f "%Sm" -t "%Y-%m-%d %H:%M" "$file" 2>/dev/null || stat -c "%y" "$file" 2>/dev/null | cut -d. -f1)
@@ -244,9 +244,9 @@ echo -e "${BLUE}🎯 Platform Detection${NC}"
 echo "----------------------------------------"
 
 platforms_found=()
-[ -f "$SEARCH_PATH/CLAUDE.md" ] || [ -f ~/CLAUDE.md ] && platforms_found+=("Claude Code")
-[ -f "$SEARCH_PATH/AGENTS.md" ] || [ -f ~/AGENTS.md ] && platforms_found+=("Codex")
-[ -f "$SEARCH_PATH/.cursorrules" ] || [ -f ~/.cursorrules ] && platforms_found+=("Cursor")
+[ -f "$SEARCH_PATH/CLAUDE.md" ] || [ -f ~/.claude/CLAUDE.md ] && platforms_found+=("Claude Code")
+[ -f "$SEARCH_PATH/AGENTS.md" ] || [ -f ~/.codex/AGENTS.md ] && platforms_found+=("Codex")
+[ -f "$SEARCH_PATH/.cursorrules" ] && platforms_found+=("Cursor")
 [ -f "$SEARCH_PATH/.agent/rules/project-rules.md" ] && platforms_found+=("Gemini")
 
 if [ ${#platforms_found[@]} -eq 0 ]; then
