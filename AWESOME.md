@@ -257,6 +257,7 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Install: `claude mcp add --transport http pocket-drives https://pocketdrives.ai/mcp`
   - Features: 9 read-only tools (search, quotes, availability, host profiles), hosted Streamable HTTP, no API key and no local install
   - Supports: Claude Code, Codex, Cursor, Windsurf, and any MCP-compatible client
+
 - **[OrcaReplay](https://github.com/Continuum-AI-Corp/OrcaReplay)** by Continuum AI
   - Description: Read an agent's own recorded runs — walk the timeline, ask what happened at a step, and replay a past run offline with no model call.
   - Install: `npm i -g orcareplay` (stdio; registered as `io.github.Continuum-AI-Corp/orcareplay`)
@@ -289,10 +290,10 @@ A carefully curated list of AI coding assistant tools, including Skills, MCP ser
   - Supports: Claude Code, Codex, Cursor, Windsurf, and any MCP-compatible client
 
 - **[Invompt](https://github.com/Invompt/invompt-mcp)** by Invompt
-  - Description: Turn AI-host work into invoices you review before send — Continue as guest or OAuth via hosted MCP.
-  - Remote: `https://mcp.invompt.com/mcp` · Registry: `com.invompt/invompt`
-  - Install: See the [installation guide](https://invompt.com/install)
-  - Features: Hosted MCP with OAuth or Continue as guest; MIT-licensed connector repo
+  - Description: Hosted MCP server that drafts invoices, quotes, estimates, and pro formas from a conversation, so you review every document before it goes to a client. Remote Streamable HTTP at https://mcp.invompt.com/mcp, OAuth, MIT-licensed connector repo.
+  - Install: `claude mcp add --transport http invompt https://mcp.invompt.com/mcp`
+  - Features: hosted Streamable HTTP, no local install; start as a guest without an account, emailing invoices needs a registered account. Registry: `com.invompt/invompt`. Setup guide: https://invompt.com/install
+  - Supports: Claude Code, Codex, Claude Desktop, Cursor, and other MCP-compatible clients
 
 - **[Aident Loadout](https://aident.ai)** by Aident AI
   - Description: Hosted MCP server that gives coding and chat agents one reusable set of connected apps plus 400+ expert-built Skills. Accounts are connected once and reused across agents, credentials stay in Aident Vault, and every action is logged in Audit. MIT-licensed skill repo: https://github.com/Aident-AI/aident-skill
