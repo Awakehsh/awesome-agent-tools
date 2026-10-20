@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[NeverApply](https://neverapply.co/features/mcp)** by NeverApply
+  - Description: Job search for agents: search and match jobs, tailor resumes, answer screening questions, prepare for interviews, and apply to jobs with your approval
+  - Install: `claude mcp add --transport http neverapply https://neverapply.co/mcp`, then `claude mcp login neverapply`
+  - Features: 15 tools across read (`search_jobs`, `get_matches`, `list_applications`), edit (`update_profile`, `upload_resume`, `tailor_resume`, `prepare_interview`), and apply (`apply_to_job`, `answer_screening_question`, `approve_application`); every application needs explicit approval
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `co.neverapply/neverapply`. Auth: OAuth 2.1 with PKCE and dynamic client registration. Pricing: free plan with read tools (50 reads a day) and 10 one-time applications; tailoring, interview prep and more applications need Pro or Max ([pricing](https://neverapply.co/pricing))
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
