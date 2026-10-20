@@ -50,21 +50,27 @@ Status shows `Logged in using an API key - sk-***`.
 
 ## Installation
 
-### For Claude Code (Recommended)
-```bash
-claude skill add https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli
+### Claude Code plugin (all tools in this repo)
+In a Claude Code session:
+```text
+/plugin marketplace add Awakehsh/awesome-agent-tools
+/plugin install awesome-agent-tools@awesome-agent-tools
 ```
+Plugin skills are namespaced: invoke this one as `/awesome-agent-tools:codex-cli`.
 
-### For Codex
+### This skill only (any Agent Skills-compatible agent)
 ```bash
-$skill-installer https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli
+npx skills add Awakehsh/awesome-agent-tools --skill codex-cli   # add -g for user-level
 ```
+A standalone install is invoked as `/codex-cli` in Claude Code (`$codex-cli` in Codex).
 
 ### Manual
 ```bash
 git clone https://github.com/Awakehsh/awesome-agent-tools.git
-cp -r awesome-agent-tools/skills/codex-cli ~/.claude/skills/
+cp -r awesome-agent-tools/skills/codex-cli ~/.claude/skills/   # Claude Code (project: .claude/skills/)
+cp -r awesome-agent-tools/skills/codex-cli ~/.agents/skills/   # Codex (repo: .agents/skills/)
 ```
+In Codex you can also ask `$skill-installer` to install `https://github.com/Awakehsh/awesome-agent-tools/tree/main/skills/codex-cli`.
 
 ## Model Selection
 
@@ -100,7 +106,7 @@ codex exec "Review this plan: [...]" --skip-git-repo-check
 | Capability | Status |
 |------------|--------|
 | Shell + file tools (read repo, grep, run commands) | ✅ stable |
-| Web / internet search | ⚠️ not a stable default (flags removed/deprecated) |
+| Web / internet search | ⚠️ not available by flag: `codex exec` has no `--search` (only interactive `codex --search` does) |
 | `browser_use` / `computer_use` | ⚠️ account-only, unreliable under `exec` |
 
 ## Multi-Round Iterations
@@ -164,5 +170,5 @@ MIT License — see [LICENSE](../../LICENSE)
 
 ## References
 
-- [OpenAI Models Documentation](https://platform.openai.com/docs/models) — model names change; verify against your login mode.
+- [OpenAI Models Documentation](https://developers.openai.com/api/docs/models) — model names change; verify against your login mode.
 - Local source of truth: `~/.codex/config.toml` and `codex login status`.

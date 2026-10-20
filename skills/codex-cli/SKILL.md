@@ -1,6 +1,6 @@
 ---
 name: codex-cli
-description: "Interact with OpenAI Codex CLI for plan review, code review, and complex problem discussion. Supports either ChatGPT-account or API-key login, model selection, and multi-round conversations. Usage: /codex-cli <command> [options]"
+description: "Interact with OpenAI Codex CLI for plan review, code review, and complex problem discussion. Supports either ChatGPT-account or API-key login, model selection, and multi-round conversations. Use when the user wants a second opinion from Codex on an implementation plan, a diff, or a hard technical question, or invokes /codex-cli. Usage: /codex-cli <command> [options]"
 ---
 
 # Codex CLI Interaction Skill
@@ -64,7 +64,7 @@ Interact with OpenAI Codex CLI to leverage its reasoning for plan review, code a
 | Capability | Status | Notes |
 |------------|--------|-------|
 | Shell + file tools | ✅ stable | Codex autonomously reads your repo, greps, runs commands (subject to sandbox). |
-| Web / internet search | ⚠️ not a stable default | Web-search feature flags are removed/deprecated in the current CLI. Do not assume Codex can browse the web from `exec`. |
+| Web / internet search | ⚠️ not available by flag | `codex exec` has no `--search` flag (only the interactive `codex --search` has one), and the old `web_search_*` feature flags are deprecated. Do not assume Codex can browse the web from `exec`. |
 | `browser_use` / `computer_use` | ⚠️ account-only | Depend on the ChatGPT.app ecosystem; unreliable under non-interactive `exec`. |
 
 ## CLI Flag Reference
@@ -130,10 +130,10 @@ codex exec resume <UUID> "Re-review after I addressed points 1 and 3."
 ## Long-Running Calls — Background Mode
 
 For calls expected to exceed ~60s (`xhigh` effort, `--base` on large diffs, full-repo audits):
-- Invoke via `Bash(run_in_background=true)` so the main session stays responsive; poll with `BashOutput` or read the output file.
+- Invoke via `Bash(run_in_background=true)` so the main session stays responsive; Claude Code writes the output to a file — read it with `Read` when the command finishes, or run the command with `Monitor` to receive output lines as they arrive.
 - **Sampling tip:** launch 2–3 background runs of the same prompt in parallel — Codex output is non-deterministic, and merging runs surfaces more real issues than one run.
 - Do NOT background short `ask`/single-file reviews — the realtime reasoning trace is more useful in foreground.
-- ❌ Do NOT invoke Codex via a subagent `Task(...)` — subagents can't surface Bash permission prompts and will hang. Use `Bash(run_in_background=true)` instead.
+- ❌ Do NOT invoke Codex via a subagent (`Agent` tool). Run it from the main session with `Bash(run_in_background=true)` instead.
 
 ## User Interface (how the skill is invoked)
 
@@ -167,7 +167,7 @@ Model: <from header>   Reasoning: <effort>   Status: APPROVED / NEEDS REVISION
 | `-m` rejected on `codex review` | Top-level `codex review` has no `-m`. Use `-c model="..."`, or switch to `codex exec review`. |
 | `Specify --uncommitted, --base, or --commit` | Review needs a target: `--uncommitted` / `--base <branch>` / `--commit <sha>`. |
 | Resume ignored my prior context | You used `--last` with concurrent sessions. Resume by explicit `<session-id>`. |
-| Command hangs | You invoked Codex via a subagent `Task`. Use `Bash(run_in_background=true)`. |
+| Command hangs | You invoked Codex via a subagent (`Agent` tool). Run it from the main session with `Bash(run_in_background=true)`. |
 
 **Verify setup:**
 ```bash
@@ -185,5 +185,5 @@ codex exec "reply OK" --skip-git-repo-check   # header shows active model + sand
 
 ## References
 
-- [OpenAI Models Documentation](https://platform.openai.com/docs/models) — model names change; verify against your login mode.
+- [OpenAI Models Documentation](https://developers.openai.com/api/docs/models) — model names change; verify against your login mode.
 - Local source of truth for defaults: `~/.codex/config.toml` and `codex login status`.

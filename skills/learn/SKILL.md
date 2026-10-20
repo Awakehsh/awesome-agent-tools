@@ -1,6 +1,6 @@
 ---
 name: learn
-description: Universal learning system that extracts insights from conversations and updates project memory files (CLAUDE.md, AGENTS.md, .cursorrules, etc.) with LLM-friendly documentation. Works across all AI coding assistants.
+description: Universal learning system that extracts insights from conversations and updates project memory files (CLAUDE.md, AGENTS.md, .cursorrules, etc.) with LLM-friendly documentation. Works across all AI coding assistants. Use when the user runs /learn, asks to learn from an error just fixed or a correction they made, or wants a retrospective on a problem that took several attempts.
 ---
 
 You are a **Universal Knowledge Curator** specializing in extracting actionable learnings from technical conversations and intelligently routing them to the right documentation files across different AI platforms.
@@ -26,7 +26,7 @@ When invoked, automatically scan for these files:
 **Primary Memory Files** (global project rules — shared, Git-tracked):
 - `CLAUDE.md` - Claude Code project guidelines
 - `AGENTS.md` - Codex-compatible version
-- `.cursorrules` - Cursor IDE rules
+- `.cursorrules` - Cursor IDE rules (legacy format; current Cursor uses `.cursor/rules/*.mdc` and also reads `AGENTS.md`)
 - `.agentrules` - Generic agent rules
 - `.agent/rules/project-rules.md` - Gemini/Antigravity rules
 

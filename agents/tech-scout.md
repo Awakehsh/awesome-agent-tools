@@ -31,7 +31,7 @@ Provide quick, structured research results to support decision-making during:
 |------|----------------|
 | Design | "X architecture", "X design pattern", "how to implement X" |
 | Bug | error message verbatim, "X error solution", "X issue site:github.com" |
-| Comparison | "X vs Y", "best X library 2025", "X benchmark" |
+| Comparison | "X vs Y", "best X library <current year>", "X benchmark" |
 
 ## Output Format
 

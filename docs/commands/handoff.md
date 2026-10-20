@@ -23,25 +23,36 @@ No preamble, no closing remarks — output is paste-ready.
 
 ## Install
 
-### User-level (recommended)
+### Claude Code plugin
 
-Available in all Claude Code projects:
+Installs `/handoff` together with the other tools in this repository. In a Claude Code session:
+
+```text
+/plugin marketplace add Awakehsh/awesome-agent-tools
+/plugin install awesome-agent-tools@awesome-agent-tools
+```
+
+Plugin commands are namespaced: invoke it as `/awesome-agent-tools:handoff`.
+
+### User-level (standalone)
+
+Available in all Claude Code projects (from a clone of this repository):
 
 ```bash
 mkdir -p ~/.claude/commands
-cp commands/handoff/handoff.md ~/.claude/commands/handoff.md
+cp commands/handoff.md ~/.claude/commands/
 ```
 
-### Project-level
+### Project-level (standalone)
 
 Only in the current project:
 
 ```bash
 mkdir -p .claude/commands
-cp commands/handoff/handoff.md .claude/commands/handoff.md
+cp commands/handoff.md .claude/commands/
 ```
 
-Restart Claude Code to pick up the new command.
+Restart Claude Code to pick up the new command. A standalone install is invoked as `/handoff`.
 
 ## Usage
 
@@ -50,6 +61,8 @@ In a Claude Code session:
 ```text
 /handoff
 ```
+
+After a plugin install, use `/awesome-agent-tools:handoff` instead.
 
 Or with an optional focus hint:
 
