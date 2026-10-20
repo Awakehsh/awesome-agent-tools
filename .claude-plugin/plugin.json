@@ -1,6 +1,6 @@
 {
   "name": "awesome-agent-tools",
-  "description": "The hybrid marketplace for AI agent development: original skills, curated tools, and cross-platform support. Built for developers using AI agents.",
+  "description": "Original skills (codex-cli, context-architect, learn), the tech-scout research subagent, and the /handoff command for developers working with AI coding agents.",
   "author": {
     "name": "Awakehsh",
     "url": "https://github.com/Awakehsh"
@@ -12,7 +12,6 @@
     "claude-code",
     "agents",
     "skills",
-    "mcp-servers",
     "tools",
     "productivity",
     "development",
@@ -21,6 +20,5 @@
     "codex",
     "cursor"
   ],
-  "skills": "./skills",
-  "agents": "./agents"
+  "skills": "./skills"
 }
