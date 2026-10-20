@@ -1,0 +1,89 @@
+name: Suggest a tool
+description: Suggest a third-party tool for AWESOME.md
+title: "Suggest: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please check the [inclusion criteria](https://github.com/Awakehsh/awesome-agent-tools/blob/main/CONTRIBUTING.md#inclusion-criteria) first. Suggestions are reviewed by hand and may be declined. You can also open a pull request that adds one entry to AWESOME.md.
+  - type: input
+    id: name
+    attributes:
+      label: Name
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Repository URL. For a hosted MCP service, its documentation page.
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: The AWESOME.md section it belongs in.
+      options:
+        - Skills
+        - MCP Servers
+        - Hosted MCP Services
+        - Plugins & Marketplaces
+        - Agent Runtimes & Orchestration
+        - Security
+        - Evaluation & Benchmarks
+        - Developer Resources
+        - Community Directories
+        - Learning Resources
+    validations:
+      required: true
+  - type: input
+    id: description
+    attributes:
+      label: One-line description
+    validations:
+      required: true
+  - type: textarea
+    id: install
+    attributes:
+      label: Install command
+      description: A real, copy-pasteable command you have run yourself.
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: License
+      description: SPDX identifier, for example MIT or Apache-2.0. For a hosted MCP service without public source, write "hosted".
+    validations:
+      required: true
+  - type: textarea
+    id: hosted
+    attributes:
+      label: Hosted MCP services only
+      description: MCP Registry name, and links to the authentication and pricing docs.
+      placeholder: |
+        Registry: io.github.owner/server-name
+        Auth and pricing: https://...
+  - type: dropdown
+    id: affiliation
+    attributes:
+      label: Affiliation
+      options:
+        - Not affiliated
+        - I maintain or work on it
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: It meets the inclusion criteria in CONTRIBUTING.md.
+          required: true
+        - label: It is not already listed in AWESOME.md.
+          required: true
+        - label: I ran the install command above and it works.
+          required: true

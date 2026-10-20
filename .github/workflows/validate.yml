@@ -1,0 +1,29 @@
+name: Validate plugin
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 24
+
+      - name: Install Claude Code
+        run: npm install --global @anthropic-ai/claude-code
+
+      # Not --strict: the manifests intentionally omit "version" so installs
+      # track the latest commit, and --strict turns that warning into an error.
+      - name: Validate marketplace and plugin
+        run: claude plugin validate .

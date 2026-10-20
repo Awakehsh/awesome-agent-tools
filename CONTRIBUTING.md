@@ -1,229 +1,129 @@
 # Contributing Guide 🤝
 
-Thank you for your interest in **Awesome Agent Tools**! We welcome contributions of all kinds from the community.
+Thank you for your interest in **Awesome Agent Tools**! There are two ways to contribute:
 
-## Ways to Contribute
+- **Suggest a third-party tool** for the curated list in [AWESOME.md](./AWESOME.md).
+- **Improve this repository's own tools and docs**: the original skills in `skills/`, the agent in `agents/`, the command in `commands/`, and the documentation.
 
-### 1. Add Your Original Skill
+## Inclusion Criteria
 
-Have you created a useful skill? We'd love to include it!
+AWESOME.md lists tools that meet these criteria:
 
-**Steps**:
-1. Fork this repository
-2. Create a new directory under `skills/` (use kebab-case: `my-awesome-skill`)
-3. Add the required `SKILL.md` file
-4. (Optional) Add `README.md`, `scripts/`, `references/`, `assets/`
-5. Submit a Pull Request
+1. **Open-source projects** (skills, MCP servers, CLIs, collections)
+   - Public repository
+   - License stated. OSI-approved is preferred; a non-OSI or source-available license must be named in the entry (for example, `License: PolyForm Noncommercial`)
+   - At least 10 GitHub stars
+   - At least one commit in the last 6 months
+   - Clear install and usage docs
+2. **Hosted MCP services** (a remote endpoint whose backend is not open source; a connector or listing-only repository does not count as open source)
+   - Listed in the [official MCP Registry](https://registry.modelcontextprotocol.io) under a verified namespace (GitHub- or domain-based, for example `io.github.owner/server-name`)
+   - Serves the [Streamable HTTP](https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http) transport
+   - Public docs page covering authentication and pricing
+   - Listed in the separate **Hosted MCP Services** section; the entry states authentication and pricing (free tier or not)
+3. **Official vendor tools** (published by the company that owns the product) follow rule 1 or 2, depending on whether the source is public.
+4. **Affiliation is disclosed.** Every submission states whether the submitter is affiliated with the project. Submitting your own tool is fine, as long as you say so.
+5. **Removal.** An entry is removed when its link is dead, its repository is archived, it has had no commits for 12 months, or it no longer meets these criteria.
 
-**Skill Format Requirements**:
+## Suggest a Tool
 
-Your `SKILL.md` must include YAML frontmatter:
+1. Check that the tool meets the criteria above and is not already listed.
+2. Add **one entry per pull request** to [AWESOME.md](./AWESOME.md), in the section that fits best.
+3. Use the matching template below. The install command must be real and copy-pasteable: run it yourself before submitting. Use the tool's documented installer, such as `npx skills add`, `/plugin install`, or `claude mcp add`.
+4. State your affiliation in the pull request description.
 
-```yaml
----
-name: skill-name
-description: Detailed description including what problem it solves and when to use it
----
+Prefer not to open a pull request? Use the **Suggest a tool** [issue form](https://github.com/Awakehsh/awesome-agent-tools/issues/new/choose) instead.
 
-# Skill Name
+Entries are reviewed by hand and may be edited or declined.
 
-## Overview
-
-[Explain what the skill does]
-
-## Usage
-
-[Usage examples and instructions]
-
-## Examples
-
-[Concrete usage examples]
-```
-
-**Naming Conventions**:
-- Use lowercase letters and hyphens (kebab-case)
-- Names should be concise and descriptive
-- Examples: `pdf-processor`, `code-reviewer`, `api-tester`
-
-### 2. Recommend Third-Party Skills/Tools
-
-Found an amazing skill or MCP server? Share it with us!
-
-**Steps**:
-1. Fork this repository
-2. Edit `AWESOME.md`
-3. Add your recommendation under the appropriate category
-4. Submit a Pull Request
-
-**Recommendation Format**:
+### MCP Server Entry
 
 ```markdown
-- **[tool-name](https://github.com/author/repo)** by author-name
-  - Description: Brief description of what it does
-  - Install: `claude skill add https://...`
-  - Features: Key features list
+- **[server-name](https://github.com/owner/repo)** by owner
+  - Description: What it does, in one sentence
+  - Install: `claude mcp add server-name -- npx -y package-name`
+  - Features: Key capabilities, comma-separated
+  - Supports: Clients it works with
+  - Note: Optional. Caveats such as required API keys or platform limits
 ```
 
-**Recommendation Criteria**:
-- ✅ Open source license (MIT, Apache 2.0, BSD, etc.)
-- ✅ Clear documentation
-- ✅ Active maintenance (updated within last 6 months)
-- ✅ High quality and reliability
-
-### 3. Contribute MCP Servers
-
-Built an MCP server? Add it to the `mcp-servers/` directory!
-
-**Steps**:
-1. Fork this repository
-2. Create a subdirectory under `mcp-servers/`
-3. Add your MCP server code
-4. Include a `README.md` with installation and usage instructions
-5. Submit a Pull Request
-
-**MCP Server Requirements**:
-- Follows the [MCP specification](https://modelcontextprotocol.io/specification)
-- Includes clear installation and configuration instructions
-- Provides usage examples
-- Handles errors gracefully
-
-### 4. Improve Documentation
-
-Found a typo or unclear instruction? Help us improve!
-
-**Documentation Files**:
-- `README.md` - Main English documentation
-- `docs/README_CN.md` - Chinese documentation
-- `AWESOME.md` - Curated list of tools
-- `CONTRIBUTING.md` - This file
-
-## Pull Request Guidelines
-
-### PR Checklist
-
-Before submitting your PR, ensure:
-
-- [ ] I have read the contribution guidelines
-- [ ] My content follows the format specifications
-- [ ] Documentation is clear and complete
-- [ ] SKILL.md includes complete frontmatter (if applicable)
-- [ ] Links are valid and point to correct resources (if applicable)
-- [ ] Commit messages clearly describe changes
-
-### PR Template
-
-When submitting a PR, please include:
+For a hosted MCP service, the Install line uses the remote endpoint, and the Note gives the registry name, authentication, and pricing:
 
 ```markdown
-## Type of Contribution
-- [ ] Add new skill
-- [ ] Recommend third-party tool
-- [ ] Add MCP server
-- [ ] Improve documentation
-- [ ] Bug fix
-- [ ] Other
-
-## Description
-[Clearly describe what this adds or changes]
-
-## Testing
-[Explain how you tested these changes]
-
-## Screenshots (if applicable)
-[Add screenshots to help explain your changes]
+- **[Service Name](https://docs.example.com/mcp)** by company
+  - Description: What it does, in one sentence
+  - Install: `claude mcp add --transport http service-name https://mcp.example.com/mcp`
+  - Features: Key capabilities, comma-separated
+  - Supports: Clients it works with
+  - Note: Registry: `com.example/service-name`. Auth: OAuth. Pricing: free tier, then paid plans ([docs](https://docs.example.com/pricing))
 ```
 
-## Skill Development Best Practices
+Keep endpoint URLs inside code spans (backticks) as shown; they are not web pages.
 
-### SKILL.md Structure
+### Skill, Plugin, or Collection Entry
 
-A well-written SKILL.md should include:
+```markdown
+- **[name](https://github.com/owner/repo)** by owner - One-line description
+  - Install: `npx skills add owner/repo --skill name`
+```
 
-1. **Clear Description** - Explain when to use this skill
-2. **Overview** - What the skill does in detail
-3. **Usage Instructions** - How to use the skill
-4. **Examples** - Concrete usage examples
-5. **Limitations** - Known limitations (if any)
+If there is no one-line install command, link to the project's install instructions instead. Add a `License: ...` line when the license is not OSI-approved.
 
-### Directory Structure
+## Original Tools
+
+Everything in `skills/`, `agents/`, and `commands/` ships in the plugin to every user who installs it. These directories hold only tools written and maintained in this repository. Third-party skills are listed in AWESOME.md, not copied into `skills/`.
+
+### Adding or Changing a Skill
 
 ```
 skills/my-skill/
 ├── SKILL.md           # Required
-├── README.md          # Recommended - additional documentation
-├── scripts/           # Optional - executable scripts
-│   └── helper.py
-├── references/        # Optional - reference documentation
-│   └── api-docs.md
-└── assets/           # Optional - resource files
-    └── template.json
+├── README.md          # Recommended: install and usage for humans
+├── scripts/           # Optional: executable scripts
+├── references/        # Optional: reference documentation
+└── assets/            # Optional: templates and other resources
 ```
 
-### Testing Your Skill
+`SKILL.md` starts with YAML frontmatter:
 
-**Local Testing for Claude Code**:
+```yaml
+---
+name: my-skill
+description: What the skill does and when to use it. Agents read this to decide when to load the skill.
+---
+```
+
+- `name`: lowercase letters, numbers, and hyphens; must match the directory name (see the [Agent Skills specification](https://agentskills.io/specification)).
+- `description`: say what the skill does **and when to use it**.
+
+See [docs/example-skill/](./docs/example-skill/) for a complete example.
+
+### Testing Your Changes
+
 ```bash
-# Copy to local skills directory
-cp -r skills/my-skill ~/.claude/skills/
+# Validate the marketplace, plugin manifest, and components (CI runs this too)
+claude plugin validate .
 
-# Restart Claude Code
-# Test the skill with various inputs
+# Load the plugin from your checkout for one session
+claude --plugin-dir .
 ```
 
-**Local Testing for Codex**:
-```bash
-# Copy to Codex skills directory
-cp -r skills/my-skill ~/.codex/skills/
+Plugin components are namespaced, for example `/awesome-agent-tools:codex-cli`. To try a single skill on its own, copy it to `~/.claude/skills/my-skill/` instead.
 
-# Restart Codex
-# Test the skill
-```
+### Documentation
 
-## Code Standards
+When you add, rename, or remove an original tool, update [README.md](./README.md) and [docs/README_CN.md](./docs/README_CN.md) in the same pull request. The two files must keep identical structure. `docs/README_CN.md` is the only Chinese file; everything else is in English.
 
-- Use clear variable and function names
-- Add appropriate comments
-- Keep code simple and readable
-- Handle error cases properly
-- Follow language-specific best practices
+## Pull Request Guidelines
 
-## Quality Standards
-
-All contributions must meet these minimum criteria:
-
-### For Skills
-
-- ✅ Valid SKILL.md with complete frontmatter
-- ✅ Clear description including usage scenarios
-- ✅ At least 2 usage examples
-- ✅ README.md explaining the skill's purpose
-- ✅ License file (MIT recommended)
-
-### For MCP Servers
-
-- ✅ Valid server.json following MCP spec
-- ✅ Works with latest Claude Code/MCP clients
-- ✅ Installation instructions
-- ✅ Security considerations documented
-- ✅ Error handling implemented
-
-### For Recommendations
-
-- ✅ Open source license (MIT, Apache 2.0, BSD, GPL)
-- ✅ Public GitHub/GitLab repository
-- ✅ Active maintenance (commit within 6 months)
-- ✅ Minimum 10 GitHub stars OR vouched by maintainer
-- ✅ No known security vulnerabilities
-- ✅ Passes basic quality checks
+- One logical change per pull request; one tool per pull request for AWESOME.md entries.
+- Fill in the pull request template, including the affiliation section.
+- Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), as in the existing history: `docs: add server-name to MCP Servers`, `feat: ...`, `fix: ...`.
+- CI validates the plugin and checks Markdown links. Fix any failures your change introduces.
 
 ## Getting Help
 
-Need assistance? Here's how to get help:
-
-- **Questions**: Open a [Discussion](https://github.com/Awakehsh/awesome-agent-tools/discussions)
-- **Bugs**: Create an [Issue](https://github.com/Awakehsh/awesome-agent-tools/issues)
-- **Documentation**: Check [README.md](./README.md) and [CLAUDE.md](./CLAUDE.md)
-- **Examples**: Look at example skill documentation in `docs/example-skill/`
+- **Questions, bugs, and suggestions**: open an [issue](https://github.com/Awakehsh/awesome-agent-tools/issues)
+- **Documentation**: see [README.md](./README.md)
 
 ## Code of Conduct
 
@@ -252,7 +152,7 @@ Third-party recommended content maintains its original licenses.
 3. **Create a branch**: `git checkout -b my-contribution`
 4. **Make your changes**
 5. **Test** your changes
-6. **Commit**: `git commit -m "Add: brief description"`
+6. **Commit**: `git commit -m "docs: add tool-name to AWESOME.md"`
 7. **Push**: `git push origin my-contribution`
 8. **Open a Pull Request** on GitHub
 

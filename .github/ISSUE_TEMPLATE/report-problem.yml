@@ -1,0 +1,29 @@
+name: Report a problem
+description: A broken link, an outdated entry, or a bug in this repository's skills, agent, or command
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Problem type
+      options:
+        - Broken link or outdated AWESOME.md entry
+        - Entry no longer meets the inclusion criteria
+        - Bug in a skill, agent, or command
+        - Documentation error
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Where
+      description: File, entry name, or skill name.
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: What is wrong, and what you expected. For bugs, include the agent and version you used.
+    validations:
+      required: true
