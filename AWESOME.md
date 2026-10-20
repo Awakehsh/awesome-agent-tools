@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[PlaceCall](https://api.voygr.tech/docs)** by VOYGR
+  - Description: Lets an agent place real outbound phone calls to US businesses (reservations, appointments, inquiries, quotes) and get back a structured outcome, transcript and recording
+  - Install: `/plugin marketplace add voygr-tech/placecall`, then `/plugin install placecall@placecall` (MCP server plus skill), or `claude mcp add --transport http placecall https://api.voygr.tech/mcp`; then run `/mcp` to sign in
+  - Features: `suggest_places`, `place_call`, `get_call_result`, `answer_question` (the user answers a question raised during the call); IVR menus, holds and transfers handled by the voice agent
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `io.github.voygr-tech/placecall`. Auth: OAuth sign-in or an `X-API-Key` header. Pricing: a new API key includes 250 free calls, after that it is paid per successful call outcome, no subscription ([pricing](https://voygr.tech/placecall/#pricing)). US numbers only
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
