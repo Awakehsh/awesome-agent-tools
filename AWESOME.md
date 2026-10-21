@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[Robot Speed](https://www.robot-speed.com/mcp)** by Robot Speed
+  - Description: SEO audits of any public URL, plus content, Search Console, and reporting tools for sites connected to Robot Speed
+  - Install: `claude mcp add --transport http robot-speed https://www.robot-speed.com/api/mcp`, then run `/mcp` to sign in (free tools only: `https://www.robot-speed.com/api/mcp/free`, no account)
+  - Features: `seo_plan`, `seo_audit`, `meta_tag_analyzer`, `schema_validator`, and other free audit tools; articles, content calendar, Search Console traffic, and white-label reports with an account (39 tools in total)
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `io.github.robot-speed/mcp`. Auth: none for the 12 free tools; OAuth 2.1 or `X-API-Key` header for account tools. Pricing: free tools need no account; account tools need a paid Robot Speed plan ([pricing](https://www.robot-speed.com/pricing))
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
