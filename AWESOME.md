@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[Kleap](https://kleap.co/mcp)** by Kleap
+  - Description: Lets an agent build, edit, and publish hosted websites, with hosting, database, auth, and domains handled by Kleap
+  - Install: `claude mcp add --transport http kleap https://kleap.co/api/mcp`, then run `/mcp` to sign in
+  - Features: `create_app` and `modify_app`, `read_files`/`edit_files`/`write_files`, `publish_app`, domain search and connection, site analytics, form submissions, and database tools; a CLI is also available ([kleaphq/cli](https://github.com/kleaphq/cli))
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `io.github.kleaphq/kleap`. Auth: OAuth sign-in, or a `kleap_live_sk_` API key. Pricing: free plan with usage that refills over time and publishing on a kleap.io address; custom domains and more usage need a paid plan ([pricing](https://kleap.co/pricing))
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
