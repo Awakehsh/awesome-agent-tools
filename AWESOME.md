@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[deed.page](https://deed.page/docs)** by Avatar 8 LLC
+  - Description: Static hosting for agents: publishes HTML files or a folder to a permanent `https://<slug>.deed.page` URL that the agent picks
+  - Install: `claude mcp add --transport http deed-page https://deed.page/mcp`
+  - Features: 24 tools including `publish_site`, `update_site`, `list_versions`, `restore_version`, `rotate_token`, and `add_domain`; companion agent skill in [deed-page-skill](https://github.com/f-o-x11/deed-page-skill) (MIT)
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `page.deed/deed-page`. Auth: none for the first publish, which returns a bearer token for that site; send it as `Authorization: Bearer` to update or delete. Pricing: free plan with no signup (25 sites, 25 MB per site), then paid plans ([pricing](https://deed.page/pricing))
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
