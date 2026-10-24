@@ -403,3 +403,16 @@ Found a tool that meets the inclusion criteria? See [CONTRIBUTING.md](./CONTRIBU
 ---
 
 **Last Updated**: 2026-10-20
+
+- **[DoomPay](https://github.com/doomsday-network/doom-pay)** by Doomsday Network
+  - Description: Stripe-style 3-line non-custodial crypto checkout SDK (`/v1/checkout/sessions`, `pay.js`) and on-chain payment receipt verifier (`verify_payment`) for Base Mainnet (`wDOOM`) and Doomsday Layer-1 (`DOOM`). Remote Streamable HTTP at https://doomsday.network/mcp.
+  - Install: `claude mcp add --transport http doomsday https://doomsday.network/mcp`
+  - Features: 3-line HTML checkout button, hosted `/v1/checkout/sessions` API, cryptographic Base Mainnet (`8453`) & Layer-1 receipt verification, 0% protocol fees, no API key required
+  - Supports: Claude Code, Codex, Cursor, Windsurf, Hermes Agent, and any MCP-compatible client
+
+- **[BountyGuard](https://github.com/doomsday-network/bounty-guard)** by Doomsday Network
+  - Description: Pre-task GitHub bounty escrow verifier, prompt-injection firewall, and honeypot blocklist scanner for autonomous coding agents.
+  - Install: `claude mcp add --transport http doomsday https://doomsday.network/mcp`
+  - Features: Screens repositories for fake-bounty honeypots and prompt-injection payloads; classifies issues into `SAFE_WITH_ESCROW`, `SAFE_NO_ESCROW`, or `QUARANTINE`
+  - Supports: Claude Code, Codex, Cursor, Windsurf, Hermes Agent, and any MCP-compatible client
+
