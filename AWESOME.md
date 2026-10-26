@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[Sports Odds API (BetRivers, Unibet & 22 more books)](https://apify.com/publicrecords/sports-odds-api)** by publicrecords
+  - Description: Live odds from 24 Kambi-powered sportsbooks in one call, one row per game with every book's price and the best price per outcome
+  - Install: `claude mcp add --transport http sports-odds-api "https://mcp.apify.com?tools=publicrecords/sports-odds-api"`, then run `/mcp` to sign in
+  - Features: BetRivers (12 US states + Ontario), Unibet, Paf, Svenska Spel, ATG; best price per outcome across books
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `io.github.GeminiGeorge22/sports-odds-api`. Auth: Apify account via OAuth, or an Apify API token as a bearer token. Pricing: pay per call, no subscription ([docs](https://apify.com/publicrecords/sports-odds-api))
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
