@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[CallMeMCP](https://callmemcp.com/)** by Serdar Oztetik
+  - Description: Lets an agent call or text your own phone (iPhone or Android): it reads a question aloud, you answer out loud, and your spoken answer comes back as text
+  - Install: `claude mcp add --transport http call-me https://callmemcp.com/mcp`
+  - Features: `call`, `say`, `hang_up`, `poll_result`, `text`, `wait_for_reply`, `setup`; companion Claude Code plugin and skill in [radres/call-me](https://github.com/radres/call-me)
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `com.callmemcp/call-me`. Auth: none, the tools take the 10-digit number shown under My Number in the /call-me app. Pricing: the app is a paid subscription, weekly $4.99 with a 3-day free trial or yearly $84.99, and there is no free plan ([App Store](https://apps.apple.com/app/call-me/id6789575165))
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
