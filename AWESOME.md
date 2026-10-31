@@ -202,6 +202,14 @@ Reference implementations maintained by the MCP steering group to demonstrate MC
   - Supports: Claude Code, Codex, Cursor, Windsurf, VS Code, Roo Code, and other MCP clients (stdio)
   - Note: Discovery tools work without a key; running tasks requires a RunAPI account
 
+- **[agent-qa](https://github.com/vostride/agent-qa)** by vostride
+  - Description: Runs natural-language tests for web, Android, and iOS applications and exposes reviewable run evidence to coding agents
+  - Install: `npm install -D agent-qa` (Node.js 24+), then `npx agent-qa init`; see the [quickstart](https://vostride.com/docs/agent-qa/quickstart)
+  - Features: memidex persistent memory, validated self-improvement, test authoring, run digests and evidence
+  - Supports: MCP clients using stdio
+  - Note: Start `npx agent-qa mcp` in the directory containing `agent-qa.config.yaml`; set the client tool timeout to at least 100 minutes ([MCP setup](https://vostride.com/docs/agent-qa/mcp)). Model/service costs depend on configuration and usage
+  - License: FSL-1.1-ALv2
+
 ### Hosted MCP Services
 
 Remote MCP endpoints whose backend is not open source. Each is listed in the [MCP Registry](https://registry.modelcontextprotocol.io) and serves Streamable HTTP.
