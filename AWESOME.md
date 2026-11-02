@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[npmscan](https://github.com/salemalem/npmscan-mcp-plugin)** by NPMScan
+  - Description: Lets an agent check npm packages before it installs or upgrades them: confirmed malware (including versions npm removed), known vulnerabilities, maintainer changes, and install scripts
+  - Install: `claude mcp add --transport http npmscan https://npmscan.com/api/mcp`
+  - Features: 23 tools including `get_package`, `batch_query_vulnerabilities` (package.json, lockfile, or SBOM), `check_maintainer_changes`, `check_package_provenance`, `analyze_install_script`, and `diff_dependencies`; data from OSV, GitHub advisories, and NVD
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `io.github.salemalem/npmscan`. Auth: none. Pricing: free, rate-limited to 30 requests per minute per IP. The linked repository is the MIT-licensed plugin and skills; the server itself is not open source ([docs](https://npmscan.com/mcp))
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
