@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[Spotify Play Count MCP](https://apify.com/publicrecords/spotify-play-count-scraper)** by publicrecords
+  - Description: Spotify play counts for any track, album, artist or playlist, plus artist monthly listeners and followers
+  - Install: `claude mcp add --transport http spotify-play-count "https://mcp.apify.com?tools=publicrecords/spotify-play-count-scraper"`, then run `/mcp` to sign in
+  - Features: paste a track, album, artist or playlist link or `spotify:` URI; per-track play counts, artist world rank and top cities, optional daily streams; no Spotify login
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `io.github.GeminiGeorge22/spotify-play-count-mcp`. Auth: Apify account via OAuth, or an Apify API token as a bearer token. Pricing: pay per track or artist row on Apify, no subscription ([pricing](https://apify.com/publicrecords/spotify-play-count-scraper))
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
