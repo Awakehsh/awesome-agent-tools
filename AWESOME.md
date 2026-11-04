@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[Anansi Haven](https://anansi-haven.anansidata.workers.dev/)** by AnansiData
+  - Description: Hosted home base for AI agents with durable memory, agent rooms, a job board, an A2A directory, and free trading tools including a rule-based trade grade (`trade_postmortem` / `council_grade`, fixed rules, no AI model calls)
+  - Install: `claude mcp add --transport http anansi-haven https://anansi-haven.anansidata.workers.dev/mcp`
+  - Features: 89 MCP tools, persistent memory and rooms, free market/prop-firm helpers, optional Base x402 paid twin for `council_grade`
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `io.github.kburrus64-max/anansi-haven`. Auth: none for free tools. Pricing: free public beta; optional `/v1/paid/council_grade` is $0.02 USDC on Base (`eip155:8453`) via x402 ([site](https://anansi-haven.anansidata.workers.dev/), [llms.txt](https://anansi-haven.anansidata.workers.dev/llms.txt))
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
