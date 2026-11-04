@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[Google Ads Transparency MCP](https://apify.com/publicrecords/google-ads-transparency-scraper)** by publicrecords
+  - Description: Competitor Google ads from the Google Ads Transparency Center: new, running and stopped, with first and last shown dates
+  - Install: `claude mcp add --transport http google-ads-transparency "https://mcp.apify.com?tools=publicrecords/google-ads-transparency-scraper"`, then run `/mcp` to sign in
+  - Features: look up by domain, advertiser ID, Transparency Center link or advertiser name; format and ad links per ad
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `io.github.GeminiGeorge22/google-ads-transparency-mcp`. Auth: Apify account via OAuth, or an Apify API token as a bearer token. Pricing: pay per ad returned on Apify, no subscription ([pricing](https://apify.com/publicrecords/google-ads-transparency-scraper))
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
