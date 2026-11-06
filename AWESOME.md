@@ -267,7 +267,7 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Install: `claude mcp add dchub --transport http https://dchub.cloud/mcp`
   - Features: Market, power and interconnection, energy price, fiber, and capacity-sourcing tools
   - Supports: Any MCP client (Streamable HTTP)
-  - Note: Registry: `cloud.dchub/mcp-server`. Auth: none for the free tier; optional API key header or OAuth sign-in. Pricing: free tier (anonymous previews; a free key adds 2 full answers per tool per day, or 50 calls a day with an email); numeric data beyond that needs a paid plan ([pricing](https://dchub.cloud/pricing))
+  - Note: Registry: `cloud.dchub/mcp-server`. Free to start; optional API key header or OAuth sign-in. Connect: https://dchub.cloud/connect?utm_source=awakehsh-awesome-agent-tools&utm_medium=listing&utm_campaign=directories
 
 - **[Invompt](https://invompt.com/docs)** by Invompt
   - Description: Drafts invoices, quotes, estimates, and pro formas from a conversation, so you review every document before it goes to a client
