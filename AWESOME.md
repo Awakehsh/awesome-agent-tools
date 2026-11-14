@@ -70,6 +70,8 @@ A carefully curated list of third-party tools for AI agents: Skills, MCP servers
 
 - **[Claude Plugins Registry](https://claude-plugins.dev/)** - Community-maintained plugin and skill registry with a CLI that adds the marketplace and installs a plugin in one step
 
+- **[HOL Plugins](https://hol.org/plugins)** - Plugin discovery directory for Claude Code, Codex, Antigravity and other agent tools
+
 ### Notable Plugins
 
 - **[ralph-loop](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-loop)** by Anthropic - Runs the "Ralph Wiggum" technique inside a Claude Code session: a Stop hook feeds the same prompt back until a completion promise appears or an iteration limit is hit
