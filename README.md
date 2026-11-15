@@ -191,6 +191,8 @@ Open-source contributions from this repository:
 
 ### 🌟 Curated Recommendations
 
+- [No Stairs Please MCP](https://nostairsplease.com/mcp) — Live music venue directory and booking contacts across all 50 US states ([nostairsplease.com](https://nostairsplease.com/)).
+
 Carefully vetted third-party tools organized by category:
 
 **See the full curated list**: **[AWESOME.md](./AWESOME.md)**
