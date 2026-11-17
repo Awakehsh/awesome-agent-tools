@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[Screwtape.ai](https://screwtape.ai/docs/)** by Screwtape.ai
+  - Description: Checks whether an AI agent should pay a seller before it pays, returning allow, review or block with reasons and a signed receipt
+  - Install: `claude mcp add --transport http screwtape https://screwtape.ai/mcp`
+  - Features: `payment_check` before payment, duplicate-invoice check, shared spend budget across sub-agents, signed action receipts with free verification
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `ai.screwtape/screwtape`. Auth: none for 3 free calls a day; optional free API key as a bearer token for 10 a day. Pricing: then $0.005 per call, no monthly plan ([pricing](https://screwtape.ai/pricing/), [docs](https://screwtape.ai/docs/))
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
