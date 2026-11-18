@@ -293,7 +293,7 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
 - **[Screwtape.ai](https://screwtape.ai/docs/)** by Screwtape.ai
   - Description: Checks whether an AI agent should pay a seller before it pays, returning allow, review or block with reasons and a signed receipt
   - Install: `claude mcp add --transport http screwtape https://screwtape.ai/mcp`
-  - Features: `payment_check` before payment, duplicate-invoice check, shared spend budget across sub-agents, signed action receipts with free verification
+  - Features: `payment_check` before payment, `payment_guard_authorize` to enforce your spend rules (per-payment limits, budgets, approved sellers), `trust_score` for sellers, duplicate-invoice check, spend export for QuickBooks or Xero, shared spend budget across sub-agents, signed action receipts with free verification
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `ai.screwtape/screwtape`. Auth: none for 3 free calls a day; optional free API key as a bearer token for 10 a day. Pricing: then $0.005 per call, no monthly plan ([pricing](https://screwtape.ai/pricing/), [docs](https://screwtape.ai/docs/))
 
