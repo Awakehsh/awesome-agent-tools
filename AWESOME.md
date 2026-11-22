@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[MakeAIVideo](https://makeaivideo.ai/docs/mcp)** by MakeAIVideo
+  - Description: Creates finished short-form AI videos from a prompt or script and posts them to social accounts
+  - Install: `claude mcp add --scope user --transport http makeaivideo https://mcp.makeaivideo.ai`, then run `/mcp` to sign in
+  - Features: Script writing, AI or stock scenes, AI voiceover, captions and music, cost estimates before generation, MP4 download, posting or scheduling to TikTok, Instagram and YouTube
+  - Supports: Any MCP client (Streamable HTTP); local stdio via `npx -y @makeaivideo/mcp` ([MIT source](https://github.com/makeaivideo-ai/mcp))
+  - Note: Registry: `ai.makeaivideo/video-generator`. Auth: OAuth 2.1, or an API key as a bearer token. Pricing: no free tier; paid plans with a 7-day trial, and videos use credits ([pricing](https://makeaivideo.ai/pricing))
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
