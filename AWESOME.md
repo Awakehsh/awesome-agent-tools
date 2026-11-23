@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[FlowFeed MCP](https://github.com/loyt1/flowfeed-mcp)** by FlowFeed
+  - Description: Real-time macro, forex and crypto news for agents, with an economic calendar and central bank releases
+  - Install: `claude mcp add --transport http flowfeed https://mcp.flowfeed.cc/mcp`, then run `/mcp` to sign in
+  - Features: `get_market_brief`, `get_latest_news`, `search_news`, `get_economic_calendar`, `get_official_releases`; 30 sources including Bloomberg, FT and 8 central banks
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `cc.flowfeed/mcp`. Auth: OAuth 2.1 or API key (Bearer). Pricing: no free plan; $9/month or $99/year ([pricing](https://flowfeed.cc/start))
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
