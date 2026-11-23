@@ -232,6 +232,7 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Install: `claude mcp add --transport http notion https://mcp.notion.com/mcp`, then run `/mcp` to sign in
   - Features: Search Notion and connected sources, read and update content, create pages and databases
   - Supports: Any MCP client (Streamable HTTP)
+- [Skool Community Scraper](https://github.com/GeminiGeorge22/publicrecords-mcp/tree/main/servers/skool-community-mcp) - Search Skool communities by keyword. Members, price, rating and estimated monthly revenue for each, plus daily growth tracking.
   - Note: Registry: `com.notion/mcp`. Auth: OAuth. Pricing: tools work on every plan; AI search, some filters, and meeting-notes queries need a Business or Enterprise plan with Notion AI ([supported tools](https://developers.notion.com/guides/mcp/mcp-supported-tools))
 
 - **[Statsnet](https://github.com/usenetstate/statsnet-mcp)** by Statsnet
