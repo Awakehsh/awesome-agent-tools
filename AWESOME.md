@@ -37,6 +37,10 @@ A carefully curated list of third-party tools for AI agents: Skills, MCP servers
   - Install: Build from source (`pnpm install && pnpm build`) per the [README](https://github.com/Orkas-AI/Orkas-VideoStudio#install); it ships skills for Claude Code and Codex plus an MCP server
   - Note: Requires Node 22+ and `ffmpeg`; generation is opt-in and uses your own provider keys
 
+- **[design-os](https://github.com/jangtrinh/design-os)** by Jang Trịnh - Free design skills for AI coding agents. Describe a UI in plain words and the agent builds web or SwiftUI code, then only marks it done after taste and accessibility gates pass
+  - Install: `/plugin marketplace add jangtrinh/design-os`, then `/plugin install design-os@design-os`
+  - License: PolyForm Shield 1.0.0 (source-available)
+
 ### Development & Workflow Skills
 
 - **[Superpowers](https://github.com/obra/superpowers)** by Jesse Vincent - Software development methodology built from composable skills: brainstorming a spec, writing an implementation plan, then subagent-driven development with TDD and code review
