@@ -290,6 +290,13 @@ Remote MCP endpoints whose backend is not open source. Each is listed in the [MC
   - Supports: Any MCP client (Streamable HTTP)
   - Note: Registry: `com.xquik/mcp`. Auth: OAuth 2.1 or API key. Pricing: no free plan; paid credits via subscription, top-ups, or pay-per-use, and the docs and search tools use no credits ([billing](https://docs.xquik.com/guides/billing))
 
+- **[Groundsocial](https://groundsocial.dev/docs/mcp)** by Groundsocial
+  - Description: Public social and web data for agents: posts, comments, profiles, transcripts and search from Reddit, X, TikTok, Instagram, YouTube, LinkedIn and 70+ more platforms, in each platform's own JSON shape
+  - Install: `claude mcp add --transport http groundsocial https://api.groundsocial.dev/mcp`, then authenticate with `/mcp`
+  - Features: read-only tools such as `reddit_search_posts`, `x_user_tweets` and `youtube_video_transcript`; `initialize` and `tools/list` work without a token; failed calls are refunded
+  - Supports: Any MCP client (Streamable HTTP)
+  - Note: Registry: `io.github.shivanshmehendiratta/groundsocial`. Auth: OAuth 2.1 or API key as a Bearer token. Pricing: 100 free credits on signup with no card, then prepaid credit packs from $10 per 10,000 ([pricing](https://groundsocial.dev/pricing))
+
 ## 🧰 Agent Runtimes & Orchestration
 
 ### Runtimes & Orchestrators
